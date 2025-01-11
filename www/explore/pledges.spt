@@ -1,7 +1,7 @@
 [---]
 
 per_page = 18
-current_page = request.qs.get_int('page', default=1, minimum=1)
+current_page = request.qs.get_int('page', default=1, minimum=1, maximum=100)
 pledgees = website.db.all("""
     SELECT (e, p)::elsewhere_with_participant
       FROM participants p
@@ -9,10 +9,11 @@ pledgees = website.db.all("""
      WHERE p.status = 'stub'
        AND p.receiving > 0
        AND p.hide_from_lists = 0
+       AND e.missing_since IS NULL
   ORDER BY p.npatrons DESC, convert(p.receiving, 'EUR') DESC, e.id DESC
      LIMIT %s
     OFFSET %s
-""", (per_page + 1, (current_page - 1) * per_page))
+""", (per_page + 1, (current_page - 1) * per_page), max_age=0)
 has_more = len(pledgees) > per_page
 pledgees = pledgees[:per_page]
 
@@ -20,7 +21,7 @@ title = _("Explore")
 subhead = _("Unclaimed Donations")
 
 [---] text/html
-% from "templates/macros/elsewhere.html" import platform_logo with context
+% from "templates/macros/elsewhere.html" import platform_icon_large with context
 % from 'templates/macros/pagination.html' import simple_pager with context
 % from 'templates/macros/profile-box.html' import profile_box_embedded_elsewhere with context
 
@@ -34,7 +35,6 @@ subhead = _("Unclaimed Donations")
         "the recipients join. Of course we notify the donors when that happens."
     ) }}</p>
 
-    <h3 class="banderole default">{{ _("Top pledges") }}</h3>
     % if pledgees
         <p class="alert alert-warning">{{ _(
             "Please don't spam the people and projects listed below with messages "
@@ -59,7 +59,7 @@ subhead = _("Unclaimed Donations")
     <p class="buttons">
     % for p in website.platforms if p.supports_follows
         <a class="btn btn-default" href="/on/{{ p.name }}/">{{
-            platform_logo(p) }}<br>{{ p.display_name }}</a>
+            platform_icon_large(p) }}<br>{{ p.display_name }}</a>
     % endfor
     </p>
 

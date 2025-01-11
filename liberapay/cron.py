@@ -6,6 +6,7 @@ from time import sleep
 import traceback
 
 from pando.utils import utcnow
+import psycopg2
 
 from .constants import EPOCH
 
@@ -37,10 +38,23 @@ class Cron:
         job.start()
 
     def _wait_for_lock(self):
-        if self.conn:
+        if self._lock_thread:
             return  # Already waiting
-        self.conn = self.website.db.get_connection().__enter__()
         def f():
+            while True:
+                try:
+                    g()
+                except Exception as e:
+                    if not isinstance(e, psycopg2.errors.IdleInTransactionSessionTimeout):
+                        self.website.tell_sentry(e)
+                    if self.has_lock:
+                        self.has_lock = False
+                    self.conn = None
+                    sleep(10)
+
+        def g():
+            if not self.conn:
+                self.conn = self.website.db.get_connection().__enter__()
             cursor = self.conn.cursor()
             while True:
                 if cursor.one("SELECT pg_try_advisory_lock(0)"):
@@ -52,7 +66,7 @@ class Cron:
                 else:
                     if self.has_lock:
                         self.has_lock = False
-                sleep(60)
+                sleep(55)
         t = self._lock_thread = threading.Thread(target=f, name="cron_waiter")
         t.daemon = True
         t.start()
@@ -111,14 +125,14 @@ class Job:
         period, last_start_time = self.period, self.last_start_time
         now = utcnow()
         if isinstance(period, Weekly):
-            then = now.replace(hour=period.hour, minute=10, second=0)
+            then = now.replace(hour=period.hour, minute=10, second=0, microsecond=0)
             days = (period.weekday - now.isoweekday()) % 7
             if days:
                 then += timedelta(days=days)
             if (last_start_time or EPOCH) >= then:
                 then += timedelta(days=7)
         elif isinstance(period, Daily):
-            then = now.replace(hour=period.hour, minute=5, second=0)
+            then = now.replace(hour=period.hour, minute=5, second=0, microsecond=0)
             if (last_start_time or EPOCH) >= then:
                 then += timedelta(days=1)
         elif period == 'irregular':
@@ -138,14 +152,14 @@ class Job:
 
         def f():
             while True:
-                period = self.period
-                if period != 'irregular':
-                    seconds = self.seconds_before_next_run()
-                    if seconds > 0:
-                        sleep(seconds)
-                if self.exclusive and not self.cron.has_lock:
-                    return
                 try:
+                    period = self.period
+                    if period != 'irregular':
+                        seconds = self.seconds_before_next_run()
+                        if seconds > 0:
+                            sleep(seconds)
+                    if self.exclusive and not self.cron.has_lock:
+                        return
                     if isinstance(period, (float, int)) and period < 300:
                         logger.debug(f"Running {self!r}")
                     else:
@@ -161,27 +175,43 @@ class Job:
                     self.running = False
                     self.cron.website.tell_sentry(e)
                     if self.exclusive:
-                        self.cron.website.db.run("""
-                            INSERT INTO cron_jobs
-                                        (name, last_error_time, last_error)
-                                 VALUES (%s, current_timestamp, %s)
-                            ON CONFLICT (name) DO UPDATE
-                                    SET last_error_time = excluded.last_error_time
-                                      , last_error = excluded.last_error
-                        """, (func_name, traceback.format_exc()))
-                    # retry in 5 minutes
-                    sleep(300)
+                        while True:
+                            try:
+                                self.cron.website.db.run("""
+                                    INSERT INTO cron_jobs
+                                                (name, last_error_time, last_error)
+                                         VALUES (%s, current_timestamp, %s)
+                                    ON CONFLICT (name) DO UPDATE
+                                            SET last_error_time = excluded.last_error_time
+                                              , last_error = excluded.last_error
+                                """, (func_name, traceback.format_exc()))
+                            except psycopg2.OperationalError as e:
+                                self.cron.website.tell_sentry(e)
+                                # retry in a minute
+                                sleep(60)
+                            else:
+                                break
+                    # retry in a minute
+                    sleep(60)
                     continue
                 else:
                     self.running = False
                     if self.exclusive:
-                        self.cron.website.db.run("""
-                            INSERT INTO cron_jobs
-                                        (name, last_success_time)
-                                 VALUES (%s, current_timestamp)
-                            ON CONFLICT (name) DO UPDATE
-                                    SET last_success_time = excluded.last_success_time
-                        """, (func_name,))
+                        while True:
+                            try:
+                                self.cron.website.db.run("""
+                                    INSERT INTO cron_jobs
+                                                (name, last_success_time)
+                                         VALUES (%s, current_timestamp)
+                                    ON CONFLICT (name) DO UPDATE
+                                            SET last_success_time = excluded.last_success_time
+                                """, (func_name,))
+                            except psycopg2.OperationalError as e:
+                                self.cron.website.tell_sentry(e)
+                                # retry in a minute
+                                sleep(60)
+                            else:
+                                break
                     if period == 'irregular':
                         if r is None:
                             return

@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.10.3\n"
+"Generated-By: Babel 2.16.0\n"
 
 #, fuzzy, python-brace-format
 msgid "The translation of this page from English is not yet complete. {link_start}You can contribute{link_end}."
@@ -257,10 +257,6 @@ msgstr "{date}: {money_amount} į {recipient}"
 #, fuzzy, python-brace-format
 msgid "{date}: {money_amount} split between {recipients}"
 msgstr "{date}: {money_amount} padalinta tarp {recipients}"
-
-#, fuzzy
-msgid "Add a payment instrument"
-msgstr "Pridėti mokėjimo priemonę"
 
 #, fuzzy, python-brace-format
 msgid "Invoice from {0} on Liberapay"
@@ -595,7 +591,7 @@ msgstr "{user_name} iš {platform} prisijungė prie Liberapay!"
 
 #, fuzzy, python-brace-format
 msgid "On {date} you pledged to donate {money_amount} to {user_name} if they joined Liberapay."
-msgstr "Svetainėje {date} pažadėjote paaukoti {money_amount} {user_name} , jei jie prisijungs prie Liberapay."
+msgstr "Svetainėje {date} pažadėjote paaukoti {money_amount} {user_name}, jei jie prisijungs prie Liberapay."
 
 #, fuzzy, python-brace-format
 msgid "We're pleased to inform you that {user_name} joined Liberapay {time_ago}, as {liberapay_username}."
@@ -909,17 +905,6 @@ msgstr "Didelis"
 msgid "Maximum"
 msgstr "Maximum"
 
-#, fuzzy, python-brace-format
-msgid "You've consumed your quota of requests, you can try again {in_N_minutes}."
-msgstr "Išnaudojote užklausų kvotą, galite bandyti dar kartą {in_N_minutes}."
-
-msgid "You're making requests too fast, please try again later."
-msgstr "Jūs per greitai atliekate užklausas, vėliau bandykite dar kartą."
-
-#, python-brace-format
-msgid "{0} returned an error, please try again later."
-msgstr "{0} grąžino klaidą, vėliau bandykite dar kartą."
-
 msgid "example@mastodon.social"
 msgstr "pavyzdys@mastodon.social"
 
@@ -955,6 +940,10 @@ msgstr "Naudotojo vardas „{0}“ yra per ilgas."
 #, python-brace-format
 msgid "The username '{0}' contains invalid characters."
 msgstr "Naudotojo varde „{0}“ yra netinkamų simbolių."
+
+#, fuzzy, python-brace-format
+msgid "The username '{0}' is purely numerical. This isn't allowed."
+msgstr "Vartotojo vardas '{0}' yra tik skaitmeninis. Tai neleistina."
 
 #, python-brace-format
 msgid "The username '{0}' is restricted."
@@ -1111,6 +1100,18 @@ msgid "{username} doesn't accept donations in {rejected_currency}."
 msgstr "{username} nepriima aukų {rejected_currency}."
 
 #, fuzzy, python-brace-format
+msgid "{username} no longer accepts secret donations."
+msgstr "{username} nebepriima slaptų aukų."
+
+#, fuzzy, python-brace-format
+msgid "{username} no longer accepts private donations."
+msgstr "{username} nebepriima privačių aukų."
+
+#, fuzzy, python-brace-format
+msgid "{username} no longer accepts public donations."
+msgstr "{username} nebepriima viešųjų aukų."
+
+#, fuzzy, python-brace-format
 msgid "The amount {money_amount} isn't in the expected currency ({expected_currency})."
 msgstr "{money_amount} suma nėra nurodyta numatoma valiuta ({expected_currency})."
 
@@ -1148,6 +1149,14 @@ msgstr "Šis mokėjimas negali būti atliktas, nes gavėjo sąskaita šiuo metu 
 #, fuzzy, python-brace-format
 msgid "Your donation to {recipient} cannot be processed right now because the account of the beneficiary isn't ready to receive money."
 msgstr "Jūsų auka {recipient} šiuo metu negali būti apdorota, nes gavėjo sąskaita nėra paruošta priimti pinigus."
+
+#, fuzzy, python-brace-format
+msgid "{username} does not accept donations from {country}."
+msgstr "{username} nepriima aukų iš {country}."
+
+#, fuzzy
+msgid "The processing of your payment has failed because our software was unable to determine which country the money would come from. This isn't supposed to happen."
+msgstr "Jūsų mokėjimas nebuvo apdorotas, nes mūsų programinei įrangai nepavyko nustatyti, iš kurios šalies bus pervesti pinigai. Taip neturėtų nutikti."
 
 #, fuzzy
 msgid "You've already changed your main currency recently, please retry later (e.g. in a week) or contact support@liberapay.com."
@@ -1207,14 +1216,6 @@ msgstr "Gateway Timeout"
 #, fuzzy, python-brace-format
 msgid "The {platform} user you're looking for hasn't joined Liberapay, and it's not possible to create a stub profile for them."
 msgstr "Ieškomas {platform} naudotojas nėra prisijungęs prie Liberapay, todėl neįmanoma sukurti jo profilio."
-
-#, fuzzy, python-brace-format
-msgid "'{0}' doesn't seem to be a valid user id on {platform}."
-msgstr "'{0}' neatrodo, kad {platform} yra galiojantis naudotojo ID."
-
-#, fuzzy, python-brace-format
-msgid "There doesn't seem to be a user named {0} on {1}."
-msgstr "Atrodo, kad {1} nėra naudotojo, vardu {0}."
 
 #, fuzzy, python-brace-format
 msgid "Liberapay donation to {username} (team {team_name})"
@@ -1285,12 +1286,35 @@ msgstr "Tikrinami slapukai…"
 msgid "You are not authorized to access this page."
 msgstr "Jūs neturite įgaliojimų gauti prieigą prie šio puslapio."
 
+msgid "The changes have been saved."
+msgstr "Pakeitimai įrašyti."
+
 #, fuzzy
 msgid "Processing your request failed because our server was unable to communicate with a service located on another machine. This is a temporary issue, please try again later."
 msgstr "Jūsų užklausos nepavyko apdoroti, nes mūsų serveriui nepavyko užmegzti ryšio su kitoje mašinoje esančia paslauga. Tai laikina problema, pabandykite vėliau."
 
+#, fuzzy, python-brace-format
+msgid "'{0}' doesn't seem to be a valid user id on {platform}."
+msgstr "'{0}' neatrodo, kad {platform} yra galiojantis naudotojo ID."
+
+#, python-brace-format
+msgid "{0} returned an error, please try again later."
+msgstr "{0} grąžino klaidą, vėliau bandykite dar kartą."
+
+#, fuzzy, python-brace-format
+msgid "You've consumed your quota of requests, you can try again {in_N_minutes}."
+msgstr "Išnaudojote užklausų kvotą, galite bandyti dar kartą {in_N_minutes}."
+
+msgid "You're making requests too fast, please try again later."
+msgstr "Jūs per greitai atliekate užklausas, vėliau bandykite dar kartą."
+
+#, fuzzy, python-brace-format
+msgid "There doesn't seem to be a user named {0} on {1}."
+msgstr "Atrodo, kad {1} nėra naudotojo, vardu {0}."
+
+#, fuzzy
 msgid "This profile is marked as spam or fraud."
-msgstr ""
+msgstr "Šis profilis pažymėtas kaip šlamštas arba sukčiavimas."
 
 msgid "Cancel"
 msgstr "Atsisakyti"
@@ -1521,6 +1545,9 @@ msgstr "Tapatybė"
 msgid "Account"
 msgstr "Paskyra"
 
+msgid "Close Account"
+msgstr "Uždaryti paskyrą"
+
 msgid "Emails"
 msgstr "El. pašto adresai"
 
@@ -1538,6 +1565,10 @@ msgstr "Atsijungti"
 
 msgid "Print"
 msgstr "Spausdinti"
+
+#, fuzzy
+msgid "Liberapay logo"
+msgstr "Liberapay logotipas"
 
 #, fuzzy, python-brace-format
 msgid "{0} has {n} patron."
@@ -1574,9 +1605,6 @@ msgstr "Paaukoti"
 
 msgid "Switch to a different account"
 msgstr "Perjungti į kitą paskyrą"
-
-msgid "The changes have been saved."
-msgstr "Pakeitimai įrašyti."
 
 #, fuzzy
 msgid "We've sent you a single-use login link. Check your inbox, open the provided link in a new tab, then come back to this page and click on the button below to carry on with what you wanted to do."
@@ -1616,8 +1644,8 @@ msgid "If you need to change the password of your Liberapay account, you can do 
 msgstr "Jei norite pakeisti \"Liberapay\" paskyros slaptažodį, tai galite padaryti toliau. Kad būtų saugu, jūsų paskyros slaptažodis turi būti atsitiktinai sugeneruotas ir niekur kitur nenaudojamas. Primygtinai rekomenduojame naudoti slaptažodžių tvarkyklę."
 
 #, fuzzy
-msgid "Setting a password allows you to log in directly, instead of waiting for a single-use link sent via email. However, we recommend keeping your account passwordless if you don't use a password manager, because in order to be secure the password of your account should be randomly generated and not used anywhere else."
-msgstr "Nustatę slaptažodį galėsite prisijungti tiesiogiai, užuot laukę el. paštu atsiųstos vienkartinės nuorodos. Tačiau rekomenduojame, jei nenaudojate slaptažodžių tvarkyklės, laikyti paskyrą be slaptažodžio, nes, kad paskyros slaptažodis būtų saugus, jis turėtų būti generuojamas atsitiktine tvarka ir niekur kitur nenaudojamas."
+msgid "Setting a password allows you to log in directly, instead of waiting for a single-use link sent via email. However, we only recommend setting a password if you use a password manager, because in order to be secure the password should be randomly generated and not used anywhere else."
+msgstr "Nustatę slaptažodį galėsite prisijungti tiesiogiai, užuot laukę el. paštu atsiųstos vienkartinės nuorodos. Tačiau slaptažodį rekomenduojame nustatyti tik tuo atveju, jei naudojate slaptažodžių tvarkyklę, nes tam, kad slaptažodis būtų saugus, jis turėtų būti atsitiktinai sugeneruotas ir niekur kitur nenaudojamas."
 
 msgid "Current password"
 msgstr "Dabartinis slaptažodis"
@@ -1781,11 +1809,13 @@ msgstr "Logotipai"
 msgid "Overview"
 msgstr "Apžvalga"
 
-msgid "Organizations"
-msgstr "Organizacijos"
+#, fuzzy
+msgid "Recipients"
+msgstr "Gavėjai"
 
-msgid "Individuals"
-msgstr "Asmenys"
+#, fuzzy
+msgid "Hopefuls"
+msgstr "Vilčių teikėjai"
 
 #, fuzzy
 msgid "Unclaimed Donations"
@@ -1802,6 +1832,10 @@ msgstr "Vardas"
 
 msgid "Currencies"
 msgstr "Valiutos"
+
+#, fuzzy
+msgid "Countries"
+msgstr "Šalys"
 
 msgid "Goal"
 msgstr "Tikslas"
@@ -1843,7 +1877,7 @@ msgid "{username} hasn't configured any payment method yet, so your donation can
 msgstr "{username} dar nesukonfigūravo jokio mokėjimo būdo, todėl jūsų auka šiuo metu negali būti apdorota. Informuosime jus, kai bus galima atlikti mokėjimą."
 
 #, fuzzy, python-brace-format
-msgid "Donations to {username} can be paid using a credit or debit card ({list_of_card_brands}), or by direct debit of a Euro bank account (for donations in Euro only)."
+msgid "Donations to {username} can be paid using a credit or debit card ({list_of_card_brands}), or by direct debit of a euro bank account (for donations in euro only)."
 msgstr "Paaukoti {username} galima kredito arba debeto kortele ({list_of_card_brands}) arba tiesioginiu debetu iš banko sąskaitos eurais (aukojant tik eurais)."
 
 #, fuzzy, python-brace-format
@@ -1851,8 +1885,12 @@ msgid "Donations to {username} are processed through PayPal."
 msgstr "Aukos {username} tvarkomos per \"PayPal\"."
 
 #, fuzzy, python-brace-format
-msgid "Donations to {username} can be paid using: a credit or debit card ({list_of_card_brands}), a Euro bank account (SEPA Direct Debit), or a PayPal account."
+msgid "Donations to {username} can be paid using: a credit or debit card ({list_of_card_brands}), a euro bank account (SEPA Direct Debit), or a PayPal account."
 msgstr "Paaukoti {username} galima: kredito arba debeto kortele ({list_of_card_brands}), banko sąskaita eurais (SEPA tiesioginis debetas) arba \"PayPal\" sąskaita."
+
+#, fuzzy
+msgid "Payment Card"
+msgstr "Mokėjimo kortelė"
 
 msgid "Country"
 msgstr "Šalis"
@@ -1909,6 +1947,9 @@ msgstr "Peržiūrėti pajamų akcijas"
 msgid "(fork)"
 msgstr "(šakutė)"
 
+msgid "Stars"
+msgstr "Žvaigždutės"
+
 #, fuzzy
 msgid "Updated this week"
 msgstr "Atnaujinta šią savaitę"
@@ -1948,18 +1989,6 @@ msgstr "Kurdami \"Liberapay\" paskyrą sutinkate su mūsų {0}paslaugų teikimo 
 msgid "Your nominal take from the {0} team is limited to {1} this week. {2}Why?{3}"
 msgstr "Šią savaitę jūsų nominalusis {0} komandos paėmimas apsiriboja {1}. {2}Kodėl?{3}"
 
-#, fuzzy
-msgid "Last Payday"
-msgstr "Paskutinė mokėjimo diena"
-
-#, fuzzy
-msgid "n/a"
-msgstr "nėra"
-
-#, fuzzy
-msgid "Next Payday"
-msgstr "Kita mokėjimo diena"
-
 msgid "Member"
 msgstr "Narys"
 
@@ -1970,6 +1999,22 @@ msgstr "Nominalus paėmimas"
 #, fuzzy
 msgid "Actual Take"
 msgstr "Faktinis paėmimas"
+
+#, fuzzy
+msgid "On Liberapay, donations are paid in advance. This column shows how much money each member has received in advance through this team. An advance increases every time a member receives a new payment from a donor through the team, and decreases every week."
+msgstr "\"Liberapay\" sistemoje aukos mokamos iš anksto. Šiame stulpelyje rodoma, kiek pinigų kiekvienas narys gavo avansu per šią komandą. Avansas didėja kiekvieną kartą, kai narys gauna naują mokėjimą iš aukotojo per šią komandą, ir mažėja kiekvieną savaitę."
+
+#, fuzzy
+msgid "Advance"
+msgstr "Išankstinis"
+
+#, fuzzy, python-brace-format
+msgid "Last week: {0}"
+msgstr "Praėjusią savaitę: {0}"
+
+#, fuzzy
+msgid "no take"
+msgstr "neimti"
 
 #, fuzzy
 msgid "auto"
@@ -1988,19 +2033,16 @@ msgid "Leftover"
 msgstr "Likučiai"
 
 #, fuzzy, python-brace-format
+msgid "It looks like you are in {country}. {username} does not accept donations coming from that country."
+msgstr "Atrodo, kad esate {country}. {username} nepriima aukų iš šios šalies."
+
+#, fuzzy, python-brace-format
 msgid "Your current donation to {name} is in {currency}, but they now only accept donations in {accepted_currency}. You can convert your donation to that currency, or discontinue it."
 msgstr "Jūsų dabartinė auka {name} yra išreikšta {currency}, tačiau dabar ji priimama tik {accepted_currency}. Galite konvertuoti savo auką į šią valiutą arba jos nebeteikti."
 
 #, fuzzy, python-brace-format
 msgid "Your current donation to {name} is in {currency}, but they no longer accept that currency. The suggested new currency is the {accepted_currency}, but you can choose another one."
 msgstr "Šiuo metu {name} aukojate {currency}, tačiau jie šios valiutos nebepriima. Siūloma nauja valiuta yra {accepted_currency}, tačiau galite pasirinkti ir kitą valiutą."
-
-msgid "Modify"
-msgstr "Keisti"
-
-#, fuzzy
-msgid "Discontinue"
-msgstr "Nutraukti"
 
 #, fuzzy, python-brace-format
 msgid "You are currently donating {money_amount} per week to {recipient_name}. The form below enables you to modify or stop your donation."
@@ -2023,18 +2065,18 @@ msgid "The {currency_name} isn't your preferred currency? {n} other is supported
 msgid_plural "The {currency_name} isn't your preferred currency? {n} others are supported:"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
+msgstr[2] "{currency_name} nėra jūsų pageidaujama valiuta? {n} palaikomos ir kitos:"
 
 #, fuzzy, python-brace-format
 msgid "The {currency_name} isn't your preferred currency? {username} also accepts {n} other:"
 msgid_plural "The {currency_name} isn't your preferred currency? {username} also accepts {n} others:"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
+msgstr[2] "{currency_name} nėra jūsų pageidaujama valiuta? {username} taip pat priima {n} kitus:"
 
 #, fuzzy
-msgid "not supported by PayPal"
-msgstr "\"PayPal\" nepalaiko"
+msgid "supported by PayPal"
+msgstr "remia \"PayPal"
 
 #, fuzzy
 msgid "Switch"
@@ -2078,6 +2120,14 @@ msgstr "Atnaujinimas rankiniu būdu"
 #, fuzzy
 msgid "A reminder to renew your donation will be sent to you via email."
 msgstr "Priminimas atnaujinti auką bus išsiųstas el. paštu."
+
+#, fuzzy
+msgid "Discontinue the donation"
+msgstr "Nutraukti donorystę"
+
+#, fuzzy
+msgid "Cancel the pledge"
+msgstr "Atšaukti pasižadėjimą"
 
 #, fuzzy, python-brace-format
 msgid "{username} has chosen not to see who their patrons are, so your donation will be secret."
@@ -2124,14 +2174,6 @@ msgid "{username} hasn't yet specified whether they want to see who their patron
 msgstr "{username} dar nenurodė, ar nori matyti, kas yra jų mecenatai, todėl jūsų auka bus slapta."
 
 #, fuzzy
-msgid "Discontinue the donation"
-msgstr "Nutraukti donorystę"
-
-#, fuzzy
-msgid "Cancel the pledge"
-msgstr "Atšaukti pasižadėjimą"
-
-#, fuzzy
 msgid "People who contribute to the commons need you to support their work. Building free software, spreading free knowledge, these things take time and cost money, not only to do the initial work, but also to maintain it over time."
 msgstr "Prie bendrųjų bendruomenių prisidedantiems žmonėms reikia, kad palaikytumėte jų darbą. Laisvosios programinės įrangos kūrimas, laisvųjų žinių skleidimas - visa tai užima laiko ir kainuoja pinigų ne tik pradiniam darbui atlikti, bet ir laikui bėgant jį išlaikyti."
 
@@ -2142,6 +2184,50 @@ msgstr "\"Liberapay\" periodinių aukų sistema sukurta taip, kad kūrėjams už
 #, fuzzy
 msgid "You are in sandbox mode, do not input any real payment or personal data!"
 msgstr "Esate smėlio dėžės režime, neįveskite jokių realių mokėjimų ar asmeninių duomenų!"
+
+#, fuzzy
+msgid "The credentials have been generated."
+msgstr "Įgaliojimai buvo sukurti."
+
+#, fuzzy
+msgid "The credentials have been revoked."
+msgstr "Įgaliojimai buvo panaikinti."
+
+#, fuzzy
+msgid "Constant session"
+msgstr "Nuolatinė sesija"
+
+#, fuzzy
+msgid "You can automate downloading private information from your account by including the following HTTP header in your requests:"
+msgstr "Galite automatizuoti privačios informacijos atsisiuntimą iš savo paskyros, į užklausas įtraukdami šią HTTP antraštę:"
+
+#, fuzzy
+msgid "For example, you can download the list of your currently active patrons by executing the following command:"
+msgstr "Pavyzdžiui, šiuo metu aktyvių globėjų sąrašą galite atsisiųsti vykdydami šią komandą:"
+
+#, fuzzy
+msgid "To minimize the risks to you, these credentials can only be used to fetch data, not to modify anything in your account, and they will automatically expire if unused for a year."
+msgstr "Siekiant sumažinti jums kylančią riziką, šiuos įgaliojimus galima naudoti tik duomenims gauti, o ne ką nors keisti savo paskyroje, be to, jie automatiškai nustoja galioti, jei nenaudojami vienerius metus."
+
+#, fuzzy
+msgid "Revoke credentials"
+msgstr "Atšaukti įgaliojimus"
+
+#, fuzzy
+msgid "The credentials have expired."
+msgstr "Įgaliojimų galiojimo laikas baigėsi."
+
+#, fuzzy
+msgid "Regenerate credentials"
+msgstr "Atkurti įgaliojimus"
+
+#, fuzzy
+msgid "To simplify automating downloads of private information from your account, you can generate long-lived read-only credentials."
+msgstr "Norėdami supaprastinti privačios informacijos atsisiuntimo iš paskyros automatizavimą, galite sukurti ilgalaikius tik skaitymui skirtus įgaliojimus."
+
+#, fuzzy
+msgid "Generate credentials"
+msgstr "Sukurti įgaliojimus"
 
 msgid "Dashboard"
 msgstr "Skydelis"
@@ -2220,6 +2306,14 @@ msgid "One-time donations aren't properly supported yet, but you can discontinue
 msgstr "Vienkartinės aukos kol kas nėra tinkamai palaikomos, tačiau galite nutraukti aukojimą iš karto po pirmojo mokėjimo."
 
 #, fuzzy
+msgid "Will I get a receipt?"
+msgstr "Ar gausiu kvitą?"
+
+#, fuzzy
+msgid "A receipt is automatically available for every payment."
+msgstr "Už kiekvieną mokėjimą automatiškai gaunamas kvitas."
+
+#, fuzzy
 msgid "What is this website? I don't recognize it."
 msgstr "Kas yra ši svetainė? Aš jos nepažįstu."
 
@@ -2246,6 +2340,10 @@ msgstr "Peržiūrėta Mokėjimo paslaugų direktyva"
 #, fuzzy, python-brace-format
 msgid "Your new avatar URL is: {0}"
 msgstr "Jūsų naujojo avataro URL yra: {0}"
+
+#, fuzzy
+msgid "Your profile no longer has an avatar."
+msgstr "Jūsų profilyje nebėra avataro."
 
 #, fuzzy, python-brace-format
 msgid "You have selected {platform} as your avatar source but you haven't connected any {platform} account."
@@ -2280,6 +2378,18 @@ msgstr "Palikti"
 #, fuzzy
 msgid "Explore communities"
 msgstr "Ištirti bendruomenes"
+
+#, fuzzy
+msgid "You have to check at least one box."
+msgstr "Turite pažymėti bent vieną langelį."
+
+#, fuzzy
+msgid "Which countries should your donors be allowed to send you money from?"
+msgstr "Iš kurių šalių donorams turėtų būti leidžiama siųsti jums pinigus?"
+
+#, fuzzy
+msgid "We recommend limiting the origins of donations only if you are required to by law."
+msgstr "Rekomenduojame apriboti dovanų kilmę tik tuo atveju, jei to reikalaujama pagal įstatymus."
 
 #, fuzzy
 msgid "The submitted settings are incoherent."
@@ -2331,10 +2441,6 @@ msgstr[2] ""
 #, fuzzy
 msgid "Connect an account"
 msgstr "Paskyros prijungimas"
-
-#, fuzzy
-msgid "Our YouTube integration has been disabled by Google. We're working on re-implementing this feature in a different way."
-msgstr "\"Google\" išjungė mūsų \"YouTube\" integraciją. Dirbame, kad ši funkcija vėl būtų įdiegta kitu būdu."
 
 #, fuzzy
 msgid "I'm grateful for gifts, but don't have a specific funding goal."
@@ -2428,8 +2534,37 @@ msgid "We can also import lists of repositories for your teams:"
 msgstr "Taip pat galime importuoti jūsų komandų saugyklų sąrašus:"
 
 #, fuzzy, python-brace-format
-msgid "The submitted summary is too long ({0} > {1})."
-msgstr "Pateikta santrauka yra per ilga ({0} > {1})."
+msgid "<unused singular (hash=82d03d589b58d2a8c99d043ba5f91b84)>"
+msgid_plural "The summary can't be more than {n} characters long."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] "Santrauka negali būti ilgesnė nei {n} simbolių."
+
+#, fuzzy, python-brace-format
+msgid "<unused singular (hash=e77fbb49c028c11bb9d859698c4a5363)>"
+msgid_plural "The full description must be at least {n} characters long."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] "Išsamus aprašymas turi būti ne trumpesnis kaip {n} simbolių."
+
+#, fuzzy, python-brace-format
+msgid "<unused singular (hash=df724b624e486f3c07109838b9a4b3f0)>"
+msgid_plural "The full description can't be more than {n} characters long."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] "Išsamus aprašymas negali būti ilgesnis nei {n} simbolių."
+
+#, fuzzy
+msgid "The full description can't be identical to the summary."
+msgstr "Išsamus aprašymas negali būti identiškas santraukai."
+
+#, fuzzy
+msgid "The summary can't be only your name."
+msgstr "Santraukoje negali būti tik jūsų vardas ir pavardė."
+
+#, fuzzy
+msgid "The description can't be only your name."
+msgstr "Aprašyme negali būti tik jūsų vardas ir pavardė."
 
 msgid "This is a preview."
 msgstr "Tai yra peržiūra."
@@ -2441,6 +2576,10 @@ msgstr "Ištrauka, kuri bus naudojama socialinėje žiniasklaidoje:"
 #, fuzzy
 msgid "Preview of the short description"
 msgstr "Trumpo aprašymo peržiūra"
+
+#, fuzzy
+msgid "Including your username in the short description is redundant. The short description is always displayed immediately below the username."
+msgstr "Į trumpąjį aprašymą įtraukti savo vartotojo vardą yra nereikalinga. Trumpas aprašymas visada rodomas iškart po vartotojo vardo."
 
 msgid "Publish"
 msgstr "Paskelbti"
@@ -2683,6 +2822,10 @@ msgid "You have enabled automatic renewals for some or all of your donations, bu
 msgstr "Įjungėte automatinį kai kurių ar visų savo aukų atnaujinimą, tačiau neturite jokios galiojančios mokėjimo priemonės, kuri leistų mums inicijuoti automatinius mokėjimus atėjus laikui."
 
 #, fuzzy
+msgid "Add a payment instrument"
+msgstr "Pridėti mokėjimo priemonę"
+
+#, fuzzy
 msgid "Donations"
 msgstr "Paremti"
 
@@ -2700,6 +2843,9 @@ msgstr "{money_amount}{small}/mėn.{end_small}"
 #, fuzzy, python-brace-format
 msgid "{money_amount}{small}/year{end_small}"
 msgstr "{money_amount}{small}/metai{end_small}"
+
+msgid "Modify"
+msgstr "Keisti"
 
 #, fuzzy, python-brace-format
 msgid "Started {timespan_ago}."
@@ -2736,6 +2882,10 @@ msgstr "Kitas mokėjimas turi būti atliktas {in_N_weeks_months_or_years}."
 #, fuzzy
 msgid "Renew now"
 msgstr "Atnaujinti dabar"
+
+#, fuzzy, python-brace-format
+msgid "The recipient no longer accepts payments in {currency}."
+msgstr "Gavėjas nebepriima mokėjimų {currency}."
 
 #, fuzzy
 msgid "Pending payment completion."
@@ -2826,9 +2976,6 @@ msgstr "Šiuo metu \"PayPal\" yra vienintelė galimybė finansuoti šią auką. 
 msgid "Please choose a payment method:"
 msgstr "Pasirinkite mokėjimo būdą:"
 
-msgid "Card"
-msgstr "Kortelė"
-
 #, fuzzy
 msgid "Currently unavailable"
 msgstr "Šiuo metu neprieinamas"
@@ -2838,12 +2985,16 @@ msgid "Pay by card"
 msgstr "Mokėti kortele"
 
 #, fuzzy
-msgid "Euro donations only"
-msgstr "Aukojimas tik eurais"
+msgid "Only for donations to SEPA countries"
+msgstr "Tik aukojant į SEPA šalis"
 
 #, fuzzy
-msgid "Euro bank accounts only"
-msgstr "Tik euro bankų sąskaitos"
+msgid "Only for donations in euros"
+msgstr "Tik už aukas eurais"
+
+#, fuzzy
+msgid "Only euro bank accounts"
+msgstr "Tik eurų banko sąskaitos"
 
 #, fuzzy
 msgid "Pay by direct debit"
@@ -2883,9 +3034,13 @@ msgstr "Mokėjimas {charge_amount} buvo sėkmingas."
 msgid "Failure"
 msgstr "Nesėkmė"
 
+#, python-brace-format
+msgid "PayPal status code: {0}"
+msgstr "PayPal būsenos kodas: {0}"
+
 #, fuzzy, python-brace-format
-msgid "The payment processor {name} returned an error: “{error_message}”."
-msgstr "Mokėjimo apdorojimo procesorius {name} grąžino klaidą: \"{error_message}\"."
+msgid "error message: {0}"
+msgstr "klaidos pranešimas: {0}"
 
 #, fuzzy
 msgid "The payment has been initiated."
@@ -2926,6 +3081,10 @@ msgstr "\"PayPal\" gavėjui atskleidžia jūsų vardą, pavardę ir el. pašto a
 msgid "Initiate the payment"
 msgstr "Inicijuoti mokėjimą"
 
+#, fuzzy, python-brace-format
+msgid "The payment processor {name} returned an error: “{error_message}”."
+msgstr "Mokėjimo apdorojimo procesorius {name} grąžino klaidą: \"{error_message}\"."
+
 #, fuzzy
 msgid "The payment instrument is invalid, please select or add another one."
 msgstr "Mokėjimo priemonė negalioja, pasirinkite arba pridėkite kitą."
@@ -2945,6 +3104,10 @@ msgstr "Jūsų mokėjimas inicijuotas. Vėliau, rankiniu būdu patikrinus, ar n�
 #, fuzzy, python-brace-format
 msgid "Your bank can reject this payment. We recommend sending a copy of {link_start}the mandate{link_end} to your bank if you're not sure that it properly handles {currency} direct debit instructions."
 msgstr "Jūsų bankas gali atmesti šį mokėjimą. Jei nesate tikri, kad bankas tinkamai tvarko {currency} tiesioginio debeto nurodymus, rekomenduojame nusiųsti {link_start}įgaliojimo kopiją{link_end} savo bankui."
+
+#, fuzzy
+msgid "The initialization of a required component has failed. If you use a browser extension that blocks requests, for example NoScript, please make sure it’s allowing requests to the “stripe.com” domain."
+msgstr "Nepavyko inicializuoti reikiamo komponento. Jei naudojate naršyklės plėtinį, kuris blokuoja užklausas, pavyzdžiui, \"NoScript\", įsitikinkite, kad jis leidžia užklausas į domeną \"stripe.com\"."
 
 #, fuzzy, python-brace-format
 msgid "We will charge your {brand} card (last four digits: {last4})."
@@ -2982,6 +3145,10 @@ msgstr "Šie duomenys šifruotu ryšiu bus tiesiogiai siunčiami mokėjimo tvark
 msgid "Remember the card number for next time"
 msgstr "Kitą kartą prisiminkite kortelės numerį"
 
+#, fuzzy, python-brace-format
+msgid "Use this payment instrument by default for future payments in {currency}"
+msgstr "Naudokite šią mokėjimo priemonę pagal numatytuosius nustatymus būsimiems mokėjimams {currency}"
+
 #, fuzzy
 msgid "Use this payment instrument by default for future payments"
 msgstr "Naudokite šią mokėjimo priemonę pagal nutylėjimą būsimiems mokėjimams"
@@ -3001,6 +3168,10 @@ msgstr "Įsiminkite banko sąskaitos numerį būsimiems mokėjimams"
 #, fuzzy, python-brace-format
 msgid "In order to reduce the risk of this payment being rejected, we recommend that you input your postal address below. It will be stored encrypted in our database and sent to the payment processor ({processor_name})."
 msgstr "Kad sumažintumėte riziką, jog šis mokėjimas bus atmestas, rekomenduojame toliau įvesti savo pašto adresą. Jis bus saugomas užšifruotas mūsų duomenų bazėje ir siunčiamas mokėjimų tvarkytojui ({processor_name})."
+
+#, fuzzy
+msgid "Please fill in your postal address. It's required because the IBAN you've provided emanates from outside the European Union."
+msgstr "Įrašykite savo pašto adresą. Jis reikalingas, nes jūsų nurodytas IBAN yra ne iš Europos Sąjungos."
 
 #, fuzzy, python-brace-format
 msgid "'{0}' is not an acceptable amount (min={1}, max={2})"
@@ -3131,9 +3302,8 @@ msgstr "Šis profilis yra prieinamas tik {language} kalba"
 msgid "Edit"
 msgstr "Taisyti"
 
-#, fuzzy
-msgid "Statement"
-msgstr "Pareiškimas"
+msgid "Description"
+msgstr "Aprašas"
 
 #, fuzzy, python-brace-format
 msgid "{0} owns the following accounts on other platforms:"
@@ -3212,12 +3382,12 @@ msgid "No data to show."
 msgstr "Duomenų nėra."
 
 #, fuzzy, python-brace-format
-msgid "Income Per Week (in {currency})"
-msgstr "Pajamos per savaitę ( {currency})"
+msgid "Income per week (in {currency})"
+msgstr "Pajamos per savaitę ({currency})"
 
 #, fuzzy
-msgid "Number of Patrons Per Week"
-msgstr "Lankytojų skaičius per savaitę"
+msgid "Number of patrons per week"
+msgstr "Globėjų skaičius per savaitę"
 
 #, fuzzy
 msgid "Invoice documents are private."
@@ -3333,9 +3503,6 @@ msgstr "Gamta"
 msgid "(Liberapay only supports one kind of invoice for now.)"
 msgstr "(Kol kas \"Liberapay\" palaiko tik vienos rūšies sąskaitas faktūras.)"
 
-msgid "Description"
-msgstr "Aprašas"
-
 #, fuzzy
 msgid "A short description of the invoice"
 msgstr "Trumpas sąskaitos faktūros aprašymas"
@@ -3398,6 +3565,10 @@ msgstr "iš dalies grąžinta"
 msgid "refunded"
 msgstr "grąžinta"
 
+#, fuzzy
+msgid "suspended"
+msgstr "sustabdytas"
+
 #, fuzzy, python-brace-format
 msgid "The totals below don't include donations through the old wallet system. You can find those in {link_start}your Wallet page{link_end}."
 msgstr "Toliau pateiktose sumose neįskaičiuotos aukos per senąją piniginių sistemą. Jas galite rasti {link_start}savo piniginės puslapyje{link_end}."
@@ -3432,10 +3603,6 @@ msgstr "mokestis"
 #, fuzzy
 msgid "This payment is awaiting to be manually checked by Liberapay staff for signs of fraud."
 msgstr "Šį mokėjimą rankiniu būdu patikrins \"Liberapay\" darbuotojai, ar nėra sukčiavimo požymių."
-
-#, fuzzy, python-brace-format
-msgid "error message: {0}"
-msgstr "klaidos pranešimas: {0}"
 
 #, fuzzy
 msgid "hidden"
@@ -3493,9 +3660,9 @@ msgstr "slaptas dovanojimas {recipient_name} už jų vaidmenį {team_name} koman
 msgid "This payment must be manually approved by the recipient through {provider}'s website."
 msgstr "Šį mokėjimą gavėjas turi patvirtinti rankiniu būdu svetainėje {provider}."
 
-#, python-brace-format
-msgid "PayPal status code: {0}"
-msgstr "PayPal būsenos kodas: {0}"
+#, fuzzy
+msgid "The payer's account is suspended due to a suspicion of fraud or other unauthorized action."
+msgstr "Mokėtojo sąskaita sustabdoma dėl įtariamo sukčiavimo ar kitų neleistinų veiksmų."
 
 #, fuzzy
 msgid "There were no transactions during this period."
@@ -3611,28 +3778,52 @@ msgid "{username} doesn't have any active patrons."
 msgstr "{username} neturi aktyvių globėjų."
 
 #, fuzzy
-msgid "Liberapay now supports non-anonymous donations, do you want to know who your patrons are?"
-msgstr "\"Liberapay\" dabar palaiko neanonimines aukas, ar norite žinoti, kas yra jūsų mecenatai?"
+msgid "Visibility levels"
+msgstr "Matomumo lygiai"
 
 #, fuzzy
-msgid "Enable non-anonymous donations"
-msgstr "Įgalinti neanonimines aukas"
+msgid "Liberapay supports three visibility levels for donations. Each level can be turned on or off, but at least one of them must be enabled."
+msgstr "\"Liberapay\" palaiko tris aukų matomumo lygius. Kiekvieną lygį galima įjungti arba išjungti, tačiau bent vienas iš jų turi būti įjungtas."
 
 #, fuzzy, python-brace-format
-msgid "You have opted-in to see who your patrons are. If you change your mind, then {link_start}click here to disable non-anonymous donations{link_end}."
-msgstr "Pasirinkote, kad matytumėte, kas yra jūsų globėjai. Jei persigalvojate, {link_start}spustelėkite čia, kad išjungtumėte neanonimines aukas{link_end}."
+msgid "Secret donations aren't possible with PayPal. You should either disable secret donations or {link_start}add a Stripe account{link_end}."
+msgstr "Slapto aukojimo negalima atlikti naudojant \"PayPal\". Turėtumėte išjungti slaptas aukas arba {link_start}pridėti \"Stripe\" paskyrą{link_end}."
 
-#, fuzzy, python-brace-format
-msgid "You've chosen not to see who your patrons are. If you change your mind, then {link_start}click here to enable non-anonymous donations{link_end}."
-msgstr "Pasirinkote nematyti, kas yra jūsų globėjai. Jei persigalvojote, {link_start}spustelėkite čia, kad įjungtumėte neanonimines aukas{link_end}."
+#, fuzzy
+msgid "Secret donations aren't possible when the payer uses PayPal."
+msgstr "Slaptos aukos neįmanomos, kai mokėtojas naudoja \"PayPal\"."
+
+#, fuzzy
+msgid "Allow secret donations"
+msgstr "Leisti slaptas aukas"
+
+#, fuzzy
+msgid "Allow private donations"
+msgstr "Leisti privačias aukas"
+
+#, fuzzy
+msgid "Allow public donations"
+msgstr "Leisti viešąsias aukas"
+
+#, fuzzy
+msgid "This is what your prospective donors currently see:"
+msgstr "Šiuo metu jūsų potencialūs donorai mato būtent tai:"
+
+#, fuzzy
+msgid "This is what your prospective donors will see with the new settings:"
+msgstr "Štai ką matys jūsų potencialūs donorai su naujaisiais nustatymais:"
 
 #, fuzzy
 msgid "Data export"
 msgstr "Duomenų eksportas"
 
 #, fuzzy
-msgid "Download the list of currently active patrons"
-msgstr "Atsisiųsti šiuo metu veikiančių globėjų sąrašą"
+msgid "Download the list of currently active patrons who chose to make their donations public"
+msgstr "Atsisiųskite šiuo metu aktyviai veikiančių mecenatų, nusprendusių viešai paskelbti savo aukas, sąrašą"
+
+#, fuzzy
+msgid "Download the list of all currently active patrons"
+msgstr "Atsisiųsti visų šiuo metu aktyvių globėjų sąrašą"
 
 #, fuzzy
 msgid "Download the record of all patrons in the last ten years"
@@ -3650,9 +3841,29 @@ msgstr "Nesate jokios komandos narys."
 msgid "{username} isn't a member of any team."
 msgstr "{username} nėra jokios komandos narys."
 
+#, fuzzy
+msgid "The payment account has been successfully disconnected."
+msgstr "Mokėjimo sąskaita sėkmingai atjungta."
+
+#, fuzzy
+msgid "This payment account is no longer accessible. It is now disconnected."
+msgstr "Ši mokėjimo sąskaita nebėra prieinama. Ji dabar atjungta."
+
+#, fuzzy
+msgid "The data has been successfully refreshed."
+msgstr "Duomenys sėkmingai atnaujinti."
+
 #, fuzzy, python-brace-format
-msgid "You have to {link_open}fill your profile{link_close} before you can start to receive donations."
-msgstr "Prieš pradėdami gauti aukas, turite {link_open}užpildyti savo profilį{link_close}."
+msgid "You have to {link_open}confirm your email address{link_close} before you can start to receive donations."
+msgstr "Prieš pradėdami gauti aukas, turite {link_open}patvirtinti savo el. pašto adresą{link_close}."
+
+#, fuzzy, python-brace-format
+msgid "You have to {link_open}set your username{link_close} before you can start to receive donations."
+msgstr "Turite {link_open}nustatyti savo vartotojo vardą{link_close}, kad galėtumėte gauti aukas."
+
+#, fuzzy, python-brace-format
+msgid "You have to {link_open}add a profile description{link_close} before you can start to receive donations."
+msgstr "Kad galėtumėte gauti aukas, turite {link_open}pridėti profilio aprašą{link_close}."
 
 #, fuzzy
 msgid "To receive donations you must connect at least one account from a supported payment processor. This page allows you to do so."
@@ -3667,8 +3878,8 @@ msgid "We recommend connecting both Stripe and PayPal if they're both available 
 msgstr "Rekomenduojame prijungti ir \"Stripe\", ir \"PayPal\", jei jos abi yra prieinamos jūsų šalyje."
 
 #, fuzzy
-msgid "With Stripe your donors can pay by card or direct debit directly from the Liberapay website. (Direct debits are currently only supported from Euro bank accounts.)"
-msgstr "Naudodami \"Stripe\" jūsų aukotojai gali mokėti kortele arba tiesioginiu debetu tiesiai iš \"Liberapay\" svetainės. (Šiuo metu tiesioginis debetas palaikomas tik iš euro bankų sąskaitų.)"
+msgid "With Stripe your donors can pay by card or direct debit directly from the Liberapay website. (Direct debits are currently only supported from euro bank accounts.)"
+msgstr "Naudodami \"Stripe\" jūsų aukotojai gali mokėti kortele arba tiesioginiu debetu tiesiai iš \"Liberapay\" svetainės. (Šiuo metu tiesioginis debetas palaikomas tik iš banko sąskaitų eurais.)"
 
 #, python-brace-format
 msgid "Account ID: {0}"
@@ -3809,6 +4020,10 @@ msgid "This payment is a donation, no goods or services are to be provided in ex
 msgstr "Šis mokėjimas yra dovana, mainais už jį nebus teikiamos jokios prekės ar paslaugos, Liberapay nerinko jokių mokesčių."
 
 #, fuzzy
+msgid "Income history"
+msgstr "Pajamų istorija"
+
+#, fuzzy
 msgid "You can't receive new donations until you've configured payment processing."
 msgstr "Negalite gauti naujų aukų, kol nesukonfigūravote mokėjimų apdorojimo."
 
@@ -3817,15 +4032,16 @@ msgid "Donations through teams make up {income_percent} of your income ({team_in
 msgstr "Per komandas aukojamos lėšos sudaro {income_percent} jūsų pajamų ({team_income} iš {total_income}) ir {patrons_percent} jūsų rėmėjų ({nteampatrons} iš {npatrons})."
 
 #, fuzzy
-msgid "Details of Donations"
-msgstr "Išsami informacija apie aukas"
+msgid "Details of personal donations"
+msgstr "Išsami informacija apie asmenines aukas"
 
 #, fuzzy
 msgid "This section doesn't include data on donations through teams, it only shows the donations that you receive personally."
 msgstr "Į šį skyrių neįtraukti duomenys apie aukas, gautas per komandas, jame rodomos tik jūsų asmeniškai gautos aukos."
 
-msgid "Recent Changes"
-msgstr "Paskiausi pakeitimai"
+#, fuzzy
+msgid "Recent changes to personal donations"
+msgstr "Naujausi asmeninių aukų pakeitimai"
 
 #, fuzzy, python-brace-format
 msgid "A new donation of {amount} per week has been created."
@@ -3846,6 +4062,10 @@ msgstr "Paaukojimas buvo sumažintas nuo {old_amount} per savaitę iki {new_amou
 #, fuzzy, python-brace-format
 msgid "A donation of {amount} per week has been restarted."
 msgstr "Vėl pradėta aukoti {amount} per savaitę."
+
+#, fuzzy
+msgid "Statistics on personal donations"
+msgstr "Asmeninių aukų statistika"
 
 #, fuzzy
 msgid "The table below lists the donations you receive, grouped by amount."
@@ -3925,8 +4145,20 @@ msgid "Bank Account"
 msgstr "Banko sąskaita"
 
 #, fuzzy
+msgid "This instrument is used by default."
+msgstr "Ši priemonė naudojama pagal numatytuosius nustatymus."
+
+#, fuzzy
 msgid "default"
 msgstr "numatytoji"
+
+#, fuzzy, python-brace-format
+msgid "This instrument is used by default for payments in {currency}."
+msgstr "Ši priemonė pagal nutylėjimą naudojama mokėjimams {currency}."
+
+#, fuzzy, python-brace-format
+msgid "default for {currency}"
+msgstr "numatytasis nustatymas {currency}"
 
 #, fuzzy
 msgid "view mandate"
@@ -3964,6 +4196,22 @@ msgstr "Ši mokėjimo priemonė dar nebuvo naudojama."
 msgid "Set as default"
 msgstr "Nustatyti kaip numatytąjį"
 
+#, fuzzy, python-brace-format
+msgid "Stop using this instrument by default for payments in {currency}."
+msgstr "Nustokite naudoti šią priemonę pagal nutylėjimą mokėjimams {currency}."
+
+#, fuzzy, python-brace-format
+msgid "Unset as default for {currency}"
+msgstr "Nenustatyta kaip numatytoji reikšmė {currency}"
+
+#, fuzzy, python-brace-format
+msgid "Use this instrument by default for payments in {currency}."
+msgstr "Šią priemonę pagal nutylėjimą naudokite mokėjimams {currency}."
+
+#, fuzzy, python-brace-format
+msgid "Set as default for {currency}"
+msgstr "Nustatyta kaip numatytoji reikšmė {currency}"
+
 #, fuzzy
 msgid "You don't have any valid payment instrument."
 msgstr "Neturite jokios galiojančios mokėjimo priemonės."
@@ -3975,11 +4223,16 @@ msgstr "Pridėti mokėjimo priemonę:"
 msgid "Add a card"
 msgstr "Pridėti kortelę"
 
+#, fuzzy
+msgid "Euro Bank Account"
+msgstr "Banko sąskaita eurais"
+
+#, fuzzy
+msgid "Only for donations in euros to recipients in SEPA countries"
+msgstr "Tik aukojant eurais gavėjams SEPA šalyse"
+
 msgid "Add a bank account"
 msgstr "Pridėti banko paskyrą"
-
-msgid "Close Account"
-msgstr "Uždaryti paskyrą"
 
 #, fuzzy
 msgid "Data retention"
@@ -4042,27 +4295,27 @@ msgstr "nekeičiama."
 
 #, fuzzy, python-brace-format
 msgid "You are now donating {0} per week to {1}. Thank you!"
-msgstr "Dabar per savaitę aukojate {0} {1} . Ačiū!"
+msgstr "Dabar per savaitę aukojate {0} {1}. Ačiū!"
 
 #, fuzzy, python-brace-format
 msgid "You are now donating {0} per month to {1}. Thank you!"
-msgstr "Dabar per mėnesį aukojate {0} {1} . Ačiū!"
+msgstr "Dabar per mėnesį aukojate {0} {1}. Ačiū!"
 
 #, fuzzy, python-brace-format
 msgid "You are now donating {0} per year to {1}. Thank you!"
-msgstr "Dabar jūs kasmet aukojate {0} {1} . Ačiū!"
+msgstr "Dabar jūs kasmet aukojate {0} {1}. Ačiū!"
 
 #, fuzzy, python-brace-format
 msgid "You have now pledged to donate {0} per week to {1}. Thank you!"
-msgstr "Dabar įsipareigojote per savaitę skirti {0} {1} . Dėkojame!"
+msgstr "Dabar įsipareigojote per savaitę skirti {0} {1}. Dėkojame!"
 
 #, fuzzy, python-brace-format
 msgid "You have now pledged to donate {0} per month to {1}. Thank you!"
-msgstr "Dabar įsipareigojote per mėnesį skirti {0} {1} . Dėkojame!"
+msgstr "Dabar įsipareigojote per mėnesį skirti {0} {1}. Dėkojame!"
 
 #, fuzzy, python-brace-format
 msgid "You have now pledged to donate {0} per year to {1}. Thank you!"
-msgstr "Dabar jūs įsipareigojote per metus skirti {0} {1} . Dėkojame!"
+msgstr "Dabar jūs įsipareigojote per metus skirti {0} {1}. Dėkojame!"
 
 msgid "The donation amount is missing."
 msgstr "Trūksta paaukojimo sumos."
@@ -4326,7 +4579,7 @@ msgstr "Jei žinutė parašyta ne anglų arba prancūzų kalba, ją automatiška
 
 #, fuzzy, python-brace-format
 msgid "If you think you've found a technical vulnerability in our system, please follow the instructions in {link_start}the {page_name} page{link_end} instead of sending us an email."
-msgstr "Jei manote, kad aptikote techninį mūsų sistemos pažeidžiamumą, užuot siuntę mums el. laišką, vadovaukitės instrukcijomis, pateiktomis {link_start}puslapyje {page_name}{link_end} ."
+msgstr "Jei manote, kad aptikote techninį mūsų sistemos pažeidžiamumą, užuot siuntę mums el. laišką, vadovaukitės instrukcijomis, pateiktomis {link_start}puslapyje {page_name}{link_end}."
 
 msgid "We currently don't have a phone number."
 msgstr "Šiuo metu neturime telefono numerio."
@@ -4363,8 +4616,8 @@ msgid "Not safe for work"
 msgstr "Nesaugu dirbti"
 
 #, fuzzy, python-brace-format
-msgid "Yes. However, Liberapay isn't a shield: we can't protect anyone from being banned by {link_open}the underlying payment processors{link_close}."
-msgstr "Taip. Tačiau \"Liberapay\" nėra skydas: mes negalime nieko apsaugoti nuo uždraudimo {link_open}pagrindinių mokėjimo procesorių{link_close}."
+msgid "The payment processors Liberapay supports have unfavourable policies towards sexual content. {paypal_link}PayPal requires pre-approval{link_close}, and {stripe_link}Stripe prohibits it entirely{link_close}. So, while it is possible to use Liberapay for some adult-only content, it is usually better to use a platform specialized in such content."
+msgstr "\"Liberapay\" palaikomi mokėjimo procesoriai turi nepalankią politiką seksualinio turinio atžvilgiu. {paypal_link}\"PayPal\" reikalauja išankstinio patvirtinimo{link_close}, o {stripe_link}\"Stripe\" visiškai draudžia{link_close}. Taigi, nors ir galima naudoti \"Liberapay\" kai kuriems tik suaugusiesiems skirtiems mokėjimams, paprastai geriau naudoti platformą, kuri specializuojasi tokio turinio srityje."
 
 #, fuzzy
 msgid "Can I modify or stop my donations?"
@@ -4430,8 +4683,8 @@ msgid "See the “{page_name}” page."
 msgstr "Žiūrėkite „{page_name}“ puslapį."
 
 #, fuzzy, python-brace-format
-msgid "The available payment methods depend on which payment processors are supported by the recipient. If a payment is processed by Stripe, then most credit and debit cards ({list_of_card_brands}) are accepted, as well as SEPA Direct Debits (for Euro donations only). If a payment is through PayPal, then it's possible to pay in various ways, however the donor needs to have or create a PayPal account."
-msgstr "Galimi mokėjimo būdai priklauso nuo to, kokius mokėjimo procesorius palaiko gavėjas. Jei mokėjimą apdoroja \"Stripe\", priimama dauguma kredito ir debeto kortelių ({list_of_card_brands}), taip pat SEPA tiesioginio debeto pavedimai (tik aukoms eurais). Jei mokėjimas atliekamas per \"PayPal\", tada galima mokėti įvairiais būdais, tačiau aukotojas turi turėti arba susikurti \"PayPal\" paskyrą."
+msgid "The available payment methods depend on which payment processors are supported by the recipient. If a payment is processed by Stripe, then most credit and debit cards ({list_of_card_brands}) are accepted, as well as SEPA Direct Debits (only for donations in euros to recipients in SEPA countries). If a payment is through PayPal, then it's possible to pay in various ways, however the donor needs to have or create a PayPal account."
+msgstr "Galimi mokėjimo būdai priklauso nuo to, kokius mokėjimo procesorius palaiko gavėjas. Jei mokėjimą apdoroja \"Stripe\", priimama dauguma kredito ir debeto kortelių ({list_of_card_brands}), taip pat SEPA tiesioginio debeto (tik aukojant eurais gavėjams SEPA šalyse). Jei mokėjimas atliekamas per \"PayPal\", tada galima mokėti įvairiais būdais, tačiau aukotojas turi turėti arba susikurti \"PayPal\" paskyrą."
 
 #, fuzzy
 msgid "What are the payment processing fees?"
@@ -4440,6 +4693,14 @@ msgstr "Kokie yra mokėjimo apdorojimo mokesčiai?"
 #, fuzzy, python-brace-format
 msgid "The fees vary by payment processor, payment method, countries and currencies. In the last year, the average fee percentages have been {average_fee_stripe} for the payments processed by Stripe and {average_fee_paypal} for the payments processed by PayPal."
 msgstr "Mokesčiai skiriasi priklausomai nuo mokėjimo procesoriaus, mokėjimo būdo, šalių ir valiutų. Praėjusiais metais vidutinis mokesčio procentas buvo {average_fee_stripe} už \"Stripe\" apdorotus mokėjimus ir {average_fee_paypal} už \"PayPal\" apdorotus mokėjimus."
+
+#, fuzzy
+msgid "How and when do I receive the money sent by my patrons?"
+msgstr "Kaip ir kada gausiu mecenatų atsiųstus pinigus?"
+
+#, fuzzy
+msgid "Money sent by a donor immediately goes to your Stripe or PayPal account. By default Stripe then automatically sends the funds to your bank account, whereas PayPal simply stores them until you spend or withdraw them."
+msgstr "Donoro atsiųsti pinigai iš karto patenka į jūsų \"Stripe\" arba \"PayPal\" sąskaitą. Pagal numatytuosius nustatymus \"Stripe\" automatiškai siunčia lėšas į jūsų banko sąskaitą, o \"PayPal\" tiesiog saugo jas tol, kol išleidžiate arba atsiimate."
 
 #, fuzzy
 msgid "Why do I see partial refunds in the Stripe dashboard?"
@@ -4486,20 +4747,12 @@ msgid "Probably not, but it depends on the tax rules of your country."
 msgstr "Tikriausiai ne, bet tai priklauso nuo jūsų šalies mokesčių taisyklių."
 
 #, fuzzy
-msgid "What are wallets?"
-msgstr "Kas yra piniginės?"
+msgid "Is a Liberapay account a wallet?"
+msgstr "Ar \"Liberapay\" sąskaita yra piniginė?"
 
 #, fuzzy
-msgid "Liberapay used to hold the funds of donors in wallets, but we no longer do that. Instead the full amount of a donation is immediately transferred to the recipient."
-msgstr "Anksčiau \"Liberapay\" donorų lėšas laikė piniginėse, tačiau dabar to nebedarysime. Vietoj to visa aukos suma iš karto pervedama gavėjui."
-
-#, fuzzy
-msgid "What is “payday”?"
-msgstr "Kas yra \"mokėjimo diena\"?"
-
-#, fuzzy, python-brace-format
-msgid "Payday is a program ({0}this one{1}) that we run every Wednesday. It executes donations and notifies donors and recipients."
-msgstr "Payday yra programa ({0}ši{1}), kurią vykdome kiekvieną trečiadienį. Ji vykdo aukojimus ir informuoja aukotojus bei gavėjus."
+msgid "Not since mid-2018. Money sent by a donor immediately goes to the recipient. Previously, funds were held in the donor's account and disbursed little by little to the recipient every week. That system was definitively abandoned due to its very significant drawbacks."
+msgstr "Ne nuo 2018 m. vidurio. Donoro atsiųsti pinigai iš karto keliauja gavėjui. Anksčiau lėšos buvo laikomos aukotojo sąskaitoje ir po truputį kas savaitę išmokamos gavėjui. Šios sistemos buvo galutinai atsisakyta dėl labai didelių trūkumų."
 
 #, fuzzy
 msgid "You can get updates from us on the following social networks:"
@@ -4520,19 +4773,54 @@ msgstr[0] "Donorai gali pasirinkti iki {n} valiutų, priklausomai nuo gavėjo pa
 msgstr[1] ""
 msgstr[2] ""
 
-#, fuzzy, python-brace-format
-msgid "<unused singular (hash=15422027494f4dee6eed143ece78c0ce)>"
-msgid_plural "Liberapay is fully available to creators in {n} territories:"
-msgstr[0] "\"Liberapay\" yra visiškai prieinama kūrėjams {n} teritorijose:"
-msgstr[1] ""
-msgstr[2] ""
+#, fuzzy
+msgid "Donations can only be received in territories where at least one supported payment processor is available. Moreover, some features are only available in some of the territories supported by a payment processor."
+msgstr "Aukos gali būti gaunamos tik tose teritorijose, kuriose yra bent vienas palaikomas mokėjimo procesorius. Be to, kai kuriomis funkcijomis galima naudotis tik kai kuriose teritorijose, kurias palaiko mokėjimo procesorius."
 
 #, fuzzy, python-brace-format
-msgid "<unused singular (hash=ce784fd8cdb312cf56226bbd42d07d18)>"
-msgid_plural "Additionally, Liberapay is partially available to creators in {paypal_link_open}the {n} countries supported by PayPal{link_close}."
-msgstr[0] "Be to, \"Liberapay\" iš dalies prieinama kūrėjams {paypal_link_open} {n} šalyse, kuriose veikia \"PayPal\"{link_close}."
+msgid "The currently supported payment processors are {Stripe} and {PayPal}. You can find a list of the differences between them {link_start}in the “{page_name}” page{link_end}."
+msgstr "Šiuo metu palaikomi šie mokėjimo procesoriai: {Stripe} ir {PayPal}. Jų skirtumų sąrašą rasite {link_start}puslapyje \"{page_name}\"{link_end}."
+
+#, fuzzy
+msgid "Best supported territories"
+msgstr "Geriausiai remiamos teritorijos"
+
+#, fuzzy, python-brace-format
+msgid "<unused singular (hash=79acddfc1b997a9b2e4aa18d930e097e)>"
+msgid_plural "Creators in these {n} territories benefit from all of Liberapay's features:"
+msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
+msgstr[2] "Kūrėjai šiose {n} teritorijose gali naudotis visomis \"Liberapay\" funkcijomis:"
+
+#, fuzzy
+msgid "Well supported territories"
+msgstr "Gerai palaikomos teritorijos"
+
+#, fuzzy, python-brace-format
+msgid "<unused singular (hash=d6ace91b81f74c1f52f602d3d7009ed8)>"
+msgid_plural "Liberapay is also available to creators in the {n} territories listed below. However, donations going to those territories cannot be grouped to lower the payment processing fees, and the euro direct debit payment method isn't available to the donors."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] "\"Liberapay\" taip pat prieinama kūrėjams toliau išvardytose {n} teritorijose. Tačiau į šias teritorijas siunčiamos aukos negali būti grupuojamos, kad būtų sumažinti mokėjimo apdorojimo mokesčiai, o tiesioginio debeto eurais mokėjimo būdas aukotojams neprieinamas."
+
+#, fuzzy
+msgid "Barely supported territories"
+msgstr "Vos palaikomos teritorijos"
+
+#, fuzzy, python-brace-format
+msgid "<unused singular (hash=53cbe5d36eacd9bcc6b8eed3023c884b)>"
+msgid_plural "Liberapay is partly available to creators in the {n} territories listed below, which are supported by PayPal but not by Stripe."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] "\"Liberapay\" iš dalies prieinama kūrėjams toliau išvardytose {n} teritorijose, kurias palaiko \"PayPal\", bet ne \"Stripe\"."
+
+#, fuzzy
+msgid "Unsupported territories"
+msgstr "Nepalaikomos teritorijos"
+
+#, fuzzy
+msgid "If you don't live or have a registered business in one of the territories listed above, then you currently can't use Liberapay to receive donations. Sorry."
+msgstr "Jei negyvenate arba neturite registruotos įmonės vienoje iš pirmiau išvardytų teritorijų, šiuo metu negalite naudoti \"Liberapay\" aukoms gauti. Atsiprašome."
 
 #, fuzzy
 msgid "What is Liberapay?"
@@ -4603,8 +4891,8 @@ msgid "This page contains links to and information about the Liberapay logo. We 
 msgstr "Šiame puslapyje pateikiamos nuorodos į \"Liberapay\" logotipą ir informacija apie jį. Tikimės, kad jis jums bus ypač naudingas, jei rašote straipsnį apie \"Liberapay\" arba jei norite savo svetainėje pridėti pasirinktines nuorodas į \"Liberapay\" profilį."
 
 #, fuzzy
-msgid "The Liberapay logo is composed of the two letters “lp”. It's usually colored either white-on-yellow, black-on-yellow, or just black."
-msgstr "\"Liberapay\" logotipą sudaro dvi raidės \"lp\". Paprastai jis būna baltas ant geltonos, juodas ant geltonos arba tiesiog juodas."
+msgid "The Liberapay logo is composed of the two letters “lp”. It's usually colored black-on-yellow or just black. We used a white-on-yellow variant in the past, but it's now phased out as its contrast was deemed too low."
+msgstr "\"Liberapay\" logotipą sudaro dvi raidės \"lp\". Jis paprastai yra juodos spalvos ant geltonos arba tik juodos spalvos. Anksčiau naudojome baltą ant geltonos spalvos variantą, tačiau dabar jis nebenaudojamas, nes buvo nuspręsta, kad jo kontrastas yra per mažas."
 
 #, fuzzy, python-brace-format
 msgid "The Liberapay yellow is {yellow_color_code}, the black is {black_color_code}."
@@ -4619,20 +4907,8 @@ msgid "You can view and download our logos below or {link_start}on GitHub{link_e
 msgstr "Mūsų logotipus galite peržiūrėti ir atsisiųsti toliau arba {link_start}svetainėje \"GitHub\"{link_end}."
 
 #, fuzzy
-msgid "Download the white-on-yellow SVG"
-msgstr "Atsisiųskite baltą ant geltonos spalvos SVG"
-
-#, fuzzy, python-brace-format
-msgid "Download the white-on-yellow PNG ({x_y} pixels)"
-msgstr "Atsisiųskite baltą ant geltonos PNG ({x_y} pikselių)"
-
-#, fuzzy
-msgid "Download the black SVG"
-msgstr "Atsisiųsti juodą SVG"
-
-#, fuzzy, python-brace-format
-msgid "Download the black PNG ({x_y} pixels)"
-msgstr "Atsisiųskite juodą PNG ({x_y} pikselių)"
+msgid "Liberapay logo, black-on-yellow"
+msgstr "Liberapay logotipas, juoda ant geltonos spalvos"
 
 #, fuzzy
 msgid "Download the black-on-yellow SVG"
@@ -4643,12 +4919,16 @@ msgid "Download the black-on-yellow PNG ({x_y} pixels)"
 msgstr "Atsisiųskite juodos ant geltonos spalvos PNG ({x_y} pikselių)"
 
 #, fuzzy
-msgid "Fonts"
-msgstr "Šriftai"
+msgid "Liberapay logo, black"
+msgstr "Liberapay logotipas, juodas"
+
+#, fuzzy
+msgid "Download the black SVG"
+msgstr "Atsisiųsti juodą SVG"
 
 #, fuzzy, python-brace-format
-msgid "The Liberapay logo is included in the {fa_link_start}Fork Awesome{link_end} font in two forms: {fa_liberapay_link} and {fa_liberapay_square_link}."
-msgstr "\"Liberapay\" logotipas įtrauktas į {fa_link_start}šakutę \"Awesome\"{link_end} šriftą dviem formomis: {fa_liberapay_link} ir {fa_liberapay_square_link}."
+msgid "Download the black PNG ({x_y} pixels)"
+msgstr "Atsisiųskite juodą PNG ({x_y} pikselių)"
 
 #, fuzzy
 msgid "Here is a list of differences between them:"
@@ -4661,6 +4941,10 @@ msgstr "Mokėjimų apdorojimo mokesčiai \"Stripe\" paprastai yra mažesni nei \
 #, fuzzy
 msgid "Stripe allows renewing donations automatically, whereas PayPal currently requires donors to confirm every payment."
 msgstr "\"Stripe\" leidžia automatiškai atnaujinti aukas, o \"PayPal\" šiuo metu reikalauja, kad aukotojai patvirtintų kiekvieną mokėjimą."
+
+#, fuzzy
+msgid "Donations through Stripe can be secret, whereas PayPal always allows donors and recipients to see each other's names and email addresses."
+msgstr "Aukos per „Stripe“ gali būti slaptos, o „PayPal“ visada leidžia donorams ir gavėjams matyti vieni kitų vardus ir el. pašto adresus."
 
 #, fuzzy
 msgid "Stripe allows donating to multiple creators at once in some cases, whereas PayPal always requires separate payments."
@@ -4683,9 +4967,9 @@ msgid "PayPal only supports {n_paypal_currencies} of the {n_liberapay_currencies
 msgstr "\"PayPal\" palaiko tik {n_paypal_currencies} iš {n_liberapay_currencies} valiutų, kurias palaiko \"Liberapay\" ir \"Stripe\"."
 
 #, fuzzy, python-brace-format
-msgid "<unused singular (hash=901d1e29a8c2a0e16ff208c9a8fda012)>"
-msgid_plural "PayPal is available to creators in more than 200 countries, whereas Stripe only supports {n} countries in a suitable way."
-msgstr[0] "\"PayPal\" gali naudotis daugiau nei 200 šalių kūrėjai, o \"Stripe\" tinkamu būdu palaiko tik {n} šalis."
+msgid "<unused singular (hash=47f7d13f5771b30f0bcf49ea3acd518b)>"
+msgid_plural "PayPal is available to creators in more than 100 countries, whereas Stripe only supports {n} countries in a suitable way."
+msgstr[0] "\"PayPal\" gali naudotis daugiau nei 100 šalių kūrėjai, o \"Stripe\" tinkamu būdu palaiko tik {n} šalis."
 msgstr[1] ""
 msgstr[2] ""
 
@@ -4926,8 +5210,8 @@ msgid "Teams don't have a hierarchy, all their members are equal and set their o
 msgstr "Komandose nėra hierarchijos, visi jų nariai yra lygūs ir patys nustato savo požiūrį."
 
 #, fuzzy, python-brace-format
-msgid "You can change your takes from {0}your teams dashboard{1}. It contains tables that show the nominal takes of all members for the next and previous payday, as well as an estimate of the actual amounts of money they'll receive in the next payday."
-msgstr "Pakeisti užėmimus galite iš {0}savo komandos prietaisų skydelio{1}. Joje pateikiamos lentelės, kuriose nurodomi nominalūs visų narių uždarbiai kitą ir ankstesnę išmokėjimo dieną, taip pat apytikslė faktinė pinigų suma, kurią jie gaus kitą išmokėjimo dieną."
+msgid "You can change your takes from {0}your teams dashboard{1}. It contains tables that show the nominal takes of all members, as well as an estimate of the actual amounts of money that will be deducted at the end of the current weekly cycle."
+msgstr "Pakeisti užėmimus galite iš {0}savo komandos prietaisų skydelio{1}. Joje pateikiamos lentelės, kuriose nurodomi nominalūs visų narių paimti pinigai, taip pat apskaičiuotos faktinės pinigų sumos, kurios bus išskaičiuotos einamojo savaitės ciklo pabaigoje."
 
 #, fuzzy
 msgid "The nominal takes are the raw numbers that the members input themselves, the actual takes are computed by the system: first it sums up the nominal takes, then it computes the percentage that each take represents, and finally it applies those percentages to the available income. Nominal takes also act as maximums: the actual takes are never higher than the nominal ones, even if additional income is available."
@@ -4950,16 +5234,16 @@ msgid "Regulation of take amounts"
 msgstr "Išvežamų kiekių reguliavimas"
 
 #, fuzzy
-msgid "When “take throttling” is enabled for a team, its members can't raise their takes higher than a maximum computed on the basis of the nominal takes at the time of the previous payday. This mechanism is meant to encourage inviting new contributors to join the team, by ensuring that they won't take a disproportionate share of the income in their first weeks."
-msgstr "Kai komandai įjungtas \"imčių ribojimas\", jos nariai negali padidinti savo imčių daugiau nei maksimali suma, apskaičiuota remiantis nominaliomis imtimis ankstesnės išmokėjimo dienos metu. Šis mechanizmas skirtas paskatinti naujus dalyvius prisijungti prie komandos, užtikrinant, kad pirmosiomis savaitėmis jie negaus neproporcingai didelės pajamų dalies."
+msgid "When “take throttling” is enabled for a team, its members can't raise their takes higher than a maximum computed on the basis of the nominal takes at the end of the previous weekly cycle. This mechanism is meant to encourage inviting new contributors to join the team, by ensuring that they won't take a disproportionate share of the income in their first weeks."
+msgstr "Kai komandai įjungtas \"imčių ribojimas\", jos nariai negali padidinti savo imčių daugiau nei maksimali suma, apskaičiuota remiantis nominaliomis imtimis praėjusio savaitės ciklo pabaigoje. Šis mechanizmas skirtas paskatinti naujus dalyvius prisijungti prie komandos, užtikrinant, kad pirmosiomis savaitėmis jie negaus neproporcingai didelės pajamų dalies."
 
 #, fuzzy, python-brace-format
-msgid "The limit works like this: you can always increase your take to {amount} if it was below that, you can double your take compared to the previous week, you can raise your take to claim the team's leftover income, and you can bring your take up to the level of the median take in the previous payday. Whichever of these possibilities results in the highest amount is your maximum take for the week."
-msgstr "Limitas veikia taip: visada galite padidinti savo uždarbį iki {amount}, jei jis buvo mažesnis, galite padvigubinti savo uždarbį, palyginti su ankstesne savaite, galite padidinti savo uždarbį, kad gautumėte likusias komandos pajamas, ir galite padidinti savo uždarbį iki praėjusios atlyginimo dienos uždarbio medianos lygio. Kuri iš šių galimybių duoda didžiausią sumą, yra jūsų maksimalus savaitės uždarbis."
+msgid "The limit works like this: you can always increase your take to {amount} if it was below that, you can double your take compared to the previous week, you can raise your take to claim the team's leftover income, and you can bring your take up to the level of the median take at the end of the previous weekly cycle. Whichever of these possibilities results in the highest amount is your maximum take for the week."
+msgstr "Limitas veikia taip: visada galite padidinti savo uždarbį iki {amount}, jei jis buvo mažesnis, galite padvigubinti savo uždarbį, palyginti su ankstesne savaite, galite padidinti savo uždarbį, kad gautumėte likusias komandos pajamas, ir galite padidinti savo uždarbį iki ankstesnio savaitės ciklo pabaigoje buvusio uždarbio medianos lygio. Kuri iš šių galimybių duoda didžiausią sumą, yra jūsų maksimalus savaitės uždarbis."
 
 #, fuzzy
-msgid "Takes are not limited if the team has only one member, or if the previous week's takes were all zero (which is the case for any new team that has been created after the most recent payday)."
-msgstr "Pajamos neribojamos, jei komandoje yra tik vienas narys arba jei praėjusią savaitę visos pajamos buvo lygios nuliui (taip yra bet kurios naujos komandos, sukurtos po paskutinės išmokų dienos, atveju)."
+msgid "Takes are not limited if the team has only one member, or if the previous week's takes were all zero (which is the case for any new team that has been created during the current weekly cycle)."
+msgstr "Imtys neribojamos, jei komandoje yra tik vienas narys arba jei praėjusią savaitę visos imtys buvo lygios nuliui (tai galioja bet kuriai naujai komandai, sukurtai per dabartinį savaitės ciklą)."
 
 #, fuzzy
 msgid "Please contact support if you want to enable or disable the take limits for an existing team. Don't forget to include evidence that the change has been approved by the other team members."
@@ -5065,32 +5349,32 @@ msgid "Explore other platforms:"
 msgstr "Išnagrinėkite kitas platformas:"
 
 #, fuzzy
-msgid "Liberapay provides several ways of finding great people to donate to:"
-msgstr "\"Liberapay\" siūlo kelis būdus, kaip rasti puikių žmonių, kuriems galima aukoti:"
+msgid "This page lists Liberapay users who are hoping to receive their first donations."
+msgstr "Šiame puslapyje išvardyti Liberapay naudotojai, kurie tikisi gauti pirmąsias aukas."
 
 #, fuzzy
-msgid "A team is a group of users working on a specific project."
-msgstr "Komanda - tai naudotojų grupė, dirbanti su konkrečiu projektu."
+msgid "Despite our efforts, some of the listed profiles may be spam or fraud."
+msgstr "Nepaisant mūsų pastangų, kai kurie į sąrašą įtraukti profiliai gali būti nepageidaujamos reklamos arba sukčiavimo atvejai."
 
 #, fuzzy
-msgid "Explore Teams"
-msgstr "Ištirti komandas"
+msgid "Profiles only start appearing in the list 72 hours after they're created."
+msgstr "Profiliai sąraše pradedami rodyti tik praėjus 72 valandoms nuo jų sukūrimo."
 
 #, fuzzy
-msgid "Great nonprofits and companies trying to improve the world."
-msgstr "Puikios ne pelno siekiančios organizacijos ir įmonės, siekiančios pagerinti pasaulį."
+msgid "People and projects who receive donations through Liberapay."
+msgstr "Žmonės ir projektai, kuriems aukojama per Liberapay."
 
 #, fuzzy
-msgid "Explore Organizations"
-msgstr "Išnagrinėti organizacijas"
+msgid "Explore Recipients"
+msgstr "Išnagrinėti gavėjus"
 
 #, fuzzy
-msgid "People like you who contribute to the commons (art, knowledge, software, …)."
-msgstr "Tokie žmonės kaip jūs, kurie prisideda prie bendro naudojimo (meno, žinių, programinės įrangos...)."
+msgid "Users who are hoping to receive their first donations through Liberapay."
+msgstr "Vartotojai, kurie tikisi gauti pirmąsias aukas per Liberapay."
 
 #, fuzzy
-msgid "Explore Individuals"
-msgstr "Ištirti asmenis"
+msgid "Explore Hopefuls"
+msgstr "Ištirti vilčių teikėjai"
 
 #, fuzzy
 msgid "Liberapay allows pledging to fund people who haven't joined the site yet."
@@ -5120,29 +5404,47 @@ msgstr "Naršykite \"Liberapay\" naudotojų paskyras kitose platformose. Susisie
 msgid "Explore Social Networks"
 msgstr "Naršykite socialinius tinklus"
 
+msgid "Individuals"
+msgstr "Asmenys"
+
 #, fuzzy, python-brace-format
 msgid "The top {0} individuals on Liberapay are:"
 msgstr "Geriausi {0} asmenys Liberapay yra:"
 
-#, fuzzy, python-brace-format
-msgid "List of individuals on Liberapay, page {number}:"
-msgstr "Liberapay esančių asmenų sąrašas, puslapis {number}:"
+#, fuzzy
+msgid "Sort by"
+msgstr "Rūšiuoti pagal"
+
+#, fuzzy
+msgid "income"
+msgstr "pajamos"
+
+#, fuzzy
+msgid "creation date"
+msgstr "sukūrimo data"
+
+#, fuzzy
+msgid "sort order"
+msgstr "rūšiavimo tvarka"
+
+#, fuzzy
+msgid "in descending order"
+msgstr "mažėjančia tvarka"
+
+#, fuzzy
+msgid "in ascending order"
+msgstr "didėjančia tvarka"
+
+msgid "Organizations"
+msgstr "Organizacijos"
 
 #, fuzzy, python-brace-format
 msgid "The top {0} organizations on Liberapay are:"
 msgstr "Didžiausios {0} organizacijos Liberapay yra šios:"
 
-#, fuzzy, python-brace-format
-msgid "List of organizations on Liberapay, page {number}:"
-msgstr "Liberapay organizacijų sąrašas, puslapis {number}:"
-
 #, fuzzy
 msgid "Create an organization account"
 msgstr "Sukurti organizacijos paskyrą"
-
-#, fuzzy
-msgid "Top pledges"
-msgstr "Pagrindiniai įsipareigojimai"
 
 #, fuzzy
 msgid "Please don't spam the people and projects listed below with messages inviting them to join Liberapay or asking them why they haven't."
@@ -5165,6 +5467,34 @@ msgid "We can help you find pledgees if you connect your accounts:"
 msgstr "Jei sujungsite savo paskyras, galėsime jums padėti surasti įkaitus:"
 
 #, fuzzy, python-brace-format
+msgid "The individual receiving the most money through Liberapay is:"
+msgid_plural "The {n} individuals receiving the most money through Liberapay are:"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] "Daugiausia pinigų per \"Liberapay\" gauna {n} asmenys:"
+
+#, fuzzy, python-brace-format
+msgid "The organization receiving the most money through Liberapay is:"
+msgid_plural "The {n} organizations receiving the most money through Liberapay are:"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] "{n} organizacijos, gaunančios daugiausiai pinigų per \"Liberapay\", yra šios:"
+
+#, fuzzy, python-brace-format
+msgid "The team receiving the most money through Liberapay is:"
+msgid_plural "The {n} teams receiving the most money through Liberapay are:"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] "Daugiausia pinigų per \"Liberapay\" gauna {n} komandos:"
+
+#, fuzzy, python-brace-format
+msgid "The Liberapay account receiving the most money is:"
+msgid_plural "The {n} Liberapay accounts receiving the most money are:"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] "{n} \"Liberapay\" sąskaitos, į kurias pervedama daugiausiai pinigų, yra šios:"
+
+#, fuzzy, python-brace-format
 msgid "The most popular repository currently linked to a Liberapay account is:"
 msgid_plural "The {n} most popular repositories currently linked to a Liberapay account are:"
 msgstr[0] "{n} populiariausios saugyklos, šiuo metu susietos su Liberapay paskyra:"
@@ -5172,15 +5502,16 @@ msgstr[1] "{n} populiariausios saugyklos, šiuo metu susietos su Liberapay pasky
 msgstr[2] "{n} populiariausios saugyklos, šiuo metu susietos su Liberapay paskyra:"
 
 #, fuzzy, python-brace-format
-msgid "List of repositories currently linked to a Liberapay account, page {number}:"
-msgstr "Šiuo metu su Liberapay sąskaita susietų saugyklų sąrašas, puslapis {number}:"
-
-#, fuzzy, python-brace-format
 msgid "by {author_name}"
 msgstr "pagal {author_name}"
 
-msgid "Stars"
-msgstr "Žvaigždutės"
+#, fuzzy
+msgid "stars count"
+msgstr "žvaigždžių skaičius"
+
+#, fuzzy
+msgid "connection date"
+msgstr "prisijungimo data"
 
 #, fuzzy
 msgid "Browse your favorite repositories"
@@ -5196,10 +5527,6 @@ msgid_plural "The top {n} teams on Liberapay are:"
 msgstr[0] "Didžiausios {n} \"Liberapay\" komandos yra šios:"
 msgstr[1] "Didžiausios {n} \"Liberapay\" komandos yra šios:"
 msgstr[2] "Didžiausios {n} \"Liberapay\" komandos yra šios:"
-
-#, fuzzy, python-brace-format
-msgid "List of teams on Liberapay, page {number}:"
-msgstr "Liberapay komandų sąrašas, puslapis {number}:"
 
 #, fuzzy
 msgid "Create a team"
@@ -5451,7 +5778,7 @@ msgstr "Rėmėjai"
 
 #, fuzzy, python-brace-format
 msgid "Donations from businesses and nonprofits are welcome on Liberapay. If you have any questions, don't hesitate to {0}contact us{1}."
-msgstr "Įmonių ir ne pelno siekiančių organizacijų aukos yra laukiamos \"Liberapay\". Jei turite klausimų, nedvejodami kreipkitės į mus {0}{1} ."
+msgstr "Įmonių ir ne pelno siekiančių organizacijų aukos yra laukiamos \"Liberapay\". Jei turite klausimų, nedvejodami {0}kreipkitės į mus{1}."
 
 #, fuzzy, python-brace-format
 msgid "There is currently {n} sponsor on the platform, this section is our way of thanking them."
@@ -5583,7 +5910,7 @@ msgstr "Profilis {0}"
 #, fuzzy, python-brace-format
 msgid "A Liberapay user has pledged to donate {0} per week to {1}."
 msgid_plural "{n} Liberapay users have pledged to donate a total of {0} per week to {1}."
-msgstr[0] "\"Liberapay\" naudotojas įsipareigojo per savaitę paaukoti {0} {1} ."
+msgstr[0] "\"Liberapay\" naudotojas įsipareigojo per savaitę paaukoti {0} {1}."
 msgstr[1] ""
 msgstr[2] ""
 
@@ -5706,6 +6033,10 @@ msgid "Transfer the account"
 msgstr "Sąskaitos perkėlimas"
 
 #, fuzzy, python-brace-format
+msgid "The {provider} account you are attempting to connect is linked to another Liberapay account marked as fraudulent."
+msgstr "{provider} paskyra, prie kurios bandote prisijungti, yra susieta su kita \"Liberapay\" paskyra, pažymėta kaip apgaulinga."
+
+#, fuzzy, python-brace-format
 msgid "Connecting a {platform} account"
 msgstr "{platform} paskyros prijungimas"
 
@@ -5730,8 +6061,8 @@ msgid "Whose work do you appreciate?"
 msgstr "Kieno darbą vertinate?"
 
 #, fuzzy
-msgid "Found a matching username"
-msgid_plural "Found matching usernames"
+msgid "Found a matching user name"
+msgid_plural "Found matching user names"
 msgstr[0] "Rastas tinkamas vartotojo vardas"
 msgstr[1] ""
 msgstr[2] ""
@@ -5762,8 +6093,8 @@ msgid "{username} has a repository named {repo_name} in their {platform} account
 msgstr "{username} savo {platform} paskyroje turi saugyklą pavadinimu {repo_name}."
 
 #, fuzzy
-msgid "Found a matching user statement"
-msgid_plural "Found matching user statements"
+msgid "Found a matching user description"
+msgid_plural "Found matching user descriptions"
 msgstr[0] "Rastas atitinkantis naudotojo pareiškimas"
 msgstr[1] ""
 msgstr[2] ""

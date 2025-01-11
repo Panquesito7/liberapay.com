@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timezone
 
 from liberapay.utils import get_participant
 from liberapay.utils.history import get_payin_ledger
@@ -8,6 +8,7 @@ STATUS_MAP = {
     'partially_refunded': 'warning',
     'refunded': 'danger',
     'succeeded': 'success',
+    'suspended': 'warning',
 }
 
 [---]
@@ -28,9 +29,10 @@ translated_status = {
     'succeeded': _('succeeded'),
     'partially_refunded': _('partially refunded'),
     'refunded': _('refunded'),
+    'suspended': _('suspended'),
 }
 
-current_year = datetime.utcnow().year
+current_year = datetime.now(timezone.utc).year
 year = request.qs.get_int('year', 0, minimum=2018, maximum=current_year)
 if not year:
     # Try to detect the year of the last transaction
@@ -55,7 +57,7 @@ if participant.join_time:
     years = list(range(current_year, max(participant.join_time.year, 2018) - 1, -1))
 
 [---] text/html
-% from "templates/macros/icons.html" import glyphicon
+% from "templates/macros/icons.html" import icon with context
 % from "templates/macros/payment-methods.html" import payment_method_icon with context
 
 % extends "templates/layouts/settings.html"
@@ -110,7 +112,7 @@ if participant.join_time:
 % endif
 
 % set show_id = user_is_admin
-% set show_patrons = participant.recipient_settings.patron_visibilities > 1
+% set show_patrons = (participant.recipient_settings.patron_visibilities or 0) > 1
 <div class="row">
 <div class="col-lg-10">
 % if events
@@ -182,7 +184,11 @@ if participant.join_time:
         <td class="fees">{{ locale.format_money(event['fee']) if event['fee'] else '' }}</td>
         <td class="method">{{ payment_method_icon(event['payin_method']) }}</td>
         % if show_id
-        <td class="id">{{ event['id'] }}</td>
+        <td class="id">{{ event['id'] }}
+            {%- if event['remote_id'] and event['payin_method'].startswith('stripe-') %}
+            <a href="https://dashboard.stripe.com/payments/{{ event['remote_id'] }}">{{ icon('external-link') }}</a>
+            {%- endif -%}
+        </td>
         % endif
     </tr>
     % elif event['kind'] == 'payin_transfer'
@@ -275,8 +281,10 @@ if participant.join_time:
                     % if event['error'] == 'RECEIVING_PREFERENCE_MANDATES_MANUAL_ACTION'
                         {{ _("This payment must be manually approved by the recipient through {provider}'s website.",
                              provider='PayPal') }}
-                    % else
+                    % elif event['error'].isupper()
                         {{ _("PayPal status code: {0}", event['error']) }}
+                    % else
+                        {{ _("error message: {0}", event['error']) }}
                     % endif
                 % else
                     {{ _("error message: {0}", event['error']) }}
@@ -287,6 +295,10 @@ if participant.join_time:
                 &mdash; {{ _(
                     "Processing this kind of payment takes {timedelta} on average.",
                     timedelta=locale.Age(constants.PAYIN_SETTLEMENT_DELAYS['stripe-sdd'], format_args=dict(threshold=0.9))
+                ) }}
+            % elif status == 'suspended' and 'payer' in event
+                &mdash; {{ _(
+                    "The payer's account is suspended due to a suspicion of fraud or other unauthorized action."
                 ) }}
             % endif
         % endif
@@ -318,7 +330,7 @@ if participant.join_time:
 </div>
 
 % if year == 2018 and had_wallet
-    <p class="text-info">{{ glyphicon('info-sign') }} {{ _(
+    <p class="text-info">{{ icon('info-sign') }} {{ _(
         "To view the transactions processed in the past by Mangopay "
         "{link_start}go to the Wallet page{link_end}."
         , link_start=('<a href="%s">'|safe) % participant.path('wallet/')

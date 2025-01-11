@@ -80,10 +80,10 @@ class TestElsewhere(EmailHarness):
     def test_connect_failure(self):
         alice = self.make_participant('alice')
         error = 'User canceled the Dialog flow'
-        url = '/on/facebook/associate?error_message=%s&state=deadbeef' % error
+        url = '/on/github/associate?error_message=%s&state=deadbeef' % error
         cookie = b64encode_s(json.dumps(['query_data', 'connect', '', '2']))
         response = self.client.GxT(url, auth_as=alice,
-                                   cookies={'facebook_deadbeef': cookie})
+                                   cookies={'github_deadbeef': cookie})
         assert response.code == 502, response.text
         assert error in response.text
 
@@ -119,10 +119,10 @@ class TestElsewhere(EmailHarness):
         alice = alice.refetch()
         assert alice.avatar_url == libravatar_url
         alice.update_avatar(src='github:')
-        assert alice.avatar_url == 'fake-github-avatar-url'
+        assert alice.avatar_url == 'fake-github-avatar-url?s=160&d=404&=1'
         alice_github_info.avatar_url = 'new-fake-github-avatar-url'
         alice_github = AccountElsewhere.upsert(alice_github_info)
-        assert alice_github.participant.avatar_url == 'new-fake-github-avatar-url'
+        assert alice_github.participant.avatar_url == 'new-fake-github-avatar-url?s=160&d=404&=1'
 
     @mock.patch('liberapay.elsewhere._base.Platform.get_user_info')
     def test_user_pages(self, get_user_info):
@@ -175,14 +175,16 @@ class TestElsewhere(EmailHarness):
 
     def test_user_pages_not_found(self):
         user_name = 'adhsjakdjsdkjsajdhksda'
-        error = "There doesn't seem to be a user named %s on %s."
+        error = "There doesn&#39;t seem to be a user named %s on %s."
         for platform in self.platforms:
             if not hasattr(platform, 'api_user_name_info_path') or not platform.single_domain:
                 continue
-            r = self.client.GxT("/on/%s/%s/" % (platform.name, user_name))
-            assert r.code == 404
+            r = self.client.GET(
+                "/on/%s/%s/" % (platform.name, user_name), raise_immediately=False,
+            )
+            assert r.code == 404, r.text
             expected = error % (user_name, platform.display_name)
-            assert expected in r.text
+            assert expected in r.text, r.text
 
     def test_user_pages_xss(self):
         user_name = ">'>\"><img src=x onerror=alert(0)>"
@@ -190,7 +192,7 @@ class TestElsewhere(EmailHarness):
             if not hasattr(platform, 'api_user_name_info_path') or not platform.single_domain:
                 continue
             r = self.client.GET("/on/%s/%s/" % (platform.name, user_name), raise_immediately=False)
-            assert r.code in (400, 404)
+            assert r.code in (400, 404), r.text
 
     def test_tip_form_is_in_pledge_page(self):
         self.make_elsewhere('twitter', -1, 'alice')

@@ -7,15 +7,15 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.10.3\n"
+"Generated-By: Babel 2.16.0\n"
 
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "The translation of this page from English is not yet complete. {link_start}You can contribute{link_end}."
-msgstr "Bản dịch của trang này từ tiếng Anh vẫn chưa hoàn chỉnh. {link_start} Bạn có thể đóng góp {link_end}."
+msgstr "Bản dịch của trang này từ tiếng Anh vẫn chưa hoàn chỉnh. {link_start}Bạn có thể đóng góp{link_end}."
 
 #, python-brace-format
 msgid "This page contains machine-translated text which hasn't yet been reviewed and might be inaccurate. {link_start}You can contribute{link_end}."
-msgstr "Trang này  được dịch bằng máy và có thể không chính xác. {link_start} Bạn có thể đóng góp tại đây {link_end}."
+msgstr "Trang này được dịch bằng máy và có thể không chính xác. {link_start}Bạn có thể đóng góp tại đây{link_end}."
 
 msgid "Your Liberapay account has been disabled"
 msgstr "Tài khoản Liberapay của bạn đã bị vô hiệu hóa"
@@ -81,17 +81,17 @@ msgstr "Việc bạn quyên góp {amount} mỗi tháng cho {username} cần ph�
 msgid "Your donation of {amount} per year to {username} needs to be renewed before {date}."
 msgstr "Việc bạn quyên góp {amount} mỗi năm cho {username} cần phải được gia hạn trước {date}."
 
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Your donation of {amount} per week to {username} was supposed to be renewed before {past_date}."
 msgstr "Khoản đóng góp {amount} mỗi tuần của bạn cho {username} đáng lẽ phải được gia hạn trước {past_date}."
 
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Your donation of {amount} per month to {username} was supposed to be renewed before {past_date}."
 msgstr "Khoản đóng góp {amount} mỗi tháng của bạn cho {username} đáng lẽ phải được gia hạn trước {past_date}."
 
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Your donation of {amount} per year to {username} was supposed to be renewed before {past_date}."
-msgstr "Khoản đóng góp {amount} mỗi năm của bạn cho {username} phải được gia hạn trước {past_date}."
+msgstr "Khoản đóng góp {amount} mỗi năm của bạn cho {username} đáng lẽ phải được gia hạn trước {past_date}."
 
 #, python-brace-format
 msgid "You have {n} donation up for renewal:"
@@ -100,7 +100,7 @@ msgstr[0] "Bạn có {n} quyên góp để gia hạn:"
 
 #, python-brace-format
 msgid "If you wish to modify or stop a donation, click on the following link: {link_start}manage my donations{link_end}."
-msgstr "Nếu bạn muốn sửa đổi hoặc ngừng đóng góp, hãy nhấp vào liên kết sau: {link_start} quản lý đóng góp của tôi {link_end}."
+msgstr "Nếu bạn muốn sửa đổi hoặc ngừng đóng góp, hãy nhấp vào liên kết sau: {link_start}quản lý đóng góp của tôi{link_end}."
 
 msgid "Your email address is temporarily blacklisted"
 msgstr "Địa chỉ email của bạn tạm thời bị đưa vào danh sách chặn"
@@ -232,9 +232,6 @@ msgstr "{date}: {money_amount} đến {recipient}"
 msgid "{date}: {money_amount} split between {recipients}"
 msgstr "{date}: {money_amount} chia giữa {recipients}"
 
-msgid "Add a payment instrument"
-msgstr "Thêm cách thanh toán"
-
 #, python-brace-format
 msgid "Invoice from {0} on Liberapay"
 msgstr "Hóa đơn từ {0} trên Liberapay"
@@ -251,7 +248,6 @@ msgstr "Mô tả: {0}"
 msgid "Unsubscribe"
 msgstr "Hủy đăng ký"
 
-#, fuzzy
 msgid "The password of your Liberapay account is weak"
 msgstr "Mật khẩu tài khoản Liberapay của bạn yếu"
 
@@ -265,7 +261,7 @@ msgstr "Chúng tôi đã phát hiện ra rằng mật khẩu của bạn đã b�
 
 #, fuzzy, python-brace-format
 msgid "You should {link_start}change your password{link_end} now."
-msgstr "Bạn nên {link_start} thay đổi mật khẩu của mình {link_end} ngay bây giờ."
+msgstr "Bạn nên {link_start}thay đổi mật khẩu của mình{link_end} ngay bây giờ."
 
 #, fuzzy, python-brace-format
 msgid "Your payment of {money_amount} has been disputed"
@@ -333,11 +329,11 @@ msgstr "Các khoản tiền tranh chấp đã được tự động nhận lại
 
 #, fuzzy, python-brace-format
 msgid "If your bank disputed the payment without consulting you, then you should ask them why. Once the problem has been sorted out, you can {link_start}redo the payment{link_end}."
-msgstr "Nếu ngân hàng của bạn tranh chấp khoản thanh toán mà không hỏi ý kiến bạn, thì bạn nên hỏi họ tại sao. Khi vấn đề đã được giải quyết, bạn có thể {link_start} thực hiện lại thanh toán {link_end}."
+msgstr "Nếu ngân hàng của bạn tranh chấp khoản thanh toán mà không hỏi ý kiến bạn, thì bạn nên hỏi họ tại sao. Khi vấn đề đã được giải quyết, bạn có thể {link_start}thực hiện lại thanh toán{link_end}."
 
 #, fuzzy, python-brace-format
 msgid "To help your bank figure out what happened, you can send them a copy of {link_start}this document{link_end}."
-msgstr "Để giúp ngân hàng của bạn tìm ra điều gì đã xảy ra, bạn có thể gửi cho họ bản sao của {link_start} tài liệu này {link_end}."
+msgstr "Để giúp ngân hàng của bạn tìm ra điều gì đã xảy ra, bạn có thể gửi cho họ bản sao của {link_start}tài liệu này{link_end}."
 
 #, fuzzy
 msgid "Your payment has failed"
@@ -367,9 +363,8 @@ msgstr "Thông báo lỗi do bộ xử lý thanh toán {provider} cung cấp là
 msgid "You can try again, possibly with another payment method, by clicking on the link below:"
 msgstr "Bạn có thể thử lại, có thể bằng một phương thức thanh toán khác, bằng cách nhấp vào liên kết bên dưới:"
 
-#, fuzzy
 msgid "Try again"
-msgstr "Thử Lại"
+msgstr "Thử lại"
 
 #, fuzzy, python-brace-format
 msgid "A refund of {money_amount} has been initiated"
@@ -425,7 +420,7 @@ msgstr "Chúng tôi đã bắt đầu ghi nợ trực tiếp {money_amount} từ
 
 #, fuzzy, python-brace-format
 msgid "This operation is being carried out based on {link_start}the mandate {mandate_id}{link_end} that you signed on {acceptance_date}, authorizing Liberapay (SEPA creditor {creditor_identifier}) to send instructions to your bank to debit your account and your bank to debit your account in accordance with those instructions."
-msgstr "Hoạt động này đang được thực hiện dựa trên {link_start} giấy ủy quyền {mandate_id} {link_end} mà bạn đã ký vào {acceptance_date}, ủy quyền cho Liberapay (chủ nợ SEPA {creditor_identifier}) gửi hướng dẫn đến ngân hàng của bạn để ghi nợ tài khoản của bạn và ngân hàng của bạn ghi nợ tài khoản của bạn theo các hướng dẫn đó."
+msgstr "Hoạt động này đang được thực hiện dựa trên {link_start}giấy ủy quyền {mandate_id}{link_end} mà bạn đã ký vào {acceptance_date}, ủy quyền cho Liberapay (chủ nợ SEPA {creditor_identifier}) gửi hướng dẫn đến ngân hàng của bạn để ghi nợ tài khoản của bạn và ngân hàng của bạn ghi nợ tài khoản của bạn theo các hướng dẫn đó."
 
 #, fuzzy
 msgid "If you did not authorize this payment, please let us know. We will tell you whether a refund can be initiated by us or if you have to request it from your bank."
@@ -587,7 +582,7 @@ msgstr "Do đó, một khoản thanh toán tự động {money_amount} đã đư
 #, fuzzy, python-brace-format
 msgid "If you wish to modify or cancel this upcoming payment, click on the following link: {link_start}manage my payment schedule{link_end}."
 msgid_plural "If you wish to modify or cancel these upcoming payments, click on the following link: {link_start}manage my payment schedule{link_end}."
-msgstr[0] "Nếu bạn muốn sửa đổi hoặc hủy khoản thanh toán sắp tới này, hãy nhấp vào liên kết sau: {link_start} quản lý lịch thanh toán của tôi {link_end}."
+msgstr[0] "Nếu bạn muốn sửa đổi hoặc hủy khoản thanh toán sắp tới này, hãy nhấp vào liên kết sau: {link_start}quản lý lịch thanh toán của tôi{link_end}."
 
 #, fuzzy, python-brace-format
 msgid "We're pleased to inform you that {user_name} joined Liberapay {time_ago}, as {liberapay_username}, so you can now turn your pledge into a real donation:"
@@ -603,7 +598,7 @@ msgstr "Hồ sơ Liberapay của bạn chưa hoàn chỉnh"
 
 #, fuzzy, python-brace-format
 msgid "Your {link_start}public profile page{link_end} is missing a description. Without this information, we may be unable to confirm that your use of our platform is legitimate, and consequently your account may be marked as fraudulent and disabled. An incomplete profile is also less likely to attract donations, so we strongly recommend that you fill yours."
-msgstr "Trang tiểu sử công khai {link_start} của bạn {link_end} thiếu mô tả. Nếu không có thông tin này, chúng tôi không thể xác nhận rằng việc bạn sử dụng nền tảng của chúng tôi là hợp pháp và do đó tài khoản của bạn có thể bị đánh dấu là gian lận và bị vô hiệu hóa. Một hồ sơ không hoàn chỉnh cũng ít có khả năng thu hút sự đóng góp, vì vậy chúng tôi đặc biệt khuyên bạn nên điền vào hồ sơ của mình."
+msgstr "Trang tiểu sử công khai {link_start}của bạn{link_end} thiếu mô tả. Nếu không có thông tin này, chúng tôi không thể xác nhận rằng việc bạn sử dụng nền tảng của chúng tôi là hợp pháp và do đó tài khoản của bạn có thể bị đánh dấu là gian lận và bị vô hiệu hóa. Một hồ sơ không hoàn chỉnh cũng ít có khả năng thu hút sự đóng góp, vì vậy chúng tôi đặc biệt khuyên bạn nên điền vào hồ sơ của mình."
 
 #, fuzzy
 msgid "Edit your profile"
@@ -651,7 +646,7 @@ msgstr "Bạn có thể giúp khách quen của mình hỗ trợ bạn dễ dàn
 
 #, fuzzy, python-brace-format
 msgid "You've connected a PayPal account but no Stripe account. We strongly recommend that you also connect a Stripe account, because it's {link_open}better than PayPal{link_close} in several ways, for both you and your donors."
-msgstr "Bạn đã kết nối tài khoản PayPal nhưng không có tài khoản Stripe. Chúng tôi thực sự khuyên bạn cũng nên kết nối tài khoản Stripe vì tài khoản này {link_open} tốt hơn PayPal {link_close} theo một số cách, cho cả bạn và các nhà tài trợ của bạn."
+msgstr "Bạn đã kết nối tài khoản PayPal nhưng không có tài khoản Stripe. Chúng tôi thực sự khuyên bạn cũng nên kết nối tài khoản Stripe vì tài khoản này {link_open}tốt hơn PayPal{link_close} theo một số cách, cho cả bạn và các nhà tài trợ của bạn."
 
 #, fuzzy, python-brace-format
 msgid "Connect {platform_name} account"
@@ -663,7 +658,7 @@ msgstr "Một nhóm mà bạn là thành viên đã được sửa đổi"
 
 #, fuzzy, python-brace-format
 msgid "The reference currency used by the team “{0}” has been changed from {1} to {2} by {3}."
-msgstr "Đơn vị tiền tệ tham chiếu mà nhóm “{0}” sử dụng đã được {1} thay đổi từ {1} thành {2} bởi {3}."
+msgstr "Đơn vị tiền tệ tham chiếu mà nhóm “{0}” sử dụng đã được thay đổi từ {1} thành {2} bởi {3}."
 
 #, fuzzy
 msgid "You have been invited to join a team on Liberapay"
@@ -713,11 +708,11 @@ msgstr[0] "Thông báo này là lời nhắc nhở rằng tổng số {amount} s
 
 #, fuzzy, python-brace-format
 msgid "If you wish to modify your donations, click on the following link: {link_start}manage my donations{link_end}."
-msgstr "Nếu bạn muốn sửa đổi hoặc ngừng đóng góp, hãy nhấp vào liên kết sau: {link_start} quản lý đóng góp của tôi {link_end}."
+msgstr "Nếu bạn muốn sửa đổi hoặc ngừng đóng góp, hãy nhấp vào liên kết sau: {link_start}quản lý đóng góp của tôi{link_end}."
 
 #, fuzzy, python-brace-format
 msgid "A receipt will be available once the payment has been successfully processed. You can see all your payments and receipts in {link_start}your account's ledger{link_end}."
-msgstr "Biên lai sẽ có sẵn sau khi thanh toán được xử lý thành công. Bạn có thể xem tất cả các khoản thanh toán và biên lai của mình trong {link_start} sổ cái tài khoản của bạn {link_end}."
+msgstr "Biên lai sẽ có sẵn sau khi thanh toán được xử lý thành công. Bạn có thể xem tất cả các khoản thanh toán và biên lai của mình trong {link_start}sổ cái tài khoản của bạn{link_end}."
 
 #, fuzzy
 msgid "Email address verification - Liberapay"
@@ -753,11 +748,11 @@ msgstr "Có vẻ như bạn đã tìm thấy một lỗi! Xin lỗi vì sự b�
 
 #, fuzzy, python-brace-format
 msgid "The requested page could not be found. Please {link_open}contact us{link_close} if you need assistance."
-msgstr "Không tìm thấy trang yêu cầu. Vui lòng {link_open} liên hệ với chúng tôi {link_close} nếu bạn cần hỗ trợ."
+msgstr "Không tìm thấy trang yêu cầu. Vui lòng {link_open}liên hệ với chúng tôi{link_close} nếu bạn cần hỗ trợ."
 
 #, fuzzy, python-brace-format
 msgid "Your request has been rejected by our software. Please {link_open}contact us{link_close} if you need assistance."
-msgstr "Yêu cầu của bạn đã bị phần mềm của chúng tôi từ chối. Vui lòng {link_open} liên hệ với chúng tôi {link_close} nếu bạn cần hỗ trợ."
+msgstr "Yêu cầu của bạn đã bị phần mềm của chúng tôi từ chối. Vui lòng {link_open}liên hệ với chúng tôi{link_close} nếu bạn cần hỗ trợ."
 
 #, fuzzy
 msgid "Error message:"
@@ -883,33 +878,17 @@ msgstr "Ngăn hồ sơ này được liệt kê trên Liberapay."
 msgid "Symbolic"
 msgstr "Tượng trưng"
 
-#, fuzzy
 msgid "Small"
-msgstr "Small"
+msgstr "Nhỏ"
 
-#, fuzzy
 msgid "Medium"
-msgstr "vừa"
+msgstr "Vừa"
 
-#, fuzzy
 msgid "Large"
-msgstr "Large"
+msgstr "Lớn"
 
-#, fuzzy
 msgid "Maximum"
-msgstr "Maximum"
-
-#, fuzzy, python-brace-format
-msgid "You've consumed your quota of requests, you can try again {in_N_minutes}."
-msgstr "Bạn đã sử dụng hết hạn ngạch yêu cầu của mình, bạn có thể thử lại {in_N_minutes}."
-
-#, fuzzy
-msgid "You're making requests too fast, please try again later."
-msgstr "Bạn đang đưa ra yêu cầu quá nhanh, vui lòng thử lại sau."
-
-#, fuzzy, python-brace-format
-msgid "{0} returned an error, please try again later."
-msgstr "{0} đã trả lại lỗi, vui lòng thử lại sau."
+msgstr "Tối đa"
 
 #, fuzzy
 msgid "example@mastodon.social"
@@ -950,6 +929,10 @@ msgstr "Tên người dùng '{0}' quá dài."
 #, fuzzy, python-brace-format
 msgid "The username '{0}' contains invalid characters."
 msgstr "Tên người dùng '{0}' chứa các ký tự không hợp lệ."
+
+#, fuzzy, python-brace-format
+msgid "The username '{0}' is purely numerical. This isn't allowed."
+msgstr "Tên người dùng '{0}' hoàn toàn là số. Điều này không được phép."
 
 #, fuzzy, python-brace-format
 msgid "The username '{0}' is restricted."
@@ -1108,6 +1091,18 @@ msgid "{username} doesn't accept donations in {rejected_currency}."
 msgstr "{username} không chấp nhận các khoản đóng góp trong {rejected_currency}."
 
 #, fuzzy, python-brace-format
+msgid "{username} no longer accepts secret donations."
+msgstr "{username} không còn chấp nhận quyên góp bí mật nữa."
+
+#, fuzzy, python-brace-format
+msgid "{username} no longer accepts private donations."
+msgstr "{username} không còn chấp nhận quyên góp riêng tư."
+
+#, fuzzy, python-brace-format
+msgid "{username} no longer accepts public donations."
+msgstr "{username} không còn chấp nhận quyên góp công khai nữa."
+
+#, fuzzy, python-brace-format
 msgid "The amount {money_amount} isn't in the expected currency ({expected_currency})."
 msgstr "Số tiền {money_amount} không phải bằng đơn vị tiền tệ mong đợi ({expected_currency})."
 
@@ -1146,6 +1141,14 @@ msgstr "Không thể xử lý khoản thanh toán này vì tài khoản của ng
 #, fuzzy, python-brace-format
 msgid "Your donation to {recipient} cannot be processed right now because the account of the beneficiary isn't ready to receive money."
 msgstr "Không thể xử lý khoản đóng góp của bạn cho {recipient} ngay bây giờ vì tài khoản của người thụ hưởng chưa sẵn sàng để nhận tiền."
+
+#, fuzzy, python-brace-format
+msgid "{username} does not accept donations from {country}."
+msgstr "{username} không nhận tiền quyên góp từ {country}."
+
+#, fuzzy
+msgid "The processing of your payment has failed because our software was unable to determine which country the money would come from. This isn't supposed to happen."
+msgstr "Việc xử lý thanh toán của bạn không thành công vì phần mềm của chúng tôi không thể xác định số tiền sẽ đến từ quốc gia nào. Điều này không được phép xảy ra."
 
 #, fuzzy
 msgid "You've already changed your main currency recently, please retry later (e.g. in a week) or contact support@liberapay.com."
@@ -1210,14 +1213,6 @@ msgstr "Cổng Time-out"
 #, fuzzy, python-brace-format
 msgid "The {platform} user you're looking for hasn't joined Liberapay, and it's not possible to create a stub profile for them."
 msgstr "Người dùng {platform} mà bạn đang tìm kiếm chưa tham gia Liberapay và không thể tạo hồ sơ sơ khai cho họ."
-
-#, fuzzy, python-brace-format
-msgid "'{0}' doesn't seem to be a valid user id on {platform}."
-msgstr "'{0}' có vẻ không phải là id người dùng hợp lệ trên {platform}."
-
-#, fuzzy, python-brace-format
-msgid "There doesn't seem to be a user named {0} on {1}."
-msgstr "Có vẻ như không có người dùng có tên {0} trên {1}."
 
 #, fuzzy, python-brace-format
 msgid "Liberapay donation to {username} (team {team_name})"
@@ -1287,11 +1282,36 @@ msgid "You are not authorized to access this page."
 msgstr "Bạn không có quyền truy cập trang này."
 
 #, fuzzy
+msgid "The changes have been saved."
+msgstr "Các thay đổi đã được lưu."
+
+#, fuzzy
 msgid "Processing your request failed because our server was unable to communicate with a service located on another machine. This is a temporary issue, please try again later."
 msgstr "Xử lý yêu cầu của bạn không thành công vì máy chủ của chúng tôi không thể giao tiếp với một dịch vụ nằm trên một máy khác. Đây là sự cố tạm thời, vui lòng thử lại sau."
 
+#, fuzzy, python-brace-format
+msgid "'{0}' doesn't seem to be a valid user id on {platform}."
+msgstr "'{0}' có vẻ không phải là id người dùng hợp lệ trên {platform}."
+
+#, fuzzy, python-brace-format
+msgid "{0} returned an error, please try again later."
+msgstr "{0} đã trả lại lỗi, vui lòng thử lại sau."
+
+#, fuzzy, python-brace-format
+msgid "You've consumed your quota of requests, you can try again {in_N_minutes}."
+msgstr "Bạn đã sử dụng hết hạn ngạch yêu cầu của mình, bạn có thể thử lại {in_N_minutes}."
+
+#, fuzzy
+msgid "You're making requests too fast, please try again later."
+msgstr "Bạn đang đưa ra yêu cầu quá nhanh, vui lòng thử lại sau."
+
+#, fuzzy, python-brace-format
+msgid "There doesn't seem to be a user named {0} on {1}."
+msgstr "Có vẻ như không có người dùng có tên {0} trên {1}."
+
+#, fuzzy
 msgid "This profile is marked as spam or fraud."
-msgstr ""
+msgstr "Hồ sơ này được đánh dấu là thư rác hoặc gian lận."
 
 #, fuzzy
 msgid "Cancel"
@@ -1395,7 +1415,7 @@ msgstr "Đang chuyển hướng…"
 
 #, fuzzy, python-brace-format
 msgid "If you're using an exotic browser and nothing is happening, then {link_start}click on this link to proceed{link_end}."
-msgstr "Nếu bạn đang sử dụng một trình duyệt lạ và không có gì xảy ra, thì hãy {link_start} nhấp vào liên kết này để tiếp tục {link_end}."
+msgstr "Nếu bạn đang sử dụng một trình duyệt lạ và không có gì xảy ra, thì hãy {link_start}nhấp vào liên kết này để tiếp tục{link_end}."
 
 #, fuzzy
 msgid "Retry"
@@ -1562,6 +1582,10 @@ msgid "Account"
 msgstr "Tài khoản"
 
 #, fuzzy
+msgid "Close Account"
+msgstr "Đóng tài khoản"
+
+#, fuzzy
 msgid "Emails"
 msgstr "Email"
 
@@ -1584,6 +1608,10 @@ msgstr "Đăng xuất"
 #, fuzzy
 msgid "Print"
 msgstr "In"
+
+#, fuzzy
+msgid "Liberapay logo"
+msgstr "Logo Liberapay"
 
 #, fuzzy, python-brace-format
 msgid "{0} has {n} patron."
@@ -1618,10 +1646,6 @@ msgstr "Đóng góp"
 #, fuzzy
 msgid "Switch to a different account"
 msgstr "Chuyển sang một tài khoản khác"
-
-#, fuzzy
-msgid "The changes have been saved."
-msgstr "Các thay đổi đã được lưu."
 
 #, fuzzy
 msgid "We've sent you a single-use login link. Check your inbox, open the provided link in a new tab, then come back to this page and click on the button below to carry on with what you wanted to do."
@@ -1664,8 +1688,8 @@ msgid "If you need to change the password of your Liberapay account, you can do 
 msgstr "Nếu bạn cần thay đổi mật khẩu của tài khoản Liberapay của mình, bạn có thể thực hiện bên dưới. Để đảm bảo an toàn, mật khẩu tài khoản của bạn phải được tạo ngẫu nhiên và không được sử dụng ở bất kỳ nơi nào khác. Chúng tôi thực sự khuyên bạn nên sử dụng trình quản lý mật khẩu."
 
 #, fuzzy
-msgid "Setting a password allows you to log in directly, instead of waiting for a single-use link sent via email. However, we recommend keeping your account passwordless if you don't use a password manager, because in order to be secure the password of your account should be randomly generated and not used anywhere else."
-msgstr "Đặt mật khẩu cho phép bạn đăng nhập trực tiếp, thay vì đợi liên kết sử dụng một lần được gửi qua email. Tuy nhiên, chúng tôi khuyên bạn nên giữ tài khoản của mình không có mật khẩu nếu bạn không sử dụng trình quản lý mật khẩu, vì để bảo mật, mật khẩu của tài khoản của bạn nên được tạo ngẫu nhiên và không được sử dụng ở bất kỳ nơi nào khác."
+msgid "Setting a password allows you to log in directly, instead of waiting for a single-use link sent via email. However, we only recommend setting a password if you use a password manager, because in order to be secure the password should be randomly generated and not used anywhere else."
+msgstr "Đặt mật khẩu cho phép bạn đăng nhập trực tiếp, thay vì đợi liên kết sử dụng một lần được gửi qua email. Tuy nhiên, chúng tôi chỉ khuyên bạn nên đặt mật khẩu nếu bạn sử dụng trình quản lý mật khẩu, vì để bảo mật, mật khẩu phải được tạo ngẫu nhiên và không được sử dụng ở bất kỳ nơi nào khác."
 
 #, fuzzy
 msgid "Current password"
@@ -1715,9 +1739,8 @@ msgstr "Ngắt kết nối"
 msgid "This is not supported yet"
 msgstr "Điều này chưa được hỗ trợ"
 
-#, fuzzy
 msgid "username"
-msgstr "user@domain.com"
+msgstr "tên người dùng"
 
 #, fuzzy
 msgid "Drop files here"
@@ -1856,12 +1879,12 @@ msgid "Overview"
 msgstr "Tổng quan"
 
 #, fuzzy
-msgid "Organizations"
-msgstr "Tổ chức"
+msgid "Recipients"
+msgstr "Người nhận"
 
 #, fuzzy
-msgid "Individuals"
-msgstr "Cá nhân"
+msgid "Hopefuls"
+msgstr "hy vọng"
 
 #, fuzzy
 msgid "Unclaimed Donations"
@@ -1882,6 +1905,10 @@ msgstr "Tên"
 #, fuzzy
 msgid "Currencies"
 msgstr "Tiền tệ"
+
+#, fuzzy
+msgid "Countries"
+msgstr "Quốc gia"
 
 #, fuzzy
 msgid "Goal"
@@ -1932,16 +1959,20 @@ msgid "{username} hasn't configured any payment method yet, so your donation can
 msgstr "{username} chưa định cấu hình bất kỳ phương thức thanh toán nào, vì vậy, khoản đóng góp của bạn thực sự không thể được xử lý ngay bây giờ. Chúng tôi sẽ thông báo cho bạn khi có thể thanh toán."
 
 #, fuzzy, python-brace-format
-msgid "Donations to {username} can be paid using a credit or debit card ({list_of_card_brands}), or by direct debit of a Euro bank account (for donations in Euro only)."
-msgstr "Các khoản đóng góp cho {username} có thể được thanh toán bằng thẻ tín dụng hoặc thẻ ghi nợ ({list_of_card_brands}) hoặc bằng cách ghi nợ trực tiếp vào tài khoản ngân hàng Euro (chỉ dành cho các khoản đóng góp bằng Euro)."
+msgid "Donations to {username} can be paid using a credit or debit card ({list_of_card_brands}), or by direct debit of a euro bank account (for donations in euro only)."
+msgstr "Có thể thanh toán các khoản quyên góp cho {username} bằng thẻ tín dụng hoặc thẻ ghi nợ ({list_of_card_brands}) hoặc bằng cách ghi nợ trực tiếp vào tài khoản ngân hàng euro (chỉ dành cho các khoản quyên góp bằng euro)."
 
 #, fuzzy, python-brace-format
 msgid "Donations to {username} are processed through PayPal."
 msgstr "Các khoản đóng góp cho {username} được xử lý thông qua PayPal."
 
 #, fuzzy, python-brace-format
-msgid "Donations to {username} can be paid using: a credit or debit card ({list_of_card_brands}), a Euro bank account (SEPA Direct Debit), or a PayPal account."
-msgstr "Các khoản đóng góp cho {username} có thể được thanh toán bằng: thẻ tín dụng hoặc thẻ ghi nợ ({list_of_card_brands}), tài khoản ngân hàng Euro (Ghi nợ trực tiếp SEPA) hoặc tài khoản PayPal."
+msgid "Donations to {username} can be paid using: a credit or debit card ({list_of_card_brands}), a euro bank account (SEPA Direct Debit), or a PayPal account."
+msgstr "Bạn có thể thanh toán cho {username} bằng: thẻ tín dụng hoặc thẻ ghi nợ ({list_of_card_brands}), tài khoản ngân hàng euro (SEPA Direct Debit) hoặc tài khoản PayPal."
+
+#, fuzzy
+msgid "Payment Card"
+msgstr "Thẻ thanh toán"
 
 #, fuzzy
 msgid "Country"
@@ -2004,6 +2035,10 @@ msgid "(fork)"
 msgstr "(cái nĩa)"
 
 #, fuzzy
+msgid "Stars"
+msgstr "Các ngôi sao"
+
+#, fuzzy
 msgid "Updated this week"
 msgstr "Cập nhật tuần này"
 
@@ -2048,18 +2083,6 @@ msgid "Your nominal take from the {0} team is limited to {1} this week. {2}Why?{
 msgstr "Số lượt nhận danh nghĩa của bạn từ nhóm {0} được giới hạn ở {1} trong tuần này. {2} Tại sao? {3}"
 
 #, fuzzy
-msgid "Last Payday"
-msgstr "Ngày lĩnh lương cuối cùng"
-
-#, fuzzy
-msgid "n/a"
-msgstr "không"
-
-#, fuzzy
-msgid "Next Payday"
-msgstr "Ngày lương tiếp theo"
-
-#, fuzzy
 msgid "Member"
 msgstr "Hội Viên"
 
@@ -2070,6 +2093,22 @@ msgstr "Nhận danh nghĩa"
 #, fuzzy
 msgid "Actual Take"
 msgstr "Thực tế lấy"
+
+#, fuzzy
+msgid "On Liberapay, donations are paid in advance. This column shows how much money each member has received in advance through this team. An advance increases every time a member receives a new payment from a donor through the team, and decreases every week."
+msgstr "Trên Liberapay, các khoản quyên góp được trả trước. Cột này hiển thị số tiền mà mỗi thành viên đã nhận được trước thông qua nhóm này. Khoản tạm ứng tăng lên mỗi khi một thành viên nhận được khoản thanh toán mới từ một nhà tài trợ thông qua nhóm và giảm dần mỗi tuần."
+
+#, fuzzy
+msgid "Advance"
+msgstr "Nâng cao"
+
+#, fuzzy, python-brace-format
+msgid "Last week: {0}"
+msgstr "Tuần trước: {0}"
+
+#, fuzzy
+msgid "no take"
+msgstr "không lấy"
 
 #, fuzzy
 msgid "auto"
@@ -2088,20 +2127,16 @@ msgid "Leftover"
 msgstr "Thức ăn thừa"
 
 #, fuzzy, python-brace-format
+msgid "It looks like you are in {country}. {username} does not accept donations coming from that country."
+msgstr "Có vẻ như bạn đang ở {country}. {username} không chấp nhận các khoản quyên góp từ quốc gia đó."
+
+#, fuzzy, python-brace-format
 msgid "Your current donation to {name} is in {currency}, but they now only accept donations in {accepted_currency}. You can convert your donation to that currency, or discontinue it."
 msgstr "Khoản đóng góp hiện tại của bạn cho {name} ở {currency}, nhưng giờ họ chỉ chấp nhận các khoản đóng góp trong {accepted_currency}. Bạn có thể chuyển đổi khoản đóng góp của mình sang đơn vị tiền tệ đó hoặc ngừng nó."
 
 #, fuzzy, python-brace-format
 msgid "Your current donation to {name} is in {currency}, but they no longer accept that currency. The suggested new currency is the {accepted_currency}, but you can choose another one."
 msgstr "Khoản đóng góp hiện tại của bạn cho {name} bằng {currency}, nhưng họ không còn chấp nhận đơn vị tiền tệ đó nữa. Đơn vị tiền tệ mới được đề xuất là {accepted_currency}, nhưng bạn có thể chọn một đơn vị tiền tệ khác."
-
-#, fuzzy
-msgid "Modify"
-msgstr "Chỉnh sửa"
-
-#, fuzzy
-msgid "Discontinue"
-msgstr "Ngừng"
 
 #, fuzzy, python-brace-format
 msgid "You are currently donating {money_amount} per week to {recipient_name}. The form below enables you to modify or stop your donation."
@@ -2130,8 +2165,8 @@ msgid_plural "The {currency_name} isn't your preferred currency? {username} also
 msgstr[0] "{currency_name} không phải là đơn vị tiền tệ ưa thích của bạn? {username} cũng chấp nhận {n} khác:"
 
 #, fuzzy
-msgid "not supported by PayPal"
-msgstr "không được hỗ trợ bởi PayPal"
+msgid "supported by PayPal"
+msgstr "được hỗ trợ bởi PayPal"
 
 #, fuzzy
 msgid "Switch"
@@ -2176,6 +2211,14 @@ msgstr "Gia hạn thủ công"
 #, fuzzy
 msgid "A reminder to renew your donation will be sent to you via email."
 msgstr "Lời nhắc gia hạn đóng góp của bạn sẽ được gửi cho bạn qua email."
+
+#, fuzzy
+msgid "Discontinue the donation"
+msgstr "Ngừng quyên góp"
+
+#, fuzzy
+msgid "Cancel the pledge"
+msgstr "Hủy bỏ cam kết"
 
 #, fuzzy, python-brace-format
 msgid "{username} has chosen not to see who their patrons are, so your donation will be secret."
@@ -2222,14 +2265,6 @@ msgid "{username} hasn't yet specified whether they want to see who their patron
 msgstr "{username} vẫn chưa chỉ định liệu họ có muốn xem khách hàng quen của mình là ai hay không, vì vậy khoản đóng góp của bạn sẽ là bí mật."
 
 #, fuzzy
-msgid "Discontinue the donation"
-msgstr "Ngừng quyên góp"
-
-#, fuzzy
-msgid "Cancel the pledge"
-msgstr "Hủy bỏ cam kết"
-
-#, fuzzy
 msgid "People who contribute to the commons need you to support their work. Building free software, spreading free knowledge, these things take time and cost money, not only to do the initial work, but also to maintain it over time."
 msgstr "Những người đóng góp cho cộng đồng cần bạn hỗ trợ công việc của họ. Xây dựng phần mềm miễn phí, truyền bá kiến thức miễn phí, những việc này mất thời gian và tốn kém tiền bạc, không chỉ để thực hiện công việc ban đầu mà còn phải duy trì nó theo thời gian."
 
@@ -2240,6 +2275,50 @@ msgstr "Hệ thống quyên góp thường xuyên của Liberapay được thi�
 #, fuzzy
 msgid "You are in sandbox mode, do not input any real payment or personal data!"
 msgstr "Bạn đang ở chế độ hộp cát, không nhập bất kỳ khoản thanh toán thực hoặc dữ liệu cá nhân nào!"
+
+#, fuzzy
+msgid "The credentials have been generated."
+msgstr "Thông tin xác thực đã được tạo."
+
+#, fuzzy
+msgid "The credentials have been revoked."
+msgstr "Giấy chứng nhận đã bị thu hồi."
+
+#, fuzzy
+msgid "Constant session"
+msgstr "Phiên liên tục"
+
+#, fuzzy
+msgid "You can automate downloading private information from your account by including the following HTTP header in your requests:"
+msgstr "Bạn có thể tự động tải xuống thông tin riêng tư từ tài khoản của mình bằng cách đưa tiêu đề HTTP sau vào yêu cầu của bạn:"
+
+#, fuzzy
+msgid "For example, you can download the list of your currently active patrons by executing the following command:"
+msgstr "Ví dụ, bạn có thể tải xuống danh sách những người dùng hiện đang hoạt động của mình bằng cách thực hiện lệnh sau:"
+
+#, fuzzy
+msgid "To minimize the risks to you, these credentials can only be used to fetch data, not to modify anything in your account, and they will automatically expire if unused for a year."
+msgstr "Để giảm thiểu rủi ro cho bạn, những thông tin đăng nhập này chỉ có thể được sử dụng để lấy dữ liệu, không được sửa đổi bất kỳ thông tin nào trong tài khoản của bạn và chúng sẽ tự động hết hạn nếu không được sử dụng trong một năm."
+
+#, fuzzy
+msgid "Revoke credentials"
+msgstr "Thu hồi thông tin xác thực"
+
+#, fuzzy
+msgid "The credentials have expired."
+msgstr "Thông tin xác thực đã hết hạn."
+
+#, fuzzy
+msgid "Regenerate credentials"
+msgstr "Tạo lại thông tin xác thực"
+
+#, fuzzy
+msgid "To simplify automating downloads of private information from your account, you can generate long-lived read-only credentials."
+msgstr "Để đơn giản hóa việc tự động tải xuống thông tin cá nhân từ tài khoản của bạn, bạn có thể tạo thông tin xác thực chỉ đọc có thời hạn dài."
+
+#, fuzzy
+msgid "Generate credentials"
+msgstr "Tạo thông tin xác thực"
 
 #, fuzzy
 msgid "Dashboard"
@@ -2319,6 +2398,14 @@ msgid "One-time donations aren't properly supported yet, but you can discontinue
 msgstr "Các khoản đóng góp một lần vẫn chưa được hỗ trợ thích hợp, nhưng bạn có thể ngừng đóng góp ngay sau lần thanh toán đầu tiên."
 
 #, fuzzy
+msgid "Will I get a receipt?"
+msgstr "Tôi sẽ nhận được biên lai chứ?"
+
+#, fuzzy
+msgid "A receipt is automatically available for every payment."
+msgstr "Biên nhận tự động có sẵn cho mọi khoản thanh toán."
+
+#, fuzzy
 msgid "What is this website? I don't recognize it."
 msgstr "Trang web này là gì? Tôi không nhận ra nó."
 
@@ -2345,6 +2432,10 @@ msgstr "Chỉ thị về dịch vụ thanh toán đã sửa đổi"
 #, fuzzy, python-brace-format
 msgid "Your new avatar URL is: {0}"
 msgstr "URL hình đại diện mới của bạn là: {0}"
+
+#, fuzzy
+msgid "Your profile no longer has an avatar."
+msgstr "Hồ sơ của bạn không còn ảnh đại diện."
 
 #, fuzzy, python-brace-format
 msgid "You have selected {platform} as your avatar source but you haven't connected any {platform} account."
@@ -2383,6 +2474,18 @@ msgid "Explore communities"
 msgstr "Khám phá cộng đồng"
 
 #, fuzzy
+msgid "You have to check at least one box."
+msgstr "Bạn phải kiểm tra ít nhất một hộp."
+
+#, fuzzy
+msgid "Which countries should your donors be allowed to send you money from?"
+msgstr "Các nhà tài trợ của bạn được phép gửi tiền từ những quốc gia nào?"
+
+#, fuzzy
+msgid "We recommend limiting the origins of donations only if you are required to by law."
+msgstr "Chúng tôi khuyên bạn chỉ nên giới hạn nguồn gốc của các khoản quyên góp nếu pháp luật yêu cầu bạn phải làm như vậy."
+
+#, fuzzy
 msgid "The submitted settings are incoherent."
 msgstr "Các cài đặt đã gửi không mạch lạc."
 
@@ -2416,7 +2519,7 @@ msgstr "Chấp nhận ngoại tệ có thể tăng thu nhập của bạn bằng
 
 #, fuzzy, python-brace-format
 msgid "Stripe automatically converts funds into your main currency, but by default PayPal holds payments in foreign currencies until you tell it what to do. If you have a Business PayPal account, you can choose to automatically convert all incoming payments in foreign currencies to your main currency. This option is currently located in the “{link_open}Preferences for receiving payments{link_close}” page."
-msgstr "Stripe tự động chuyển tiền thành đơn vị tiền tệ chính của bạn, nhưng theo mặc định, PayPal giữ các khoản thanh toán bằng ngoại tệ cho đến khi bạn cho biết phải làm gì. Nếu bạn có tài khoản Business PayPal, bạn có thể chọn tự động chuyển đổi tất cả các khoản thanh toán đến bằng ngoại tệ sang đơn vị tiền tệ chính của mình. Tùy chọn này hiện nằm trong trang “{link_open} Tùy chọn để nhận thanh toán {link_close}”."
+msgstr "Stripe tự động chuyển tiền thành đơn vị tiền tệ chính của bạn, nhưng theo mặc định, PayPal giữ các khoản thanh toán bằng ngoại tệ cho đến khi bạn cho biết phải làm gì. Nếu bạn có tài khoản Business PayPal, bạn có thể chọn tự động chuyển đổi tất cả các khoản thanh toán đến bằng ngoại tệ sang đơn vị tiền tệ chính của mình. Tùy chọn này hiện nằm trong trang “{link_open}Tùy chọn để nhận thanh toán{link_close}”."
 
 #, fuzzy
 msgid "Connecting the accounts you own on other platforms makes your Liberapay profile easier to find, and helps to demonstrate that you are who you claim to be."
@@ -2430,10 +2533,6 @@ msgstr[0] "Bạn hiện có tài khoản {n} được kết nối:"
 #, fuzzy
 msgid "Connect an account"
 msgstr "Kết nối tài khoản"
-
-#, fuzzy
-msgid "Our YouTube integration has been disabled by Google. We're working on re-implementing this feature in a different way."
-msgstr "Tích hợp YouTube của chúng tôi đã bị Google vô hiệu hóa. Chúng tôi đang nỗ lực triển khai lại tính năng này theo một cách khác."
 
 #, fuzzy
 msgid "I'm grateful for gifts, but don't have a specific funding goal."
@@ -2529,8 +2628,31 @@ msgid "We can also import lists of repositories for your teams:"
 msgstr "Chúng tôi cũng có thể nhập danh sách kho lưu trữ cho nhóm của bạn:"
 
 #, fuzzy, python-brace-format
-msgid "The submitted summary is too long ({0} > {1})."
-msgstr "Bản tóm tắt đã gửi quá dài ({0}> {1})."
+msgid "<unused singular (hash=82d03d589b58d2a8c99d043ba5f91b84)>"
+msgid_plural "The summary can't be more than {n} characters long."
+msgstr[0] "Tóm tắt không được dài hơn {n} ký tự."
+
+#, fuzzy, python-brace-format
+msgid "<unused singular (hash=e77fbb49c028c11bb9d859698c4a5363)>"
+msgid_plural "The full description must be at least {n} characters long."
+msgstr[0] "Mô tả đầy đủ phải dài ít nhất {n} ký tự."
+
+#, fuzzy, python-brace-format
+msgid "<unused singular (hash=df724b624e486f3c07109838b9a4b3f0)>"
+msgid_plural "The full description can't be more than {n} characters long."
+msgstr[0] "Mô tả đầy đủ không được dài hơn {n} ký tự."
+
+#, fuzzy
+msgid "The full description can't be identical to the summary."
+msgstr "Mô tả đầy đủ không thể giống với bản tóm tắt."
+
+#, fuzzy
+msgid "The summary can't be only your name."
+msgstr "Tóm tắt không thể chỉ là tên của bạn."
+
+#, fuzzy
+msgid "The description can't be only your name."
+msgstr "Mô tả không thể chỉ là tên của bạn."
 
 #, fuzzy
 msgid "This is a preview."
@@ -2543,6 +2665,10 @@ msgstr "Đoạn trích sẽ được sử dụng trên mạng xã hội:"
 #, fuzzy
 msgid "Preview of the short description"
 msgstr "Xem trước mô tả ngắn"
+
+#, fuzzy
+msgid "Including your username in the short description is redundant. The short description is always displayed immediately below the username."
+msgstr "Bao gồm tên người dùng của bạn trong mô tả ngắn là dư thừa. Mô tả ngắn luôn được hiển thị ngay bên dưới tên người dùng."
 
 #, fuzzy
 msgid "Publish"
@@ -2791,6 +2917,9 @@ msgstr "Vì bạn đã chọn đóng góp công khai, chúng tôi khuyên bạn 
 msgid "You have enabled automatic renewals for some or all of your donations, but you don't have any valid payment instrument that would allow us to initiate the automatic payments when the time comes."
 msgstr "Bạn đã bật tự động gia hạn cho một số hoặc tất cả các khoản đóng góp của mình, nhưng bạn không có bất kỳ công cụ thanh toán hợp lệ nào cho phép chúng tôi thực hiện thanh toán tự động khi đến thời điểm."
 
+msgid "Add a payment instrument"
+msgstr "Thêm cách thanh toán"
+
 #, fuzzy
 msgid "Donations"
 msgstr "Donations"
@@ -2807,6 +2936,10 @@ msgstr "{money_amount} {small} / tháng {end_small}"
 #, fuzzy, python-brace-format
 msgid "{money_amount}{small}/year{end_small}"
 msgstr "{money_amount} {small} / năm {end_small}"
+
+#, fuzzy
+msgid "Modify"
+msgstr "Chỉnh sửa"
 
 #, fuzzy, python-brace-format
 msgid "Started {timespan_ago}."
@@ -2843,6 +2976,10 @@ msgstr "Đến hạn thanh toán tiếp theo {in_N_weeks_months_or_years}."
 #, fuzzy
 msgid "Renew now"
 msgstr "Gia hạn ngay bây giờ"
+
+#, fuzzy, python-brace-format
+msgid "The recipient no longer accepts payments in {currency}."
+msgstr "Người nhận không còn chấp nhận thanh toán bằng {currency}."
 
 #, fuzzy
 msgid "Pending payment completion."
@@ -2931,10 +3068,6 @@ msgid "Please choose a payment method:"
 msgstr "Vui lòng chọn phương thức thanh toán:"
 
 #, fuzzy
-msgid "Card"
-msgstr "Thẻ"
-
-#, fuzzy
 msgid "Currently unavailable"
 msgstr "Hiện không có sẵn"
 
@@ -2943,12 +3076,16 @@ msgid "Pay by card"
 msgstr "Thanh toán bằng thẻ"
 
 #, fuzzy
-msgid "Euro donations only"
-msgstr "Chỉ quyên góp bằng đồng Euro"
+msgid "Only for donations to SEPA countries"
+msgstr "Chỉ dành cho các khoản quyên góp cho các quốc gia SEPA"
 
 #, fuzzy
-msgid "Euro bank accounts only"
-msgstr "Chỉ tài khoản ngân hàng Euro"
+msgid "Only for donations in euros"
+msgstr "Chỉ dành cho các khoản quyên góp bằng euro"
+
+#, fuzzy
+msgid "Only euro bank accounts"
+msgstr "Chỉ có tài khoản ngân hàng euro"
 
 #, fuzzy
 msgid "Pay by direct debit"
@@ -2991,8 +3128,12 @@ msgid "Failure"
 msgstr "Thất bại"
 
 #, fuzzy, python-brace-format
-msgid "The payment processor {name} returned an error: “{error_message}”."
-msgstr "Bộ xử lý thanh toán {name} đã trả lại lỗi: “{error_message}”."
+msgid "PayPal status code: {0}"
+msgstr "Mã trạng thái PayPal: {0}"
+
+#, fuzzy, python-brace-format
+msgid "error message: {0}"
+msgstr "thông báo lỗi: {0}"
 
 #, fuzzy
 msgid "The payment has been initiated."
@@ -3031,6 +3172,10 @@ msgstr "PayPal tiết lộ tên và địa chỉ email của bạn cho người 
 msgid "Initiate the payment"
 msgstr "Bắt đầu thanh toán"
 
+#, fuzzy, python-brace-format
+msgid "The payment processor {name} returned an error: “{error_message}”."
+msgstr "Bộ xử lý thanh toán {name} đã trả lại lỗi: “{error_message}”."
+
 #, fuzzy
 msgid "The payment instrument is invalid, please select or add another one."
 msgstr "Công cụ thanh toán không hợp lệ, vui lòng chọn hoặc thêm một công cụ khác."
@@ -3049,7 +3194,11 @@ msgstr "Thanh toán của bạn đã được bắt đầu. Nó sẽ được g�
 
 #, fuzzy, python-brace-format
 msgid "Your bank can reject this payment. We recommend sending a copy of {link_start}the mandate{link_end} to your bank if you're not sure that it properly handles {currency} direct debit instructions."
-msgstr "Ngân hàng của bạn có thể từ chối khoản thanh toán này. Chúng tôi khuyên bạn nên gửi một bản sao của {link_start} ủy nhiệm {link_end} đến ngân hàng của bạn nếu bạn không chắc rằng nó xử lý đúng cách các hướng dẫn ghi nợ trực tiếp {currency}."
+msgstr "Ngân hàng của bạn có thể từ chối khoản thanh toán này. Chúng tôi khuyên bạn nên gửi một bản sao của {link_start}ủy nhiệm{link_end} đến ngân hàng của bạn nếu bạn không chắc rằng nó xử lý đúng cách các hướng dẫn ghi nợ trực tiếp {currency}."
+
+#, fuzzy
+msgid "The initialization of a required component has failed. If you use a browser extension that blocks requests, for example NoScript, please make sure it’s allowing requests to the “stripe.com” domain."
+msgstr "Việc khởi tạo một thành phần bắt buộc đã không thành công. Nếu bạn sử dụng tiện ích mở rộng trình duyệt chặn yêu cầu, ví dụ như NoScript, hãy đảm bảo rằng tiện ích mở rộng đó cho phép yêu cầu đến miền \"stripe.com\"."
 
 #, fuzzy, python-brace-format
 msgid "We will charge your {brand} card (last four digits: {last4})."
@@ -3087,6 +3236,10 @@ msgstr "Dữ liệu này sẽ được gửi trực tiếp đến bộ xử lý 
 msgid "Remember the card number for next time"
 msgstr "Nhớ số thẻ cho lần sau"
 
+#, fuzzy, python-brace-format
+msgid "Use this payment instrument by default for future payments in {currency}"
+msgstr "Sử dụng công cụ thanh toán này theo mặc định cho các khoản thanh toán trong tương lai trong {currency}"
+
 #, fuzzy
 msgid "Use this payment instrument by default for future payments"
 msgstr "Sử dụng công cụ thanh toán này theo mặc định cho các khoản thanh toán trong tương lai"
@@ -3106,6 +3259,10 @@ msgstr "Nhớ số tài khoản ngân hàng để thanh toán sau này"
 #, fuzzy, python-brace-format
 msgid "In order to reduce the risk of this payment being rejected, we recommend that you input your postal address below. It will be stored encrypted in our database and sent to the payment processor ({processor_name})."
 msgstr "Để giảm rủi ro thanh toán này bị từ chối, chúng tôi khuyên bạn nên nhập địa chỉ bưu điện của mình vào bên dưới. Nó sẽ được lưu trữ mã hóa trong cơ sở dữ liệu của chúng tôi và được gửi đến bộ xử lý thanh toán ({processor_name})."
+
+#, fuzzy
+msgid "Please fill in your postal address. It's required because the IBAN you've provided emanates from outside the European Union."
+msgstr "Vui lòng điền địa chỉ bưu chính của bạn. Điều này là bắt buộc vì IBAN bạn đã cung cấp đến từ bên ngoài Liên minh Châu Âu."
 
 #, fuzzy, python-brace-format
 msgid "'{0}' is not an acceptable amount (min={1}, max={2})"
@@ -3235,8 +3392,8 @@ msgid "Edit"
 msgstr "Chỉnh sửa"
 
 #, fuzzy
-msgid "Statement"
-msgstr "Bản tường trình"
+msgid "Description"
+msgstr "Description"
 
 #, fuzzy, python-brace-format
 msgid "{0} owns the following accounts on other platforms:"
@@ -3308,12 +3465,12 @@ msgid "No data to show."
 msgstr "Không có dữ liệu để hiển thị."
 
 #, fuzzy, python-brace-format
-msgid "Income Per Week (in {currency})"
-msgstr "Thu nhập mỗi tuần (trong {currency})"
+msgid "Income per week (in {currency})"
+msgstr "Thu nhập mỗi tuần (bằng {currency})"
 
 #, fuzzy
-msgid "Number of Patrons Per Week"
-msgstr "Số lượng khách quen mỗi tuần"
+msgid "Number of patrons per week"
+msgstr "Số lượng khách hàng mỗi tuần"
 
 #, fuzzy
 msgid "Invoice documents are private."
@@ -3440,10 +3597,6 @@ msgid "(Liberapay only supports one kind of invoice for now.)"
 msgstr "(Hiện tại Liberapay chỉ hỗ trợ một loại hóa đơn.)"
 
 #, fuzzy
-msgid "Description"
-msgstr "Description"
-
-#, fuzzy
 msgid "A short description of the invoice"
 msgstr "Mô tả ngắn gọn về hóa đơn"
 
@@ -3507,9 +3660,13 @@ msgstr "hoàn lại một phần"
 msgid "refunded"
 msgstr "hoàn lại"
 
+#, fuzzy
+msgid "suspended"
+msgstr "cấm"
+
 #, fuzzy, python-brace-format
 msgid "The totals below don't include donations through the old wallet system. You can find those in {link_start}your Wallet page{link_end}."
-msgstr "Tổng số bên dưới không bao gồm các khoản đóng góp thông qua hệ thống ví cũ. Bạn có thể tìm thấy những thứ đó trong {link_start} trang Wallet của mình {link_end}."
+msgstr "Tổng số bên dưới không bao gồm các khoản đóng góp thông qua hệ thống ví cũ. Bạn có thể tìm thấy những thứ đó trong {link_start}trang Wallet của mình{link_end}."
 
 #, fuzzy, python-brace-format
 msgid "Total money received: {0}"
@@ -3542,10 +3699,6 @@ msgstr "sạc pin"
 #, fuzzy
 msgid "This payment is awaiting to be manually checked by Liberapay staff for signs of fraud."
 msgstr "Khoản thanh toán này đang chờ nhân viên Liberapay kiểm tra thủ công để tìm dấu hiệu gian lận."
-
-#, fuzzy, python-brace-format
-msgid "error message: {0}"
-msgstr "thông báo lỗi: {0}"
 
 #, fuzzy
 msgid "hidden"
@@ -3603,9 +3756,9 @@ msgstr "quyên góp bí mật cho {recipient_name} vì vai trò của họ trong
 msgid "This payment must be manually approved by the recipient through {provider}'s website."
 msgstr "Khoản thanh toán này phải được người nhận phê duyệt theo cách thủ công thông qua trang web của {provider}."
 
-#, fuzzy, python-brace-format
-msgid "PayPal status code: {0}"
-msgstr "Mã trạng thái PayPal: {0}"
+#, fuzzy
+msgid "The payer's account is suspended due to a suspicion of fraud or other unauthorized action."
+msgstr "Tài khoản của người trả tiền bị đình chỉ do nghi ngờ gian lận hoặc hành động trái phép khác."
 
 #, fuzzy
 msgid "There were no transactions during this period."
@@ -3613,7 +3766,7 @@ msgstr "Không có giao dịch nào trong khoảng thời gian này."
 
 #, fuzzy, python-brace-format
 msgid "To view the transactions processed in the past by Mangopay {link_start}go to the Wallet page{link_end}."
-msgstr "Để xem các giao dịch được Mangopay {link_start} xử lý trước đây, hãy truy cập trang Wallet {link_end}."
+msgstr "Để xem các giao dịch được Mangopay {link_start}xử lý trước đây, hãy truy cập trang Wallet{link_end}."
 
 #, fuzzy
 msgid "You are not invited to join this team."
@@ -3729,28 +3882,52 @@ msgid "{username} doesn't have any active patrons."
 msgstr "{username} không có bất kỳ khách hàng quen nào đang hoạt động."
 
 #, fuzzy
-msgid "Liberapay now supports non-anonymous donations, do you want to know who your patrons are?"
-msgstr "Liberapay hiện hỗ trợ các khoản quyên góp không ẩn danh, bạn có muốn biết khách hàng quen của mình là ai không?"
+msgid "Visibility levels"
+msgstr "mức độ hiển thị"
 
 #, fuzzy
-msgid "Enable non-anonymous donations"
-msgstr "Cho phép quyên góp không ẩn danh"
+msgid "Liberapay supports three visibility levels for donations. Each level can be turned on or off, but at least one of them must be enabled."
+msgstr "Liberapay hỗ trợ ba cấp độ hiển thị cho các khoản đóng góp. Mỗi cấp độ có thể được bật hoặc tắt, nhưng ít nhất một trong số chúng phải được bật."
 
 #, fuzzy, python-brace-format
-msgid "You have opted-in to see who your patrons are. If you change your mind, then {link_start}click here to disable non-anonymous donations{link_end}."
-msgstr "Bạn đã chọn tham gia để xem khách hàng quen của mình là ai. Nếu bạn thay đổi quyết định, hãy {link_start} nhấp vào đây để tắt các khoản đóng góp không ẩn danh {link_end}."
+msgid "Secret donations aren't possible with PayPal. You should either disable secret donations or {link_start}add a Stripe account{link_end}."
+msgstr "Không thể đóng góp bí mật với PayPal. Bạn nên tắt đóng góp bí mật hoặc {link_start}thêm tài khoản Stripe{link_end}."
 
-#, fuzzy, python-brace-format
-msgid "You've chosen not to see who your patrons are. If you change your mind, then {link_start}click here to enable non-anonymous donations{link_end}."
-msgstr "Bạn đã chọn không xem khách hàng quen của mình là ai. Nếu bạn thay đổi ý định, hãy {link_start} nhấp vào đây để bật quyên góp không ẩn danh {link_end}."
+#, fuzzy
+msgid "Secret donations aren't possible when the payer uses PayPal."
+msgstr "Không thể đóng góp bí mật khi người trả tiền sử dụng PayPal."
+
+#, fuzzy
+msgid "Allow secret donations"
+msgstr "Cho phép đóng góp bí mật"
+
+#, fuzzy
+msgid "Allow private donations"
+msgstr "Cho phép đóng góp cá nhân"
+
+#, fuzzy
+msgid "Allow public donations"
+msgstr "Cho phép quyên góp công khai"
+
+#, fuzzy
+msgid "This is what your prospective donors currently see:"
+msgstr "Đây là những gì các nhà tài trợ tiềm năng của bạn hiện đang nhìn thấy:"
+
+#, fuzzy
+msgid "This is what your prospective donors will see with the new settings:"
+msgstr "Đây là những gì các nhà tài trợ tiềm năng của bạn sẽ thấy với cài đặt mới:"
 
 #, fuzzy
 msgid "Data export"
 msgstr "Xuất dữ liệu"
 
 #, fuzzy
-msgid "Download the list of currently active patrons"
-msgstr "Tải xuống danh sách khách hàng quen hiện đang hoạt động"
+msgid "Download the list of currently active patrons who chose to make their donations public"
+msgstr "Tải xuống danh sách những người bảo trợ hiện đang hoạt động đã chọn công khai khoản đóng góp của họ"
+
+#, fuzzy
+msgid "Download the list of all currently active patrons"
+msgstr "Tải xuống danh sách tất cả những người bảo trợ hiện đang hoạt động"
 
 #, fuzzy
 msgid "Download the record of all patrons in the last ten years"
@@ -3768,9 +3945,29 @@ msgstr "Bạn không phải là thành viên của bất kỳ đội nào."
 msgid "{username} isn't a member of any team."
 msgstr "{username} không phải là thành viên của bất kỳ đội nào."
 
+#, fuzzy
+msgid "The payment account has been successfully disconnected."
+msgstr "Tài khoản thanh toán đã bị ngắt kết nối thành công."
+
+#, fuzzy
+msgid "This payment account is no longer accessible. It is now disconnected."
+msgstr "Tài khoản thanh toán này không còn truy cập được nữa. Bây giờ nó đã bị ngắt kết nối."
+
+#, fuzzy
+msgid "The data has been successfully refreshed."
+msgstr "Dữ liệu đã được làm mới thành công."
+
 #, fuzzy, python-brace-format
-msgid "You have to {link_open}fill your profile{link_close} before you can start to receive donations."
-msgstr "Bạn phải {link_open} điền vào hồ sơ của mình {link_close} trước khi có thể bắt đầu nhận các khoản đóng góp."
+msgid "You have to {link_open}confirm your email address{link_close} before you can start to receive donations."
+msgstr "Bạn phải {link_open}xác nhận địa chỉ email của mình{link_close} trước khi có thể bắt đầu nhận quyên góp."
+
+#, fuzzy, python-brace-format
+msgid "You have to {link_open}set your username{link_close} before you can start to receive donations."
+msgstr "Bạn phải {link_open}đặt tên người dùng của mình{link_close} trước khi có thể bắt đầu nhận quyên góp."
+
+#, fuzzy, python-brace-format
+msgid "You have to {link_open}add a profile description{link_close} before you can start to receive donations."
+msgstr "Bạn phải {link_open}thêm mô tả hồ sơ{link_close} trước khi có thể bắt đầu nhận quyên góp."
 
 #, fuzzy
 msgid "To receive donations you must connect at least one account from a supported payment processor. This page allows you to do so."
@@ -3785,8 +3982,8 @@ msgid "We recommend connecting both Stripe and PayPal if they're both available 
 msgstr "Chúng tôi khuyên bạn nên kết nối cả Stripe và PayPal nếu cả hai đều có sẵn ở quốc gia của bạn."
 
 #, fuzzy
-msgid "With Stripe your donors can pay by card or direct debit directly from the Liberapay website. (Direct debits are currently only supported from Euro bank accounts.)"
-msgstr "Với Stripe, các nhà tài trợ của bạn có thể thanh toán bằng thẻ hoặc ghi nợ trực tiếp trực tiếp từ trang web Liberapay. (Ghi nợ trực tiếp hiện chỉ được hỗ trợ từ tài khoản ngân hàng Euro.)"
+msgid "With Stripe your donors can pay by card or direct debit directly from the Liberapay website. (Direct debits are currently only supported from euro bank accounts.)"
+msgstr "Với Stripe, các nhà tài trợ của bạn có thể thanh toán bằng thẻ hoặc ghi nợ trực tiếp từ trang web Liberapay. (Hiện tại, ghi nợ trực tiếp chỉ được hỗ trợ từ các tài khoản ngân hàng euro.)"
 
 #, fuzzy, python-brace-format
 msgid "Account ID: {0}"
@@ -3926,6 +4123,10 @@ msgid "This payment is a donation, no goods or services are to be provided in ex
 msgstr "Khoản thanh toán này là một khoản đóng góp, không có hàng hóa hoặc dịch vụ nào được cung cấp để trao đổi, Liberapay không thu thuế."
 
 #, fuzzy
+msgid "Income history"
+msgstr "Lịch sử thu nhập"
+
+#, fuzzy
 msgid "You can't receive new donations until you've configured payment processing."
 msgstr "Bạn không thể nhận các khoản đóng góp mới cho đến khi bạn định cấu hình xử lý thanh toán."
 
@@ -3934,16 +4135,16 @@ msgid "Donations through teams make up {income_percent} of your income ({team_in
 msgstr "Các khoản đóng góp thông qua các nhóm tạo nên {income_percent} thu nhập của bạn ({team_income} trong tổng số {total_income}) và {patrons_percent} của các nhà tài trợ của bạn ({nteampatrons} trong tổng số {npatrons})."
 
 #, fuzzy
-msgid "Details of Donations"
-msgstr "Chi tiết về các khoản đóng góp"
+msgid "Details of personal donations"
+msgstr "Chi tiết về các khoản đóng góp cá nhân"
 
 #, fuzzy
 msgid "This section doesn't include data on donations through teams, it only shows the donations that you receive personally."
 msgstr "Phần này không bao gồm dữ liệu về các khoản đóng góp thông qua các nhóm, nó chỉ hiển thị các khoản đóng góp mà cá nhân bạn nhận được."
 
 #, fuzzy
-msgid "Recent Changes"
-msgstr "Những thay đổi gần đây"
+msgid "Recent changes to personal donations"
+msgstr "Những thay đổi gần đây về quyên góp cá nhân"
 
 #, fuzzy, python-brace-format
 msgid "A new donation of {amount} per week has been created."
@@ -3964,6 +4165,10 @@ msgstr "Khoản đóng góp đã được giảm từ {old_amount} mỗi tuần 
 #, fuzzy, python-brace-format
 msgid "A donation of {amount} per week has been restarted."
 msgstr "Khoản đóng góp {amount} mỗi tuần đã được bắt đầu lại."
+
+#, fuzzy
+msgid "Statistics on personal donations"
+msgstr "Thống kê về các khoản đóng góp cá nhân"
 
 #, fuzzy
 msgid "The table below lists the donations you receive, grouped by amount."
@@ -4040,8 +4245,19 @@ msgid "Bank Account"
 msgstr "Ngày đặt hàng…"
 
 #, fuzzy
+msgid "This instrument is used by default."
+msgstr "Công cụ này được sử dụng theo mặc định."
+
 msgid "default"
-msgstr "default"
+msgstr "mặc định"
+
+#, fuzzy, python-brace-format
+msgid "This instrument is used by default for payments in {currency}."
+msgstr "Công cụ này được sử dụng theo mặc định cho các khoản thanh toán trong {currency}."
+
+#, fuzzy, python-brace-format
+msgid "default for {currency}"
+msgstr "mặc định cho {currency}"
 
 #, fuzzy
 msgid "view mandate"
@@ -4079,6 +4295,22 @@ msgstr "Công cụ thanh toán này vẫn chưa được sử dụng."
 msgid "Set as default"
 msgstr "Chọn làm mặc định"
 
+#, fuzzy, python-brace-format
+msgid "Stop using this instrument by default for payments in {currency}."
+msgstr "Ngừng sử dụng công cụ này theo mặc định để thanh toán bằng {currency}."
+
+#, fuzzy, python-brace-format
+msgid "Unset as default for {currency}"
+msgstr "Bỏ đặt làm mặc định cho {currency}"
+
+#, fuzzy, python-brace-format
+msgid "Use this instrument by default for payments in {currency}."
+msgstr "Sử dụng công cụ này theo mặc định để thanh toán trong {currency}."
+
+#, fuzzy, python-brace-format
+msgid "Set as default for {currency}"
+msgstr "Đặt làm mặc định cho {currency}"
+
 #, fuzzy
 msgid "You don't have any valid payment instrument."
 msgstr "Bạn không có bất kỳ công cụ thanh toán hợp lệ nào."
@@ -4092,12 +4324,16 @@ msgid "Add a card"
 msgstr "Thêm một thẻ"
 
 #, fuzzy
-msgid "Add a bank account"
-msgstr "Thêm tài khoản ngân hàng"
+msgid "Euro Bank Account"
+msgstr "Tài khoản Ngân hàng Euro"
 
 #, fuzzy
-msgid "Close Account"
-msgstr "Đóng tài khoản"
+msgid "Only for donations in euros to recipients in SEPA countries"
+msgstr "Chỉ dành cho các khoản quyên góp bằng euro cho người nhận ở các quốc gia SEPA"
+
+#, fuzzy
+msgid "Add a bank account"
+msgstr "Thêm tài khoản ngân hàng"
 
 #, fuzzy
 msgid "Data retention"
@@ -4213,7 +4449,7 @@ msgstr "Cái ví"
 
 #, fuzzy, python-brace-format
 msgid "This page only shows transactions processed by Mangopay, to view other payments {link_start}go to the Ledger page{link_end}."
-msgstr "Trang này chỉ hiển thị các giao dịch do Mangopay xử lý, để xem các khoản thanh toán khác {link_start}, hãy truy cập trang Sổ cái {link_end}."
+msgstr "Trang này chỉ hiển thị các giao dịch do Mangopay xử lý, để xem các khoản thanh toán khác {link_start}, hãy truy cập trang Sổ cái{link_end}."
 
 #, fuzzy
 msgid "Account Statement"
@@ -4289,7 +4525,7 @@ msgstr "hoàn lại tiền đóng góp"
 
 #, fuzzy, python-brace-format
 msgid "reimbursement of {link_open}expense #{invoice_id}{link_close} from {payer}"
-msgstr "hoàn trả {link_open} chi phí # {invoice_id} {link_close} từ {payer}"
+msgstr "hoàn trả {link_open}chi phí # {invoice_id}{link_close} từ {payer}"
 
 #, fuzzy
 msgid "anonymous donation"
@@ -4329,7 +4565,7 @@ msgstr "hoàn trả khoản đóng góp ẩn danh"
 
 #, fuzzy, python-brace-format
 msgid "payment of {link_open}expense #{invoice_id}{link_close} to {payee}"
-msgstr "thanh toán chi phí {link_open} # {invoice_id} {link_close} cho {payee}"
+msgstr "thanh toán chi phí {link_open}# {invoice_id}{link_close} cho {payee}"
 
 #, fuzzy, python-brace-format
 msgid "donation to {0}"
@@ -4417,7 +4653,7 @@ msgstr "Sử dụng mã này để thêm vào trang web của bạn một tiện
 
 #, fuzzy, python-brace-format
 msgid "This widget is not available because it is not compatible with the {link_open}privacy settings{link_close} you have chosen."
-msgstr "Tiện ích này không khả dụng vì nó không tương thích với cài đặt bảo mật {link_open} {link_close} mà bạn đã chọn."
+msgstr "Tiện ích này không khả dụng vì nó không tương thích với {link_open}cài đặt bảo mật{link_close} mà bạn đã chọn."
 
 #, fuzzy
 msgid "Or, if you'd like a widget that shows how much you're giving:"
@@ -4425,7 +4661,7 @@ msgstr "Hoặc, nếu bạn muốn một tiện ích con hiển thị số tiề
 
 #, fuzzy, python-brace-format
 msgid "Badges from {link_open}Shields.io{link_close}"
-msgstr "Huy hiệu từ {link_open} Shields.io {link_close}"
+msgstr "Huy hiệu từ {link_open}Shields.io{link_close}"
 
 #, fuzzy
 msgid "Use these code snippets to add a badge to your website or README:"
@@ -4449,7 +4685,7 @@ msgstr "Nếu tin nhắn của bạn không được viết bằng tiếng Anh h
 
 #, fuzzy, python-brace-format
 msgid "If you think you've found a technical vulnerability in our system, please follow the instructions in {link_start}the {page_name} page{link_end} instead of sending us an email."
-msgstr "Nếu bạn cho rằng mình đã tìm thấy lỗ hổng kỹ thuật trong hệ thống của chúng tôi, vui lòng làm theo hướng dẫn trong {link_start} trang {page_name} {link_end} thay vì gửi email cho chúng tôi."
+msgstr "Nếu bạn cho rằng mình đã tìm thấy lỗ hổng kỹ thuật trong hệ thống của chúng tôi, vui lòng làm theo hướng dẫn trong {link_start}trang {page_name}{link_end} thay vì gửi email cho chúng tôi."
 
 #, fuzzy
 msgid "We currently don't have a phone number."
@@ -4488,8 +4724,8 @@ msgid "Not safe for work"
 msgstr "Không an toàn cho công việc"
 
 #, fuzzy, python-brace-format
-msgid "Yes. However, Liberapay isn't a shield: we can't protect anyone from being banned by {link_open}the underlying payment processors{link_close}."
-msgstr "Đúng. Tuy nhiên, Liberapay không phải là một lá chắn: chúng tôi không thể bảo vệ bất kỳ ai khỏi bị {link_open} các bộ xử lý thanh toán cơ bản {link_close} cấm."
+msgid "The payment processors Liberapay supports have unfavourable policies towards sexual content. {paypal_link}PayPal requires pre-approval{link_close}, and {stripe_link}Stripe prohibits it entirely{link_close}. So, while it is possible to use Liberapay for some adult-only content, it is usually better to use a platform specialized in such content."
+msgstr "Bộ xử lý thanh toán mà Liberapay hỗ trợ có các chính sách bất lợi đối với nội dung khiêu dâm. {paypal_link}PayPal yêu cầu phê duyệt trước{link_close} và {stripe_link}Stripe cấm hoàn toàn điều đó{link_close}. Vì vậy, mặc dù có thể sử dụng Liberapay cho một số nội dung chỉ dành cho người lớn, nhưng tốt hơn hết là sử dụng một nền tảng chuyên về nội dung đó."
 
 #, fuzzy
 msgid "Can I modify or stop my donations?"
@@ -4497,7 +4733,7 @@ msgstr "Tôi có thể sửa đổi hoặc ngừng quyên góp của mình khôn
 
 #, fuzzy, python-brace-format
 msgid "Yes, you can stop your donations or modify their amounts, periods and renewal modes at any time through {link_open}your “Giving” page{link_close}. Stopping a donation doesn't trigger any refund, it merely cancels future renewals."
-msgstr "Có, bạn có thể ngừng đóng góp của mình hoặc sửa đổi số tiền, thời hạn và chế độ gia hạn của chúng bất kỳ lúc nào thông qua {link_open} trang “Cho tặng” {link_close} của bạn. Việc dừng đóng góp không kích hoạt bất kỳ khoản hoàn trả nào, nó chỉ hủy bỏ các lần gia hạn trong tương lai."
+msgstr "Có, bạn có thể ngừng đóng góp của mình hoặc sửa đổi số tiền, thời hạn và chế độ gia hạn của chúng bất kỳ lúc nào thông qua {link_open}trang “Cho tặng”{link_close} của bạn. Việc dừng đóng góp không kích hoạt bất kỳ khoản hoàn trả nào, nó chỉ hủy bỏ các lần gia hạn trong tương lai."
 
 #, fuzzy
 msgid "Liberapay is designed for long-term stable funding and only supports recurring gifts."
@@ -4517,7 +4753,7 @@ msgstr "Liberapay là một dự án mở được cấu trúc xung quanh một 
 
 #, fuzzy, python-brace-format
 msgid "We care about internationalization, our service supports multiple currencies and is translated into many languages ({link_open}you can contribute{link_close})."
-msgstr "Chúng tôi quan tâm đến việc quốc tế hóa, dịch vụ của chúng tôi hỗ trợ nhiều loại tiền tệ và được dịch sang nhiều ngôn ngữ ({link_open} bạn có thể đóng góp {link_close})."
+msgstr "Chúng tôi quan tâm đến việc quốc tế hóa, dịch vụ của chúng tôi hỗ trợ nhiều loại tiền tệ và được dịch sang nhiều ngôn ngữ ({link_open}bạn có thể đóng góp{link_close})."
 
 #, fuzzy, python-brace-format
 msgid "If you'd like more details, the Snowdrift.coop folks have compiled {0}a big list{1} of crowdfunding platforms and the differences between them."
@@ -4556,8 +4792,8 @@ msgid "See the “{page_name}” page."
 msgstr "Xem trang “{page_name}”."
 
 #, fuzzy, python-brace-format
-msgid "The available payment methods depend on which payment processors are supported by the recipient. If a payment is processed by Stripe, then most credit and debit cards ({list_of_card_brands}) are accepted, as well as SEPA Direct Debits (for Euro donations only). If a payment is through PayPal, then it's possible to pay in various ways, however the donor needs to have or create a PayPal account."
-msgstr "Các phương thức thanh toán khả dụng tùy thuộc vào việc người nhận hỗ trợ bộ xử lý thanh toán nào. Nếu một khoản thanh toán được xử lý bởi Stripe, thì hầu hết các thẻ tín dụng và thẻ ghi nợ ({list_of_card_brands}) đều được chấp nhận, cũng như Ghi nợ Trực tiếp SEPA (chỉ dành cho các khoản đóng góp bằng Euro). Nếu thanh toán qua PayPal, thì có thể thanh toán theo nhiều cách khác nhau, tuy nhiên nhà tài trợ cần phải có hoặc tạo tài khoản PayPal."
+msgid "The available payment methods depend on which payment processors are supported by the recipient. If a payment is processed by Stripe, then most credit and debit cards ({list_of_card_brands}) are accepted, as well as SEPA Direct Debits (only for donations in euros to recipients in SEPA countries). If a payment is through PayPal, then it's possible to pay in various ways, however the donor needs to have or create a PayPal account."
+msgstr "Các phương thức thanh toán khả dụng phụ thuộc vào bộ xử lý thanh toán nào được người nhận hỗ trợ. Nếu thanh toán được xử lý bởi Stripe, thì hầu hết các thẻ tín dụng và thẻ ghi nợ ({list_of_card_brands}) đều được chấp nhận, cũng như Thẻ ghi nợ trực tiếp SEPA (chỉ dành cho các khoản quyên góp bằng euro cho người nhận ở các quốc gia SEPA). Nếu thanh toán thông qua PayPal, thì có thể thanh toán theo nhiều cách khác nhau, tuy nhiên người quyên góp cần phải có hoặc tạo một tài khoản PayPal."
 
 #, fuzzy
 msgid "What are the payment processing fees?"
@@ -4566,6 +4802,14 @@ msgstr "Phí xử lý thanh toán là gì?"
 #, fuzzy, python-brace-format
 msgid "The fees vary by payment processor, payment method, countries and currencies. In the last year, the average fee percentages have been {average_fee_stripe} for the payments processed by Stripe and {average_fee_paypal} for the payments processed by PayPal."
 msgstr "Các khoản phí khác nhau tùy theo bộ xử lý thanh toán, phương thức thanh toán, quốc gia và đơn vị tiền tệ. Trong năm ngoái, tỷ lệ phần trăm phí trung bình là {average_fee_stripe} đối với các khoản thanh toán do Stripe xử lý và {average_fee_paypal} đối với các khoản thanh toán do PayPal xử lý."
+
+#, fuzzy
+msgid "How and when do I receive the money sent by my patrons?"
+msgstr "Tôi nhận được tiền do người bảo trợ gửi cho tôi bằng cách nào và khi nào?"
+
+#, fuzzy
+msgid "Money sent by a donor immediately goes to your Stripe or PayPal account. By default Stripe then automatically sends the funds to your bank account, whereas PayPal simply stores them until you spend or withdraw them."
+msgstr "Tiền do nhà tài trợ gửi sẽ ngay lập tức được chuyển vào tài khoản Stripe hoặc PayPal của bạn. Theo mặc định, Stripe sẽ tự động gửi tiền vào tài khoản ngân hàng của bạn, trong khi PayPal chỉ lưu trữ chúng cho đến khi bạn chi tiêu hoặc rút tiền."
 
 #, fuzzy
 msgid "Why do I see partial refunds in the Stripe dashboard?"
@@ -4612,20 +4856,12 @@ msgid "Probably not, but it depends on the tax rules of your country."
 msgstr "Có thể là không, nhưng nó phụ thuộc vào các quy tắc thuế của quốc gia của bạn."
 
 #, fuzzy
-msgid "What are wallets?"
-msgstr "Ví là gì?"
+msgid "Is a Liberapay account a wallet?"
+msgstr "Tài khoản Liberapay có phải là ví không?"
 
 #, fuzzy
-msgid "Liberapay used to hold the funds of donors in wallets, but we no longer do that. Instead the full amount of a donation is immediately transferred to the recipient."
-msgstr "Liberapay từng giữ tiền của các nhà tài trợ trong ví, nhưng chúng tôi không còn làm điều đó nữa. Thay vào đó, toàn bộ số tiền đóng góp sẽ được chuyển ngay đến người nhận."
-
-#, fuzzy
-msgid "What is “payday”?"
-msgstr "\"Ngày lĩnh lương\" là gì?"
-
-#, fuzzy, python-brace-format
-msgid "Payday is a program ({0}this one{1}) that we run every Wednesday. It executes donations and notifies donors and recipients."
-msgstr "Payday là một chương trình ({0} chương trình này {1}) mà chúng tôi chạy vào Thứ Tư hàng tuần. Nó thực hiện các hoạt động quyên góp và thông báo cho người cho và người nhận."
+msgid "Not since mid-2018. Money sent by a donor immediately goes to the recipient. Previously, funds were held in the donor's account and disbursed little by little to the recipient every week. That system was definitively abandoned due to its very significant drawbacks."
+msgstr "Không kể từ giữa năm 2018. Tiền do nhà tài trợ gửi sẽ được chuyển ngay đến người nhận. Trước đây, tiền được giữ trong tài khoản của nhà tài trợ và được giải ngân từng chút một cho người nhận mỗi tuần. Hệ thống đó đã bị loại bỏ hoàn toàn do những nhược điểm rất đáng kể của nó."
 
 #, fuzzy
 msgid "You can get updates from us on the following social networks:"
@@ -4644,15 +4880,48 @@ msgid "<unused singular (hash=4cf42af35c271573d64f577e06447211)>"
 msgid_plural "Donors can choose between up to {n} currencies, depending on the preferences of the recipient and the capabilities of the underlying payment processor."
 msgstr[0] "Các nhà tài trợ có thể chọn giữa tối đa {n} đơn vị tiền tệ, tùy thuộc vào sở thích của người nhận và khả năng của bộ xử lý thanh toán cơ bản."
 
-#, fuzzy, python-brace-format
-msgid "<unused singular (hash=15422027494f4dee6eed143ece78c0ce)>"
-msgid_plural "Liberapay is fully available to creators in {n} territories:"
-msgstr[0] "Liberapay hoàn toàn có sẵn cho người sáng tạo ở các lãnh thổ {n}:"
+#, fuzzy
+msgid "Donations can only be received in territories where at least one supported payment processor is available. Moreover, some features are only available in some of the territories supported by a payment processor."
+msgstr "Chỉ có thể nhận được quyên góp ở những vùng lãnh thổ có ít nhất một bộ xử lý thanh toán được hỗ trợ. Hơn nữa, một số tính năng chỉ khả dụng ở một số vùng lãnh thổ được bộ xử lý thanh toán hỗ trợ."
 
 #, fuzzy, python-brace-format
-msgid "<unused singular (hash=ce784fd8cdb312cf56226bbd42d07d18)>"
-msgid_plural "Additionally, Liberapay is partially available to creators in {paypal_link_open}the {n} countries supported by PayPal{link_close}."
-msgstr[0] "Ngoài ra, Liberapay có sẵn một phần cho những người sáng tạo ở {paypal_link_open} các quốc gia {n} được PayPal {link_close} hỗ trợ."
+msgid "The currently supported payment processors are {Stripe} and {PayPal}. You can find a list of the differences between them {link_start}in the “{page_name}” page{link_end}."
+msgstr "Bộ xử lý thanh toán hiện được hỗ trợ là {Stripe} và {PayPal}. Bạn có thể tìm thấy danh sách các điểm khác biệt giữa chúng {link_start}trong trang “{page_name}”{link_end}."
+
+#, fuzzy
+msgid "Best supported territories"
+msgstr "Lãnh thổ được hỗ trợ tốt nhất"
+
+#, fuzzy, python-brace-format
+msgid "<unused singular (hash=79acddfc1b997a9b2e4aa18d930e097e)>"
+msgid_plural "Creators in these {n} territories benefit from all of Liberapay's features:"
+msgstr[0] "Những người sáng tạo ở {n} vùng lãnh thổ này được hưởng lợi từ tất cả các tính năng của Liberapay:"
+
+#, fuzzy
+msgid "Well supported territories"
+msgstr "Lãnh thổ được hỗ trợ tốt"
+
+#, fuzzy, python-brace-format
+msgid "<unused singular (hash=d6ace91b81f74c1f52f602d3d7009ed8)>"
+msgid_plural "Liberapay is also available to creators in the {n} territories listed below. However, donations going to those territories cannot be grouped to lower the payment processing fees, and the euro direct debit payment method isn't available to the donors."
+msgstr[0] "Liberapay cũng khả dụng cho những người sáng tạo ở {n} vùng lãnh thổ được liệt kê bên dưới. Tuy nhiên, các khoản quyên góp đến những vùng lãnh thổ đó không thể được nhóm lại để giảm phí xử lý thanh toán và phương thức thanh toán ghi nợ trực tiếp bằng euro không khả dụng cho những người quyên góp."
+
+#, fuzzy
+msgid "Barely supported territories"
+msgstr "Lãnh thổ được hỗ trợ ít"
+
+#, fuzzy, python-brace-format
+msgid "<unused singular (hash=53cbe5d36eacd9bcc6b8eed3023c884b)>"
+msgid_plural "Liberapay is partly available to creators in the {n} territories listed below, which are supported by PayPal but not by Stripe."
+msgstr[0] "Liberapay hiện chỉ khả dụng một phần cho những người sáng tạo ở {n} vùng lãnh thổ được liệt kê bên dưới, được PayPal hỗ trợ nhưng không được Stripe hỗ trợ."
+
+#, fuzzy
+msgid "Unsupported territories"
+msgstr "Lãnh thổ không được hỗ trợ"
+
+#, fuzzy
+msgid "If you don't live or have a registered business in one of the territories listed above, then you currently can't use Liberapay to receive donations. Sorry."
+msgstr "Nếu bạn không sống hoặc không có doanh nghiệp đã đăng ký tại một trong những vùng lãnh thổ được liệt kê ở trên, thì hiện tại bạn không thể sử dụng Liberapay để nhận quyên góp. Rất tiếc."
 
 #, fuzzy
 msgid "What is Liberapay?"
@@ -4723,8 +4992,8 @@ msgid "This page contains links to and information about the Liberapay logo. We 
 msgstr "Trang này chứa các liên kết đến và thông tin về biểu tượng Liberapay. Chúng tôi hy vọng bạn sẽ thấy nó đặc biệt hữu ích nếu bạn đang viết một bài báo về Liberapay hoặc nếu bạn muốn thêm các liên kết tùy chỉnh vào hồ sơ Liberapay trong trang web của mình."
 
 #, fuzzy
-msgid "The Liberapay logo is composed of the two letters “lp”. It's usually colored either white-on-yellow, black-on-yellow, or just black."
-msgstr "Logo Liberapay bao gồm hai chữ cái “lp”. Nó thường có màu trắng trên vàng, đen trên vàng hoặc chỉ đen."
+msgid "The Liberapay logo is composed of the two letters “lp”. It's usually colored black-on-yellow or just black. We used a white-on-yellow variant in the past, but it's now phased out as its contrast was deemed too low."
+msgstr "Logo Liberapay bao gồm hai chữ cái “lp”. Nó thường có màu đen-vàng hoặc chỉ đen. Trước đây, chúng tôi đã sử dụng biến thể màu trắng trên vàng nhưng giờ đây nó đã bị loại bỏ vì độ tương phản được cho là quá thấp."
 
 #, fuzzy, python-brace-format
 msgid "The Liberapay yellow is {yellow_color_code}, the black is {black_color_code}."
@@ -4732,27 +5001,15 @@ msgstr "Liberapay màu vàng là {yellow_color_code}, màu đen là {black_color
 
 #, fuzzy, python-brace-format
 msgid "The Liberapay logo is pretty much free of copyright thanks to {CC0_link_start}the CC0 Public Domain Dedication{link_end}, so you are allowed to distribute it and modify it without asking our permission. However, the Liberapay logo is part of the Liberapay trademark, so you can't use it to represent your own products."
-msgstr "Biểu trưng Liberapay không có bản quyền nhiều nhờ {CC0_link_start} Cống hiến miền công cộng CC0 {link_end}, vì vậy bạn được phép phân phối và sửa đổi nó mà không cần xin phép chúng tôi. Tuy nhiên, biểu tượng Liberapay là một phần của nhãn hiệu Liberapay, vì vậy bạn không thể sử dụng nó để đại diện cho sản phẩm của riêng mình."
+msgstr "Biểu trưng Liberapay không có bản quyền nhiều nhờ {CC0_link_start}Cống hiến miền công cộng CC0{link_end}, vì vậy bạn được phép phân phối và sửa đổi nó mà không cần xin phép chúng tôi. Tuy nhiên, biểu tượng Liberapay là một phần của nhãn hiệu Liberapay, vì vậy bạn không thể sử dụng nó để đại diện cho sản phẩm của riêng mình."
 
 #, fuzzy, python-brace-format
 msgid "You can view and download our logos below or {link_start}on GitHub{link_end}."
-msgstr "Bạn có thể xem và tải xuống biểu trưng của chúng tôi bên dưới hoặc {link_start} trên GitHub {link_end}."
+msgstr "Bạn có thể xem và tải xuống biểu trưng của chúng tôi bên dưới hoặc {link_start}trên GitHub{link_end}."
 
 #, fuzzy
-msgid "Download the white-on-yellow SVG"
-msgstr "Tải xuống SVG màu trắng trên vàng"
-
-#, fuzzy, python-brace-format
-msgid "Download the white-on-yellow PNG ({x_y} pixels)"
-msgstr "Tải xuống PNG trắng trên vàng ({x_y} pixel)"
-
-#, fuzzy
-msgid "Download the black SVG"
-msgstr "Tải xuống SVG đen"
-
-#, fuzzy, python-brace-format
-msgid "Download the black PNG ({x_y} pixels)"
-msgstr "Tải xuống PNG màu đen ({x_y} pixel)"
+msgid "Liberapay logo, black-on-yellow"
+msgstr "Logo Liberapay, màu đen trên nền vàng"
 
 #, fuzzy
 msgid "Download the black-on-yellow SVG"
@@ -4763,12 +5020,16 @@ msgid "Download the black-on-yellow PNG ({x_y} pixels)"
 msgstr "Tải xuống PNG đen trên vàng ({x_y} pixel)"
 
 #, fuzzy
-msgid "Fonts"
-msgstr "Phông chữ"
+msgid "Liberapay logo, black"
+msgstr "Logo Liberapay, màu đen"
+
+#, fuzzy
+msgid "Download the black SVG"
+msgstr "Tải xuống SVG đen"
 
 #, fuzzy, python-brace-format
-msgid "The Liberapay logo is included in the {fa_link_start}Fork Awesome{link_end} font in two forms: {fa_liberapay_link} and {fa_liberapay_square_link}."
-msgstr "Biểu trưng Liberapay được bao gồm trong phông chữ {fa_link_start} Fork Awesome {link_end} ở hai dạng: {fa_liberapay_link} và {fa_liberapay_square_link}."
+msgid "Download the black PNG ({x_y} pixels)"
+msgstr "Tải xuống PNG màu đen ({x_y} pixel)"
 
 #, fuzzy
 msgid "Here is a list of differences between them:"
@@ -4781,6 +5042,10 @@ msgstr "Phí xử lý thanh toán với Stripe thường thấp hơn so với Pa
 #, fuzzy
 msgid "Stripe allows renewing donations automatically, whereas PayPal currently requires donors to confirm every payment."
 msgstr "Stripe cho phép tự động gia hạn các khoản đóng góp, trong khi PayPal hiện yêu cầu các nhà tài trợ xác nhận mọi khoản thanh toán."
+
+#, fuzzy
+msgid "Donations through Stripe can be secret, whereas PayPal always allows donors and recipients to see each other's names and email addresses."
+msgstr "Quyên góp thông qua Stripe có thể là bí mật, trong khi PayPal luôn cho phép người tặng và người nhận nhìn thấy tên và địa chỉ email của nhau."
 
 #, fuzzy
 msgid "Stripe allows donating to multiple creators at once in some cases, whereas PayPal always requires separate payments."
@@ -4803,13 +5068,13 @@ msgid "PayPal only supports {n_paypal_currencies} of the {n_liberapay_currencies
 msgstr "PayPal chỉ hỗ trợ {n_paypal_currencies} trong số các đơn vị tiền tệ {n_liberapay_currencies} được Liberapay và Stripe hỗ trợ."
 
 #, fuzzy, python-brace-format
-msgid "<unused singular (hash=901d1e29a8c2a0e16ff208c9a8fda012)>"
-msgid_plural "PayPal is available to creators in more than 200 countries, whereas Stripe only supports {n} countries in a suitable way."
-msgstr[0] "PayPal có sẵn cho người sáng tạo ở hơn 200 quốc gia, trong khi Stripe chỉ hỗ trợ các quốc gia {n} theo cách phù hợp."
+msgid "<unused singular (hash=47f7d13f5771b30f0bcf49ea3acd518b)>"
+msgid_plural "PayPal is available to creators in more than 100 countries, whereas Stripe only supports {n} countries in a suitable way."
+msgstr[0] "PayPal có sẵn cho người sáng tạo ở hơn 100 quốc gia, trong khi Stripe chỉ hỗ trợ các quốc gia {n} theo cách phù hợp."
 
 #, fuzzy, python-brace-format
 msgid "You can find more information on supported countries and currencies in {link_start}the “{page_name}” page{link_end}."
-msgstr "Bạn có thể tìm thêm thông tin về các quốc gia và đơn vị tiền tệ được hỗ trợ trong {link_start} trang “{page_name}” {link_end}."
+msgstr "Bạn có thể tìm thêm thông tin về các quốc gia và đơn vị tiền tệ được hỗ trợ trong {link_start}trang “{page_name}”{link_end}."
 
 #, fuzzy
 msgid "We do our best to protect everyone's privacy: we do not attempt to track people who visit our website, we strive to collect only the personal information we actually need, and we don't sell it to anyone."
@@ -4829,7 +5094,7 @@ msgstr "Trang web liberapay.com chỉ đặt các cookie kỹ thuật được y
 
 #, fuzzy, python-brace-format
 msgid "Visitors of the liberapay.com website can also receive cookies sent by Cloudflare. Please read {link_open}“Understanding the Cloudflare Cookies”{link_close} if you want to learn more about them."
-msgstr "Khách truy cập trang web liberapay.com cũng có thể nhận được cookie do Cloudflare gửi. Vui lòng đọc {link_open} “Hiểu về các cookie Cloudflare” {link_close} nếu bạn muốn tìm hiểu thêm về chúng."
+msgstr "Khách truy cập trang web liberapay.com cũng có thể nhận được cookie do Cloudflare gửi. Vui lòng đọc {link_open}“Hiểu về các cookie Cloudflare”{link_close} nếu bạn muốn tìm hiểu thêm về chúng."
 
 #, fuzzy, python-brace-format
 msgid "On some payment pages, extra cookies may be set by the payment processor. Please read these documents if you want more information: {links_to_policies}."
@@ -4893,7 +5158,7 @@ msgstr "Để đề phòng việc đánh cắp danh tính trong trường hợp 
 
 #, fuzzy, python-brace-format
 msgid "If you think you've found a security issue, and it's not already in our list of {known_issues_link}known low-severity issues{link_close}, then please {hackerone_report_link}report it to us through HackerOne{link_close}."
-msgstr "Nếu bạn cho rằng mình đã tìm thấy vấn đề bảo mật và vấn đề này chưa có trong danh sách {known_issues_link} các vấn đề mức độ nghiêm trọng thấp đã biết {link_close} của chúng tôi, thì vui lòng {hackerone_report_link} báo cáo vấn đề đó cho chúng tôi thông qua HackerOne {link_close}."
+msgstr "Nếu bạn cho rằng mình đã tìm thấy vấn đề bảo mật và vấn đề này chưa có trong danh sách {known_issues_link} các vấn đề mức độ nghiêm trọng thấp đã biết{link_close} của chúng tôi, thì vui lòng {hackerone_report_link} báo cáo vấn đề đó cho chúng tôi thông qua HackerOne{link_close}."
 
 #, fuzzy
 msgid "Policy"
@@ -4901,11 +5166,11 @@ msgstr "Chính sách"
 
 #, fuzzy, python-brace-format
 msgid "The details of our security policy (scope, rewards…) are available in {link_open}our HackerOne profile{link_close}."
-msgstr "Thông tin chi tiết về chính sách bảo mật của chúng tôi (phạm vi, phần thưởng…) có trong {link_open} hồ sơ HackerOne {link_close} của chúng tôi."
+msgstr "Thông tin chi tiết về chính sách bảo mật của chúng tôi (phạm vi, phần thưởng…) có trong {link_open}hồ sơ HackerOne{link_close} của chúng tôi."
 
 #, fuzzy, python-brace-format
 msgid "Thanks to {link_open}everyone who has sent us a report through HackerOne{link_close}."
-msgstr "Cảm ơn {link_open} tất cả những người đã gửi báo cáo cho chúng tôi thông qua HackerOne {link_close}."
+msgstr "Cảm ơn {link_open}tất cả những người đã gửi báo cáo cho chúng tôi thông qua HackerOne{link_close}."
 
 #, fuzzy, python-brace-format
 msgid "Liberapay was launched {timespan_ago} and has {n} user."
@@ -4991,7 +5256,7 @@ msgstr "Tài khoản nhóm {bold} không lưu trữ tiền {end_bold} để sử
 
 #, fuzzy, python-brace-format
 msgid "If Liberapay team accounts don't fit your needs, you may want to use the {link_start}Open Collective{link_end} platform instead, which allows a team to be “hosted” by a registered nonprofit. This “fiscal host” is the legal owner of the collective's funds, oversees how they're used, and usually takes a percentage of the donations to fund itself. (We're planning to implement a similar system in Liberapay, but we don't know when it will be done.)"
-msgstr "Nếu tài khoản nhóm Liberapay không phù hợp với nhu cầu của bạn, bạn có thể muốn sử dụng nền tảng {link_start} Open Collective {link_end} để thay thế, cho phép một nhóm được tổ chức phi lợi nhuận đã đăng ký “tổ chức”. “Tổ chức tài chính” này là chủ sở hữu hợp pháp của các quỹ của tập thể, giám sát cách chúng được sử dụng và thường lấy một tỷ lệ phần trăm của các khoản đóng góp để tài trợ cho chính nó. (Chúng tôi đang có kế hoạch triển khai một hệ thống tương tự ở Liberapay, nhưng chúng tôi không biết khi nào nó sẽ được thực hiện.)"
+msgstr "Nếu tài khoản nhóm Liberapay không phù hợp với nhu cầu của bạn, bạn có thể muốn sử dụng nền tảng {link_start}Open Collective{link_end} để thay thế, cho phép một nhóm được tổ chức phi lợi nhuận đã đăng ký “tổ chức”. “Tổ chức tài chính” này là chủ sở hữu hợp pháp của các quỹ của tập thể, giám sát cách chúng được sử dụng và thường lấy một tỷ lệ phần trăm của các khoản đóng góp để tài trợ cho chính nó. (Chúng tôi đang có kế hoạch triển khai một hệ thống tương tự ở Liberapay, nhưng chúng tôi không biết khi nào nó sẽ được thực hiện.)"
 
 #, fuzzy
 msgid "Creating a team"
@@ -5034,8 +5299,8 @@ msgid "Teams don't have a hierarchy, all their members are equal and set their o
 msgstr "Các đội không có hệ thống phân cấp, tất cả các thành viên của họ đều bình đẳng và tự quyết định."
 
 #, fuzzy, python-brace-format
-msgid "You can change your takes from {0}your teams dashboard{1}. It contains tables that show the nominal takes of all members for the next and previous payday, as well as an estimate of the actual amounts of money they'll receive in the next payday."
-msgstr "Bạn có thể thay đổi lượt thực hiện của mình từ {0} bảng điều khiển nhóm của bạn {1}. Nó chứa các bảng hiển thị số tiền nhận được danh nghĩa của tất cả các thành viên cho ngày lĩnh lương tiếp theo và trước đó, cũng như ước tính số tiền thực tế mà họ sẽ nhận được trong ngày lĩnh lương tiếp theo."
+msgid "You can change your takes from {0}your teams dashboard{1}. It contains tables that show the nominal takes of all members, as well as an estimate of the actual amounts of money that will be deducted at the end of the current weekly cycle."
+msgstr "Bạn có thể thay đổi số tiền của mình từ {0}bảng điều khiển nhóm của bạn{1}. Bảng này chứa các bảng hiển thị số tiền danh nghĩa của tất cả các thành viên, cũng như ước tính số tiền thực tế sẽ được khấu trừ vào cuối chu kỳ hàng tuần hiện tại."
 
 #, fuzzy
 msgid "The nominal takes are the raw numbers that the members input themselves, the actual takes are computed by the system: first it sums up the nominal takes, then it computes the percentage that each take represents, and finally it applies those percentages to the available income. Nominal takes also act as maximums: the actual takes are never higher than the nominal ones, even if additional income is available."
@@ -5058,16 +5323,16 @@ msgid "Regulation of take amounts"
 msgstr "Quy định số tiền nhận"
 
 #, fuzzy
-msgid "When “take throttling” is enabled for a team, its members can't raise their takes higher than a maximum computed on the basis of the nominal takes at the time of the previous payday. This mechanism is meant to encourage inviting new contributors to join the team, by ensuring that they won't take a disproportionate share of the income in their first weeks."
-msgstr "Khi kích hoạt tính năng “lấy điều chỉnh” cho một nhóm, các thành viên của nhóm đó không thể nâng mức lương của họ lên cao hơn mức tối đa được tính toán trên cơ sở mức nhận danh nghĩa tại thời điểm của ngày trả lương trước đó. Cơ chế này nhằm khuyến khích việc mời những người đóng góp mới tham gia vào nhóm, bằng cách đảm bảo rằng họ sẽ không nhận một phần thu nhập không tương xứng trong những tuần đầu tiên của họ."
+msgid "When “take throttling” is enabled for a team, its members can't raise their takes higher than a maximum computed on the basis of the nominal takes at the end of the previous weekly cycle. This mechanism is meant to encourage inviting new contributors to join the team, by ensuring that they won't take a disproportionate share of the income in their first weeks."
+msgstr "Khi “take throttling” được bật cho một nhóm, các thành viên của nhóm không thể tăng doanh thu của mình cao hơn mức tối đa được tính toán dựa trên doanh thu danh nghĩa vào cuối chu kỳ hàng tuần trước đó. Cơ chế này nhằm khuyến khích mời những người đóng góp mới tham gia nhóm, bằng cách đảm bảo rằng họ sẽ không chiếm một phần doanh thu không cân xứng trong những tuần đầu tiên."
 
 #, fuzzy, python-brace-format
-msgid "The limit works like this: you can always increase your take to {amount} if it was below that, you can double your take compared to the previous week, you can raise your take to claim the team's leftover income, and you can bring your take up to the level of the median take in the previous payday. Whichever of these possibilities results in the highest amount is your maximum take for the week."
-msgstr "Giới hạn hoạt động như thế này: bạn luôn có thể tăng số tiền của mình lên {amount} nếu nó ở dưới mức đó, bạn có thể tăng gấp đôi số tiền của mình so với tuần trước, bạn có thể tăng số tiền thực hiện của mình để yêu cầu thu nhập còn lại của nhóm và bạn có thể mang lại lên đến mức của mức nhận trung bình của ngày trả lương trước đó. Bất kỳ khả năng nào trong số này dẫn đến số tiền cao nhất là số tiền tối đa của bạn trong tuần."
+msgid "The limit works like this: you can always increase your take to {amount} if it was below that, you can double your take compared to the previous week, you can raise your take to claim the team's leftover income, and you can bring your take up to the level of the median take at the end of the previous weekly cycle. Whichever of these possibilities results in the highest amount is your maximum take for the week."
+msgstr "Giới hạn hoạt động như sau: bạn luôn có thể tăng số tiền thu được lên {amount} nếu nó thấp hơn, bạn có thể tăng gấp đôi số tiền thu được so với tuần trước, bạn có thể tăng số tiền thu được để yêu cầu thu nhập còn lại của nhóm và bạn có thể đưa số tiền thu được lên mức trung bình vào cuối chu kỳ hàng tuần trước đó. Bất kỳ khả năng nào trong số những khả năng này dẫn đến số tiền cao nhất đều là số tiền thu được tối đa của bạn trong tuần."
 
 #, fuzzy
-msgid "Takes are not limited if the team has only one member, or if the previous week's takes were all zero (which is the case for any new team that has been created after the most recent payday)."
-msgstr "Số lượt nhận không bị giới hạn nếu nhóm chỉ có một thành viên hoặc nếu số lượt nhận của tuần trước đó đều bằng 0 (trường hợp này xảy ra đối với bất kỳ nhóm mới nào đã được tạo sau ngày trả lương gần đây nhất)."
+msgid "Takes are not limited if the team has only one member, or if the previous week's takes were all zero (which is the case for any new team that has been created during the current weekly cycle)."
+msgstr "Số lượt chơi không bị giới hạn nếu nhóm chỉ có một thành viên hoặc nếu tất cả lượt chơi của tuần trước đều bằng 0 (điều này đúng với bất kỳ nhóm mới nào được thành lập trong chu kỳ tuần hiện tại)."
 
 #, fuzzy
 msgid "Please contact support if you want to enable or disable the take limits for an existing team. Don't forget to include evidence that the change has been approved by the other team members."
@@ -5163,32 +5428,32 @@ msgid "Explore other platforms:"
 msgstr "Khám phá các nền tảng khác:"
 
 #, fuzzy
-msgid "Liberapay provides several ways of finding great people to donate to:"
-msgstr "Liberapay cung cấp một số cách để tìm những người tuyệt vời để quyên góp:"
+msgid "This page lists Liberapay users who are hoping to receive their first donations."
+msgstr "Trang này liệt kê những người dùng Liberapay đang hy vọng nhận được khoản quyên góp đầu tiên của mình."
 
 #, fuzzy
-msgid "A team is a group of users working on a specific project."
-msgstr "Nhóm là một nhóm người dùng làm việc trên một dự án cụ thể."
+msgid "Despite our efforts, some of the listed profiles may be spam or fraud."
+msgstr "Bất chấp những nỗ lực của chúng tôi, một số hồ sơ được liệt kê có thể là thư rác hoặc lừa đảo."
 
 #, fuzzy
-msgid "Explore Teams"
-msgstr "Khám phá đội"
+msgid "Profiles only start appearing in the list 72 hours after they're created."
+msgstr "Hồ sơ chỉ bắt đầu xuất hiện trong danh sách 72 giờ sau khi được tạo."
 
 #, fuzzy
-msgid "Great nonprofits and companies trying to improve the world."
-msgstr "Các tổ chức phi lợi nhuận và các công ty đang cố gắng cải thiện thế giới."
+msgid "People and projects who receive donations through Liberapay."
+msgstr "Những người và dự án nhận quyên góp thông qua Liberapay."
 
 #, fuzzy
-msgid "Explore Organizations"
-msgstr "Khám phá các tổ chức"
+msgid "Explore Recipients"
+msgstr "Khám phá người nhận"
 
 #, fuzzy
-msgid "People like you who contribute to the commons (art, knowledge, software, …)."
-msgstr "Những người đóng góp cho cộng đồng (nghệ thuật, kiến thức, phần mềm,…) như bạn."
+msgid "Users who are hoping to receive their first donations through Liberapay."
+msgstr "Những người dùng đang hy vọng nhận được khoản quyên góp đầu tiên của mình thông qua Liberapay."
 
 #, fuzzy
-msgid "Explore Individuals"
-msgstr "Khám phá các cá nhân"
+msgid "Explore Hopefuls"
+msgstr "Khám phá hy vọng"
 
 #, fuzzy
 msgid "Liberapay allows pledging to fund people who haven't joined the site yet."
@@ -5218,29 +5483,49 @@ msgstr "Duyệt qua các tài khoản mà người dùng Liberapay có trên cá
 msgid "Explore Social Networks"
 msgstr "Khám phá mạng xã hội"
 
+#, fuzzy
+msgid "Individuals"
+msgstr "Cá nhân"
+
 #, fuzzy, python-brace-format
 msgid "The top {0} individuals on Liberapay are:"
 msgstr "Các cá nhân {0} hàng đầu trên Liberapay là:"
 
-#, fuzzy, python-brace-format
-msgid "List of individuals on Liberapay, page {number}:"
-msgstr "Danh sách các cá nhân trên Liberapay, trang {number}:"
+#, fuzzy
+msgid "Sort by"
+msgstr "Sắp xếp theo"
+
+#, fuzzy
+msgid "income"
+msgstr "thu nhập"
+
+#, fuzzy
+msgid "creation date"
+msgstr "Ngày thành lập"
+
+#, fuzzy
+msgid "sort order"
+msgstr "thứ tự sắp xếp"
+
+#, fuzzy
+msgid "in descending order"
+msgstr "thứ tự giảm dần"
+
+#, fuzzy
+msgid "in ascending order"
+msgstr "theo thứ tự tăng dần"
+
+#, fuzzy
+msgid "Organizations"
+msgstr "Tổ chức"
 
 #, fuzzy, python-brace-format
 msgid "The top {0} organizations on Liberapay are:"
 msgstr "Các tổ chức {0} hàng đầu trên Liberapay là:"
 
-#, fuzzy, python-brace-format
-msgid "List of organizations on Liberapay, page {number}:"
-msgstr "Danh sách các tổ chức trên Liberapay, trang {number}:"
-
 #, fuzzy
 msgid "Create an organization account"
 msgstr "Tạo tài khoản tổ chức"
-
-#, fuzzy
-msgid "Top pledges"
-msgstr "Cam kết hàng đầu"
 
 #, fuzzy
 msgid "Please don't spam the people and projects listed below with messages inviting them to join Liberapay or asking them why they haven't."
@@ -5263,21 +5548,41 @@ msgid "We can help you find pledgees if you connect your accounts:"
 msgstr "Chúng tôi có thể giúp bạn tìm các cam kết nếu bạn kết nối các tài khoản của mình:"
 
 #, fuzzy, python-brace-format
+msgid "The individual receiving the most money through Liberapay is:"
+msgid_plural "The {n} individuals receiving the most money through Liberapay are:"
+msgstr[0] "Các cá nhân {n} nhận được nhiều tiền nhất thông qua Liberapay là:"
+
+#, fuzzy, python-brace-format
+msgid "The organization receiving the most money through Liberapay is:"
+msgid_plural "The {n} organizations receiving the most money through Liberapay are:"
+msgstr[0] "Các tổ chức {n} nhận được nhiều tiền nhất thông qua Liberapay là:"
+
+#, fuzzy, python-brace-format
+msgid "The team receiving the most money through Liberapay is:"
+msgid_plural "The {n} teams receiving the most money through Liberapay are:"
+msgstr[0] "Các đội {n} nhận được nhiều tiền nhất thông qua Liberapay là:"
+
+#, fuzzy, python-brace-format
+msgid "The Liberapay account receiving the most money is:"
+msgid_plural "The {n} Liberapay accounts receiving the most money are:"
+msgstr[0] "Các tài khoản {n} Liberapay nhận được nhiều tiền nhất là:"
+
+#, fuzzy, python-brace-format
 msgid "The most popular repository currently linked to a Liberapay account is:"
 msgid_plural "The {n} most popular repositories currently linked to a Liberapay account are:"
 msgstr[0] "{n} kho lưu trữ phổ biến nhất hiện được liên kết với tài khoản Liberapay là:"
-
-#, fuzzy, python-brace-format
-msgid "List of repositories currently linked to a Liberapay account, page {number}:"
-msgstr "Danh sách các kho hiện được liên kết với tài khoản Liberapay, trang {number}:"
 
 #, fuzzy, python-brace-format
 msgid "by {author_name}"
 msgstr "bởi {author_name}"
 
 #, fuzzy
-msgid "Stars"
-msgstr "Các ngôi sao"
+msgid "stars count"
+msgstr "đếm sao"
+
+#, fuzzy
+msgid "connection date"
+msgstr "ngày kết nối"
 
 #, fuzzy
 msgid "Browse your favorite repositories"
@@ -5291,10 +5596,6 @@ msgstr "Liên kết kho lưu trữ của bạn với hồ sơ của bạn"
 msgid "The top team on Liberapay is:"
 msgid_plural "The top {n} teams on Liberapay are:"
 msgstr[0] "{n} đội hàng đầu trên Liberapay là:"
-
-#, fuzzy, python-brace-format
-msgid "List of teams on Liberapay, page {number}:"
-msgstr "Danh sách các đội trên Liberapay, trang {number}:"
 
 #, fuzzy
 msgid "Create a team"
@@ -5469,7 +5770,7 @@ msgstr "Liberapay được điều hành minh bạch bởi một tổ chức phi
 
 #, fuzzy, python-brace-format
 msgid "We rely on your support to keep Liberapay running and {link_start}improving{link_end}."
-msgstr "Chúng tôi dựa vào sự hỗ trợ của bạn để giúp Liberapay tiếp tục hoạt động và {link_start} cải thiện {link_end}."
+msgstr "Chúng tôi dựa vào sự hỗ trợ của bạn để giúp Liberapay tiếp tục hoạt động và {link_start}cải thiện{link_end}."
 
 #, fuzzy
 msgid "Fund Liberapay"
@@ -5495,7 +5796,7 @@ msgstr[0] "Dịch vụ của chúng tôi hiện có sẵn bằng ngôn ngữ {n}
 #, fuzzy, python-brace-format
 msgid "It's also partially translated into {n} other language ({link_open}you can contribute{link_close})."
 msgid_plural "It's also partially translated into {n} other languages ({link_open}you can contribute{link_close})."
-msgstr[0] "Nó cũng được dịch một phần sang {n} ngôn ngữ khác ({link_open} bạn có thể đóng góp {link_close})."
+msgstr[0] "Nó cũng được dịch một phần sang {n} ngôn ngữ khác ({link_open}bạn có thể đóng góp{link_close})."
 
 #, fuzzy, python-brace-format
 msgid "<unused singular (hash=e8738ad6e84751becc01756b41d4dc45)>"
@@ -5574,7 +5875,7 @@ msgstr[0] "{n} các khoản quyên góp mới đã được bắt đầu trong t
 #, fuzzy, python-brace-format
 msgid "<unused singular (hash=ac451209b33be4d9667ad1626138debd)>"
 msgid_plural "{n} new {link_open}pledges{link_close} have been made in the past month, adding {money_amount} of weekly donations waiting to be claimed."
-msgstr[0] "{n} {link_open} cam kết mới {link_close} đã được thực hiện trong tháng qua, thêm {money_amount} số tiền quyên góp hàng tuần đang chờ nhận."
+msgstr[0] "{n} {link_open}cam kết mới{link_close} đã được thực hiện trong tháng qua, thêm {money_amount} số tiền quyên góp hàng tuần đang chờ nhận."
 
 #, fuzzy, python-brace-format
 msgid "<unused singular (hash=8aaae81f2b8f07235680896ca08d13fe)>"
@@ -5605,7 +5906,7 @@ msgid ""
 msgstr ""
 "Chúng tôi không thể xác định xem bạn có phải là thành viên của nhóm {team_name} trên {platform_name} hay không.\n"
 "\n"
-"Vui lòng {link_start} đảm bảo tư cách thành viên nhóm của bạn là công khai {link_end}."
+"Vui lòng {link_start}đảm bảo tư cách thành viên nhóm của bạn là công khai{link_end}."
 
 #, fuzzy, python-brace-format
 msgid "Are you really an administrator of the {0} team?"
@@ -5775,6 +6076,10 @@ msgid "Transfer the account"
 msgstr "Chuyển tài khoản"
 
 #, fuzzy, python-brace-format
+msgid "The {provider} account you are attempting to connect is linked to another Liberapay account marked as fraudulent."
+msgstr "Tài khoản {provider} mà bạn đang cố gắng kết nối được liên kết với một tài khoản Liberapay khác được đánh dấu là lừa đảo."
+
+#, fuzzy, python-brace-format
 msgid "Connecting a {platform} account"
 msgstr "Kết nối tài khoản {platform}"
 
@@ -5799,8 +6104,8 @@ msgid "Whose work do you appreciate?"
 msgstr "Bạn đánh giá cao công việc của ai?"
 
 #, fuzzy
-msgid "Found a matching username"
-msgid_plural "Found matching usernames"
+msgid "Found a matching user name"
+msgid_plural "Found matching user names"
 msgstr[0] "Đã tìm thấy tên người dùng phù hợp"
 
 #, fuzzy
@@ -5823,8 +6128,8 @@ msgid "{username} has a repository named {repo_name} in their {platform} account
 msgstr "{username} có một kho lưu trữ có tên {repo_name} trong tài khoản {platform} của họ"
 
 #, fuzzy
-msgid "Found a matching user statement"
-msgid_plural "Found matching user statements"
+msgid "Found a matching user description"
+msgid_plural "Found matching user descriptions"
 msgstr[0] "Đã tìm thấy một tuyên bố người dùng phù hợp"
 
 #, fuzzy

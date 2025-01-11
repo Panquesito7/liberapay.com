@@ -155,6 +155,7 @@ class TestLogIn(EmailHarness):
         alice = self.make_participant('alice', email=None)
         alice.add_email(email)
         alice.close()
+        self.db.run("DELETE FROM user_secrets")
 
         # Sanity checks
         email_row = alice.get_email(email)
@@ -248,6 +249,7 @@ class TestLogIn(EmailHarness):
         alice = self.make_participant('alice', email=None)
         alice.add_email(email)
         Participant.dequeue_emails()
+        self.db.run("DELETE FROM user_secrets")
         self.db.run("UPDATE emails SET nonce = null")
 
         # Initiate email log-in
@@ -741,6 +743,20 @@ class TestSessions(Harness):
         assert new_session_secret != initial_session.secret
         assert new_session_secret.endswith('.ro')
 
+    def test_read_only_session_eventually_expires(self):
+        alice = self.make_participant('alice')
+        alice.session = alice.start_session(suffix='.ro')
+        self.db.run("UPDATE user_secrets SET mtime = mtime - interval '40 days'")
+        r = self.client.GET('/alice/edit/username', auth_as=alice, raise_immediately=False)
+        assert r.code == 403, r.text
+        assert r.headers.cookie[SESSION].value == f'{alice.id}:!:'
+        r = self.client.GET(
+            '/alice/edit/username',
+            HTTP_COOKIE=f"session={alice.id}:!:",
+            raise_immediately=False,
+        )
+        assert r.code == 403, r.text
+
     def test_long_lived_session_tokens_are_regularly_regenerated(self):
         alice = self.make_participant('alice')
         alice.authenticated = True
@@ -784,4 +800,126 @@ class TestSessions(Harness):
         r = self.client.GET('/alice/edit/username', auth_as=alice)
         assert r.code == 200, r.text
         r = self.client.PxST('/alice/edit/username', {}, auth_as=alice)
+        assert r.code == 403, r.text
+
+    def test_constant_sessions(self):
+        alice = self.make_participant('alice')
+        r = self.client.GET('/alice/access/constant-session', auth_as=alice)
+        assert r.code == 200, r.text
+        constant_sessions = self.db.all("""
+            SELECT *
+              FROM user_secrets
+             WHERE participant = %s
+               AND id >= 800
+        """, (alice.id,))
+        assert not constant_sessions
+        del constant_sessions
+        # Test creating the constant session
+        r = self.client.PxST(
+            '/alice/access/constant-session',
+            {'action': 'start'},
+            auth_as=alice,
+        )
+        assert r.code == 302, r.text
+        constant_session = self.db.one("""
+            SELECT *
+              FROM user_secrets
+             WHERE participant = %s
+               AND id >= 800
+        """, (alice.id,))
+        assert constant_session
+        r = self.client.GET('/alice/access/constant-session', auth_as=alice)
+        assert r.code == 200, r.text
+        assert constant_session.secret in r.text
+        # Test using the constant session
+        r = self.client.GxT(
+            '/about/me/',
+            cookies={
+                'session': f'{alice.id}:{constant_session.id}:{constant_session.secret}',
+            },
+        )
+        assert r.code == 302, r.text
+        # Test regenerating the constant session
+        r = self.client.PxST(
+            '/alice/access/constant-session',
+            {'action': 'start'},
+            auth_as=alice,
+        )
+        assert r.code == 302, r.text
+        old_constant_session = constant_session
+        constant_session = self.db.one("""
+            SELECT *
+              FROM user_secrets
+             WHERE participant = %s
+               AND id >= 800
+        """, (alice.id,))
+        assert constant_session
+        assert constant_session.secret != old_constant_session.secret
+        # Test expiration of the session
+        self.db.run("""
+            UPDATE user_secrets
+               SET mtime = mtime - interval '300 days'
+                 , latest_use = latest_use - interval '300 days'
+             WHERE id = 800
+        """)
+        r = self.client.GxT(
+            '/about/me/',
+            cookies={
+                'session': f'{alice.id}:{constant_session.id}:{constant_session.secret}',
+            },
+        )
+        assert r.code == 302, r.text
+        self.db.run("""
+            UPDATE user_secrets
+               SET mtime = mtime - interval '500 days'
+                 , latest_use = latest_use - interval '500 days'
+             WHERE id = 800
+        """)
+        r = self.client.GxT(
+            '/about/me/',
+            cookies={
+                'session': f'{alice.id}:{constant_session.id}:{constant_session.secret}',
+            },
+        )
+        assert r.code == 403, r.text
+        # Test revoking the constant session
+        r = self.client.PxST(
+            '/alice/access/constant-session',
+            {'action': 'end'},
+            auth_as=alice,
+        )
+        assert r.code == 302, r.text
+        constant_session = self.db.one("""
+            SELECT *
+              FROM user_secrets
+             WHERE participant = %s
+               AND id >= 800
+        """, (alice.id,))
+        assert not constant_session
+
+    def test_invalid_session_cookies(self):
+        r = self.client.GET('/about/me/', HTTP_COOKIE='session=::', raise_immediately=False)
+        assert r.code == 403, r.text
+        r = self.client.GET('/about/me/', HTTP_COOKIE='session=_:_:_', raise_immediately=False)
+        assert r.code == 403, r.text
+        r = self.client.GET('/about/me/', HTTP_COOKIE='session=0:0:0', raise_immediately=False)
+        assert r.code == 403, r.text
+        r = self.client.GET('/about/me/', HTTP_COOKIE='session=1:1:1', raise_immediately=False)
+        assert r.code == 403, r.text
+        alice = self.make_participant('alice')
+        r = self.client.GET('/about/me/', HTTP_COOKIE=f'session={alice.id}::', raise_immediately=False)
+        assert r.code == 403, r.text
+        r = self.client.GET('/about/me/', HTTP_COOKIE=f'session={alice.id}:0:', raise_immediately=False)
+        assert r.code == 403, r.text
+        r = self.client.GET('/about/me/', HTTP_COOKIE=f'session={alice.id}:1:', raise_immediately=False)
+        assert r.code == 403, r.text
+        r = self.client.GET('/about/me/', HTTP_COOKIE=f'session={alice.id}:1:_', raise_immediately=False)
+        assert r.code == 403, r.text
+        session = alice.start_session(suffix='.pw')
+        incorrect_secret = str(ord(session.secret[0]) ^ 1) + session.secret[1:]
+        r = self.client.GET(
+            '/about/me/',
+            HTTP_COOKIE=f'session={alice.id}:{session.id}:{incorrect_secret}',
+            raise_immediately=False,
+        )
         assert r.code == 403, r.text

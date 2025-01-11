@@ -33,7 +33,7 @@ Note: This webapp is not self-hostable.
 
 ## Contact
 
-Want to chat? [Join us on Gitter](https://gitter.im/liberapay/salon). (If you use IRC, [Gitter has a gateway](https://irc.gitter.im/).)
+Want to chat? [Join us on Gitter](https://gitter.im/liberapay/salon).
 
 Alternatively you can post a message in [our GitHub salon](https://github.com/liberapay/salon).
 
@@ -73,9 +73,9 @@ The python code inside simplates is only for request-specific logic, common back
 
 Make sure you have the following dependencies installed first:
 
-- python ≥ 3.8
+- python ≥ 3.12
   - including the C headers of python and libffi, which are packaged separately in many Linux distributions
-- postgresql 13 (see [the official download & install docs](https://www.postgresql.org/download/))
+- postgresql 16 (see [the official download & install docs](https://www.postgresql.org/download/))
 - make
 
 Then run:
@@ -140,7 +140,13 @@ For our styles we use [SASS](http://sass-lang.com/) and [Bootstrap 3](https://ge
 We compile Bootstrap ourselves from the SASS source in the `style/bootstrap/`
 directory. We do that to be able to easily customize it by changing values in
 `style/variables.scss`. Modifying the files in `style/bootstrap/` is probably
-not a good idea.
+a bad idea.
+
+### Icons
+
+For user interface icons we use [Bootstrap Icons](https://icons.getbootstrap.com/). An icon can be included in a page by calling the `icon` macro from `templates/macros/icons.html`, e.g. `{{ icon('liberapay') }}`. The icons are stored in the `www/assets/icons.svg` file. To add a new icon in that file, the root `<svg>` element of the icon being added must be turned into a `<symbol>` element, preserving only its `viewBox` attribute and adding an `id` attribute.
+
+If you don't find any icon in Bootstrap Icons that fits your use case, you can try to search online catalogs like [Flaticon](https://www.flaticon.com/search?type=uicon), [Icons8](https://icons8.com/icons), [Pictogrammers](https://pictogrammers.com/), [SVG Repo](https://www.svgrepo.com/) and [The Noun Project](https://thenounproject.com/). For brand icons, [Simple Icons](https://simpleicons.org/) is a good resource.
 
 ### Testing
 
@@ -181,12 +187,13 @@ All new dependencies need to be audited to check that they don't contain malicio
 We use [pip's Hash-Checking Mode](https://pip.pypa.io/en/stable/topics/secure-installs/#hash-checking-mode) to protect ourselves from dependency tampering. Thus, when adding or upgrading a dependency the new hashes need to be computed and put in the requirements file. For that you can use [hashin](https://github.com/peterbe/hashin):
 
     pip install hashin
-    hashin package==x.y -r requirements_base.txt -p 3.8 -p 3.9
-    # note: we have several requirements files, use the right one
+    hashin package==x.y -r requirements_base.txt
 
 If for some reason you need to rehash all requirements, run `make rehash-requirements`.
 
-To upgrade all the dependencies in a requirements file, run `hashin -u -r requirements_XXX.txt -p 3.8 -p 3.9`. You may have to run extra `hashin` commands if new subdependencies are missing.
+To upgrade all the dependencies in the requirements file, run `hashin -u -r requirements_base.txt`. You may have to run extra `hashin` commands if new subdependencies are missing.
+
+The testing dependencies in `requirements_tests.txt` don't follow these rules because they're not installed in production. It's up to you to isolate your development environment from the rest of your system in order to protect it from possible vulnerabilities in the testing dependencies.
 
 ### Processing personal data
 

@@ -5,10 +5,10 @@ To avoid circular imports this module should not import any other liberapay subm
 
 from contextvars import ContextVar, copy_context
 from datetime import timedelta
+from functools import cached_property
 import logging
 import os
 
-from cached_property import cached_property
 from environment import Environment, is_yesish
 from markupsafe import Markup
 from pando.utils import utcnow
@@ -36,6 +36,18 @@ class Website(_Website):
 
     def link(self, path, text):
         return self._html_link % (path, text)
+
+    def read_asset(self, path):
+        try:
+            assert '..' not in path
+            resource = website.request_processor.resources.get(
+                f'{website.www_root}/assets/{path}'
+            )
+            bs = resource.render().body if resource.raw is None else resource.raw
+            return bs.decode('utf8')
+        except Exception as e:
+            self.tell_sentry(e)
+            return ''
 
     def respond(self, *args, **kw):
         # Run in a new (sub)context

@@ -9,18 +9,20 @@ from operator import getitem
 import os
 import re
 import socket
+from urllib.parse import parse_qs, urlencode, urlsplit, urlunsplit
 
 from pando import Response, json
 from pando.utils import to_rfc822, utcnow
 from markupsafe import Markup
 
-from liberapay.constants import CURRENCIES, CURRENCY_REPLACEMENTS, SAFE_METHODS
+from liberapay.constants import SAFE_METHODS
 from liberapay.elsewhere._paginators import _modify_query
 from liberapay.exceptions import (
     AuthRequired, ClosedAccount, LoginRequired, TooManyAdminActions,
 )
 from liberapay.models.community import Community
 from liberapay.i18n.base import LOCALE_EN, add_helpers_to_context
+from liberapay.i18n.currencies import CURRENCIES, CURRENCY_REPLACEMENTS
 from liberapay.website import website
 from liberapay.utils import cbor
 
@@ -187,8 +189,9 @@ def form_post_success(state, msg='', redirect_url=None):
     """This function is meant to be called after a successful form POST.
     """
     request, response = state['request'], state['response']
-    if request.headers.get(b'X-Requested-With') == b'XMLHttpRequest':
-        raise response.json({"msg": msg} if msg else {})
+    if request.headers.get(b'Accept', b'').startswith(b'application/json'):
+        _ = state['_']
+        raise response.json({"msg": msg or _("The changes have been saved.")})
     else:
         if not redirect_url:
             redirect_url = request.body.get('back_to') or request.line.uri.decoded
@@ -538,8 +541,8 @@ def word(mapping, k, pattern=r'^\w+$', unicode=False):
     return r
 
 
-FALSEISH = {'0', 'f', 'false', 'n', 'no'}
-TRUEISH = {'1', 't', 'true', 'y', 'yes'}
+FALSEISH = {'0', 'f', 'false', 'n', 'no', 'off'}
+TRUEISH = {'1', 't', 'true', 'y', 'yes', 'on'}
 NULLISH = {'', 'null', 'none'}
 
 
@@ -639,19 +642,26 @@ def check_address_v2(addr):
     return True
 
 
-def render_postal_address(addr, single_line=False):
+def render_postal_address(addr, single_line=False, format='local'):
     if not check_address_v2(addr):
         return
-    # FIXME The rendering below is simplistic, we should implement
-    #       https://github.com/liberapay/liberapay.com/issues/1056
-    elements = [addr['local_address'], addr['city'], addr['postal_code']]
-    if addr.get('region'):
-        elements.append(addr['region'])
-    elements.append(LOCALE_EN.countries[addr['country']])
-    if single_line:
-        return ', '.join(elements)
+    if format == 'local':
+        # FIXME The rendering below is simplistic, we should implement
+        #       https://github.com/liberapay/liberapay.com/issues/1056
+        elements = [addr['local_address'], addr['city'], addr['postal_code']]
+        if addr.get('region'):
+            elements.append(addr['region'])
+        elements.append(LOCALE_EN.countries[addr['country']])
+        sep = ', ' if single_line else '\n'
+    elif format == 'downward':
+        elements = [LOCALE_EN.countries[addr['country']]]
+        if addr.get('region'):
+            elements.append(addr['region'])
+        elements += [addr['city'], addr['postal_code'], addr['local_address']]
+        sep = ' / ' if single_line else '\n'
     else:
-        return '\n'.join(elements)
+        raise ValueError(f"unknown `format` value {format!r}")
+    return sep.join(elements)
 
 
 def mkdir_p(path):
@@ -721,3 +731,23 @@ def get_recordable_headers(request):
         for k, v in request.headers.items()
         if k != b'Cookie'
     }
+
+
+def tweak_avatar_url(avatar_url, increment=True):
+    if not avatar_url:
+        return ''
+    # Parse the URL
+    scheme, netloc, path, query, fragment = urlsplit(avatar_url)
+    query = parse_qs(query)
+    # Add parameters inherited from Gravatar (https://wiki.libravatar.org/api/)
+    query['s'] = '160'  # size = 160 pixels
+    query['d'] = '404'  # default = a 404 HTTP response
+    # Increment the serial number to avoid stale images in a browser's cache
+    try:
+        query[''] = str(int(query[''][-1]) + int(increment))
+    except (KeyError, ValueError):
+        query[''] = '1'
+    # Drop any fragment that might be there
+    fragment = ''
+    # Return the modified URL
+    return urlunsplit((scheme, netloc, path, urlencode(query), fragment))

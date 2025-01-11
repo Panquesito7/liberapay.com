@@ -1,6 +1,10 @@
+% from "templates/macros/icons.html" import icon with context
+
 % macro admin_form(p, reload=False, style='columns-sm-2 block-labels')
-    <form action="javascript:/admin/users" method="POST" class="js-submit"{% if reload %}
-          data-on-success="reload"{% endif %}>
+    <form action="/admin/users" method="POST"{% if not reload %}
+          data-on-success="notify"{% endif %}>
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}" />
+        <input type="hidden" name="back_to" value="{{ request.line.uri.decoded }}" />
         <input type="hidden" name="p_id" value="{{ p.id }}">
         <p>This account is…</p>
         <div class="form-group {{ style }}">
@@ -20,7 +24,7 @@
                 unsettling
                 % if p.is_unsettling.__and__(1)
                 &nbsp;
-                <span class="fa fa-check-circle" title="This account has been marked as unsettling by its owner."></span>
+                {{ icon('ok-sign', "This account has been marked as unsettling by its owner.") }}
                 % endif
             </label>
             <label class="text-warning">

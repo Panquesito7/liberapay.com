@@ -7,15 +7,15 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.10.3\n"
+"Generated-By: Babel 2.16.0\n"
 
 #, python-brace-format
 msgid "The translation of this page from English is not yet complete. {link_start}You can contribute{link_end}."
-msgstr "لم تكتمل بعد ترجمة هذه الصفحة من اللغة الإنجليزية. {link_start} يمكنك المساهمة بـ {link_end}."
+msgstr "لم تكتمل بعد ترجمة هذه الصفحة من اللغة الإنجليزية. {link_start}يمكنك المساهمة بـ{link_end}."
 
 #, python-brace-format
 msgid "This page contains machine-translated text which hasn't yet been reviewed and might be inaccurate. {link_start}You can contribute{link_end}."
-msgstr "تحتوي هذه الصفحة على نص مترجم بطريقة آليّة، لم تتم مراجعته بعد، وقد لا يكون دقيقا. {link_start} يمكنك المساهمة بـ {link_end}."
+msgstr "تحتوي هذه الصفحة على نص مترجم بطريقة آليّة، لم تتم مراجعته بعد، وقد لا يكون دقيقا. {link_start}يمكنك المساهمة بـ{link_end}."
 
 msgid "Your Liberapay account has been disabled"
 msgstr "تم تعطيل حساب Librepay الخاص بك"
@@ -74,7 +74,7 @@ msgstr "إدارة تبرعاتكم"
 
 #, python-brace-format
 msgid "It's past time to renew your donation to {username} on Liberapay"
-msgstr "فات أوان تجديد تبرعات ل  {username}  علي Liberapay ."
+msgstr "لقد حان الوقت لتجديد تبرعك لـ {username} على Liberapay"
 
 msgid "It's past time to renew your donations on Liberapay"
 msgstr "لقد حان الوقت لتجديد تبرعاتك على Liberapay"
@@ -115,7 +115,7 @@ msgstr[5] "لديك {n} تبرعات جاهزة للتجديد:"
 
 #, python-brace-format
 msgid "If you wish to modify or stop a donation, click on the following link: {link_start}manage my donations{link_end}."
-msgstr "إذا كنت ترغب في تعديل التبرع أو إيقافه ، فانقر على الرابط التالي: {link_start} إدارة تبرعاتي{link_end}."
+msgstr "إذا كنت ترغب في تعديل التبرع أو إيقافه ، فانقر على الرابط التالي: {link_start}إدارة تبرعاتي{link_end}."
 
 msgid "Your email address is temporarily blacklisted"
 msgstr "تم إدراج عنوان بريدك الإلكتروني مؤقتًا في القائمة السوداء"
@@ -143,7 +143,7 @@ msgstr "إدارة عناوين بريدك الإلكتروني"
 
 #, python-brace-format
 msgid "Your Liberapay income is approximately {money_amount} this week"
-msgstr "دخل Liberapay الخاص بك هذا الأسبوع تقريبا هو  {money_amount}"
+msgstr "دخل Liberapay الخاص بك هذا الأسبوع تقريبا هو {money_amount}"
 
 #, python-brace-format
 msgid "Your Liberapay income is {money_amount} this week"
@@ -261,9 +261,6 @@ msgstr "{date} : {money_amount} إلى {recipient}"
 msgid "{date}: {money_amount} split between {recipients}"
 msgstr "{date} : {money_amount} مقسم بين {recipients}"
 
-msgid "Add a payment instrument"
-msgstr "قم بإضافة وسيلة دفع"
-
 #, python-brace-format
 msgid "Invoice from {0} on Liberapay"
 msgstr "فاتورة من {0} على Liberapay"
@@ -290,7 +287,7 @@ msgstr "لقد اكتشفنا أن كلمة المرور الخاصة بك غي�
 
 #, python-brace-format
 msgid "You should {link_start}change your password{link_end} now."
-msgstr "يجب عليك {link_start} تغيير كلمة المرور {link_end} الآن."
+msgstr "يجب عليك {link_start}تغيير كلمة المرور{link_end} الآن."
 
 #, python-brace-format
 msgid "Your payment of {money_amount} has been disputed"
@@ -345,11 +342,11 @@ msgstr "تم استرداد الأموال المتنازع عليها تلقا�
 
 #, python-brace-format
 msgid "If your bank disputed the payment without consulting you, then you should ask them why. Once the problem has been sorted out, you can {link_start}redo the payment{link_end}."
-msgstr "إذا عارض بنكك عملية الدفع دون استشارتك، فعليك أن تسألهم عن السبب. بمجرد حل المشكلة، يمكنك {link_start} إعادة عملية الدفع {link_end}."
+msgstr "إذا عارض بنكك عملية الدفع دون استشارتك، فعليك أن تسألهم عن السبب. بمجرد حل المشكلة، يمكنك {link_start}إعادة عملية الدفع{link_end}."
 
 #, python-brace-format
 msgid "To help your bank figure out what happened, you can send them a copy of {link_start}this document{link_end}."
-msgstr "لمساعدة بنكك في اكتشاف ما حدث، يمكنك إرسال نسخة من {link_start} هذا المستند {link_end}."
+msgstr "لمساعدة بنكك في اكتشاف ما حدث، يمكنك إرسال نسخة من {link_start}هذا المستند{link_end}."
 
 msgid "Your payment has failed"
 msgstr "فشلت عملية دفعك"
@@ -428,7 +425,7 @@ msgstr "لقد بدأنا عملية مباشرة لخصم مبلغ {money_amoun
 
 #, python-brace-format
 msgid "This operation is being carried out based on {link_start}the mandate {mandate_id}{link_end} that you signed on {acceptance_date}, authorizing Liberapay (SEPA creditor {creditor_identifier}) to send instructions to your bank to debit your account and your bank to debit your account in accordance with those instructions."
-msgstr "يتم تنفيذ هذه العملية بناءً على {link_start} التفويض {mandate_id} {link_end} الذي وقعت عليه على {acceptance_date} ، وتفويض Liberapay (دائن SEPA {creditor_identifier}) لإرسال تعليمات إلى البنك الذي تتعامل معه للخصم من حسابك ومصرفك إلى الخصم من حسابك وفقًا لتلك التعليمات."
+msgstr "يتم تنفيذ هذه العملية بناءً على {link_start}التفويض {mandate_id}{link_end} الذي وقعت عليه على {acceptance_date} ، وتفويض Liberapay (دائن SEPA {creditor_identifier}) لإرسال تعليمات إلى البنك الذي تتعامل معه للخصم من حسابك ومصرفك إلى الخصم من حسابك وفقًا لتلك التعليمات."
 
 msgid "If you did not authorize this payment, please let us know. We will tell you whether a refund can be initiated by us or if you have to request it from your bank."
 msgstr "إذا لم تسمح بهذه الدفعة، فيرجى إخبارنا بذلك. سنخبرك ما إذا كان بالإمكان بَدْء استرداد الأموال من قبلنا أو إذا كان عليك طلب ذلك من البنك الذي تتعامل معه."
@@ -553,73 +550,69 @@ msgstr "{date}: دفع يدوي إلى {recipients}"
 msgid "Manage your payment schedule"
 msgstr "إدارة جدول الدفع الخاص بك"
 
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "{0} from {1} has joined Liberapay!"
 msgstr "انضم {0} من {1} إلى Liberapay!"
 
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Your pledge to give {0} every week to {1} will be turned into action now that they have joined Liberapay. Huzzah!"
-msgstr "تعهدك بمنح {0} كل أسبوع لـ {1} سيتحول إلى عمل الآن بعد أن انضموا إلى Liberapay. حوزة!"
+msgstr "تعهدك بمنح {0} كل أسبوع لـ {1} سيتحول إلى فعل الآن بعد أن انضموا إلى Liberapay. مرحى!"
 
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Follow this link to view {0}'s profile:"
-msgstr "اتبع هذا الرابط لعرض ملف تعريف {0}:"
+msgstr "اتبع هذا الرابط لعرض الملف التعريفي لـ {0}:"
 
 #, fuzzy, python-brace-format
 msgid "{user_name} from {platform} has joined Liberapay!"
 msgstr "انضم {user_name} من {platform} إلى Liberapay!"
 
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "On {date} you pledged to donate {money_amount} to {user_name} if they joined Liberapay."
-msgstr "في {date} تعهدت بالتبرع بـ {money_amount} إلى {user_name} إذا انضموا إلى Liberapay."
+msgstr "في {date} تعهدت بالتبرع بـ {money_amount} إلى {user_name} إذا انضم إلى Liberapay."
 
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "We're pleased to inform you that {user_name} joined Liberapay {time_ago}, as {liberapay_username}."
-msgstr "يسعدنا إبلاغك أن {user_name} انضم إلى Liberapay {time_ago} ، مثل {liberapay_username}."
+msgstr "يسعدنا إبلاغك أن {user_name} انضم إلى Liberapay {time_ago} ، تحت اسم {liberapay_username}."
 
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Consequently an automatic payment of {money_amount} has been scheduled for {date}, to turn your pledge into action."
-msgstr "وبناءً على ذلك ، فقد تم تحديد موعد الدفع التلقائي لـ {money_amount} في {date} ، لتحويل تعهدك إلى عمل."
+msgstr "وبناءً على ذلك ، فقد تم تحديد موعد الدفع التلقائي لـ {money_amount} في {date} ، لتحويل تعهدك إلى فعل."
 
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "If you wish to modify or cancel this upcoming payment, click on the following link: {link_start}manage my payment schedule{link_end}."
 msgid_plural "If you wish to modify or cancel these upcoming payments, click on the following link: {link_start}manage my payment schedule{link_end}."
-msgstr[0] "إذا كنت ترغب في تعديل أو إلغاء هذه الدفعة القادمة ، انقر فوق الارتباط التالي: {link_start} إدارة جدول الدفع الخاص بي {link_end}."
-msgstr[1] "إذا كنت ترغب في تعديل أو إلغاء هذه الدفعة القادمة ، انقر فوق الارتباط التالي: {link_start} إدارة جدول الدفع الخاص بي {link_end}."
-msgstr[2] "إذا كنت ترغب في تعديل أو إلغاء هذه الدفعة القادمة ، انقر فوق الارتباط التالي: {link_start} إدارة جدول الدفع الخاص بي {link_end}."
-msgstr[3] "إذا كنت ترغب في تعديل أو إلغاء هذه الدفعة القادمة ، انقر فوق الارتباط التالي: {link_start} إدارة جدول الدفع الخاص بي {link_end}."
-msgstr[4] "إذا كنت ترغب في تعديل أو إلغاء هذه الدفعة القادمة ، انقر فوق الارتباط التالي: {link_start} إدارة جدول الدفع الخاص بي {link_end}."
-msgstr[5] "إذا كنت ترغب في تعديل أو إلغاء هذه الدفعة القادمة ، انقر فوق الارتباط التالي: {link_start} إدارة جدول الدفع الخاص بي {link_end}."
+msgstr[0] "إذا كنت ترغب في تعديل أو إلغاء هذه الدفعة القادمة ، انقر فوق الارتباط التالي: {link_start}إدارة جدول الدفع الخاص بي{link_end}."
+msgstr[1] "إذا كنت ترغب في تعديل أو إلغاء هذه الدفعة القادمة ، انقر فوق الارتباط التالي: {link_start}إدارة جدول الدفع الخاص بي{link_end}."
+msgstr[2] "إذا كنت ترغب في تعديل أو إلغاء الدفعتين القادمتين ، انقر فوق الارتباط التالي: {link_start}إدارة جدول الدفع الخاص بي{link_end}."
+msgstr[3] "إذا كنت ترغب في تعديل أو إلغاء الدفعات القادمة ، انقر فوق الارتباط التالي: {link_start}إدارة جدول الدفع الخاص بي{link_end}."
+msgstr[4] "إذا كنت ترغب في تعديل أو إلغاء الدفعات القادمة ، انقر فوق الارتباط التالي: {link_start}إدارة جدول الدفع الخاص بي{link_end}."
+msgstr[5] "إذا كنت ترغب في تعديل أو إلغاء الدفعات القادمة ، انقر فوق الارتباط التالي: {link_start}إدارة جدول الدفع الخاص بي{link_end}."
 
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "We're pleased to inform you that {user_name} joined Liberapay {time_ago}, as {liberapay_username}, so you can now turn your pledge into a real donation:"
-msgstr "يسعدنا إبلاغك بأن {user_name} انضم إلى Liberapay {time_ago} ، كـ {liberapay_username} ، لذا يمكنك الآن تحويل تعهدك إلى تبرع حقيقي:"
+msgstr "يسعدنا إبلاغك بأن {user_name} انضم إلى Liberapay {time_ago} ، تحت اسم {liberapay_username} ، لذا يمكنك الآن تحويل تعهدك إلى تبرع حقيقي:"
 
 #, python-brace-format
 msgid "Donate to {0}"
 msgstr "تبرّعوا إلى {0}"
 
-#, fuzzy
 msgid "Your Liberapay profile is incomplete"
 msgstr "ملفك الشخصي في Liberapay غير مكتمل"
 
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Your {link_start}public profile page{link_end} is missing a description. Without this information, we may be unable to confirm that your use of our platform is legitimate, and consequently your account may be marked as fraudulent and disabled. An incomplete profile is also less likely to attract donations, so we strongly recommend that you fill yours."
-msgstr "تفتقد صفحة ملفك الشخصي العامة {link_start} {link_end} وصفًا. بدون هذه المعلومات ، قد لا نتمكن من تأكيد أن استخدامك لمنصتنا مشروع ، وبالتالي قد يتم تمييز حسابك على أنه احتيالي ومعطل. من غير المحتمل أيضًا أن يجذب الملف الشخصي غير المكتمل التبرعات ، لذلك نوصي بشدة بملء ملفك الشخصي."
+msgstr "تفتقد صفحة ملفك الشخصي العامة {link_start}{link_end} وصفًا. بدون هذه المعلومات ، قد لا نتمكن من تأكيد أن استخدامك لمنصتنا مشروع ، وبالتالي قد يتم تمييز حسابك على أنه احتيالي ومعطل. من غير المحتمل أيضًا أن يجذب الملف الشخصي غير المكتمل التبرعات ، لذلك نوصي بشدة بملء ملفك الشخصي."
 
-#, fuzzy
 msgid "Edit your profile"
 msgstr "عدل ملفك الشخصي"
 
-#, fuzzy
 msgid "Liberapay donation renewal: payment aborted"
 msgstr "تجديد تبرع Liberapay: تم إلغاء الدفع"
 
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "The donation renewal payment of {money_amount} to {recipient} scheduled for {date} has been aborted because the recipient is unable to receive it."
-msgstr "تم إحباط دفعة تجديد التبرع بـ {money_amount} إلى {recipient} المجدولة لـ {date} لأن المستلم غير قادر على استلامها."
+msgstr "تم إيقاف دفعة تجديد التبرع بـ {money_amount} إلى {recipient} المجدولة لـ {date} لأن المستلم غير قادر على استلامها."
 
-#, fuzzy
 msgid "The following donation renewal payments have been aborted because the recipients are unable to receive them:"
 msgstr "تم إحباط مدفوعات تجديد التبرعات التالية لأن المستلمين لم يتمكنوا من استلامها:"
 
@@ -653,7 +646,7 @@ msgstr "يمكنك تسهيل دعم رعاتك لك من خلال Liberapay"
 
 #, fuzzy, python-brace-format
 msgid "You've connected a PayPal account but no Stripe account. We strongly recommend that you also connect a Stripe account, because it's {link_open}better than PayPal{link_close} in several ways, for both you and your donors."
-msgstr "لقد قمت بتوصيل حساب PayPal ولكن ليس لديك حساب Stripe. نوصي بشدة أن تقوم أيضًا بتوصيل حساب Stripe ، لأنه {link_open} أفضل من PayPal {link_close} بعدة طرق ، لك وللمانحين."
+msgstr "لقد قمت بتوصيل حساب PayPal ولكن ليس لديك حساب Stripe. نوصي بشدة أن تقوم أيضًا بتوصيل حساب Stripe ، لأنه {link_open}أفضل من PayPal{link_close} بعدة طرق ، لك وللمانحين."
 
 #, fuzzy, python-brace-format
 msgid "Connect {platform_name} account"
@@ -724,11 +717,11 @@ msgstr[5] "هذه الرسالة تذكير بأنه سيتم خصم إجمال�
 
 #, fuzzy, python-brace-format
 msgid "If you wish to modify your donations, click on the following link: {link_start}manage my donations{link_end}."
-msgstr "إذا كنت ترغب في تعديل التبرع أو إيقافه ، فانقر على الرابط التالي: {link_start} إدارة تبرعاتي{link_end}."
+msgstr "إذا كنت ترغب في تعديل التبرع أو إيقافه ، فانقر على الرابط التالي: {link_start}إدارة تبرعاتي{link_end}."
 
 #, fuzzy, python-brace-format
 msgid "A receipt will be available once the payment has been successfully processed. You can see all your payments and receipts in {link_start}your account's ledger{link_end}."
-msgstr "سيتوفر إيصال بمجرد إتمام الدفع بنجاح. يمكنك رؤية جميع مدفوعاتك وإيصالاتك في {link_start} دفتر الأستاذ الخاص بحسابك {link_end}."
+msgstr "سيتوفر إيصال بمجرد إتمام الدفع بنجاح. يمكنك رؤية جميع مدفوعاتك وإيصالاتك في {link_start}دفتر الأستاذ الخاص بحسابك{link_end}."
 
 msgid "Email address verification - Liberapay"
 msgstr "التحقق من عنوان البريد الإلكتروني - Liberapay"
@@ -763,11 +756,11 @@ msgstr "يبدو أنك عثرت على خطأ! نأسف للإزعاج ، سن�
 
 #, fuzzy, python-brace-format
 msgid "The requested page could not be found. Please {link_open}contact us{link_close} if you need assistance."
-msgstr "الصفحة المطلوبة لا يمكن العثور عليه. يرجى {link_open} الاتصال بنا {link_close} إذا كنت بحاجة إلى مساعدة."
+msgstr "الصفحة المطلوبة لا يمكن العثور عليه. يرجى {link_open}الاتصال بنا{link_close} إذا كنت بحاجة إلى مساعدة."
 
 #, fuzzy, python-brace-format
 msgid "Your request has been rejected by our software. Please {link_open}contact us{link_close} if you need assistance."
-msgstr "تم رفض طلبك من قبل برنامجنا. يرجى {link_open} الاتصال بنا {link_close} إذا كنت بحاجة إلى مساعدة."
+msgstr "تم رفض طلبك من قبل برنامجنا. يرجى {link_open}الاتصال بنا{link_close} إذا كنت بحاجة إلى مساعدة."
 
 #, fuzzy
 msgid "Error message:"
@@ -899,18 +892,6 @@ msgstr "كبير"
 msgid "Maximum"
 msgstr "أقصى"
 
-#, fuzzy, python-brace-format
-msgid "You've consumed your quota of requests, you can try again {in_N_minutes}."
-msgstr "لقد استهلكت حصتك من الطلبات ، يمكنك المحاولة مرة أخرى {in_N_minutes}."
-
-#, fuzzy
-msgid "You're making requests too fast, please try again later."
-msgstr "أنت تقدم الطلبات بسرعة كبيرة ، يرجى المحاولة مرة أخرى لاحقًا."
-
-#, fuzzy, python-brace-format
-msgid "{0} returned an error, please try again later."
-msgstr "أرجع {0} خطأ ، يرجى المحاولة مرة أخرى في وقت لاحق."
-
 msgid "example@mastodon.social"
 msgstr "example@mastodon.social"
 
@@ -947,6 +928,10 @@ msgstr "اسم المستخدم '{0}' طويل جداً."
 #, python-brace-format
 msgid "The username '{0}' contains invalid characters."
 msgstr "اسم المستخدم '{0}' يحتوي على أحرف غير صالحة."
+
+#, fuzzy, python-brace-format
+msgid "The username '{0}' is purely numerical. This isn't allowed."
+msgstr "اسم المستخدم ' {0} ' رقمي بحت. هذا غير مسموح به."
 
 #, python-brace-format
 msgid "The username '{0}' is restricted."
@@ -1103,6 +1088,18 @@ msgid "{username} doesn't accept donations in {rejected_currency}."
 msgstr "{username} لا يقبل التبرعات في {rejected_currency}."
 
 #, fuzzy, python-brace-format
+msgid "{username} no longer accepts secret donations."
+msgstr "لم يعد {username} يقبل التبرعات السرية."
+
+#, fuzzy, python-brace-format
+msgid "{username} no longer accepts private donations."
+msgstr "لم يعد {username} يقبل التبرعات الخاصة."
+
+#, fuzzy, python-brace-format
+msgid "{username} no longer accepts public donations."
+msgstr "لم يعد {username} يقبل التبرعات العامة."
+
+#, fuzzy, python-brace-format
 msgid "The amount {money_amount} isn't in the expected currency ({expected_currency})."
 msgstr "المبلغ {money_amount} ليس بالعملة المتوقعة ({expected_currency})."
 
@@ -1141,6 +1138,14 @@ msgstr "لا يمكن معالجة هذه الدفعة لأن حساب المس�
 #, fuzzy, python-brace-format
 msgid "Your donation to {recipient} cannot be processed right now because the account of the beneficiary isn't ready to receive money."
 msgstr "لا يمكن معالجة تبرعك لـ {recipient} الآن لأن حساب المستفيد ليس جاهزًا لتلقي الأموال."
+
+#, fuzzy, python-brace-format
+msgid "{username} does not accept donations from {country}."
+msgstr "{username} لا يقبل التبرعات من {country}."
+
+#, fuzzy
+msgid "The processing of your payment has failed because our software was unable to determine which country the money would come from. This isn't supposed to happen."
+msgstr "لقد فشلت معالجة دفعتك لأن برنامجنا لم يتمكن من تحديد البلد الذي ستأتي منه الأموال. هذا ليس من المفترض أن يحدث."
 
 #, fuzzy
 msgid "You've already changed your main currency recently, please retry later (e.g. in a week) or contact support@liberapay.com."
@@ -1204,14 +1209,6 @@ msgstr "غمازة"
 #, fuzzy, python-brace-format
 msgid "The {platform} user you're looking for hasn't joined Liberapay, and it's not possible to create a stub profile for them."
 msgstr "مستخدم {platform} الذي تبحث عنه لم ينضم إلى Liberapay ، ولا يمكن إنشاء ملف تعريف كعب له."
-
-#, fuzzy, python-brace-format
-msgid "'{0}' doesn't seem to be a valid user id on {platform}."
-msgstr "لا يبدو أن '{0}' معرف مستخدم صالح على {platform}."
-
-#, fuzzy, python-brace-format
-msgid "There doesn't seem to be a user named {0} on {1}."
-msgstr "يبدو أنه لا يوجد مستخدم باسم {0} على {1}."
 
 #, fuzzy, python-brace-format
 msgid "Liberapay donation to {username} (team {team_name})"
@@ -1294,12 +1291,36 @@ msgstr "جارٍ التحقق من ملفات تعريف الارتباط …"
 msgid "You are not authorized to access this page."
 msgstr "أنت غير مفوض لدخول هذه الصفحة."
 
+msgid "The changes have been saved."
+msgstr "تم حفظ التعديلات."
+
 #, fuzzy
 msgid "Processing your request failed because our server was unable to communicate with a service located on another machine. This is a temporary issue, please try again later."
 msgstr "فشلت معالجة طلبك لأن خادمنا لم يتمكن من الاتصال بخدمة موجودة على جهاز آخر. هذه مشكلة مؤقتة ، يرجى المحاولة مرة أخرى لاحقًا."
 
+#, fuzzy, python-brace-format
+msgid "'{0}' doesn't seem to be a valid user id on {platform}."
+msgstr "لا يبدو أن '{0}' معرف مستخدم صالح على {platform}."
+
+#, fuzzy, python-brace-format
+msgid "{0} returned an error, please try again later."
+msgstr "أرجع {0} خطأ ، يرجى المحاولة مرة أخرى في وقت لاحق."
+
+#, fuzzy, python-brace-format
+msgid "You've consumed your quota of requests, you can try again {in_N_minutes}."
+msgstr "لقد استهلكت حصتك من الطلبات ، يمكنك المحاولة مرة أخرى {in_N_minutes}."
+
+#, fuzzy
+msgid "You're making requests too fast, please try again later."
+msgstr "أنت تقدم الطلبات بسرعة كبيرة ، يرجى المحاولة مرة أخرى لاحقًا."
+
+#, fuzzy, python-brace-format
+msgid "There doesn't seem to be a user named {0} on {1}."
+msgstr "يبدو أنه لا يوجد مستخدم باسم {0} على {1}."
+
+#, fuzzy
 msgid "This profile is marked as spam or fraud."
-msgstr ""
+msgstr "تم تمييز هذا الملف الشخصي على أنه بريد عشوائي أو احتيال."
 
 #, fuzzy
 msgid "Cancel"
@@ -1398,7 +1419,7 @@ msgstr "إعادة توجيه…"
 
 #, fuzzy, python-brace-format
 msgid "If you're using an exotic browser and nothing is happening, then {link_start}click on this link to proceed{link_end}."
-msgstr "إذا كنت تستخدم متصفحًا غريبًا ولم يحدث شيء ، فاضغط {link_start} على هذا الرابط للمتابعة {link_end}."
+msgstr "إذا كنت تستخدم متصفحًا غريبًا ولم يحدث شيء ، فاضغط {link_start}على هذا الرابط للمتابعة{link_end}."
 
 #, fuzzy
 msgid "Retry"
@@ -1550,6 +1571,9 @@ msgstr "الهوية"
 msgid "Account"
 msgstr "حساب"
 
+msgid "Close Account"
+msgstr "إغلاق الحساب"
+
 msgid "Emails"
 msgstr "عناوين البريد الإلكتروني"
 
@@ -1567,6 +1591,10 @@ msgstr "خروج"
 
 msgid "Print"
 msgstr "طباعة"
+
+#, fuzzy
+msgid "Liberapay logo"
+msgstr "شعار ليبراباي"
 
 #, fuzzy, python-brace-format
 msgid "{0} has {n} patron."
@@ -1610,9 +1638,6 @@ msgstr "تبرع"
 msgid "Switch to a different account"
 msgstr "قم بالتبديل إلى حساب مختلف"
 
-msgid "The changes have been saved."
-msgstr "تم حفظ التعديلات."
-
 #, fuzzy
 msgid "We've sent you a single-use login link. Check your inbox, open the provided link in a new tab, then come back to this page and click on the button below to carry on with what you wanted to do."
 msgstr "لقد أرسلنا لك رابط تسجيل دخول أحادي الاستخدام. تحقق من صندوق الوارد الخاص بك ، وافتح الرابط المقدم في علامة تبويب جديدة ، ثم عد إلى هذه الصفحة وانقر على الزر أدناه لمتابعة ما تريد القيام به."
@@ -1652,8 +1677,8 @@ msgid "If you need to change the password of your Liberapay account, you can do 
 msgstr "إذا كنت بحاجة إلى تغيير كلمة مرور حساب Liberapay الخاص بك ، فيمكنك القيام بذلك أدناه. لكي تكون آمنًا ، يجب إنشاء كلمة مرور حسابك بشكل عشوائي وعدم استخدامها في أي مكان آخر. نوصي بشدة باستخدام مدير كلمات المرور."
 
 #, fuzzy
-msgid "Setting a password allows you to log in directly, instead of waiting for a single-use link sent via email. However, we recommend keeping your account passwordless if you don't use a password manager, because in order to be secure the password of your account should be randomly generated and not used anywhere else."
-msgstr "يتيح لك تعيين كلمة مرور تسجيل الدخول مباشرةً ، بدلاً من انتظار ارتباط يستخدم مرة واحدة يتم إرساله عبر البريد الإلكتروني. ومع ذلك ، نوصي بالحفاظ على حسابك بدون كلمة مرور إذا كنت لا تستخدم مدير كلمات المرور ، لأنه لكي تكون آمنًا ، يجب إنشاء كلمة مرور حسابك بشكل عشوائي وعدم استخدامها في أي مكان آخر."
+msgid "Setting a password allows you to log in directly, instead of waiting for a single-use link sent via email. However, we only recommend setting a password if you use a password manager, because in order to be secure the password should be randomly generated and not used anywhere else."
+msgstr "يتيح لك تعيين كلمة مرور تسجيل الدخول مباشرةً ، بدلاً من انتظار ارتباط يستخدم مرة واحدة يتم إرساله عبر البريد الإلكتروني. ومع ذلك ، نوصي فقط بتعيين كلمة مرور إذا كنت تستخدم مدير كلمات المرور ، لأنه لكي تكون آمنًا ، يجب إنشاء كلمة المرور بشكل عشوائي وعدم استخدامها في أي مكان آخر."
 
 msgid "Current password"
 msgstr "كلمة السر الحالية"
@@ -1828,11 +1853,13 @@ msgstr "الشعارات"
 msgid "Overview"
 msgstr "لمحة عامة"
 
-msgid "Organizations"
-msgstr "المنظمات"
+#, fuzzy
+msgid "Recipients"
+msgstr "المستلمون"
 
-msgid "Individuals"
-msgstr "الأفراد"
+#, fuzzy
+msgid "Hopefuls"
+msgstr "المتفائلون"
 
 msgid "Unclaimed Donations"
 msgstr "التبرعات التي لم يطالب بها"
@@ -1848,6 +1875,10 @@ msgstr "الإسم"
 
 msgid "Currencies"
 msgstr "العملات"
+
+#, fuzzy
+msgid "Countries"
+msgstr "بلدان"
 
 #, fuzzy
 msgid "Goal"
@@ -1894,16 +1925,20 @@ msgid "{username} hasn't configured any payment method yet, so your donation can
 msgstr "لم يقم {username} بتهيئة أي طريقة دفع حتى الآن ، لذلك لا يمكن معالجة تبرعك في الوقت الحالي. سنخطرك عندما يصبح الدفع ممكنًا."
 
 #, fuzzy, python-brace-format
-msgid "Donations to {username} can be paid using a credit or debit card ({list_of_card_brands}), or by direct debit of a Euro bank account (for donations in Euro only)."
-msgstr "يمكن دفع التبرعات إلى {username} باستخدام بطاقة الائتمان أو الخصم ({list_of_card_brands}) ، أو عن طريق الخصم المباشر من حساب مصرفي باليورو (للتبرعات باليورو فقط)."
+msgid "Donations to {username} can be paid using a credit or debit card ({list_of_card_brands}), or by direct debit of a euro bank account (for donations in euro only)."
+msgstr "يمكن دفع التبرعات إلى {username} باستخدام بطاقة الائتمان أو الخصم ( {list_of_card_brands} )، أو عن طريق الخصم المباشر من حساب مصرفي باليورو (للتبرعات باليورو فقط)."
 
 #, fuzzy, python-brace-format
 msgid "Donations to {username} are processed through PayPal."
 msgstr "تتم معالجة التبرعات إلى {username} من خلال PayPal."
 
 #, fuzzy, python-brace-format
-msgid "Donations to {username} can be paid using: a credit or debit card ({list_of_card_brands}), a Euro bank account (SEPA Direct Debit), or a PayPal account."
-msgstr "يمكن دفع التبرعات إلى {username} باستخدام: بطاقة ائتمان أو خصم ({list_of_card_brands}) ، أو حساب مصرفي باليورو (SEPA Direct Debit) ، أو حساب PayPal."
+msgid "Donations to {username} can be paid using: a credit or debit card ({list_of_card_brands}), a euro bank account (SEPA Direct Debit), or a PayPal account."
+msgstr "يمكن دفع التبرعات إلى {username} باستخدام: بطاقة الائتمان أو الخصم ( {list_of_card_brands} )، أو حساب مصرفي باليورو (SEPA Direct Debit)، أو حساب PayPal."
+
+#, fuzzy
+msgid "Payment Card"
+msgstr "بطاقة الدفع"
 
 msgid "Country"
 msgstr "البلد"
@@ -1960,6 +1995,10 @@ msgid "(fork)"
 msgstr "(شوكة)"
 
 #, fuzzy
+msgid "Stars"
+msgstr "النجوم"
+
+#, fuzzy
 msgid "Updated this week"
 msgstr "تم التحديث هذا الأسبوع"
 
@@ -1997,18 +2036,6 @@ msgstr "بإنشائكم لحسابٍ على ليبيراباي فإنكم تو�
 msgid "Your nominal take from the {0} team is limited to {1} this week. {2}Why?{3}"
 msgstr "أخذك الاسمي من فريق {0} يقتصر على {1} هذا الأسبوع. {2} لماذا؟ {3}"
 
-#, fuzzy
-msgid "Last Payday"
-msgstr "آخر يوم دفع"
-
-#, fuzzy
-msgid "n/a"
-msgstr "n/a"
-
-#, fuzzy
-msgid "Next Payday"
-msgstr "يوم الدفع التالي"
-
 msgid "Member"
 msgstr "عضو"
 
@@ -2019,6 +2046,22 @@ msgstr "خذ الاسمي"
 #, fuzzy
 msgid "Actual Take"
 msgstr "خذ الفعلي"
+
+#, fuzzy
+msgid "On Liberapay, donations are paid in advance. This column shows how much money each member has received in advance through this team. An advance increases every time a member receives a new payment from a donor through the team, and decreases every week."
+msgstr "في Liberapay، يتم دفع التبرعات مقدمًا. يوضح هذا العمود مقدار الأموال التي تلقاها كل عضو مقدمًا من خلال هذا الفريق. تزداد السلفة في كل مرة يتلقى فيها أحد الأعضاء دفعة جديدة من أحد المتبرعين من خلال الفريق، وتنخفض كل أسبوع."
+
+#, fuzzy
+msgid "Advance"
+msgstr "يتقدم"
+
+#, fuzzy, python-brace-format
+msgid "Last week: {0}"
+msgstr "الاسبوع الماضي: {0}"
+
+#, fuzzy
+msgid "no take"
+msgstr "لا تأخذ"
 
 #, fuzzy
 msgid "auto"
@@ -2037,19 +2080,16 @@ msgid "Leftover"
 msgstr "بقايا"
 
 #, fuzzy, python-brace-format
+msgid "It looks like you are in {country}. {username} does not accept donations coming from that country."
+msgstr "يبدو أنك في {country}. {username} لا يقبل التبرعات القادمة من هذا البلد."
+
+#, fuzzy, python-brace-format
 msgid "Your current donation to {name} is in {currency}, but they now only accept donations in {accepted_currency}. You can convert your donation to that currency, or discontinue it."
 msgstr "تبرعك الحالي لـ {name} موجود في {currency} ، لكنهم الآن يقبلون التبرعات في {accepted_currency} فقط. يمكنك تحويل تبرعك إلى تلك العملة ، أو إيقافه."
 
 #, fuzzy, python-brace-format
 msgid "Your current donation to {name} is in {currency}, but they no longer accept that currency. The suggested new currency is the {accepted_currency}, but you can choose another one."
 msgstr "تبرعك الحالي لـ {name} في {currency} ، لكنهم لم يعدوا يقبلون هذه العملة. العملة الجديدة المقترحة هي {accepted_currency} ، لكن يمكنك اختيار عملة أخرى."
-
-msgid "Modify"
-msgstr "تعديل"
-
-#, fuzzy
-msgid "Discontinue"
-msgstr "توقف"
 
 #, fuzzy, python-brace-format
 msgid "You are currently donating {money_amount} per week to {recipient_name}. The form below enables you to modify or stop your donation."
@@ -2087,8 +2127,8 @@ msgstr[4] "عملة {currency_name} ليست عملتك المفضلة؟ {userna
 msgstr[5] "عملة {currency_name} ليست عملتك المفضلة؟ {username} يقبل {n} عملات اخرى:"
 
 #, fuzzy
-msgid "not supported by PayPal"
-msgstr "لا يدعمها PayPal"
+msgid "supported by PayPal"
+msgstr "بدعم من باي بال"
 
 #, fuzzy
 msgid "Switch"
@@ -2129,6 +2169,14 @@ msgstr "التجديد اليدوي"
 #, fuzzy
 msgid "A reminder to renew your donation will be sent to you via email."
 msgstr "سيتم إرسال تذكير لتجديد تبرعك إليك عبر البريد الإلكتروني."
+
+#, fuzzy
+msgid "Discontinue the donation"
+msgstr "أوقف التبرع"
+
+#, fuzzy
+msgid "Cancel the pledge"
+msgstr "إلغاء التعهد"
 
 #, fuzzy, python-brace-format
 msgid "{username} has chosen not to see who their patrons are, so your donation will be secret."
@@ -2175,14 +2223,6 @@ msgid "{username} hasn't yet specified whether they want to see who their patron
 msgstr "لم يحدد {username} بعد ما إذا كانوا يريدون معرفة رعاتهم ، لذلك سيكون تبرعك سرًا."
 
 #, fuzzy
-msgid "Discontinue the donation"
-msgstr "أوقف التبرع"
-
-#, fuzzy
-msgid "Cancel the pledge"
-msgstr "إلغاء التعهد"
-
-#, fuzzy
 msgid "People who contribute to the commons need you to support their work. Building free software, spreading free knowledge, these things take time and cost money, not only to do the initial work, but also to maintain it over time."
 msgstr "الناس الذين يساهمون في المشاعات يحتاجون منك لدعم عملهم. إن بناء البرمجيات الحرة ونشر المعرفة الحرة ، هذه الأشياء تستغرق وقتًا وتكلف المال ، ليس فقط للقيام بالعمل الأولي ، ولكن أيضًا للحفاظ عليه بمرور الوقت."
 
@@ -2193,6 +2233,50 @@ msgstr "تم تصميم نظام التبرعات المتكررة في Liberapa
 #, fuzzy
 msgid "You are in sandbox mode, do not input any real payment or personal data!"
 msgstr "أنت في وضع الحماية ، لا تدخل أي مدفوعات حقيقية أو بيانات شخصية!"
+
+#, fuzzy
+msgid "The credentials have been generated."
+msgstr "لقد تم إنشاء بيانات الاعتماد."
+
+#, fuzzy
+msgid "The credentials have been revoked."
+msgstr "لقد تم إلغاء بيانات الاعتماد."
+
+#, fuzzy
+msgid "Constant session"
+msgstr "جلسة مستمرة"
+
+#, fuzzy
+msgid "You can automate downloading private information from your account by including the following HTTP header in your requests:"
+msgstr "بإمكانك أتمتة تنزيل المعلومات الخاصة من حسابك عن طريق تضمين رأس HTTP التالي في طلباتك:"
+
+#, fuzzy
+msgid "For example, you can download the list of your currently active patrons by executing the following command:"
+msgstr "على سبيل المثال، يمكنك تنزيل قائمة المستفيدين النشطين حاليًا عن طريق تنفيذ الأمر التالي:"
+
+#, fuzzy
+msgid "To minimize the risks to you, these credentials can only be used to fetch data, not to modify anything in your account, and they will automatically expire if unused for a year."
+msgstr "لتقليل المخاطر التي قد تتعرض لها، لا يمكن استخدام هذه بيانات الاعتماد إلا لجلب البيانات، وليس لتعديل أي شيء في حسابك، وسوف تنتهي صلاحيتها تلقائيًا إذا لم يتم استخدامها لمدة عام."
+
+#, fuzzy
+msgid "Revoke credentials"
+msgstr "إلغاء بيانات الاعتماد"
+
+#, fuzzy
+msgid "The credentials have expired."
+msgstr "لقد انتهت صلاحية بيانات الاعتماد."
+
+#, fuzzy
+msgid "Regenerate credentials"
+msgstr "تجديد بيانات الاعتماد"
+
+#, fuzzy
+msgid "To simplify automating downloads of private information from your account, you can generate long-lived read-only credentials."
+msgstr "لتبسيط أتمتة تنزيلات المعلومات الخاصة من حسابك، يمكنك إنشاء بيانات اعتماد طويلة الأمد للقراءة فقط."
+
+#, fuzzy
+msgid "Generate credentials"
+msgstr "إنشاء بيانات الاعتماد"
 
 #, fuzzy
 msgid "Dashboard"
@@ -2274,6 +2358,14 @@ msgid "One-time donations aren't properly supported yet, but you can discontinue
 msgstr "لم يتم دعم التبرعات لمرة واحدة بشكل صحيح حتى الآن ، ولكن يمكنك إيقاف تبرعك فورًا بعد الدفعة الأولى."
 
 #, fuzzy
+msgid "Will I get a receipt?"
+msgstr "هل سأحصل على إيصال؟"
+
+#, fuzzy
+msgid "A receipt is automatically available for every payment."
+msgstr "يتوفر إيصال تلقائيًا لكل دفعة."
+
+#, fuzzy
 msgid "What is this website? I don't recognize it."
 msgstr "ما هو هذا الموقع؟ أنا لا أتعرف عليه."
 
@@ -2300,6 +2392,10 @@ msgstr "التوجيه المنقح لخدمات الدفع"
 #, fuzzy, python-brace-format
 msgid "Your new avatar URL is: {0}"
 msgstr "عنوان URL الخاص بالصورة الرمزية الجديد هو: {0}"
+
+#, fuzzy
+msgid "Your profile no longer has an avatar."
+msgstr "لم يعد ملفك الشخصي يحتوي على صورة رمزية."
 
 #, fuzzy, python-brace-format
 msgid "You have selected {platform} as your avatar source but you haven't connected any {platform} account."
@@ -2337,6 +2433,18 @@ msgid "Explore communities"
 msgstr "استكشاف المجتمعات"
 
 #, fuzzy
+msgid "You have to check at least one box."
+msgstr "يجب عليك تحديد مربع واحد على الأقل."
+
+#, fuzzy
+msgid "Which countries should your donors be allowed to send you money from?"
+msgstr "ما هي الدول التي يجب أن يُسمح للمانحين بإرسال الأموال إليك منها؟"
+
+#, fuzzy
+msgid "We recommend limiting the origins of donations only if you are required to by law."
+msgstr "نوصي بالحد من مصادر التبرعات فقط إذا كان ذلك مطلوبًا بموجب القانون."
+
+#, fuzzy
 msgid "The submitted settings are incoherent."
 msgstr "الإعدادات المقدمة غير متماسكة."
 
@@ -2370,7 +2478,7 @@ msgstr "يمكن أن يؤدي قبول العملات الأجنبية إلى �
 
 #, fuzzy, python-brace-format
 msgid "Stripe automatically converts funds into your main currency, but by default PayPal holds payments in foreign currencies until you tell it what to do. If you have a Business PayPal account, you can choose to automatically convert all incoming payments in foreign currencies to your main currency. This option is currently located in the “{link_open}Preferences for receiving payments{link_close}” page."
-msgstr "يقوم Stripe تلقائيًا بتحويل الأموال إلى عملتك الرئيسية ، ولكن بشكل افتراضي يحتفظ PayPal بالمدفوعات بالعملات الأجنبية حتى تخبره بما يجب فعله. إذا كان لديك حساب Business PayPal ، يمكنك اختيار التحويل التلقائي لجميع المدفوعات الواردة بالعملات الأجنبية إلى عملتك الرئيسية. يوجد هذا الخيار حاليًا في صفحة \"تفضيلات {link_open} لتلقي المدفوعات {link_close}\"."
+msgstr "يقوم Stripe تلقائيًا بتحويل الأموال إلى عملتك الرئيسية ، ولكن بشكل افتراضي يحتفظ PayPal بالمدفوعات بالعملات الأجنبية حتى تخبره بما يجب فعله. إذا كان لديك حساب Business PayPal ، يمكنك اختيار التحويل التلقائي لجميع المدفوعات الواردة بالعملات الأجنبية إلى عملتك الرئيسية. يوجد هذا الخيار حاليًا في صفحة \"تفضيلات {link_open}لتلقي المدفوعات{link_close}\"."
 
 #, fuzzy
 msgid "Connecting the accounts you own on other platforms makes your Liberapay profile easier to find, and helps to demonstrate that you are who you claim to be."
@@ -2389,10 +2497,6 @@ msgstr[5] "لديك حاليًا {n} حساب متصل:"
 #, fuzzy
 msgid "Connect an account"
 msgstr "ربط حساب"
-
-#, fuzzy
-msgid "Our YouTube integration has been disabled by Google. We're working on re-implementing this feature in a different way."
-msgstr "تم تعطيل تكامل YouTube الخاص بنا بواسطة Google. نحن نعمل على إعادة تطبيق هذه الميزة بطريقة مختلفة."
 
 #, fuzzy
 msgid "I'm grateful for gifts, but don't have a specific funding goal."
@@ -2491,8 +2595,46 @@ msgid "We can also import lists of repositories for your teams:"
 msgstr "يمكننا أيضًا استيراد قوائم المستودعات لفرقك:"
 
 #, fuzzy, python-brace-format
-msgid "The submitted summary is too long ({0} > {1})."
-msgstr "الملخص المقدم طويل جدًا ({0}> {1})."
+msgid "<unused singular (hash=82d03d589b58d2a8c99d043ba5f91b84)>"
+msgid_plural "The summary can't be more than {n} characters long."
+msgstr[0] "الملخص لا يمكن أن يكون أكثر من 0 شخصيات طويلة."
+msgstr[1] ""
+msgstr[2] "الملخص لا يمكن أن يكون أكثر من شخصين طويلين."
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] "الملخص لا يمكن أن يكون أكثر من {n} شخصيات طويلة."
+
+#, fuzzy, python-brace-format
+msgid "<unused singular (hash=e77fbb49c028c11bb9d859698c4a5363)>"
+msgid_plural "The full description must be at least {n} characters long."
+msgstr[0] "الوصف الكامل يجب أن يكون على الأقل 0 شخصيات طويلة."
+msgstr[1] ""
+msgstr[2] "يجب أن يكون الوصف الكامل شخصين على الأقل لفترة طويلة."
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#, fuzzy, python-brace-format
+msgid "<unused singular (hash=df724b624e486f3c07109838b9a4b3f0)>"
+msgid_plural "The full description can't be more than {n} characters long."
+msgstr[0] "الوصف الكامل لا يمكن أن يكون أكثر من 0 شخصيات طويلة."
+msgstr[1] ""
+msgstr[2] "الوصف الكامل لا يمكن أن يكون أكثر من شخصين طويلين."
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] "الوصف الكامل لا يمكن أن يكون أكثر من {n} شخصيات طويلة."
+
+#, fuzzy
+msgid "The full description can't be identical to the summary."
+msgstr "الوصف الكامل لا يمكن أن يكون مطابقاً للملخص."
+
+#, fuzzy
+msgid "The summary can't be only your name."
+msgstr "الملخص لا يمكن أن يكون اسمك فقط."
+
+#, fuzzy
+msgid "The description can't be only your name."
+msgstr "الوصف لا يمكن أن يكون اسمك فقط."
 
 #, fuzzy
 msgid "This is a preview."
@@ -2505,6 +2647,10 @@ msgstr "مقتطفات سيتم استخدامها في وسائل التواص�
 #, fuzzy
 msgid "Preview of the short description"
 msgstr "معاينة الوصف المختصر"
+
+#, fuzzy
+msgid "Including your username in the short description is redundant. The short description is always displayed immediately below the username."
+msgstr "يعد تضمين اسم المستخدم الخاص بك في الوصف المختصر أمرًا زائدًا عن الحاجة. يتم عرض الوصف المختصر دائمًا أسفل اسم المستخدم مباشرةً."
 
 #, fuzzy
 msgid "Publish"
@@ -2751,6 +2897,9 @@ msgstr "نظرًا لأنك اخترت تقديم تبرع عام ، نوصيك 
 msgid "You have enabled automatic renewals for some or all of your donations, but you don't have any valid payment instrument that would allow us to initiate the automatic payments when the time comes."
 msgstr "لقد قمت بتمكين التجديدات التلقائية لبعض أو كل تبرعاتك ، ولكن ليس لديك أي وسيلة دفع صالحة تسمح لنا ببدء المدفوعات التلقائية عندما يحين الوقت."
 
+msgid "Add a payment instrument"
+msgstr "قم بإضافة وسيلة دفع"
+
 #, fuzzy
 msgid "Donations"
 msgstr "التبرعات"
@@ -2772,6 +2921,9 @@ msgstr "{money_amount} {small} / شهر {end_small}"
 #, fuzzy, python-brace-format
 msgid "{money_amount}{small}/year{end_small}"
 msgstr "{money_amount} {small} / سنة {end_small}"
+
+msgid "Modify"
+msgstr "تعديل"
 
 #, fuzzy, python-brace-format
 msgid "Started {timespan_ago}."
@@ -2807,6 +2959,10 @@ msgstr "الدفعة التالية المستحقة {in_N_weeks_months_or_years
 #, fuzzy
 msgid "Renew now"
 msgstr "جدّد الآن"
+
+#, fuzzy, python-brace-format
+msgid "The recipient no longer accepts payments in {currency}."
+msgstr "لم يعد المستلم يقبل الدفعات بعملة {currency}."
 
 #, fuzzy
 msgid "Pending payment completion."
@@ -2905,10 +3061,6 @@ msgid "Please choose a payment method:"
 msgstr "الرجاء إختيار طريقة للدفع:"
 
 #, fuzzy
-msgid "Card"
-msgstr "البطاقة"
-
-#, fuzzy
 msgid "Currently unavailable"
 msgstr "غير متاح حاليا"
 
@@ -2916,12 +3068,17 @@ msgstr "غير متاح حاليا"
 msgid "Pay by card"
 msgstr "الدفع بالبطاقة"
 
-msgid "Euro donations only"
-msgstr "التبرعات باليورو فقط"
+#, fuzzy
+msgid "Only for donations to SEPA countries"
+msgstr "مخصص للتبرعات لدول منطقة اليورو فقط"
 
 #, fuzzy
-msgid "Euro bank accounts only"
-msgstr "الحسابات المصرفية باليورو فقط"
+msgid "Only for donations in euros"
+msgstr "للتبرعات باليورو فقط"
+
+#, fuzzy
+msgid "Only euro bank accounts"
+msgstr "حسابات بنكية باليورو فقط"
 
 #, fuzzy
 msgid "Pay by direct debit"
@@ -2964,8 +3121,12 @@ msgid "Failure"
 msgstr "بالفشل"
 
 #, fuzzy, python-brace-format
-msgid "The payment processor {name} returned an error: “{error_message}”."
-msgstr "أرجع معالج الدفع {name} خطأ: \"{error_message}\"."
+msgid "PayPal status code: {0}"
+msgstr "رمز حالة PayPal: {0}"
+
+#, fuzzy, python-brace-format
+msgid "error message: {0}"
+msgstr "رسالة الخطأ: {0}"
 
 #, fuzzy
 msgid "The payment has been initiated."
@@ -3009,6 +3170,10 @@ msgstr "يكشف PayPal عن اسمك وعنوان بريدك الإلكترون
 msgid "Initiate the payment"
 msgstr "ابدأ الدفع"
 
+#, fuzzy, python-brace-format
+msgid "The payment processor {name} returned an error: “{error_message}”."
+msgstr "أرجع معالج الدفع {name} خطأ: \"{error_message}\"."
+
 #, fuzzy
 msgid "The payment instrument is invalid, please select or add another one."
 msgstr "وسيلة الدفع غير صالحة ، يرجى تحديد أو إضافة وسيلة أخرى."
@@ -3027,7 +3192,11 @@ msgstr "بدأ الدفع الخاص بك. سيتم إرساله إلى البن
 
 #, fuzzy, python-brace-format
 msgid "Your bank can reject this payment. We recommend sending a copy of {link_start}the mandate{link_end} to your bank if you're not sure that it properly handles {currency} direct debit instructions."
-msgstr "يمكن للمصرف الذي تتعامل معه رفض هذه الدفعة. نوصي بإرسال نسخة من {link_start} التفويض {link_end} إلى البنك الذي تتعامل معه إذا لم تكن متأكدًا من أنه يتعامل بشكل صحيح مع تعليمات الخصم المباشر {currency}."
+msgstr "يمكن للمصرف الذي تتعامل معه رفض هذه الدفعة. نوصي بإرسال نسخة من {link_start}التفويض{link_end} إلى البنك الذي تتعامل معه إذا لم تكن متأكدًا من أنه يتعامل بشكل صحيح مع تعليمات الخصم المباشر {currency}."
+
+#, fuzzy
+msgid "The initialization of a required component has failed. If you use a browser extension that blocks requests, for example NoScript, please make sure it’s allowing requests to the “stripe.com” domain."
+msgstr "فشلت عملية تهيئة أحد المكونات المطلوبة. إذا كنت تستخدم ملحقًا للمتصفح يحظر الطلبات، على سبيل المثال NoScript، فيرجى التأكد من أنه يسمح بالطلبات إلى نطاق \"stripe.com\"."
 
 #, fuzzy, python-brace-format
 msgid "We will charge your {brand} card (last four digits: {last4})."
@@ -3065,6 +3234,10 @@ msgstr "سيتم إرسال هذه البيانات مباشرة إلى معال
 msgid "Remember the card number for next time"
 msgstr "تذكر رقم البطاقة في المرة القادمة"
 
+#, fuzzy, python-brace-format
+msgid "Use this payment instrument by default for future payments in {currency}"
+msgstr "استخدم وسيلة الدفع هذه افتراضيًا للدفعات المستقبلية في {currency}"
+
 #, fuzzy
 msgid "Use this payment instrument by default for future payments"
 msgstr "استخدم وسيلة الدفع هذه بشكل افتراضي للدفعات المستقبلية"
@@ -3084,6 +3257,10 @@ msgstr "تذكر رقم الحساب المصرفي للدفعات المستق�
 #, fuzzy, python-brace-format
 msgid "In order to reduce the risk of this payment being rejected, we recommend that you input your postal address below. It will be stored encrypted in our database and sent to the payment processor ({processor_name})."
 msgstr "لتقليل مخاطر رفض هذه الدفعة ، نوصيك بإدخال عنوانك البريدي أدناه. سيتم تخزينها بشكل مشفر في قاعدة البيانات الخاصة بنا وإرسالها إلى معالج الدفع ({processor_name})."
+
+#, fuzzy
+msgid "Please fill in your postal address. It's required because the IBAN you've provided emanates from outside the European Union."
+msgstr "يرجى ملء عنوانك البريدي. إنه مطلوب لأن رقم IBAN الذي قدمته صادر من خارج الاتحاد الأوروبي."
 
 #, fuzzy, python-brace-format
 msgid "'{0}' is not an acceptable amount (min={1}, max={2})"
@@ -3224,9 +3401,8 @@ msgstr "هذا الملف الشخصي متاح فقط في {language}"
 msgid "Edit"
 msgstr "تعديل"
 
-#, fuzzy
-msgid "Statement"
-msgstr "صياغة"
+msgid "Description"
+msgstr "الوصف"
 
 #, fuzzy, python-brace-format
 msgid "{0} owns the following accounts on other platforms:"
@@ -3320,12 +3496,12 @@ msgid "No data to show."
 msgstr "لا توجد بيانات لعرضها."
 
 #, fuzzy, python-brace-format
-msgid "Income Per Week (in {currency})"
-msgstr "الدخل في الأسبوع (في {currency})"
+msgid "Income per week (in {currency})"
+msgstr "الدخل في الأسبوع (بالعملة {currency})"
 
 #, fuzzy
-msgid "Number of Patrons Per Week"
-msgstr "عدد المستفيدين في الأسبوع"
+msgid "Number of patrons per week"
+msgstr "عدد الزبائن في الأسبوع"
 
 #, fuzzy
 msgid "Invoice documents are private."
@@ -3448,9 +3624,6 @@ msgstr "طبيعة"
 msgid "(Liberapay only supports one kind of invoice for now.)"
 msgstr "(يدعم Liberapay نوعًا واحدًا فقط من الفاتورة في الوقت الحالي.)"
 
-msgid "Description"
-msgstr "الوصف"
-
 msgid "A short description of the invoice"
 msgstr "وصف مختصر للفاتورة"
 
@@ -3514,9 +3687,13 @@ msgstr "المردودة جزئيا"
 msgid "refunded"
 msgstr "برد"
 
+#, fuzzy
+msgid "suspended"
+msgstr "معلق"
+
 #, fuzzy, python-brace-format
 msgid "The totals below don't include donations through the old wallet system. You can find those in {link_start}your Wallet page{link_end}."
-msgstr "لا تشمل المجاميع أدناه التبرعات من خلال نظام المحفظة القديم. يمكنك العثور عليها في {link_start} صفحة المحفظة الخاصة بك {link_end}."
+msgstr "لا تشمل المجاميع أدناه التبرعات من خلال نظام المحفظة القديم. يمكنك العثور عليها في {link_start}صفحة المحفظة الخاصة بك{link_end}."
 
 #, fuzzy, python-brace-format
 msgid "Total money received: {0}"
@@ -3549,10 +3726,6 @@ msgstr "تكلفة"
 #, fuzzy
 msgid "This payment is awaiting to be manually checked by Liberapay staff for signs of fraud."
 msgstr "هذه الدفعة في انتظار فحصها يدويًا من قبل موظفي Liberapay بحثًا عن علامات الاحتيال."
-
-#, fuzzy, python-brace-format
-msgid "error message: {0}"
-msgstr "رسالة الخطأ: {0}"
 
 #, fuzzy
 msgid "hidden"
@@ -3610,9 +3783,9 @@ msgstr "تبرع سري لـ {recipient_name} لدورهم في فريق {team_n
 msgid "This payment must be manually approved by the recipient through {provider}'s website."
 msgstr "يجب أن يوافق المستلم على هذه الدفعة يدويًا من خلال موقع ويب {provider}."
 
-#, fuzzy, python-brace-format
-msgid "PayPal status code: {0}"
-msgstr "رمز حالة PayPal: {0}"
+#, fuzzy
+msgid "The payer's account is suspended due to a suspicion of fraud or other unauthorized action."
+msgstr "يتم تعليق حساب الدافع بسبب الاشتباه في وجود احتيال أو إجراء آخر غير مصرح به."
 
 #, fuzzy
 msgid "There were no transactions during this period."
@@ -3620,7 +3793,7 @@ msgstr "لم تكن هناك معاملات خلال هذه الفترة."
 
 #, fuzzy, python-brace-format
 msgid "To view the transactions processed in the past by Mangopay {link_start}go to the Wallet page{link_end}."
-msgstr "لعرض المعاملات التي تمت معالجتها في الماضي بواسطة Mangopay {link_start} انتقل إلى صفحة المحفظة {link_end}."
+msgstr "لعرض المعاملات التي تمت معالجتها في الماضي بواسطة Mangopay {link_start}انتقل إلى صفحة المحفظة{link_end}."
 
 #, fuzzy
 msgid "You are not invited to join this team."
@@ -3740,28 +3913,52 @@ msgid "{username} doesn't have any active patrons."
 msgstr "{username} ليس لديه أي مستفيدين نشطين."
 
 #, fuzzy
-msgid "Liberapay now supports non-anonymous donations, do you want to know who your patrons are?"
-msgstr "تدعم Liberapay الآن التبرعات غير المجهولة ، هل تريد أن تعرف من هم رعاتك؟"
+msgid "Visibility levels"
+msgstr "مستويات الرؤية"
 
 #, fuzzy
-msgid "Enable non-anonymous donations"
-msgstr "تمكين التبرعات غير مجهولة المصدر"
+msgid "Liberapay supports three visibility levels for donations. Each level can be turned on or off, but at least one of them must be enabled."
+msgstr "يدعم Liberapay ثلاثة مستويات للرؤية للتبرعات. يمكن تشغيل كل مستوى أو إيقاف تشغيله ، ولكن يجب تمكين واحد منهم على الأقل."
 
 #, fuzzy, python-brace-format
-msgid "You have opted-in to see who your patrons are. If you change your mind, then {link_start}click here to disable non-anonymous donations{link_end}."
-msgstr "لقد قمت بالاشتراك لمعرفة من هم زبائنك. إذا غيرت رأيك ، انقر هنا {link_start} لتعطيل التبرعات غير المجهولة {link_end}."
+msgid "Secret donations aren't possible with PayPal. You should either disable secret donations or {link_start}add a Stripe account{link_end}."
+msgstr "التبرعات السرية غير ممكنة مع PayPal. يجب إما تعطيل التبرعات السرية أو {link_start}إضافة حساب Stripe{link_end}."
 
-#, fuzzy, python-brace-format
-msgid "You've chosen not to see who your patrons are. If you change your mind, then {link_start}click here to enable non-anonymous donations{link_end}."
-msgstr "لقد اخترت ألا ترى من هم رعاتك. إذا غيرت رأيك ، انقر هنا {link_start} لتمكين التبرعات غير المجهولة {link_end}."
+#, fuzzy
+msgid "Secret donations aren't possible when the payer uses PayPal."
+msgstr "التبرعات السرية غير ممكنة عندما يستخدم الدافع PayPal."
+
+#, fuzzy
+msgid "Allow secret donations"
+msgstr "السماح بالتبرعات السرية"
+
+#, fuzzy
+msgid "Allow private donations"
+msgstr "السماح بالتبرعات الخاصة"
+
+#, fuzzy
+msgid "Allow public donations"
+msgstr "السماح بالتبرعات العامة"
+
+#, fuzzy
+msgid "This is what your prospective donors currently see:"
+msgstr "هذا ما يراه المانحون المحتملون حاليًا:"
+
+#, fuzzy
+msgid "This is what your prospective donors will see with the new settings:"
+msgstr "هذا ما سيراه المتبرعون المحتملون مع الإعدادات الجديدة:"
 
 #, fuzzy
 msgid "Data export"
 msgstr "تصدير البيانات"
 
 #, fuzzy
-msgid "Download the list of currently active patrons"
-msgstr "قم بتنزيل قائمة المستفيدين النشطين حاليًا"
+msgid "Download the list of currently active patrons who chose to make their donations public"
+msgstr "قم بتنزيل قائمة المستفيدين النشطين حاليًا الذين اختاروا تقديم تبرعاتهم للعامة"
+
+#, fuzzy
+msgid "Download the list of all currently active patrons"
+msgstr "قم بتنزيل قائمة جميع المستفيدين النشطين حاليًا"
 
 #, fuzzy
 msgid "Download the record of all patrons in the last ten years"
@@ -3778,9 +3975,29 @@ msgstr "إنك لا تنتمي كعضو إلى أي فريق بعدُ."
 msgid "{username} isn't a member of any team."
 msgstr "{username} ليس عضوًا في أي فريق."
 
+#, fuzzy
+msgid "The payment account has been successfully disconnected."
+msgstr "وتم فصل حساب الدفع بنجاح."
+
+#, fuzzy
+msgid "This payment account is no longer accessible. It is now disconnected."
+msgstr "ولم يعد حساب الدفع هذا متاحا. لقد تم فصله الآن."
+
+#, fuzzy
+msgid "The data has been successfully refreshed."
+msgstr "وقد تم بنجاح تجديد البيانات."
+
 #, fuzzy, python-brace-format
-msgid "You have to {link_open}fill your profile{link_close} before you can start to receive donations."
-msgstr "يجب عليك {link_open} ملء ملف التعريف الخاص بك {link_close} قبل أن تتمكن من البدء في تلقي التبرعات."
+msgid "You have to {link_open}confirm your email address{link_close} before you can start to receive donations."
+msgstr "يجب عليك {link_open}تأكيد عنوان بريدك الإلكتروني{link_close} قبل أن تتمكن من البدء في تلقي التبرعات."
+
+#, fuzzy, python-brace-format
+msgid "You have to {link_open}set your username{link_close} before you can start to receive donations."
+msgstr "يجب عليك {link_open}تعيين اسم المستخدم الخاص بك{link_close} قبل أن تتمكن من البدء في تلقي التبرعات."
+
+#, fuzzy, python-brace-format
+msgid "You have to {link_open}add a profile description{link_close} before you can start to receive donations."
+msgstr "يجب عليك {link_open}إضافة وصف للملف الشخصي{link_close} قبل أن تتمكن من البدء في تلقي التبرعات."
 
 #, fuzzy
 msgid "To receive donations you must connect at least one account from a supported payment processor. This page allows you to do so."
@@ -3795,8 +4012,8 @@ msgid "We recommend connecting both Stripe and PayPal if they're both available 
 msgstr "نوصي بربط كل من Stripe و PayPal إذا كانا متاحين في بلدك."
 
 #, fuzzy
-msgid "With Stripe your donors can pay by card or direct debit directly from the Liberapay website. (Direct debits are currently only supported from Euro bank accounts.)"
-msgstr "باستخدام Stripe ، يمكن للمتبرعين الدفع بالبطاقة أو الخصم المباشر مباشرة من موقع Liberapay الإلكتروني. (عمليات الخصم المباشر مدعومة حاليًا فقط من الحسابات البنكية باليورو.)"
+msgid "With Stripe your donors can pay by card or direct debit directly from the Liberapay website. (Direct debits are currently only supported from euro bank accounts.)"
+msgstr "مع Stripe، يمكن للمتبرعين الدفع بالبطاقة أو الخصم المباشر مباشرة من موقع Liberapay. (لا يتم دعم الخصم المباشر حاليًا إلا من الحسابات المصرفية باليورو.)"
 
 #, fuzzy, python-brace-format
 msgid "Account ID: {0}"
@@ -3941,6 +4158,10 @@ msgid "This payment is a donation, no goods or services are to be provided in ex
 msgstr "هذه الدفعة عبارة عن تبرع ، ولا يتم تقديم أي سلع أو خدمات في المقابل ، ولم يتم تحصيل أي ضريبة بواسطة Liberapay."
 
 #, fuzzy
+msgid "Income history"
+msgstr "تاريخ الدخل"
+
+#, fuzzy
 msgid "You can't receive new donations until you've configured payment processing."
 msgstr "لا يمكنك تلقي تبرعات جديدة حتى تقوم بتهيئة معالجة الدفع."
 
@@ -3949,16 +4170,16 @@ msgid "Donations through teams make up {income_percent} of your income ({team_in
 msgstr "التبرعات من خلال الفرق تشكل {income_percent} من دخلك ({team_income} من {total_income}) و {patrons_percent} من المتبرعين ({nteampatrons} من {npatrons})."
 
 #, fuzzy
-msgid "Details of Donations"
-msgstr "تفاصيل التبرعات"
+msgid "Details of personal donations"
+msgstr "تفاصيل التبرعات الشخصية"
 
 #, fuzzy
 msgid "This section doesn't include data on donations through teams, it only shows the donations that you receive personally."
 msgstr "لا يتضمن هذا القسم بيانات عن التبرعات من خلال الفرق ، بل يعرض فقط التبرعات التي تتلقاها شخصيًا."
 
 #, fuzzy
-msgid "Recent Changes"
-msgstr "التغييرات الأخيرة"
+msgid "Recent changes to personal donations"
+msgstr "التغييرات الأخيرة على التبرعات الشخصية"
 
 #, fuzzy, python-brace-format
 msgid "A new donation of {amount} per week has been created."
@@ -3979,6 +4200,10 @@ msgstr "تم تخفيض التبرع من {old_amount} في الأسبوع إل�
 #, fuzzy, python-brace-format
 msgid "A donation of {amount} per week has been restarted."
 msgstr "تم استئناف التبرع بمبلغ {amount} في الأسبوع."
+
+#, fuzzy
+msgid "Statistics on personal donations"
+msgstr "إحصائيات التبرعات الشخصية"
 
 #, fuzzy
 msgid "The table below lists the donations you receive, grouped by amount."
@@ -4065,8 +4290,20 @@ msgid "Bank Account"
 msgstr "حساب البنك"
 
 #, fuzzy
+msgid "This instrument is used by default."
+msgstr "يستخدم هذا الصك عن طريق التقصير."
+
+#, fuzzy
 msgid "default"
 msgstr "إفتراضي"
+
+#, fuzzy, python-brace-format
+msgid "This instrument is used by default for payments in {currency}."
+msgstr "ويستخدم هذا الصك في حالة العجز عن الدفع في {currency}."
+
+#, fuzzy, python-brace-format
+msgid "default for {currency}"
+msgstr "التقصير في {currency}"
 
 #, fuzzy
 msgid "view mandate"
@@ -4104,6 +4341,22 @@ msgstr "لم يتم استخدام وسيلة الدفع هذه حتى الآن.
 msgid "Set as default"
 msgstr "تعيين كافتراضي"
 
+#, fuzzy, python-brace-format
+msgid "Stop using this instrument by default for payments in {currency}."
+msgstr "التوقف عن استخدام هذه الأداة افتراضيًا للدفعات بالعملة {currency}."
+
+#, fuzzy, python-brace-format
+msgid "Unset as default for {currency}"
+msgstr "تم إلغاء تعيينه كإعداد افتراضي لـ {currency}"
+
+#, fuzzy, python-brace-format
+msgid "Use this instrument by default for payments in {currency}."
+msgstr "Use this instrument by default for payments in {currency}."
+
+#, fuzzy, python-brace-format
+msgid "Set as default for {currency}"
+msgstr "تُحدَّد في حالة عجز {currency}"
+
 #, fuzzy
 msgid "You don't have any valid payment instrument."
 msgstr "ليس لديك أي وسيلة دفع صالحة."
@@ -4117,11 +4370,16 @@ msgid "Add a card"
 msgstr "إضافة بطاقة"
 
 #, fuzzy
+msgid "Euro Bank Account"
+msgstr "حساب بنكي باليورو"
+
+#, fuzzy
+msgid "Only for donations in euros to recipients in SEPA countries"
+msgstr "مخصص فقط للتبرعات باليورو للمستفيدين في دول منطقة اليورو الأوروبية"
+
+#, fuzzy
 msgid "Add a bank account"
 msgstr "أضف حسابًا مصرفيًا"
-
-msgid "Close Account"
-msgstr "إغلاق الحساب"
 
 #, fuzzy
 msgid "Data retention"
@@ -4234,7 +4492,7 @@ msgstr "المحفظة"
 
 #, fuzzy, python-brace-format
 msgid "This page only shows transactions processed by Mangopay, to view other payments {link_start}go to the Ledger page{link_end}."
-msgstr "تعرض هذه الصفحة المعاملات التي تمت معالجتها بواسطة Mangopay فقط ، لعرض المدفوعات الأخرى {link_start} انتقل إلى صفحة دفتر الأستاذ {link_end}."
+msgstr "تعرض هذه الصفحة المعاملات التي تمت معالجتها بواسطة Mangopay فقط ، لعرض المدفوعات الأخرى {link_start}انتقل إلى صفحة دفتر الأستاذ{link_end}."
 
 msgid "Account Statement"
 msgstr "كشف الحساب"
@@ -4329,7 +4587,7 @@ msgstr "استرداد التبرع"
 
 #, fuzzy, python-brace-format
 msgid "reimbursement of {link_open}expense #{invoice_id}{link_close} from {payer}"
-msgstr "سداد {link_open} مصروف # {invoice_id} {link_close} من {payer}"
+msgstr "سداد {link_open}مصروف # {invoice_id}{link_close} من {payer}"
 
 #, fuzzy
 msgid "anonymous donation"
@@ -4369,7 +4627,7 @@ msgstr "استرداد تبرع مجهول"
 
 #, fuzzy, python-brace-format
 msgid "payment of {link_open}expense #{invoice_id}{link_close} to {payee}"
-msgstr "دفع مصاريف {link_open} # {invoice_id} {link_close} إلى {payee}"
+msgstr "دفع مصاريف {link_open}# {invoice_id}{link_close} إلى {payee}"
 
 #, fuzzy, python-brace-format
 msgid "donation to {0}"
@@ -4456,7 +4714,7 @@ msgstr "استخدم هذا الرمز لإضافة عنصر واجهة مستخ
 
 #, fuzzy, python-brace-format
 msgid "This widget is not available because it is not compatible with the {link_open}privacy settings{link_close} you have chosen."
-msgstr "عنصر واجهة المستخدم هذا غير متاح لأنه غير متوافق مع إعدادات الخصوصية {link_open} {link_close} التي اخترتها."
+msgstr "عنصر واجهة المستخدم هذا غير متاح لأنه غير متوافق مع {link_open}إعدادات الخصوصية{link_close} التي اخترتها."
 
 #, fuzzy
 msgid "Or, if you'd like a widget that shows how much you're giving:"
@@ -4464,7 +4722,7 @@ msgstr "أو ، إذا كنت ترغب في عنصر واجهة مستخدم ي�
 
 #, fuzzy, python-brace-format
 msgid "Badges from {link_open}Shields.io{link_close}"
-msgstr "شارات من {link_open} Shields.io {link_close}"
+msgstr "شارات من {link_open}Shields.io{link_close}"
 
 #, fuzzy
 msgid "Use these code snippets to add a badge to your website or README:"
@@ -4488,7 +4746,7 @@ msgstr "إذا لم تكن رسالتك مكتوبة باللغة الإنجلي
 
 #, fuzzy, python-brace-format
 msgid "If you think you've found a technical vulnerability in our system, please follow the instructions in {link_start}the {page_name} page{link_end} instead of sending us an email."
-msgstr "إذا كنت تعتقد أنك وجدت ثغرة فنية في نظامنا ، فالرجاء اتباع الإرشادات الموجودة في {link_start} الصفحة {page_name} {link_end} بدلاً من إرسال بريد إلكتروني إلينا."
+msgstr "إذا كنت تعتقد أنك وجدت ثغرة فنية في نظامنا ، فالرجاء اتباع الإرشادات الموجودة في {link_start}الصفحة {page_name}{link_end} بدلاً من إرسال بريد إلكتروني إلينا."
 
 msgid "We currently don't have a phone number."
 msgstr "في الوقت الراهن ليس لدينا رقم هاتف."
@@ -4525,8 +4783,8 @@ msgid "Not safe for work"
 msgstr "ليس آمن للعمل"
 
 #, fuzzy, python-brace-format
-msgid "Yes. However, Liberapay isn't a shield: we can't protect anyone from being banned by {link_open}the underlying payment processors{link_close}."
-msgstr "نعم. ومع ذلك ، فإن Liberapay ليس درعًا: لا يمكننا حماية أي شخص من الحظر بواسطة {link_open} معالجات الدفع الأساسية {link_close}."
+msgid "The payment processors Liberapay supports have unfavourable policies towards sexual content. {paypal_link}PayPal requires pre-approval{link_close}, and {stripe_link}Stripe prohibits it entirely{link_close}. So, while it is possible to use Liberapay for some adult-only content, it is usually better to use a platform specialized in such content."
+msgstr "لدى معالجات الدفع التي تدعمها Liberapay سياسات غير مواتية تجاه المحتوى الجنسي. {paypal_link} يتطلب PayPal موافقة مسبقة{link_close} ، و {stripe_link} يحظرها Stripe تمامًا{link_close}. لذلك ، في حين أنه من الممكن استخدام Liberapay لبعض المحتويات المخصصة للبالغين فقط ، فمن الأفضل عادةً استخدام نظام أساسي متخصص في مثل هذا المحتوى."
 
 #, fuzzy
 msgid "Can I modify or stop my donations?"
@@ -4534,7 +4792,7 @@ msgstr "هل يمكنني تعديل أو إيقاف تبرعاتي؟"
 
 #, fuzzy, python-brace-format
 msgid "Yes, you can stop your donations or modify their amounts, periods and renewal modes at any time through {link_open}your “Giving” page{link_close}. Stopping a donation doesn't trigger any refund, it merely cancels future renewals."
-msgstr "نعم ، يمكنك إيقاف تبرعاتك أو تعديل مبالغها وفتراتها وأنماط التجديد في أي وقت من خلال {link_open} صفحة \"العطاء\" {link_close}. لا يؤدي إيقاف التبرع إلى استرداد أي أموال ، بل يؤدي فقط إلى إلغاء التجديدات المستقبلية."
+msgstr "نعم ، يمكنك إيقاف تبرعاتك أو تعديل مبالغها وفتراتها وأنماط التجديد في أي وقت من خلال {link_open}صفحة \"العطاء\"{link_close}. لا يؤدي إيقاف التبرع إلى استرداد أي أموال ، بل يؤدي فقط إلى إلغاء التجديدات المستقبلية."
 
 #, fuzzy
 msgid "Liberapay is designed for long-term stable funding and only supports recurring gifts."
@@ -4554,7 +4812,7 @@ msgstr "Liberapay هو مشروع مفتوح منظم حول منظمة غير �
 
 #, fuzzy, python-brace-format
 msgid "We care about internationalization, our service supports multiple currencies and is translated into many languages ({link_open}you can contribute{link_close})."
-msgstr "نحن نهتم بالتدويل ، تدعم خدمتنا عملات متعددة ويتم ترجمتها إلى العديد من اللغات ({link_open} يمكنك المساهمة {link_close})."
+msgstr "نحن نهتم بالتدويل ، تدعم خدمتنا عملات متعددة ويتم ترجمتها إلى العديد من اللغات ({link_open}يمكنك المساهمة{link_close})."
 
 #, fuzzy, python-brace-format
 msgid "If you'd like more details, the Snowdrift.coop folks have compiled {0}a big list{1} of crowdfunding platforms and the differences between them."
@@ -4592,8 +4850,8 @@ msgid "See the “{page_name}” page."
 msgstr "راجع صفحة \"{page_name}\"."
 
 #, fuzzy, python-brace-format
-msgid "The available payment methods depend on which payment processors are supported by the recipient. If a payment is processed by Stripe, then most credit and debit cards ({list_of_card_brands}) are accepted, as well as SEPA Direct Debits (for Euro donations only). If a payment is through PayPal, then it's possible to pay in various ways, however the donor needs to have or create a PayPal account."
-msgstr "تعتمد طرق الدفع المتاحة على معالجات الدفع التي يدعمها المستلم. إذا تمت معالجة دفعة بواسطة Stripe ، فسيتم قبول معظم بطاقات الائتمان والخصم ({list_of_card_brands}) ، بالإضافة إلى خصومات SEPA المباشرة (للتبرعات باليورو فقط). إذا تم الدفع من خلال PayPal ، فمن الممكن الدفع بطرق مختلفة ، ومع ذلك يحتاج المتبرع إلى أن يكون لديه حساب PayPal أو ينشئه."
+msgid "The available payment methods depend on which payment processors are supported by the recipient. If a payment is processed by Stripe, then most credit and debit cards ({list_of_card_brands}) are accepted, as well as SEPA Direct Debits (only for donations in euros to recipients in SEPA countries). If a payment is through PayPal, then it's possible to pay in various ways, however the donor needs to have or create a PayPal account."
+msgstr "تعتمد طرق الدفع المتاحة على معالجات الدفع التي يدعمها المستلم. إذا تمت معالجة الدفع بواسطة Stripe، فسيتم قبول معظم بطاقات الائتمان والخصم ( {list_of_card_brands} )، بالإضافة إلى الخصم المباشر من SEPA (فقط للتبرعات باليورو للمستلمين في دول SEPA). إذا تم الدفع من خلال PayPal، فمن الممكن الدفع بطرق مختلفة، ولكن يجب أن يكون لدى المتبرع حساب PayPal أو ينشئه."
 
 #, fuzzy
 msgid "What are the payment processing fees?"
@@ -4602,6 +4860,14 @@ msgstr "ما هي رسوم معالجة الدفع؟"
 #, fuzzy, python-brace-format
 msgid "The fees vary by payment processor, payment method, countries and currencies. In the last year, the average fee percentages have been {average_fee_stripe} for the payments processed by Stripe and {average_fee_paypal} for the payments processed by PayPal."
 msgstr "تختلف الرسوم حسب معالج الدفع وطريقة الدفع والبلدان والعملات. في العام الماضي ، كان متوسط النسب المئوية للرسوم {average_fee_stripe} للمدفوعات التي تمت معالجتها بواسطة Stripe و {average_fee_paypal} للمدفوعات التي تتم معالجتها بواسطة PayPal."
+
+#, fuzzy
+msgid "How and when do I receive the money sent by my patrons?"
+msgstr "كيف ومتى أتلقى الأموال المرسلة من قبل عملائي؟"
+
+#, fuzzy
+msgid "Money sent by a donor immediately goes to your Stripe or PayPal account. By default Stripe then automatically sends the funds to your bank account, whereas PayPal simply stores them until you spend or withdraw them."
+msgstr "تنتقل الأموال التي يرسلها المتبرع على الفور إلى حسابك على Stripe أو PayPal. بشكل افتراضي، يقوم Stripe بإرسال الأموال تلقائيًا إلى حسابك المصرفي، بينما يقوم PayPal ببساطة بتخزينها حتى تنفقها أو تسحبها."
 
 #, fuzzy
 msgid "Why do I see partial refunds in the Stripe dashboard?"
@@ -4648,20 +4914,12 @@ msgid "Probably not, but it depends on the tax rules of your country."
 msgstr "ربما لا ، لكن ذلك يعتمد على القواعد الضريبية لبلدك."
 
 #, fuzzy
-msgid "What are wallets?"
-msgstr "ما هي المحافظ؟"
+msgid "Is a Liberapay account a wallet?"
+msgstr "هل حساب Liberapay عبارة عن محفظة؟"
 
 #, fuzzy
-msgid "Liberapay used to hold the funds of donors in wallets, but we no longer do that. Instead the full amount of a donation is immediately transferred to the recipient."
-msgstr "اعتادت Liberapay الاحتفاظ بأموال المانحين في محافظ ، لكننا لم نعد نفعل ذلك. وبدلاً من ذلك ، يتم تحويل المبلغ الكامل للتبرع على الفور إلى المستلم."
-
-#, fuzzy
-msgid "What is “payday”?"
-msgstr "ما هو يوم الدفع؟"
-
-#, fuzzy, python-brace-format
-msgid "Payday is a program ({0}this one{1}) that we run every Wednesday. It executes donations and notifies donors and recipients."
-msgstr "Payday هو برنامج ({0} هذا واحد {1}) نقوم بتشغيله كل يوم أربعاء. ينفذ التبرعات ويخطر المتبرعين والمتلقين."
+msgid "Not since mid-2018. Money sent by a donor immediately goes to the recipient. Previously, funds were held in the donor's account and disbursed little by little to the recipient every week. That system was definitively abandoned due to its very significant drawbacks."
+msgstr "لم يحدث هذا منذ منتصف عام 2018. فالأموال التي يرسلها المتبرع تذهب على الفور إلى المتلقي. وفي السابق، كانت الأموال تُحفظ في حساب المتبرع وتُصرف تدريجيًا إلى المتلقي كل أسبوع. وقد تم التخلي عن هذا النظام نهائيًا بسبب عيوبه الكبيرة جدًا."
 
 msgid "You can get updates from us on the following social networks:"
 msgstr "يمكنكم الحصول على مستجداتنا على الشبكات الاجتماعية التالية:"
@@ -4684,25 +4942,63 @@ msgstr[3] "يمكن للمانحين الاختيار بين ما يصل إلى 
 msgstr[4] "يمكن للمانحين الاختيار بين ما يصل إلى {n} من العملات ، اعتمادًا على تفضيلات المستلم وقدرات معالج الدفع الأساسي."
 msgstr[5] "يمكن للمانحين الاختيار بين ما يصل إلى {n} من العملات ، اعتمادًا على تفضيلات المستلم وقدرات معالج الدفع الأساسي."
 
-#, fuzzy, python-brace-format
-msgid "<unused singular (hash=15422027494f4dee6eed143ece78c0ce)>"
-msgid_plural "Liberapay is fully available to creators in {n} territories:"
-msgstr[0] "Liberapay متاح بالكامل لمنشئي المحتوى في مناطق {n}:"
-msgstr[1] "Liberapay متاح بالكامل لمنشئي المحتوى في مناطق {n}:"
-msgstr[2] "Liberapay متاح بالكامل لمنشئي المحتوى في مناطق {n}:"
-msgstr[3] "Liberapay متاح بالكامل لمنشئي المحتوى في مناطق {n}:"
-msgstr[4] "Liberapay متاح بالكامل لمنشئي المحتوى في مناطق {n}:"
-msgstr[5] "Liberapay متاح بالكامل لمنشئي المحتوى في مناطق {n}:"
+#, fuzzy
+msgid "Donations can only be received in territories where at least one supported payment processor is available. Moreover, some features are only available in some of the territories supported by a payment processor."
+msgstr "لا يمكن استلام التبرعات إلا في المناطق التي يتوفر فيها معالج دفع معتمد واحد على الأقل. علاوة على ذلك، تتوفر بعض الميزات فقط في بعض المناطق التي يدعمها معالج دفع."
 
 #, fuzzy, python-brace-format
-msgid "<unused singular (hash=ce784fd8cdb312cf56226bbd42d07d18)>"
-msgid_plural "Additionally, Liberapay is partially available to creators in {paypal_link_open}the {n} countries supported by PayPal{link_close}."
-msgstr[0] "بالإضافة إلى ذلك ، فإن Liberapay متاح جزئيًا للمبدعين في {paypal_link_open} البلدان {n} المدعومة من قبل PayPal {link_close}."
-msgstr[1] "بالإضافة إلى ذلك ، فإن Liberapay متاح جزئيًا للمبدعين في {paypal_link_open} البلدان {n} المدعومة من قبل PayPal {link_close}."
-msgstr[2] "بالإضافة إلى ذلك ، فإن Liberapay متاح جزئيًا للمبدعين في {paypal_link_open} البلدان {n} المدعومة من قبل PayPal {link_close}."
-msgstr[3] "بالإضافة إلى ذلك ، فإن Liberapay متاح جزئيًا للمبدعين في {paypal_link_open} البلدان {n} المدعومة من قبل PayPal {link_close}."
-msgstr[4] "بالإضافة إلى ذلك ، فإن Liberapay متاح جزئيًا للمبدعين في {paypal_link_open} البلدان {n} المدعومة من قبل PayPal {link_close}."
-msgstr[5] "بالإضافة إلى ذلك ، فإن Liberapay متاح جزئيًا للمبدعين في {paypal_link_open} البلدان {n} المدعومة من قبل PayPal {link_close}."
+msgid "The currently supported payment processors are {Stripe} and {PayPal}. You can find a list of the differences between them {link_start}in the “{page_name}” page{link_end}."
+msgstr "معالجات الدفع المدعومة حاليًا هي {Stripe} و {PayPal} . يمكنك العثور على قائمة بالاختلافات بينهما {link_start} في صفحة \" {page_name} \" {link_end} ."
+
+#, fuzzy
+msgid "Best supported territories"
+msgstr "أفضل المناطق المدعومة"
+
+#, fuzzy, python-brace-format
+msgid "<unused singular (hash=79acddfc1b997a9b2e4aa18d930e097e)>"
+msgid_plural "Creators in these {n} territories benefit from all of Liberapay's features:"
+msgstr[0] "يستفيد المبدعون في هذه المناطق 0 من جميع ميزات Liberapay:"
+msgstr[1] "<غير مستخدم مفرد (التجزئة=79acddfc1b997a9b2e4aa18d930e097e)>"
+msgstr[2] "يستفيد المبدعون في هاتين المنطقتين من جميع ميزات Liberapay:"
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] "يستفيد المبدعون في {n} المناطق من جميع ميزات Liberapay:"
+
+#, fuzzy
+msgid "Well supported territories"
+msgstr "الأراضي المدعومة بشكل جيد"
+
+#, fuzzy, python-brace-format
+msgid "<unused singular (hash=d6ace91b81f74c1f52f602d3d7009ed8)>"
+msgid_plural "Liberapay is also available to creators in the {n} territories listed below. However, donations going to those territories cannot be grouped to lower the payment processing fees, and the euro direct debit payment method isn't available to the donors."
+msgstr[0] "تتوفر خدمة Liberapay أيضًا للمبدعين في المناطق المدرجة أدناه. ومع ذلك، لا يمكن تجميع التبرعات الموجهة إلى تلك المناطق لتقليل رسوم معالجة الدفع، كما أن طريقة الدفع المباشر باليورو غير متاحة للمتبرعين."
+msgstr[1] "<غير مستخدم مفرد (التجزئة=d6ace91b81f74c1f52f602d3d7009ed8)>"
+msgstr[2] "تتوفر خدمة Liberapay أيضًا للمبدعين في المنطقتين المدرجتين أدناه. ومع ذلك، لا يمكن تجميع التبرعات الموجهة إلى تلك المناطق لتقليل رسوم معالجة الدفع، كما أن طريقة الدفع المباشر باليورو غير متاحة للمتبرعين."
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] "تتوفر خدمة Liberapay أيضًا للمبدعين في المناطق المدرجة {n} . ومع ذلك، لا يمكن تجميع التبرعات الموجهة إلى تلك المناطق لتقليل رسوم معالجة الدفع، كما أن طريقة الدفع المباشر باليورو غير متاحة للمتبرعين."
+
+#, fuzzy
+msgid "Barely supported territories"
+msgstr "الأراضي التي لا تحظى بدعم كبير"
+
+#, fuzzy, python-brace-format
+msgid "<unused singular (hash=53cbe5d36eacd9bcc6b8eed3023c884b)>"
+msgid_plural "Liberapay is partly available to creators in the {n} territories listed below, which are supported by PayPal but not by Stripe."
+msgstr[0] "يعد Liberapay متاحًا جزئيًا للمبدعين في المناطق 0 المدرجة أدناه، والتي يدعمها PayPal ولكن ليس Stripe."
+msgstr[1] "<غير مستخدم مفرد (التجزئة=53cbe5d36eacd9bcc6b8eed3023c884b)>"
+msgstr[2] "يعد Liberapay متاحًا جزئيًا للمبدعين في المنطقتين المدرجتين أدناه، والتي يدعمها PayPal ولكن ليس Stripe."
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] "يُعد Liberapay متاحًا جزئيًا للمبدعين في المناطق {n} المدرجة أدناه، والتي يدعمها PayPal ولكن ليس Stripe."
+
+#, fuzzy
+msgid "Unsupported territories"
+msgstr "المناطق غير المدعومة"
+
+#, fuzzy
+msgid "If you don't live or have a registered business in one of the territories listed above, then you currently can't use Liberapay to receive donations. Sorry."
+msgstr "إذا كنت لا تعيش أو تمتلك نشاطًا تجاريًا مسجلاً في إحدى المناطق المذكورة أعلاه، فلن تتمكن حاليًا من استخدام Liberapay لتلقي التبرعات. نأسف."
 
 msgid "What is Liberapay?"
 msgstr "ما هو ليبيراباي ؟"
@@ -4767,8 +5063,8 @@ msgid "This page contains links to and information about the Liberapay logo. We 
 msgstr "تحتوي هذه الصفحة على روابط ومعلومات حول شعار Liberapay. نأمل أن تجده مفيدًا بشكل خاص إذا كنت تكتب مقالًا عن Liberapay أو إذا كنت ترغب في إضافة روابط مخصصة إلى ملف تعريف Liberapay الخاص بك في موقع الويب الخاص بك."
 
 #, fuzzy
-msgid "The Liberapay logo is composed of the two letters “lp”. It's usually colored either white-on-yellow, black-on-yellow, or just black."
-msgstr "يتكون شعار Liberapay من الحرفين \"lp\". عادة ما يكون ملونًا إما باللون الأبيض على الأصفر أو الأسود على الأصفر أو الأسود فقط."
+msgid "The Liberapay logo is composed of the two letters “lp”. It's usually colored black-on-yellow or just black. We used a white-on-yellow variant in the past, but it's now phased out as its contrast was deemed too low."
+msgstr "يتكون شعار Liberapay من حرفين \"lp\". عادة ما يكون ملونًا باللون الأسود على الأصفر أو باللون الأسود فقط. لقد استخدمنا متغيرًا باللون الأبيض على الأصفر في الماضي، ولكن تم التخلص منه تدريجيًا الآن نظرًا لأن تباينه كان منخفضًا للغاية."
 
 #, fuzzy, python-brace-format
 msgid "The Liberapay yellow is {yellow_color_code}, the black is {black_color_code}."
@@ -4776,27 +5072,15 @@ msgstr "الأصفر Liberapay هو {yellow_color_code} ، الأسود هو {bl
 
 #, fuzzy, python-brace-format
 msgid "The Liberapay logo is pretty much free of copyright thanks to {CC0_link_start}the CC0 Public Domain Dedication{link_end}, so you are allowed to distribute it and modify it without asking our permission. However, the Liberapay logo is part of the Liberapay trademark, so you can't use it to represent your own products."
-msgstr "شعار Liberapay خالي تمامًا من حقوق الطبع والنشر بفضل {CC0_link_start} CC0 Public Domain Dedication {link_end} ، لذا يُسمح لك بتوزيعه وتعديله دون طلب إذننا. ومع ذلك ، فإن شعار Liberapay هو جزء من علامة Liberapay التجارية ، لذلك لا يمكنك استخدامه لتمثيل منتجاتك الخاصة."
+msgstr "شعار Liberapay خالي تمامًا من حقوق الطبع والنشر بفضل {CC0_link_start}CC0 Public Domain Dedication{link_end} ، لذا يُسمح لك بتوزيعه وتعديله دون طلب إذننا. ومع ذلك ، فإن شعار Liberapay هو جزء من علامة Liberapay التجارية ، لذلك لا يمكنك استخدامه لتمثيل منتجاتك الخاصة."
 
 #, fuzzy, python-brace-format
 msgid "You can view and download our logos below or {link_start}on GitHub{link_end}."
-msgstr "يمكنك عرض وتنزيل شعاراتنا أدناه أو {link_start} على GitHub {link_end}."
+msgstr "يمكنك عرض وتنزيل شعاراتنا أدناه أو {link_start}على GitHub{link_end}."
 
 #, fuzzy
-msgid "Download the white-on-yellow SVG"
-msgstr "قم بتنزيل ملف SVG باللون الأبيض على الأصفر"
-
-#, fuzzy, python-brace-format
-msgid "Download the white-on-yellow PNG ({x_y} pixels)"
-msgstr "تنزيل ملف PNG أبيض على أصفر ({x_y} بكسل)"
-
-#, fuzzy
-msgid "Download the black SVG"
-msgstr "قم بتنزيل ملف SVG"
-
-#, fuzzy, python-brace-format
-msgid "Download the black PNG ({x_y} pixels)"
-msgstr "تنزيل ملف PNG باللون الأسود ({x_y} بكسل)"
+msgid "Liberapay logo, black-on-yellow"
+msgstr "شعار Liberapay، أسود على أصفر"
 
 #, fuzzy
 msgid "Download the black-on-yellow SVG"
@@ -4806,12 +5090,17 @@ msgstr "قم بتنزيل ملف SVG باللونين الأسود والأصف�
 msgid "Download the black-on-yellow PNG ({x_y} pixels)"
 msgstr "تنزيل ملف PNG أسود على أصفر ({x_y} بكسل)"
 
-msgid "Fonts"
-msgstr "الخطوط"
+#, fuzzy
+msgid "Liberapay logo, black"
+msgstr "شعار Liberapay باللون الأسود"
+
+#, fuzzy
+msgid "Download the black SVG"
+msgstr "قم بتنزيل ملف SVG"
 
 #, fuzzy, python-brace-format
-msgid "The Liberapay logo is included in the {fa_link_start}Fork Awesome{link_end} font in two forms: {fa_liberapay_link} and {fa_liberapay_square_link}."
-msgstr "يتم تضمين شعار Liberapay في خط {fa_link_start} Fork Awesome {link_end} في شكلين: {fa_liberapay_link} و {fa_liberapay_square_link}."
+msgid "Download the black PNG ({x_y} pixels)"
+msgstr "تنزيل ملف PNG باللون الأسود ({x_y} بكسل)"
 
 #, fuzzy
 msgid "Here is a list of differences between them:"
@@ -4824,6 +5113,10 @@ msgstr "عادة ما تكون رسوم معالجة الدفع أقل مع Stri
 #, fuzzy
 msgid "Stripe allows renewing donations automatically, whereas PayPal currently requires donors to confirm every payment."
 msgstr "يسمح Stripe بتجديد التبرعات تلقائيًا ، بينما يطلب PayPal حاليًا من المانحين تأكيد كل دفعة."
+
+#, fuzzy
+msgid "Donations through Stripe can be secret, whereas PayPal always allows donors and recipients to see each other's names and email addresses."
+msgstr "يمكن أن تكون التبرعات عبر Stripe سرية ، بينما يسمح PayPal دائمًا للمتبرعين والمستلمين برؤية أسماء بعضهم البعض وعناوين البريد الإلكتروني."
 
 #, fuzzy
 msgid "Stripe allows donating to multiple creators at once in some cases, whereas PayPal always requires separate payments."
@@ -4846,18 +5139,18 @@ msgid "PayPal only supports {n_paypal_currencies} of the {n_liberapay_currencies
 msgstr "يدعم PayPal فقط {n_paypal_currencies} من العملات {n_liberapay_currencies} المدعومة من قبل Liberapay و Stripe."
 
 #, fuzzy, python-brace-format
-msgid "<unused singular (hash=901d1e29a8c2a0e16ff208c9a8fda012)>"
-msgid_plural "PayPal is available to creators in more than 200 countries, whereas Stripe only supports {n} countries in a suitable way."
-msgstr[0] "يتوفر PayPal للمبدعين في أكثر من 200 دولة ، بينما يدعم Stripe فقط البلدان {n} بطريقة مناسبة."
-msgstr[1] "يتوفر PayPal للمبدعين في أكثر من 200 دولة ، بينما يدعم Stripe فقط البلدان {n} بطريقة مناسبة."
-msgstr[2] "يتوفر PayPal للمبدعين في أكثر من 200 دولة ، بينما يدعم Stripe فقط البلدان {n} بطريقة مناسبة."
-msgstr[3] "يتوفر PayPal للمبدعين في أكثر من 200 دولة ، بينما يدعم Stripe فقط البلدان {n} بطريقة مناسبة."
-msgstr[4] "يتوفر PayPal للمبدعين في أكثر من 200 دولة ، بينما يدعم Stripe فقط البلدان {n} بطريقة مناسبة."
-msgstr[5] "يتوفر PayPal للمبدعين في أكثر من 200 دولة ، بينما يدعم Stripe فقط البلدان {n} بطريقة مناسبة."
+msgid "<unused singular (hash=47f7d13f5771b30f0bcf49ea3acd518b)>"
+msgid_plural "PayPal is available to creators in more than 100 countries, whereas Stripe only supports {n} countries in a suitable way."
+msgstr[0] "يتوفر PayPal للمبدعين في أكثر من 100 دولة ، بينما يدعم Stripe فقط البلدان {n} بطريقة مناسبة."
+msgstr[1] "يتوفر PayPal للمبدعين في أكثر من 100 دولة ، بينما يدعم Stripe فقط البلدان {n} بطريقة مناسبة."
+msgstr[2] "يتوفر PayPal للمبدعين في أكثر من 100 دولة ، بينما يدعم Stripe فقط البلدان {n} بطريقة مناسبة."
+msgstr[3] "يتوفر PayPal للمبدعين في أكثر من 100 دولة ، بينما يدعم Stripe فقط البلدان {n} بطريقة مناسبة."
+msgstr[4] "يتوفر PayPal للمبدعين في أكثر من 100 دولة ، بينما يدعم Stripe فقط البلدان {n} بطريقة مناسبة."
+msgstr[5] "يتوفر PayPal للمبدعين في أكثر من 100 دولة ، بينما يدعم Stripe فقط البلدان {n} بطريقة مناسبة."
 
 #, fuzzy, python-brace-format
 msgid "You can find more information on supported countries and currencies in {link_start}the “{page_name}” page{link_end}."
-msgstr "يمكنك العثور على مزيد من المعلومات حول البلدان والعملات المدعومة في {link_start} الصفحة \"{page_name}\" {link_end}."
+msgstr "يمكنك العثور على مزيد من المعلومات حول البلدان والعملات المدعومة في {link_start}الصفحة \"{page_name}\"{link_end}."
 
 #, fuzzy
 msgid "We do our best to protect everyone's privacy: we do not attempt to track people who visit our website, we strive to collect only the personal information we actually need, and we don't sell it to anyone."
@@ -4877,7 +5170,7 @@ msgstr "يقوم موقع Liberapay.com بتعيين ملفات تعريف ال�
 
 #, fuzzy, python-brace-format
 msgid "Visitors of the liberapay.com website can also receive cookies sent by Cloudflare. Please read {link_open}“Understanding the Cloudflare Cookies”{link_close} if you want to learn more about them."
-msgstr "يمكن لزوار موقع Liberapay.com أيضًا تلقي ملفات تعريف الارتباط المرسلة بواسطة Cloudflare. يرجى قراءة {link_open} \"فهم ملفات تعريف ارتباط Cloudflare\" {link_close} إذا كنت تريد معرفة المزيد عنها."
+msgstr "يمكن لزوار موقع Liberapay.com أيضًا تلقي ملفات تعريف الارتباط المرسلة بواسطة Cloudflare. يرجى قراءة {link_open}\"فهم ملفات تعريف ارتباط Cloudflare\"{link_close} إذا كنت تريد معرفة المزيد عنها."
 
 #, fuzzy, python-brace-format
 msgid "On some payment pages, extra cookies may be set by the payment processor. Please read these documents if you want more information: {links_to_policies}."
@@ -4941,7 +5234,7 @@ msgstr "كإجراء احترازي ضد سرقة الهوية في حالة ت�
 
 #, fuzzy, python-brace-format
 msgid "If you think you've found a security issue, and it's not already in our list of {known_issues_link}known low-severity issues{link_close}, then please {hackerone_report_link}report it to us through HackerOne{link_close}."
-msgstr "إذا كنت تعتقد أنك وجدت مشكلة أمنية ، وهي ليست موجودة بالفعل في قائمة {known_issues_link} المشكلات المعروفة منخفضة الخطورة {link_close} ، فيرجى {hackerone_report_link} إبلاغنا بها من خلال HackerOne {link_close}."
+msgstr "إذا كنت تعتقد أنك وجدت مشكلة أمنية ، وهي ليست موجودة بالفعل في قائمة {known_issues_link} المشكلات المعروفة منخفضة الخطورة{link_close} ، فيرجى {hackerone_report_link} إبلاغنا بها من خلال HackerOne{link_close}."
 
 #, fuzzy
 msgid "Policy"
@@ -4949,11 +5242,11 @@ msgstr "سياسة"
 
 #, fuzzy, python-brace-format
 msgid "The details of our security policy (scope, rewards…) are available in {link_open}our HackerOne profile{link_close}."
-msgstr "تفاصيل سياستنا الأمنية (النطاق ، المكافآت ...) متوفرة في {link_open} ملف تعريف HackerOne الخاص بنا {link_close}."
+msgstr "تفاصيل سياستنا الأمنية (النطاق ، المكافآت ...) متوفرة في {link_open}ملف تعريف HackerOne الخاص بنا{link_close}."
 
 #, fuzzy, python-brace-format
 msgid "Thanks to {link_open}everyone who has sent us a report through HackerOne{link_close}."
-msgstr "بفضل {link_open} كل من أرسل لنا تقريرًا من خلال HackerOne {link_close}."
+msgstr "بفضل {link_open}كل من أرسل لنا تقريرًا من خلال HackerOne{link_close}."
 
 #, fuzzy, python-brace-format
 msgid "Liberapay was launched {timespan_ago} and has {n} user."
@@ -5066,7 +5359,7 @@ msgstr "لا يقوم حساب الفريق {bold} بتخزين الأموال {
 
 #, fuzzy, python-brace-format
 msgid "If Liberapay team accounts don't fit your needs, you may want to use the {link_start}Open Collective{link_end} platform instead, which allows a team to be “hosted” by a registered nonprofit. This “fiscal host” is the legal owner of the collective's funds, oversees how they're used, and usually takes a percentage of the donations to fund itself. (We're planning to implement a similar system in Liberapay, but we don't know when it will be done.)"
-msgstr "إذا كانت حسابات فريق Liberapay لا تناسب احتياجاتك ، فقد ترغب في استخدام النظام الأساسي {link_start} Open Collective {link_end} بدلاً من ذلك ، والذي يسمح \"باستضافة\" فريق من قبل منظمة غير ربحية مسجلة. هذا \"المضيف المالي\" هو المالك القانوني لأموال المجموعة ، ويشرف على كيفية استخدامها ، وعادة ما يأخذ نسبة مئوية من التبرعات لتمويل نفسه. (نخطط لتطبيق نظام مشابه في Liberapay ، لكننا لا نعرف متى سيتم تنفيذه)."
+msgstr "إذا كانت حسابات فريق Liberapay لا تناسب احتياجاتك ، فقد ترغب في استخدام النظام الأساسي {link_start}Open Collective{link_end} بدلاً من ذلك ، والذي يسمح \"باستضافة\" فريق من قبل منظمة غير ربحية مسجلة. هذا \"المضيف المالي\" هو المالك القانوني لأموال المجموعة ، ويشرف على كيفية استخدامها ، وعادة ما يأخذ نسبة مئوية من التبرعات لتمويل نفسه. (نخطط لتطبيق نظام مشابه في Liberapay ، لكننا لا نعرف متى سيتم تنفيذه)."
 
 msgid "Creating a team"
 msgstr "إنشاء فريق"
@@ -5104,8 +5397,8 @@ msgid "Teams don't have a hierarchy, all their members are equal and set their o
 msgstr "الفرق ليس لديها تسلسل هرمي ، كل أعضائها متساوون ويضعون أسلوبهم الخاص."
 
 #, fuzzy, python-brace-format
-msgid "You can change your takes from {0}your teams dashboard{1}. It contains tables that show the nominal takes of all members for the next and previous payday, as well as an estimate of the actual amounts of money they'll receive in the next payday."
-msgstr "يمكنك تغيير مقتطفاتك من {0} لوحة تحكم فرقك {1}. يحتوي على جداول توضح المقتنيات الاسمية لجميع الأعضاء ليوم الدفع التالي والسابق ، بالإضافة إلى تقدير للمبالغ الفعلية للأموال التي سيحصلون عليها في يوم الدفع التالي."
+msgid "You can change your takes from {0}your teams dashboard{1}. It contains tables that show the nominal takes of all members, as well as an estimate of the actual amounts of money that will be deducted at the end of the current weekly cycle."
+msgstr "يمكنك تغيير المبالغ التي تحصل عليها من {0} لوحة معلومات فريقك {1} . تحتوي على جداول توضح المبالغ الاسمية التي يحصل عليها جميع الأعضاء، بالإضافة إلى تقدير للمبالغ الفعلية التي سيتم خصمها في نهاية الدورة الأسبوعية الحالية."
 
 #, fuzzy
 msgid "The nominal takes are the raw numbers that the members input themselves, the actual takes are computed by the system: first it sums up the nominal takes, then it computes the percentage that each take represents, and finally it applies those percentages to the available income. Nominal takes also act as maximums: the actual takes are never higher than the nominal ones, even if additional income is available."
@@ -5128,16 +5421,16 @@ msgid "Regulation of take amounts"
 msgstr "تنظيم أخذ المبالغ"
 
 #, fuzzy
-msgid "When “take throttling” is enabled for a team, its members can't raise their takes higher than a maximum computed on the basis of the nominal takes at the time of the previous payday. This mechanism is meant to encourage inviting new contributors to join the team, by ensuring that they won't take a disproportionate share of the income in their first weeks."
-msgstr "عندما يتم تمكين \"أخذ الاختناق\" لفريق ما ، لا يمكن لأعضائه زيادة أرباحهم أعلى من الحد الأقصى المحسوب على أساس المبالغ الاسمية في وقت الدفع السابق. تهدف هذه الآلية إلى تشجيع دعوة مساهمين جدد للانضمام إلى الفريق ، من خلال ضمان عدم حصولهم على حصة غير متكافئة من الدخل في الأسابيع الأولى."
+msgid "When “take throttling” is enabled for a team, its members can't raise their takes higher than a maximum computed on the basis of the nominal takes at the end of the previous weekly cycle. This mechanism is meant to encourage inviting new contributors to join the team, by ensuring that they won't take a disproportionate share of the income in their first weeks."
+msgstr "عندما يتم تمكين \"تقييد عدد مرات المشاهدة\" لفريق ما، لا يمكن لأعضائه زيادة عدد مرات المشاهدة إلى ما يزيد عن الحد الأقصى المحسوب على أساس عدد مرات المشاهدة الاسمية في نهاية الدورة الأسبوعية السابقة. تهدف هذه الآلية إلى تشجيع دعوة المساهمين الجدد للانضمام إلى الفريق، من خلال ضمان عدم حصولهم على حصة غير متناسبة من الدخل في أسابيعهم الأولى."
 
 #, fuzzy, python-brace-format
-msgid "The limit works like this: you can always increase your take to {amount} if it was below that, you can double your take compared to the previous week, you can raise your take to claim the team's leftover income, and you can bring your take up to the level of the median take in the previous payday. Whichever of these possibilities results in the highest amount is your maximum take for the week."
-msgstr "يعمل الحد على النحو التالي: يمكنك دائمًا زيادة ما تحصل عليه إلى {amount} إذا كان أقل من ذلك ، يمكنك مضاعفة ما تحصل عليه مقارنة بالأسبوع السابق ، ويمكنك زيادة ما تحصل عليه للمطالبة بالدخل المتبقي للفريق ، ويمكنك إحضار تصل إلى مستوى متوسط الشراء في يوم الدفع السابق. أيًا كان ما ينتج عن هذه الاحتمالات بأكبر قدر هو أقصى ما تأخذه للأسبوع."
+msgid "The limit works like this: you can always increase your take to {amount} if it was below that, you can double your take compared to the previous week, you can raise your take to claim the team's leftover income, and you can bring your take up to the level of the median take at the end of the previous weekly cycle. Whichever of these possibilities results in the highest amount is your maximum take for the week."
+msgstr "يعمل الحد على هذا النحو: يمكنك دائمًا زيادة حصتك إلى {amount} إذا كانت أقل من ذلك، ويمكنك مضاعفة حصتك مقارنة بالأسبوع السابق، ويمكنك زيادة حصتك للمطالبة بدخل الفريق المتبقي، ويمكنك رفع حصتك إلى مستوى الحصة المتوسطة في نهاية الدورة الأسبوعية السابقة. أيًا من هذه الاحتمالات تؤدي إلى أعلى مبلغ، فهو الحد الأقصى لحصتك في الأسبوع."
 
 #, fuzzy
-msgid "Takes are not limited if the team has only one member, or if the previous week's takes were all zero (which is the case for any new team that has been created after the most recent payday)."
-msgstr "لا يتم تقييد عمليات التسجيل إذا كان الفريق لديه عضو واحد فقط ، أو إذا كان كل ما يستغرقه الأسبوع السابق صفرًا (وهذا هو الحال بالنسبة لأي فريق جديد تم إنشاؤه بعد آخر يوم دفع)."
+msgid "Takes are not limited if the team has only one member, or if the previous week's takes were all zero (which is the case for any new team that has been created during the current weekly cycle)."
+msgstr "لا يتم تقييد عدد اللقطات إذا كان الفريق يتكون من عضو واحد فقط، أو إذا كانت جميع لقطات الأسبوع السابق صفرًا (وهذا هو الحال بالنسبة لأي فريق جديد يتم إنشاؤه خلال الدورة الأسبوعية الحالية)."
 
 #, fuzzy
 msgid "Please contact support if you want to enable or disable the take limits for an existing team. Don't forget to include evidence that the change has been approved by the other team members."
@@ -5254,29 +5547,32 @@ msgid "Explore other platforms:"
 msgstr "استكشاف منصات أخرى :"
 
 #, fuzzy
-msgid "Liberapay provides several ways of finding great people to donate to:"
-msgstr "يوفر Liberapay عدة طرق للعثور على أشخاص رائعين للتبرع من أجل:"
+msgid "This page lists Liberapay users who are hoping to receive their first donations."
+msgstr "تسرد هذه الصفحة مستخدمي Liberapay الذين يأملون في تلقي تبرعاتهم الأولى."
 
 #, fuzzy
-msgid "A team is a group of users working on a specific project."
-msgstr "الفريق عبارة عن مجموعة من المستخدمين يعملون في مشروع معين."
-
-msgid "Explore Teams"
-msgstr "استكشاف الفِرَق"
+msgid "Despite our efforts, some of the listed profiles may be spam or fraud."
+msgstr "على الرغم من الجهود التي نبذلها، قد تكون بعض الملفات الشخصية المدرجة غير مرغوب فيها أو احتيالية."
 
 #, fuzzy
-msgid "Great nonprofits and companies trying to improve the world."
-msgstr "تحاول المنظمات غير الربحية والشركات الكبرى تحسين العالم."
-
-msgid "Explore Organizations"
-msgstr "استكشاف المنظمات"
+msgid "Profiles only start appearing in the list 72 hours after they're created."
+msgstr "تبدأ الملفات الشخصية في الظهور في القائمة بعد 72 ساعة فقط من إنشائها."
 
 #, fuzzy
-msgid "People like you who contribute to the commons (art, knowledge, software, …)."
-msgstr "أشخاص مثلك يساهمون في المشاعات (فن ، معرفة ، برمجيات ، ...)."
+msgid "People and projects who receive donations through Liberapay."
+msgstr "الأشخاص والمشاريع الذين يتلقون التبرعات من خلال Liberapay."
 
-msgid "Explore Individuals"
-msgstr "استكشاف الأفراد"
+#, fuzzy
+msgid "Explore Recipients"
+msgstr "استكشاف المستلمين"
+
+#, fuzzy
+msgid "Users who are hoping to receive their first donations through Liberapay."
+msgstr "المستخدمون الذين يأملون في تلقي تبرعاتهم الأولى من خلال Liberapay."
+
+#, fuzzy
+msgid "Explore Hopefuls"
+msgstr "اكتشف الأمل"
 
 #, fuzzy
 msgid "Liberapay allows pledging to fund people who haven't joined the site yet."
@@ -5304,29 +5600,47 @@ msgstr "تصفح الحسابات التي يمتلكها مستخدمو Liberap
 msgid "Explore Social Networks"
 msgstr "استكشاف الشبكات الاجتماعية"
 
+msgid "Individuals"
+msgstr "الأفراد"
+
 #, fuzzy, python-brace-format
 msgid "The top {0} individuals on Liberapay are:"
 msgstr "أهم {0} أفراد على Liberapay هم:"
 
-#, fuzzy, python-brace-format
-msgid "List of individuals on Liberapay, page {number}:"
-msgstr "قائمة الأفراد على Liberapay ، الصفحة {number}:"
+#, fuzzy
+msgid "Sort by"
+msgstr "ترتيب حسب"
+
+#, fuzzy
+msgid "income"
+msgstr "دخل"
+
+#, fuzzy
+msgid "creation date"
+msgstr "تاريخ الإنشاء"
+
+#, fuzzy
+msgid "sort order"
+msgstr "امر ترتيب"
+
+#, fuzzy
+msgid "in descending order"
+msgstr "بترتيب من الاعلي الي الاقل"
+
+#, fuzzy
+msgid "in ascending order"
+msgstr "في ترتيب تصاعدي"
+
+msgid "Organizations"
+msgstr "المنظمات"
 
 #, fuzzy, python-brace-format
 msgid "The top {0} organizations on Liberapay are:"
 msgstr "أهم منظمات {0} على Liberapay هي:"
 
-#, fuzzy, python-brace-format
-msgid "List of organizations on Liberapay, page {number}:"
-msgstr "قائمة المنظمات على Liberapay ، صفحة {number}:"
-
 #, fuzzy
 msgid "Create an organization account"
 msgstr "إنشاء حساب المؤسسة"
-
-#, fuzzy
-msgid "Top pledges"
-msgstr "أعلى التعهدات"
 
 #, fuzzy
 msgid "Please don't spam the people and projects listed below with messages inviting them to join Liberapay or asking them why they haven't."
@@ -5349,6 +5663,46 @@ msgid "We can help you find pledgees if you connect your accounts:"
 msgstr "يمكننا مساعدتك في العثور على تعهدات إذا قمت بربط حساباتك:"
 
 #, fuzzy, python-brace-format
+msgid "The individual receiving the most money through Liberapay is:"
+msgid_plural "The {n} individuals receiving the most money through Liberapay are:"
+msgstr[0] "الأفراد 0 الذين يتلقون أكبر قدر من الأموال من خلال Liberapay هم:"
+msgstr[1] "الشخص الذي يحصل على أكبر قدر من الأموال من خلال Liberapay هو:"
+msgstr[2] "الشخصان اللذان يحصلان على أكبر قدر من الأموال من خلال Liberapay هما:"
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] "الأفراد {n} الذين يتلقون أكبر قدر من الأموال من خلال Liberapay هم:"
+
+#, fuzzy, python-brace-format
+msgid "The organization receiving the most money through Liberapay is:"
+msgid_plural "The {n} organizations receiving the most money through Liberapay are:"
+msgstr[0] "المنظمات 0 التي تتلقى أكبر قدر من الأموال من خلال Liberapay هي:"
+msgstr[1] "المنظمة التي تتلقى أكبر قدر من الأموال من خلال Liberapay هي:"
+msgstr[2] "المنظمتان اللتان تحصلان على أكبر قدر من الأموال من خلال Liberapay هما:"
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] "منظمات {n} التي تتلقى أكبر قدر من الأموال من خلال Liberapay هي:"
+
+#, fuzzy, python-brace-format
+msgid "The team receiving the most money through Liberapay is:"
+msgid_plural "The {n} teams receiving the most money through Liberapay are:"
+msgstr[0] "الفرق 0 التي تحصل على أكبر قدر من الأموال من خلال Liberapay هي:"
+msgstr[1] "الفريق الذي يحصل على أكبر قدر من الأموال من خلال Liberapay هو:"
+msgstr[2] "الفريقان اللذان يحصلان على أكبر قدر من الأموال من خلال Liberapay هما:"
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] "فرق {n} التي تحصل على أكبر قدر من الأموال من خلال Liberapay هي:"
+
+#, fuzzy, python-brace-format
+msgid "The Liberapay account receiving the most money is:"
+msgid_plural "The {n} Liberapay accounts receiving the most money are:"
+msgstr[0] "حسابات Liberapay 0 التي تتلقى أكبر قدر من الأموال هي:"
+msgstr[1] "حساب Liberapay الذي يتلقى أكبر قدر من الأموال هو:"
+msgstr[2] "حسابا Liberapay اللذان يحصلان على أكبر قدر من الأموال هما:"
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] "حسابات Liberapay {n} التي تتلقى أكبر قدر من الأموال هي:"
+
+#, fuzzy, python-brace-format
 msgid "The most popular repository currently linked to a Liberapay account is:"
 msgid_plural "The {n} most popular repositories currently linked to a Liberapay account are:"
 msgstr[0] "<irrelevant>"
@@ -5358,17 +5712,17 @@ msgstr[3] "المستودعات {n} الأكثر شيوعًا المرتبطة �
 msgstr[4] "المستودعات {n} الأكثر شيوعًا المرتبطة حاليًا بحساب Liberapay هي:"
 msgstr[5] "المستودعات {n} الأكثر شيوعًا المرتبطة حاليًا بحساب Liberapay هي:"
 
-#, fuzzy, python-brace-format
-msgid "List of repositories currently linked to a Liberapay account, page {number}:"
-msgstr "قائمة المستودعات المرتبطة حاليًا بحساب Liberapay ، الصفحة {number}:"
-
 #, python-brace-format
 msgid "by {author_name}"
 msgstr "مِن طرف {author_name}"
 
 #, fuzzy
-msgid "Stars"
-msgstr "النجوم"
+msgid "stars count"
+msgstr "عدد النجوم"
+
+#, fuzzy
+msgid "connection date"
+msgstr "تاريخ الاتصال"
 
 #, fuzzy
 msgid "Browse your favorite repositories"
@@ -5387,10 +5741,6 @@ msgstr[2] "أهم {n} فريق في Liberapay هم:"
 msgstr[3] "أهم {n} فريق في Liberapay هم:"
 msgstr[4] "أهم {n} فريق في Liberapay هم:"
 msgstr[5] "أهم {n} فريق في Liberapay هم:"
-
-#, fuzzy, python-brace-format
-msgid "List of teams on Liberapay, page {number}:"
-msgstr "قائمة الفرق على Liberapay ، الصفحة {number}:"
 
 #, fuzzy
 msgid "Create a team"
@@ -5573,7 +5923,7 @@ msgstr "يتم تشغيل Liberapay بشفافية من قبل منظمة غير
 
 #, fuzzy, python-brace-format
 msgid "We rely on your support to keep Liberapay running and {link_start}improving{link_end}."
-msgstr "نحن نعتمد على دعمك للاستمرار في تشغيل Liberapay وتحسين {link_start} {link_end}."
+msgstr "نحن نعتمد على دعمك للاستمرار في تشغيل Liberapay {link_start}وتحسين{link_end}."
 
 msgid "Fund Liberapay"
 msgstr "إدعم ليبيراباي"
@@ -5601,12 +5951,12 @@ msgstr[5] "خدمتنا متاحة حاليًا بلغة {n}."
 #, fuzzy, python-brace-format
 msgid "It's also partially translated into {n} other language ({link_open}you can contribute{link_close})."
 msgid_plural "It's also partially translated into {n} other languages ({link_open}you can contribute{link_close})."
-msgstr[0] "كما تمت ترجمته جزئيًا إلى لغة أخرى {n} ({link_open} يمكنك المساهمة بـ {link_close})."
-msgstr[1] "كما تمت ترجمته جزئيًا إلى لغة أخرى {n} ({link_open} يمكنك المساهمة بـ {link_close})."
-msgstr[2] "كما تمت ترجمته جزئيًا إلى لغة أخرى {n} ({link_open} يمكنك المساهمة بـ {link_close})."
-msgstr[3] "كما تمت ترجمته جزئيًا إلى لغة أخرى {n} ({link_open} يمكنك المساهمة بـ {link_close})."
-msgstr[4] "كما تمت ترجمته جزئيًا إلى لغة أخرى {n} ({link_open} يمكنك المساهمة بـ {link_close})."
-msgstr[5] "كما تمت ترجمته جزئيًا إلى لغة أخرى {n} ({link_open} يمكنك المساهمة بـ {link_close})."
+msgstr[0] "كما تمت ترجمته جزئيًا إلى لغة أخرى {n} ({link_open}يمكنك المساهمة بـ{link_close})."
+msgstr[1] "كما تمت ترجمته جزئيًا إلى لغة أخرى {n} ({link_open}يمكنك المساهمة بـ{link_close})."
+msgstr[2] "كما تمت ترجمته جزئيًا إلى لغة أخرى {n} ({link_open}يمكنك المساهمة بـ{link_close})."
+msgstr[3] "كما تمت ترجمته جزئيًا إلى لغة أخرى {n} ({link_open}يمكنك المساهمة بـ{link_close})."
+msgstr[4] "كما تمت ترجمته جزئيًا إلى لغة أخرى {n} ({link_open}يمكنك المساهمة بـ{link_close})."
+msgstr[5] "كما تمت ترجمته جزئيًا إلى لغة أخرى {n} ({link_open}يمكنك المساهمة بـ{link_close})."
 
 #, fuzzy, python-brace-format
 msgid "<unused singular (hash=e8738ad6e84751becc01756b41d4dc45)>"
@@ -5710,12 +6060,12 @@ msgstr[5] "{n} بدأت التبرعات الجديدة في الشهر الما
 #, fuzzy, python-brace-format
 msgid "<unused singular (hash=ac451209b33be4d9667ad1626138debd)>"
 msgid_plural "{n} new {link_open}pledges{link_close} have been made in the past month, adding {money_amount} of weekly donations waiting to be claimed."
-msgstr[0] "{n} تعهدات {link_open} جديدة {link_close} تم تقديمها في الشهر الماضي ، مضيفة {money_amount} من التبرعات الأسبوعية في انتظار المطالبة بها."
-msgstr[1] "{n} تعهدات {link_open} جديدة {link_close} تم تقديمها في الشهر الماضي ، مضيفة {money_amount} من التبرعات الأسبوعية في انتظار المطالبة بها."
-msgstr[2] "{n} تعهدات {link_open} جديدة {link_close} تم تقديمها في الشهر الماضي ، مضيفة {money_amount} من التبرعات الأسبوعية في انتظار المطالبة بها."
-msgstr[3] "{n} تعهدات {link_open} جديدة {link_close} تم تقديمها في الشهر الماضي ، مضيفة {money_amount} من التبرعات الأسبوعية في انتظار المطالبة بها."
-msgstr[4] "{n} تعهدات {link_open} جديدة {link_close} تم تقديمها في الشهر الماضي ، مضيفة {money_amount} من التبرعات الأسبوعية في انتظار المطالبة بها."
-msgstr[5] "{n} تعهدات {link_open} جديدة {link_close} تم تقديمها في الشهر الماضي ، مضيفة {money_amount} من التبرعات الأسبوعية في انتظار المطالبة بها."
+msgstr[0] "{n} تعهدات {link_open}جديدة{link_close} تم تقديمها في الشهر الماضي ، مضيفة {money_amount} من التبرعات الأسبوعية في انتظار المطالبة بها."
+msgstr[1] "{n} تعهدات {link_open}جديدة{link_close} تم تقديمها في الشهر الماضي ، مضيفة {money_amount} من التبرعات الأسبوعية في انتظار المطالبة بها."
+msgstr[2] "{n} تعهدات {link_open}جديدة{link_close} تم تقديمها في الشهر الماضي ، مضيفة {money_amount} من التبرعات الأسبوعية في انتظار المطالبة بها."
+msgstr[3] "{n} تعهدات {link_open}جديدة{link_close} تم تقديمها في الشهر الماضي ، مضيفة {money_amount} من التبرعات الأسبوعية في انتظار المطالبة بها."
+msgstr[4] "{n} تعهدات {link_open}جديدة{link_close} تم تقديمها في الشهر الماضي ، مضيفة {money_amount} من التبرعات الأسبوعية في انتظار المطالبة بها."
+msgstr[5] "{n} تعهدات {link_open}جديدة{link_close} تم تقديمها في الشهر الماضي ، مضيفة {money_amount} من التبرعات الأسبوعية في انتظار المطالبة بها."
 
 #, fuzzy, python-brace-format
 msgid "<unused singular (hash=8aaae81f2b8f07235680896ca08d13fe)>"
@@ -5748,7 +6098,7 @@ msgid ""
 msgstr ""
 "لم نتمكن من تحديد ما إذا كنت عضوًا في فريق {team_name} على {platform_name}.\n"
 "\n"
-"يرجى {link_start} التأكد من أن عضويتك في الفريق عامة {link_end}."
+"يرجى {link_start}التأكد من أن عضويتك في الفريق عامة{link_end}."
 
 #, fuzzy, python-brace-format
 msgid "Are you really an administrator of the {0} team?"
@@ -5933,6 +6283,10 @@ msgid "Transfer the account"
 msgstr "تحويل الحساب"
 
 #, fuzzy, python-brace-format
+msgid "The {provider} account you are attempting to connect is linked to another Liberapay account marked as fraudulent."
+msgstr "حساب {provider} كنت تحاول الاتصال هو مرتبط بحساب ليبراباي آخر واسمه الاحتيال."
+
+#, fuzzy, python-brace-format
 msgid "Connecting a {platform} account"
 msgstr "ربط حساب {platform}"
 
@@ -5957,8 +6311,8 @@ msgid "Whose work do you appreciate?"
 msgstr "عمل من تقدر؟"
 
 #, fuzzy
-msgid "Found a matching username"
-msgid_plural "Found matching usernames"
+msgid "Found a matching user name"
+msgid_plural "Found matching user names"
 msgstr[0] "تم العثور على اسم مستخدم مطابق"
 msgstr[1] "تم العثور على اسم مستخدم مطابق"
 msgstr[2] "تم العثور على اسم مستخدم مطابق"
@@ -6001,8 +6355,8 @@ msgid "{username} has a repository named {repo_name} in their {platform} account
 msgstr "يحتوي {username} على مستودع باسم {repo_name} في حساب {platform}"
 
 #, fuzzy
-msgid "Found a matching user statement"
-msgid_plural "Found matching user statements"
+msgid "Found a matching user description"
+msgid_plural "Found matching user descriptions"
 msgstr[0] "تم العثور على بيان مستخدم مطابق"
 msgstr[1] "تم العثور على بيان مستخدم مطابق"
 msgstr[2] "تم العثور على بيان مستخدم مطابق"
@@ -6036,6 +6390,6 @@ msgstr "خروج"
 msgid "Sign Up"
 msgstr "اشتراك"
 
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "You are already logged in as {0}."
 msgstr "لقد قمت بتسجيل الدخول بالفعل باسم {0}."

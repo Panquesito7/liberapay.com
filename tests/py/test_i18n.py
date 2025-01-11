@@ -17,9 +17,9 @@ class Tests(Harness):
 
     def test_request_country(self):
         request = self.client.GET('/', want='request')
-        assert request.country is None
+        assert request.source_country is None
         request = self.client.GET('/', HTTP_CF_IPCOUNTRY='US', want='request')
-        assert request.country == 'US'
+        assert request.source_country == 'US'
 
     def test_state_currency(self):
         state = self.client.GET('/', want='state')
@@ -52,6 +52,18 @@ class Tests(Harness):
         msgkey1 = self.website.locales['de'].catalog['Save'].id
         msgkey2 = self.website.locales['fr'].catalog['Save'].id
         assert id(msgkey1) == id(msgkey2)
+
+    def test_parse_money_amount_accepts_valid_numbers(self):
+        assert LOCALE_EN.parse_money_amount("3400", 'USD')
+        assert LOCALE_EN.parse_money_amount("3,400", 'USD')
+        assert LOCALE_EN.parse_money_amount("3,400.", 'USD')
+        assert LOCALE_EN.parse_money_amount("3,400.0", 'USD')
+        assert LOCALE_EN.parse_money_amount("3,400.00", 'USD')
+        assert LOCALE_EN.parse_money_amount("3,400.000", 'USD')
+        assert LOCALE_EN.parse_money_amount("3,400.6", 'USD')
+        assert LOCALE_EN.parse_money_amount("3,400.60", 'USD')
+        assert LOCALE_EN.parse_money_amount("3,400.600", 'USD')
+        assert LOCALE_EN.parse_money_amount("3,400.65", 'USD')
 
     def test_parse_money_amount_rejects_overly_precise_numbers(self):
         with self.assertRaises(InvalidNumber):

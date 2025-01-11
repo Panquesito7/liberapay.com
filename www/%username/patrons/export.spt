@@ -5,7 +5,7 @@ from liberapay.utils import get_participant
 [---]
 
 participant = get_participant(state, restrict=True, allow_member=True)
-if user != participant and user.recipient_settings.patron_visibilities < 2:
+if user != participant and (user.recipient_settings.patron_visibilities or 0) < 2:
     if not user.is_acting_as('admin'):
         raise response.error(403, "You haven't opted-in to see who your patrons are.")
 
@@ -33,7 +33,7 @@ if scope == 'active':
                ORDER BY pt.ctime
                   LIMIT 1
                ) AS first_payment_date
-             , tipper_p.avatar_url AS patron_avatar_url
+             , (CASE WHEN tip.visibility > 1 THEN tipper_p.avatar_url ELSE '' END) AS patron_avatar_url
           FROM current_tips tip
           JOIN participants tipper_p ON tipper_p.id = tip.tipper
          WHERE tip.tippee = %s
@@ -87,7 +87,7 @@ elif scope == 'all':
                     AND coalesce(pt.team, pt.recipient) = tip.tippee
                     AND pt.status = 'succeeded'
                ) AS sum_received
-             , tipper_p.avatar_url AS patron_avatar_url
+             , (CASE WHEN tip.visibility > 1 THEN tipper_p.avatar_url ELSE '' END) AS patron_avatar_url
           FROM current_tips tip
           JOIN participants tipper_p ON tipper_p.id = tip.tipper
          WHERE tip.tippee = %s

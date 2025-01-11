@@ -4,6 +4,7 @@ from unittest.mock import patch
 
 from pando.utils import utcnow
 
+from liberapay.constants import PAYIN_AMOUNTS
 from liberapay.cron import Daily, Weekly
 from liberapay.i18n.currencies import fetch_currency_exchange_rates
 from liberapay.models.participant import (
@@ -110,9 +111,16 @@ class TestCronJobs(EmailHarness):
                 job.period = period
 
     def test_fetch_currency_exchange_rates(self):
-        with self.allow_changes_to('currency_exchange_rates'), self.db.get_cursor() as cursor:
-            fetch_currency_exchange_rates(cursor)
-            cursor.connection.rollback()
+        assert PAYIN_AMOUNTS['paypal']['min_acceptable']['HUF']
+        assert 'HUF' in PAYIN_AMOUNTS['paypal']['min_acceptable']
+        currency_exchange_rates = self.client.website.currency_exchange_rates.copy()
+        try:
+            with self.allow_changes_to('currency_exchange_rates'), self.db.get_cursor() as cursor:
+                fetch_currency_exchange_rates(cursor)
+                cursor.connection.rollback()
+        finally:
+            self.client.website.currency_exchange_rates = currency_exchange_rates
+        assert 'HUF' not in PAYIN_AMOUNTS['paypal']['min_acceptable']
 
     def test_send_account_disabled_notifications(self):
         admin = self.make_participant('admin', privileges=1)
@@ -125,15 +133,15 @@ class TestCronJobs(EmailHarness):
         emails = self.get_emails()
         assert not emails
         # Flag the accounts
-        r = self.client.PxST(
+        r = self.client.POST(
             '/admin/users', data={'p_id': str(fraudster.id), 'mark_as': 'fraud'},
-            auth_as=admin,
+            auth_as=admin, json=True,
         )
         assert r.code == 200
         assert json.loads(r.text) == {"msg": "Done, 1 attribute has been updated."}
-        r = self.client.PxST(
+        r = self.client.POST(
             '/admin/users', data={'p_id': str(spammer.id), 'mark_as': 'spam'},
-            auth_as=admin,
+            auth_as=admin, json=True,
         )
         assert r.code == 200
         assert json.loads(r.text) == {"msg": "Done, 1 attribute has been updated."}

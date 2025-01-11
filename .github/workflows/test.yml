@@ -11,28 +11,36 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Install Python 3.8
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.8'
-      - name: Install Python 3.9
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.9'
-      - name: Cache the .tox directory to speed things up
-        uses: actions/cache@v2.1.6
-        with:
-          path: .tox
-          key: test-${{ runner.os }}-${{ hashFiles('requirements_*.txt') }}
+      - uses: actions/checkout@v4
+      - name: Install PostgreSQL 16
+        run: |
+          sudo sh -c 'echo "deb https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+          wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+          sudo apt-get update
+          sudo apt-get install -y postgresql-16
       - name: Start PostgreSQL
-        run: sudo systemctl start postgresql.service
+        run: |
+          sudo systemctl cat postgresql@.service
+          sudo systemctl start postgresql@16-main.service
+          sudo systemctl status postgresql@16-main.service
+          ls -la /var/run/postgresql/
+      - name: Set libpq environment variables
+        run: echo PGPORT=5432 >>$GITHUB_ENV
       - name: Create the database user
-        run: sudo -u postgres createuser --superuser $(whoami)
+        run: sudo -E -u postgres createuser --superuser $(whoami)
       - name: Create the test database
         run: createdb liberapay_tests
       - name: Create the test database schema
         run: DATABASE_URL=liberapay_tests ./recreate-schema.sh test
+      - name: Install Python 3.12
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+      - name: Cache the .tox directory to speed things up
+        uses: actions/cache@v3
+        with:
+          path: .tox
+          key: test-${{ runner.os }}-${{ hashFiles('requirements_*.txt') }}
       - name: Enable expensive tests, on the master branch only
         if: ${{ env.GITHUB_HEAD_REF == 'master' }}
         run: |
@@ -40,5 +48,9 @@ jobs:
           echo LIBERAPAY_I18N_TEST=yes >> $GITHUB_ENV
       - name: Install tox
         run: pip install tox
+      - name: Write liberapay environment file for tests
+        run: echo 'DATABASE_URL="port=5432 dbname=liberapay_tests"' >tests/local.env
       - name: Run the tests
         run: tox
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3

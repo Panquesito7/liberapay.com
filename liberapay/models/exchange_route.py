@@ -1,12 +1,14 @@
 from calendar import monthrange
 from datetime import date
+from functools import cached_property
 
-from cached_property import cached_property
 from postgres.orm import Model
 import stripe
 
 from ..constants import CARD_BRANDS
-from ..exceptions import InvalidId
+from ..exceptions import InvalidId, TooManyAttempts
+from ..utils import utcnow
+from ..website import website
 
 
 class ExchangeRoute(Model):
@@ -70,6 +72,7 @@ class ExchangeRoute(Model):
     def insert(cls, participant, network, address, status,
                one_off=False, remote_user_id=None, country=None, currency=None):
         p_id = participant.id
+        cls.db.hit_rate_limit('add_payment_instrument', str(p_id), TooManyAttempts)
         r = cls.db.one("""
             INSERT INTO exchange_routes AS r
                         (participant, network, address, status,
@@ -130,7 +133,9 @@ class ExchangeRoute(Model):
         else:
             customer_id = stripe.Customer.create(
                 email=participant.get_email_address(),
+                metadata={'participant_id': participant.id},
                 payment_method=pm.id,
+                preferred_locales=[participant.email_lang],
                 idempotency_key='create_customer_for_participant_%i_with_%s' % (
                     participant.id, pm.id
                 ),
@@ -143,57 +148,56 @@ class ExchangeRoute(Model):
             country=pm_country, currency=pm_currency,
         )
         route.stripe_payment_method = pm
-        return route
-
-    @classmethod
-    def attach_stripe_source(cls, participant, source, one_off):
-        if source.type == 'sepa_debit':
-            network = 'stripe-sdd'
-        elif source.type == 'card':
-            network = 'stripe-card'
-        else:
-            raise NotImplementedError(source.type)
-        customer_id = cls.db.one("""
-            SELECT remote_user_id
-              FROM exchange_routes
-             WHERE participant = %s
-               AND network::text LIKE 'stripe-%%'
-             LIMIT 1
-        """, (participant.id,))
-        if customer_id:
-            customer = stripe.Customer.retrieve(customer_id)
-            customer.sources.create(
-                source=source.id,
-                idempotency_key='attach_%s_to_%s' % (source.id, customer_id),
+        if network == 'stripe-sdd':
+            state = website.state.get()
+            request, response = state['request'], state['response']
+            user_agent = request.headers.get(b'User-Agent', b'')
+            try:
+                user_agent = user_agent.decode('ascii', 'backslashreplace')
+            except UnicodeError:
+                raise response.error(400, "User-Agent must be ASCII only")
+            si = stripe.SetupIntent.create(
+                confirm=True,
+                customer=route.remote_user_id,
+                mandate_data={
+                    "customer_acceptance": {
+                        "type": "online",
+                        "accepted_at": int(utcnow().timestamp()),
+                        "online": {
+                            "ip_address": str(request.source),
+                            "user_agent": user_agent,
+                        },
+                    },
+                },
+                metadata={"route_id": route.id},
+                payment_method=pm.id,
+                payment_method_types=[pm.type],
+                usage='off_session',
+                idempotency_key='create_SI_for_route_%i' % route.id,
             )
-            del customer
-        else:
-            customer_id = stripe.Customer.create(
-                email=source.owner.email,
-                source=source.id,
-                idempotency_key='create_customer_for_participant_%i_with_%s' % (
-                    participant.id, source.id
-                ),
-            ).id
-        source_country = getattr(getattr(source, source.type), 'country', None)
-        source_currency = getattr(getattr(source, source.type), 'currency', None)
-        route = ExchangeRoute.insert(
-            participant, network, source.id, source.status,
-            one_off=one_off, remote_user_id=customer_id,
-            country=source_country, currency=source_currency,
-        )
-        route.stripe_source = source
+            route.set_mandate(si.mandate)
+            assert not si.next_action, si.next_action
         return route
 
-    def invalidate(self, obj=None):
+    def invalidate(self):
         if self.network.startswith('stripe-'):
             if self.address.startswith('pm_'):
-                stripe.PaymentMethod.detach(self.address)
+                try:
+                    stripe.PaymentMethod.detach(self.address)
+                except stripe.error.InvalidRequestError as e:
+                    if "The payment method you provided is not attached " in str(e):
+                        pass
+                    else:
+                        raise
             else:
                 try:
                     source = stripe.Source.retrieve(self.address).detach()
                 except stripe.error.InvalidRequestError as e:
-                    if "does not appear to be currently attached" in str(e):
+                    ignore = (
+                        "does not appear to be currently attached" in str(e) or
+                        "No such source: " in str(e)
+                    )
+                    if ignore:
                         pass
                     else:
                         raise
@@ -217,6 +221,22 @@ class ExchangeRoute(Model):
             """, dict(p_id=self.participant.id, route_id=self.id))
             self.participant.add_event(cursor, 'set_default_route', dict(
                 id=self.id, network=self.network
+            ))
+
+    def set_as_default_for(self, currency):
+        with self.db.get_cursor() as cursor:
+            cursor.run("""
+                UPDATE exchange_routes
+                   SET is_default_for = NULL
+                 WHERE participant = %(p_id)s
+                   AND is_default_for = %(currency)s;
+                UPDATE exchange_routes
+                   SET is_default_for = %(currency)s
+                 WHERE participant = %(p_id)s
+                   AND id = %(route_id)s
+            """, dict(p_id=self.participant.id, route_id=self.id, currency=currency))
+            self.participant.add_event(cursor, 'set_default_route_for', dict(
+                id=self.id, network=self.network, currency=currency,
             ))
 
     def set_mandate(self, mandate_id):
@@ -247,7 +267,7 @@ class ExchangeRoute(Model):
                 return self.stripe_source.card.brand
         elif self.network == 'stripe-sdd':
             if self.address.startswith('pm_'):
-                raise NotImplementedError()
+                return getattr(self.stripe_payment_method.sepa_debit, 'bank_name', '')
             else:
                 return getattr(self.stripe_source.sepa_debit, 'bank_name', '')
         else:
@@ -271,11 +291,19 @@ class ExchangeRoute(Model):
             return
         elif self.network == 'stripe-sdd':
             if self.address.startswith('pm_'):
-                raise NotImplementedError()
+                if self.mandate:
+                    mandate = stripe.Mandate.retrieve(self.mandate)
+                    return mandate.payment_method_details.sepa_debit.url
+                else:
+                    website.tell_sentry(Warning(
+                        f"{self!r}.mandate is unexpectedly None"
+                    ))
+                    return
             else:
                 return self.stripe_source.sepa_debit.mandate_url
         else:
-            raise NotImplementedError(self.network)
+            website.tell_sentry(NotImplementedError(self.network))
+            return
 
     def get_partial_number(self):
         if self.network == 'stripe-card':
@@ -286,7 +314,7 @@ class ExchangeRoute(Model):
         elif self.network == 'stripe-sdd':
             from ..payin.stripe import get_partial_iban
             if self.address.startswith('pm_'):
-                raise NotImplementedError()
+                return get_partial_iban(self.stripe_payment_method.sepa_debit)
             else:
                 return get_partial_iban(self.stripe_source.sepa_debit)
         else:

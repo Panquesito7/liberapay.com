@@ -8,6 +8,7 @@ from os.path import dirname, join, realpath
 import unittest
 
 import html5lib
+import pando
 from pando.testing.client import Client
 from pando.utils import utcnow
 from psycopg2 import IntegrityError, InternalError
@@ -62,6 +63,7 @@ class ClientWithAuth(Client):
     def build_wsgi_environ(self, method, *a, **kw):
         """Extend base class to support authenticating as a certain user.
         """
+        kw.setdefault('HTTP_USER_AGENT', f"Pando-test-client/{pando.__version__}")
 
         # csrf - for both anon and authenticated
         csrf_token = kw.get('csrf_token', 'ThisIsATokenThatIsThirtyTwoBytes')
@@ -86,8 +88,9 @@ class ClientWithAuth(Client):
         return environ
 
     def hit(self, method, url, *a, **kw):
-        if kw.pop('xhr', False):
-            kw['HTTP_X_REQUESTED_WITH'] = b'XMLHttpRequest'
+        if kw.pop('json', False):
+            kw['HTTP_ACCEPT'] = b'application/json'
+            kw.setdefault('raise_immediately', False)
 
         # prevent tell_sentry from reraising errors
         sentry_reraise = kw.pop('sentry_reraise', True)
@@ -449,9 +452,9 @@ class Harness(unittest.TestCase):
             'description': 'lorem ipsum',
             'details': '',
         }
-        r = self.client.PxST(
+        r = self.client.POST(
             '/~%s/invoices/new' % addressee.id, auth_as=sender,
-            data=invoice_data, xhr=True,
+            data=invoice_data, json=True,
         )
         assert r.code == 200, r.text
         invoice_id = json.loads(r.text)['invoice_id']

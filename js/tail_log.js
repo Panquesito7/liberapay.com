@@ -4,6 +4,7 @@ Liberapay.stream_lines = function(url, data_cb, error_cb) {
     function fetch_lines(first_pos) {
         jQuery.ajax({
             url: url,
+            dataType: 'text',
             headers: {Range: 'x-lines='+first_pos+'-'},
         }).done(function(data, textStatus, xhr) {
             var file_is_partial = false;
@@ -56,7 +57,7 @@ Liberapay.tail_log = function($pre) {
     Liberapay.stream_lines($pre.data('log-url'), function(data, final, file_is_partial){
         $pre.append(document.createTextNode(data));
         if (final && file_was_partial) {
-            Liberapay.notification($pre.data('msg-success'), 'success', -1);
+            Liberapay.notification($pre.attr('data-msg-success'), 'success', -1);
         }
         if (file_is_partial || file_was_partial) {
             $('html').scrollTop($pre.offset().top + $pre.outerHeight(true) - $('html').outerHeight() + 50);

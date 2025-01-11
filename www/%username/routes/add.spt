@@ -1,7 +1,8 @@
 import stripe
 
+from liberapay.exceptions import AccountSuspended
 from liberapay.models.exchange_route import ExchangeRoute
-from liberapay.payin.stripe import create_source_from_token, repr_stripe_error
+from liberapay.payin.stripe import repr_stripe_error
 from liberapay.utils import check_address_v2, form_post_success, get_participant
 
 [---]
@@ -10,42 +11,21 @@ participant = get_participant(state, restrict=True)
 identity = participant.get_current_identity() or {}
 
 if request.method == 'POST':
+    if not participant.can_attempt_payment:
+        raise AccountSuspended()
     body = request.body
     one_off = body.get('one_off') == 'true'
-    return_url = participant.url('routes/')
     try:
-        if 'token' in body:
-            owner_info = {
-                'email': participant.get_email_address(),
-                'name': body.get('owner.name'),
-            }
-            source = create_source_from_token(
-                body.word('token'), one_off, None, owner_info, return_url
-            )
-            route = ExchangeRoute.attach_stripe_source(participant, source, one_off)
-        else:
-            pm = stripe.PaymentMethod.retrieve(body.word('stripe_pm_id'))
-            route = ExchangeRoute.attach_stripe_payment_method(participant, pm, one_off)
-            si = stripe.SetupIntent.create(
-                confirm=True,
-                customer=route.remote_user_id,
-                payment_method=pm.id,
-                metadata={"route_id": route.id},
-                return_url=return_url,
-                usage='off_session',
-                idempotency_key='create_SI_for_route_%i' % route.id,
-            )
-            if si.next_action:
-                if si.next_action.type != 'redirect_to_url':
-                    raise NotImplementedError(si.next_action.type)
-                raise response.redirect(si.next_action.redirect_to_url.url)
+        pm = stripe.PaymentMethod.retrieve(body.word('stripe_pm_id'))
+        route = ExchangeRoute.attach_stripe_payment_method(participant, pm, one_off)
     except stripe.error.StripeError as e:
         raise response.error(e.http_status or 500, _(
             "The payment processor {name} returned an error: “{error_message}”.",
             name='Stripe', error_message=repr_stripe_error(e)
         ))
-    if body.parse_boolean('set_as_default', default=False):
-        route.set_as_default()
+    if not route.one_off:
+        if body.parse_boolean('set_as_default', default=False):
+            route.set_as_default()
     postal_address = {
         k: body.get('postal_address.' + k) for k in constants.POSTAL_ADDRESS_KEYS_LIBERAPAY
     }
@@ -59,17 +39,10 @@ if request.method == 'POST':
 
 network = request.qs['type']
 
-# https://stripe.com/docs/security#content-security-policy
-csp = response.headers[b'Content-Security-Policy']
-csp = csp.allow(b'connect-src', b"api.stripe.com")
-csp = csp.allow(b'frame-src', b"js.stripe.com hooks.stripe.com")
-csp = csp.allow(b'script-src', b"js.stripe.com")
-response.headers[b'Content-Security-Policy'] = csp
-
 title = _("Add a payment instrument")
 
 [---] text/html
-% from "templates/macros/icons.html" import fontawesome
+% from "templates/macros/icons.html" import icon with context
 % from "templates/macros/postal-addresses.html" import postal_address_form_v2 with context
 
 % extends "templates/layouts/settings.html"
@@ -79,6 +52,13 @@ title = _("Add a payment instrument")
     <noscript><div class="alert alert-danger">{{ _("JavaScript is required") }}</div></noscript>
 
     <form action="javascript:" method="POST" id="stripe"
+          data-before-submit="call:Liberapay.stripe_before_submit"
+          data-msg-stripe-missing='{{ _(
+              "The initialization of a required component has failed. If you use a "
+              "browser extension that blocks requests, for example NoScript, please "
+              "make sure it’s allowing requests to the “stripe.com” domain."
+          ) }}'
+          data-msg-submitting="{{ _('Request in progress, please wait…') }}"
           data-stripe-pk="{{ website.app_conf.stripe_publishable_key }}">
         <input type="hidden" name="csrf_token" value="{{ csrf_token }}" />
         <input type="hidden" name="owner.email" value="{{ participant.get_email_address() }}" />
@@ -89,21 +69,23 @@ title = _("Add a payment instrument")
                 <input name="owner.name" autocomplete="name" required minlength=3
                        class="form-control mb-3" placeholder="{{ _('Jane Doe') }}" />
                 <div id="stripe-element" data-type="card" class="form-control mb-3"></div>
-                <span id="stripe-errors" role="alert" class="invalid-msg"></span>
+                <output id="stripe-errors" class="alert alert-danger"></output>
             </div>
-            <p class="help-block">{{ glyphicon('lock') }} {{ _(
+            <p class="help-block">{{ icon('secure') }} {{ _(
                 "This data will be sent directly to the payment processor "
                 "{name} through an encrypted connection.",
                 name='<a href="https://stripe.com/" target="_blank" rel="noopener noreferrer">Stripe</a>'|safe
             ) }}</p>
             <label>
-                <input type="checkbox" name="one_off" value="true" />
+                <input type="checkbox" name="one_off" value="true" data-toggle="disable" data-target="#set-as-default" />
                 {{ _("Forget this card number after one payment.") }}
             </label><br>
+            <fieldset id="set-as-default">
             <label>
                 <input type="checkbox" name="set_as_default" value="true" checked />
                 {{ _("Use this payment instrument by default for future payments") }}
             </label>
+            </fieldset>
         </fieldset>
         % elif network == 'stripe-sdd'
         <fieldset id="iban-form" class="form-group">
@@ -114,7 +96,7 @@ title = _("Add a payment instrument")
                 <input name="owner.name" autocomplete="name" required minlength=3
                        class="form-control mb-3" placeholder="{{ _('Jane Doe') }}" />
                 <div id="stripe-element" data-type="iban" class="form-control mb-3"></div>
-                <span id="stripe-errors" role="alert" class="invalid-msg"></span>
+                <output id="stripe-errors" class="alert alert-danger"></output>
             </div>
             <p class="help-block">{{ _(
                 "By providing your IBAN, you are authorizing {platform} and {provider}, "
@@ -127,13 +109,15 @@ title = _("Add a payment instrument")
                 provider='<a href="https://stripe.com/" target="_blank" rel="noopener noreferrer">Stripe</a>'|safe
             ) }}</p>
             <label>
-                <input type="checkbox" name="one_off" value="true" />
+                <input type="checkbox" name="one_off" value="true" data-toggle="disable" data-target="#set-as-default" />
                 {{ _("Forget this bank account number after one payment.") }}
             </label><br>
+            <fieldset id="set-as-default">
             <label>
-                <input type="checkbox" name="set_as_default" value="true" checked />
+                <input type="checkbox" name="set_as_default_for" value="EUR" checked />
                 {{ _("Use this payment instrument by default for future payments") }}
             </label>
+            </fieldset>
         </fieldset>
         % endif
         <p>{{ _(
@@ -147,11 +131,16 @@ title = _("Add a payment instrument")
             postal_address_form_v2(saved=identity.get('postal_address'), required=False)
         }}</div>
         <br>
+        <output class="alert alert-danger hidden msg-postal-address-required">{{ _(
+            "Please fill in your postal address. It's required because the IBAN "
+            "you've provided emanates from outside the European Union."
+        ) }}</output>
         <button class="btn btn-primary btn-lg">{{ _("Save") }}</button>
     </form>
 
 % endblock
 
 % block scripts
+    % do response.csp_allow_stripe()
     <script src="https://js.stripe.com/v3/"></script>
 % endblock
