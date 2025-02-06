@@ -19,6 +19,19 @@ if request.method == 'POST':
         route = ExchangeRoute.from_id(participant, request.body.get_int('set_as_default'), _raise=False)
         if route:
             route.set_as_default()
+    elif 'set_as_default_for' in request.body:
+        try:
+            route_id, currency = request.body['set_as_default_for'].split(':')
+            route_id = int(route_id)
+            if currency == '':
+                currency = None
+            elif currency not in constants.CURRENCIES:
+                raise ValueError(currency)
+        except ValueError:
+            raise response.invalid_input(request.body['set_as_default_for'], 'set_as_default_for', 'body')
+        route = ExchangeRoute.from_id(participant, route_id, _raise=False)
+        if route:
+            route.set_as_default_for(currency)
     else:
         raise response.error(400, "no known action found in request body")
     form_post_success(state)
@@ -36,9 +49,9 @@ routes = website.db.all("""
       FROM exchange_routes r
      WHERE r.participant = %s
        AND r.network IN ('stripe-card', 'stripe-sdd')
-       AND r.status IN ('chargeable', 'pending')
+       AND ( r.status IN ('chargeable', 'pending') OR %s )
   ORDER BY r.ctime DESC
-""", (participant.id,))
+""", (participant.id, user.is_acting_as('admin')))
 
 today = utcnow().date()
 
@@ -55,7 +68,8 @@ title = _("Payment Instruments")
 [---] text/html
 % extends "templates/layouts/settings.html"
 
-% from "templates/macros/icons.html" import fontawesome
+% from "templates/macros/icons.html" import icon with context
+% from "templates/macros/payment-methods.html" import card_brands with context
 
 % block content
 
@@ -85,10 +99,10 @@ title = _("Payment Instruments")
     <form action="" method="POST">
         <input type="hidden" name="csrf_token" value="{{ csrf_token }}" />
     % for route, last_payin in routes
-        <div class="payment-instrument">
+        <div class="payment-instrument{% if route.status not in ('chargeable', 'pending') %} text-muted{% endif %}">
             <span>{{
-                fontawesome('credit-card', _("Credit/Debit Card")) if route.network == 'stripe-card' else
-                fontawesome('bank', _("Bank Account")) if route.network == 'stripe-sdd' else
+                icon('payment-card', _("Payment Card"), size=32) if route.network == 'stripe-card' else
+                icon('bank-account', _("Bank Account"), size=32) if route.network == 'stripe-sdd' else
                 ''
             }}</span>
             <span>
@@ -99,16 +113,29 @@ title = _("Payment Instruments")
                 % if route.currency
                     <span class="text-muted">({{ locale.currencies.get(route.currency, route.currency) }})</span>
                 % endif
+                % if user.is_acting_as('admin')
+                    <span class="monospace text-warning">({{ route.owner_name }})</span>
+                % endif
                 % if route.is_default
-                    &nbsp; <span class="label label-primary">{{ _("default") }}</span>
+                    &nbsp; <span class="label label-primary" title="{{ _(
+                        'This instrument is used by default.'
+                    ) }}">{{ _("default") }}</span>
+                % elif route.is_default_for
+                    &nbsp; <span class="label label-primary" title="{{ _(
+                        'This instrument is used by default for payments in {currency}.',
+                        currency=Currency(route.is_default_for)
+                    ) }}">{{ _(
+                        "default for {currency}", currency=route.is_default_for
+                    ) }}</span>
                 % endif
                 % if route.status == 'pending'
                     &nbsp; <span class="label label-warning">{{ _("pending") }}</span>
+                % elif route.status != 'chargeable'
+                    &nbsp; <span class="label label-default">{{ route.status }}</span>
                 % endif
                 <br>{{ _("Added on {date}", date=route.ctime.date()) }}
-                % set mandate_url = route.get_mandate_url()
-                % if mandate_url
-                    (<a href="{{ mandate_url }}">{{ _("view mandate") }}</a>)
+                % if route.network == 'stripe-sdd'
+                    (<a href="{{ participant.path('routes/%s/mandate' % route.id) }}">{{ _("view mandate") }}</a>)
                 % endif
                 % set exp_date = route.get_expiration_date()
                 % if exp_date
@@ -155,12 +182,33 @@ title = _("Payment Instruments")
                     <br><span class="text-muted">{{ _("This payment instrument hasn't been used yet.") }}</span>
                 % endif
             </span>
+            % if route.status in ('chargeable', 'pending')
             <span>
                 <button class="btn btn-danger btn-xs" name="remove" value="{{ route.id }}">{{ _("Remove") }}</button>
-            % if not route.is_default
-                <button class="btn btn-primary btn-xs" name="set_as_default" value="{{ route.id }}">{{ _("Set as default") }}</button>
+            % if route.network == 'stripe-card' and not route.is_default
+            <button class="btn btn-primary btn-xs" name="set_as_default" value="{{ route.id }}">{{ _("Set as default") }}</button>
+            % endif
+            % if route.is_default_for
+                <button class="btn btn-warning btn-xs"
+                        name="set_as_default_for" value="{{ route.id }}:"
+                        title="{{ _(
+                            'Stop using this instrument by default for payments in {currency}.',
+                            currency=Currency(route.is_default_for)
+                        ) }}">{{ _(
+                    "Unset as default for {currency}", currency=route.is_default_for
+                ) }}</button>
+            % elif route.network != 'stripe-card' and last_payin and participant.donates_in_multiple_currencies
+                <button class="btn btn-primary btn-xs"
+                        name="set_as_default_for" value="{{ route.id }}:{{ last_payin.amount.currency }}"
+                        title="{{ _(
+                            'Use this instrument by default for payments in {currency}.',
+                            currency=Currency(last_payin.amount.currency)
+                        ) }}">{{ _(
+                    "Set as default for {currency}", currency=last_payin.amount.currency
+                ) }}</button>
             % endif
             </span>
+            % endif
         </div>
     % endfor
     </form>
@@ -173,24 +221,22 @@ title = _("Payment Instruments")
 <div class="payment-methods">
     <div class="panel panel-default">
         <div class="panel-body overlaid">
-            <p class="payment-icon">{{ fontawesome('credit-card') }}</p>
+            {{ icon('payment-card', size=32) }}
             <h4>{{ _("Credit/Debit Card") }}<br>
-                <small>Visa, MasterCard, American Express, UnionPay</small>
+                <small>{{ card_brands() }}</small>
             </h4>
             <a class="overlay" href="{{ participant.path('routes/add') }}?type=stripe-card"
                 ><span class="sr-only">{{ _("Add a card") }}</span></a>
         </div>
     </div>
-    % set warn = request.country not in constants.SEPA
-    <div class="panel panel-default {{ '' if has_euro_donations else 'muted' }}">
+    <div class="panel panel-default {{ '' if has_euro_donations and participant.guessed_country in constants.EUROZONE else 'muted' }}">
         <div class="panel-body overlaid">
-            <p class="payment-icon">{{ fontawesome('bank') }}</p>
-            <h4>{{ _("Bank Account") }}<br>
-                % if not has_euro_donations
-                <small class="text-warning">{{ _("Euro donations only") }}</small>
-                % else
-                <small class="text-{{ 'warning' if warn else 'info' }}">{{ _("Euro bank accounts only") }}</small>
-                % endif
+            {{ icon('bank-account', size=32) }}
+            <h4>{{ _("Euro Bank Account") }}<br>
+                <small>
+                    <span class="text-warning">{{
+                        _("Only for donations in euros to recipients in SEPA countries") }}</span><br>
+                </small>
             </h4>
             <a class="overlay" href="{{ participant.path('routes/add') }}?type=stripe-sdd"
                 ><span class="sr-only">{{ _("Add a bank account") }}</span></a>

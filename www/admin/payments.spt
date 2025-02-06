@@ -1,15 +1,8 @@
-from liberapay.i18n.base import LOCALE_EN as locale
+from operator import itemgetter
 
-MARKS_MAP = {
-    'trusted': 'success',
-    'okay': 'info',
-    'unsettling': 'info',
-    'controversial': 'warning',
-    'irrelevant': 'warning',
-    'misleading': 'warning',
-    'fraud': 'danger',
-    'spam': 'danger',
-}
+from liberapay.i18n.base import LOCALE_EN as locale, MoneyBasket
+from liberapay.utils import group_by, render_postal_address
+
 PAGE_SIZE = 50
 STATUS_MAP = {
     'failed': 'danger',
@@ -27,6 +20,13 @@ before = request.qs.get_int('before', default=None)
 status = request.qs.get('status')
 payins = website.db.all("""
     SELECT pi.*, p.username AS payer_name, p.marked_as AS payer_marked_as
+         , ( SELECT i.info
+               FROM identities i
+              WHERE i.participant = pi.payer
+                AND pi.status = 'awaiting_review'
+           ORDER BY i.ctime DESC
+              LIMIT 1
+           ) AS payer_identity
          , r.network AS payin_method
          , ( SELECT json_agg((SELECT x FROM ( SELECT
                         pt.recipient, recipient.username AS recipient_name,
@@ -49,6 +49,29 @@ payins = website.db.all("""
      LIMIT %s
 """, (before, status, PAGE_SIZE))
 
+for pi in payins:
+    for pt in pi.transfers:
+        pt['amount'] = Money(**pt['amount'])
+        if pt['unit_amount']:
+            pt['unit_amount'] = Money(**pt['unit_amount'])
+        if pt['reversed_amount']:
+            pt['reversed_amount'] = Money(**pt['reversed_amount'])
+        pt['status'] = (
+            'refunded' if pt['reversed_amount'] == pt['amount'] else
+            'partially_refunded' if pt['reversed_amount'] else
+            pt['status']
+        )
+    grouped_transfers = group_by(pi.transfers, itemgetter('team'))
+    pi.transfers = grouped_transfers.pop(None, [])
+    for group in grouped_transfers.values():
+        pi.transfers.append({
+            'sum': MoneyBasket(pt['amount'] for pt in group),
+            'team_id': group[0]['team'],
+            'team_name': group[0]['team_name'],
+            'transfers': group,
+        })
+    del grouped_transfers
+
 title = "Payments Admin"
 
 [---] text/html
@@ -58,10 +81,29 @@ title = "Payments Admin"
 
 % extends "templates/layouts/admin.html"
 
+% macro render_payin_transfer(pt, pi, show_amount=True)
+    <li>
+    % if show_amount
+    {{ locale.format_money(pt.amount) }}
+    % endif
+    to <a href="/~{{ pt.recipient }}/">{{ pt.recipient_name }}</a>
+    % if pt.period
+        ({{ locale.format_money(pt.unit_amount) }}/{{ pt.period[:-2] }} × {{ pt.n_units }})
+    % endif
+    % if pt.status != pi.status
+        ‒ <span class="text-{{ STATUS_MAP.get(pt.status, 'info') }}">{{ pt.status }}</span>
+        % if pt.error
+            ‒ error: <code>{{ pt.error }}</code>
+        % endif
+    % endif
+    </li>
+% endmacro
+
 % block content
 
 <ul class="nav nav-pills">{{ querystring_nav('status', [
     (None, "All"),
+    ('awaiting_review', "Awaiting review"),
     ('failed', "Failed"),
     ('pending', "Pending"),
     ('succeeded', "Succeeded"),
@@ -91,8 +133,16 @@ title = "Payments Admin"
         <tr>
             <td>{{ pi.id }}</td>
             <td>{{ pi.ctime.replace(microsecond=0, tzinfo=None) }}</td>
-            <td><a href="/~{{ pi.payer }}/">{{ pi.payer_name }}</a>{% if pi.payer_marked_as %}<br>
-                <span class="text-{{ MARKS_MAP[pi.payer_marked_as] }}">[{{
+            <td><a href="/~{{ pi.payer }}/">{{ pi.payer_name }}</a>{% if pi.payer_identity %}<br>
+                % set payer_identity = pi.payer_identity.decrypt()
+                <span class="break-word-anywhere monospace">
+                    {{- payer_identity.name|default('') }}<br>
+                    {{- render_postal_address(
+                        payer_identity.postal_address, single_line=True, format='downward'
+                    ) -}}
+                </span>
+                {% endif %}{% if pi.payer_marked_as %}<br>
+                <span class="{{ constants.ACCOUNT_MARK_CLASSES[pi.payer_marked_as] }}">[{{
                     pi.payer_marked_as
                 }}]</span>{% endif %}</td>
             <td class="text-center">{{
@@ -113,28 +163,21 @@ title = "Payments Admin"
             <td>
             % if pi.transfers
                 <ul class="right-pointing-arrows">
-                % for pt in pi.transfers
+                % for item in pi.transfers
+                % if 'transfers' in item
                     <li>
-                    % do pt.__setitem__('status', (
-                        'refunded' if pt.reversed_amount == pt.amount else
-                        'partially_refunded' if pt.reversed_amount else
-                        pt.status
-                    ))
-                    {{ locale.format_money(Money(**pt.amount)) }}
-                    to <a href="/~{{ pt.recipient }}/">{{ pt.recipient_name }}</a>
-                    % if pt.team
-                        through team <a href="/~{{ pt.team }}/">{{ pt.team_name }}</a>
-                    % endif
-                    % if pt.period
-                        ({{ locale.format_money(Money(**pt.unit_amount)) }}/{{ pt.period[:-2] }} × {{ pt.n_units }})
-                    % endif
-                    % if pt.status != pi.status
-                        ‒ <span class="text-{{ STATUS_MAP.get(pt.status, 'info') }}">{{ pt.status }}</span>
-                        % if pt.error
-                            ‒ error: <code>{{ pt.error }}</code>
-                        % endif
-                    % endif
+                    {{ locale.format_money_basket(item['sum']) }}
+                    through team <a href="/~{{ item['team_id'] }}/">{{ item['team_name'] }}</a>
+                    <ul class="hooked-right-pointing-arrows">
+                    % set show_amount = len(item['transfers']) > 1
+                    % for pt in item['transfers']
+                        {{ render_payin_transfer(pt, pi, show_amount=show_amount) }}
+                    % endfor
+                    </ul>
                     </li>
+                % else
+                    {{ render_payin_transfer(item, pi) }}
+                % endif
                 % endfor
                 </ul>
             % else

@@ -1,7 +1,6 @@
-from urllib.parse import quote as urlquote, urlsplit, urlunsplit
+from urllib.parse import quote as urlquote
 
 from pando import Response
-from pando.http.request import Line
 import pando.state_chain
 from requests.exceptions import ConnectionError, Timeout
 
@@ -15,13 +14,14 @@ def add_state_to_context(state, website):
 
 
 def attach_environ_to_request(environ, request):
-    request.country = request.headers.get(b'Cf-Ipcountry', b'').decode() or None
+    request.source_country = request.headers.get(b'Cf-Ipcountry', b'').decode() or None
     request.environ = environ
     try:
         request.hostname = request.headers[b'Host'].decode('idna')
     except UnicodeDecodeError:
         request.hostname = ''
     request.subdomain = None
+    request.save_data = request.headers.get(b'Save-Data') == b'on'
 
 
 def create_response_object(request, website):
@@ -53,14 +53,6 @@ def canonize(request, response, website):
     """
     if request.path.raw.startswith('/callbacks/'):
         # Don't redirect callbacks
-        if request.path.raw[-1] == '/':
-            # Remove trailing slash
-            l = request.line
-            scheme, netloc, path, query, fragment = urlsplit(l.uri)
-            assert path[-1] == '/'  # sanity check
-            path = path[:-1]
-            new_uri = urlunsplit((scheme, netloc, path, query, fragment))
-            request.line = Line(l.method.raw, new_uri, l.version.raw)
         return
     canonical_host = website.canonical_host
     canonical_scheme = website.canonical_scheme
@@ -93,14 +85,19 @@ def canonize(request, response, website):
         raise response.redirect(url)
 
 
+def drop_accept_all_header(accept_header=None):
+    # This is a temporary workaround for a shortcoming in Aspen
+    if accept_header == '*/*':
+        return {'accept_header': None}
+
+
 def detect_obsolete_browsers(request, response, state):
     """Respond with a warning message if the user agent seems to be obsolete.
     """
     if b'MSIE' in request.headers.get(b'User-Agent', b''):
         if state.get('etag'):
             return
-        cookie = request.headers.cookie.get('obsolete_browser_warning')
-        if cookie and cookie.value == 'ignore':
+        if request.cookies.get('obsolete_browser_warning') == 'ignore':
             return
         if request.method == 'POST':
             try:
@@ -154,10 +151,10 @@ def add_content_disposition_header(request, response):
 def merge_responses(state, exception, website, response=None):
     """Merge the initial Response object with the one raised later in the chain.
     """
-    if response is None or not isinstance(exception, Response):
+    if not isinstance(exception, Response):
         return
     # log the exception
-    website.tell_sentry(exception, state)
+    state.update(website.tell_sentry(exception))
     # clear the exception
     state['exception'] = None
     # set debug info
@@ -171,6 +168,11 @@ def merge_responses(state, exception, website, response=None):
     # there's nothing else to do if the exception is the response
     if exception is response:
         return
+    # set response
+    state['response'] = exception
+    # there's nothing to merge if there's no prior Response object in the state
+    if response is None:
+        return
     # merge cookies
     for k, v in response.headers.cookie.items():
         exception.headers.cookie.setdefault(k, v)
@@ -181,8 +183,6 @@ def merge_responses(state, exception, website, response=None):
     if hasattr(response, '__dict__'):
         for k, v in response.__dict__.items():
             exception.__dict__.setdefault(k, v)
-    # set response
-    state['response'] = exception
 
 
 def turn_socket_error_into_50X(website, state, exception, _=str.format, response=None):
@@ -211,7 +211,7 @@ def turn_socket_error_into_50X(website, state, exception, _=str.format, response
         else:
             return
     # log the exception
-    website.tell_sentry(exception, state, level='warning')
+    website.tell_sentry(exception, level='warning')
     # show a proper error message
     response.body = _(
         "Processing your request failed because our server was unable to communicate "
@@ -219,6 +219,29 @@ def turn_socket_error_into_50X(website, state, exception, _=str.format, response
         "try again later."
     )
     return {'response': response, 'exception': None}
+
+
+def get_response_for_exception(state, website, exception, response=None):
+    if isinstance(exception, Response):
+        return merge_responses(state, exception, website, response)
+    else:
+        response = response or Response(500)
+        if response.code < 400:
+            response.code = 500
+        response.__cause__ = exception
+        return {'response': response, 'exception': None}
+
+
+def delegate_error_to_simplate(website, state, response, request=None, resource=None):
+    """
+    Wrap Pando's function to avoid dispatching to `error.spt` if the response is
+    already a complete error page.
+    """
+    if b'Content-Type' in response.headers:
+        return  # this response is already completely rendered
+    return pando.state_chain.delegate_error_to_simplate(
+        website, state, response, request, resource
+    )
 
 
 def bypass_csp_for_form_redirects(response, state, website, request=None):
@@ -244,32 +267,6 @@ def bypass_csp_for_form_redirects(response, state, website, request=None):
             pass
 
 
-def delegate_error_to_simplate(website, state, response, request=None, resource=None):
-    """
-    Wrap Pando's function to avoid dispatching to `error.spt` if the response is
-    already a complete error page.
-    """
-    if b'Content-Type' in response.headers:
-        return  # this response is already completely rendered
-    return pando.state_chain.delegate_error_to_simplate(
-        website, state, response, request, resource
-    )
-
-
-def return_500_for_exception(website, exception, response=None):
-    response = response or Response()
-    response.code = 500
-    if website.show_tracebacks:
-        import traceback
-        response.body = traceback.format_exc()
-    else:
-        response.body = (
-            "Uh-oh, you've found a serious bug. Sorry for the inconvenience, "
-            "we'll get it fixed ASAP."
-        )
-    return {'response': response, 'exception': None}
-
-
 def overwrite_status_code_of_gateway_errors(response):
     """This function changes 502 and 504 response codes to 500.
 
@@ -290,3 +287,17 @@ def no_response_body_for_HEAD_requests(response, request=None, exception=None):
     """
     if request and request.method == 'HEAD' and response.body:
         response.body = b''
+
+
+def return_500_for_exception(website, exception, response=None):
+    response = response or Response()
+    response.code = 500
+    if website.show_tracebacks:
+        import traceback
+        response.body = traceback.format_exc()
+    else:
+        response.body = (
+            "Uh-oh, you've found a serious bug. Sorry for the inconvenience, "
+            "we'll get it fixed ASAP."
+        )
+    return {'response': response, 'exception': None}

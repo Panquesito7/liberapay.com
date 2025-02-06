@@ -14,7 +14,7 @@ COMMENT ON EXTENSION pg_stat_statements IS 'track execution statistics of all SQ
 
 -- database metadata
 CREATE TABLE db_meta (key text PRIMARY KEY, value jsonb);
-INSERT INTO db_meta (key, value) VALUES ('schema_version', '163'::jsonb);
+INSERT INTO db_meta (key, value) VALUES ('schema_version', '182'::jsonb);
 
 
 -- app configuration
@@ -100,6 +100,11 @@ CREATE INDEX username_trgm_idx ON participants
     WHERE status = 'active'
       AND NOT username like '~%';
 
+CREATE INDEX public_name_trgm_idx ON participants
+    USING GIN (lower(public_name) gin_trgm_ops)
+    WHERE status = 'active'
+      AND public_name IS NOT null;
+
 CREATE INDEX participants_join_time_idx ON participants (join_time)
     WHERE join_time IS NOT NULL;
 
@@ -132,7 +137,7 @@ CREATE TRIGGER initialize_amounts
 
 CREATE FUNCTION update_profile_visibility() RETURNS trigger AS $$
     BEGIN
-        IF (NEW.marked_as IS NULL) THEN
+        IF (OLD.marked_as IS NULL AND NEW.marked_as IS NULL) THEN
             RETURN NEW;
         END IF;
         IF (NEW.marked_as = 'trusted') THEN
@@ -151,7 +156,7 @@ CREATE FUNCTION update_profile_visibility() RETURNS trigger AS $$
             NEW.profile_noindex = NEW.profile_noindex & 2147483645;
             NEW.hide_from_lists = NEW.hide_from_lists & 2147483645;
             NEW.hide_from_search = NEW.hide_from_search & 2147483645;
-        ELSIF (NEW.marked_as = 'unsettling') THEN
+        ELSIF (NEW.marked_as IS NULL) THEN
             NEW.profile_noindex = NEW.profile_noindex | 2;
             NEW.hide_from_lists = NEW.hide_from_lists & 2147483645;
             NEW.hide_from_search = NEW.hide_from_search & 2147483645;
@@ -173,8 +178,12 @@ CREATE TRIGGER update_profile_visibility
 
 CREATE TABLE recipient_settings
 ( participant           bigint   PRIMARY KEY REFERENCES participants
-, patron_visibilities   int      NOT NULL CHECK (patron_visibilities > 0)
+, patron_visibilities   int      CHECK (patron_visibilities > 0)
 -- Three bits: 1 is for "secret", 2 is for "private", 4 is for "public".
+, patron_countries      text     CHECK (patron_countries <> '')
+-- A comma (,) separated list of uppercase 3-letter ISO country codes, possibly
+-- prefixed with a dash (-) indicating that the listed countries are the ones
+-- to exclude rather than the ones to allow.
 );
 
 
@@ -198,6 +207,7 @@ CREATE TABLE elsewhere
 , info_fetched_at       timestamptz     NOT NULL DEFAULT current_timestamp
 , description           text
 , missing_since         timestamptz
+, last_fetch_attempt    timestamptz
 , CONSTRAINT user_id_chk CHECK (user_id IS NOT NULL OR domain <> '' AND user_name IS NOT NULL)
 );
 
@@ -235,6 +245,7 @@ CREATE TABLE repositories
 , info_fetched_at       timestamptz     NOT NULL DEFAULT now()
 , participant           bigint          REFERENCES participants
 , show_on_profile       boolean         NOT NULL DEFAULT FALSE
+, last_fetch_attempt    timestamptz
 , UNIQUE (platform, remote_id)
 , UNIQUE (platform, slug)
 );
@@ -415,6 +426,13 @@ CREATE TABLE exchange_routes
 , country          text
 , status           route_status   NOT NULL
 , is_default       boolean
+, is_default_for   currency
+, brand            text
+, last4            text
+, fingerprint      text
+, owner_name       text
+, expiration_date  date
+, mandate_reference  text
 , UNIQUE (participant, network, address)
 );
 
@@ -523,7 +541,7 @@ CREATE INDEX payins_awating_review ON payins (status) WHERE status = 'awaiting_r
 CREATE TYPE payin_transfer_context AS ENUM ('personal-donation', 'team-donation');
 
 CREATE TYPE payin_transfer_status AS ENUM (
-    'pre', 'pending', 'failed', 'succeeded', 'awaiting_review'
+    'pre', 'pending', 'failed', 'succeeded', 'awaiting_review', 'suspended'
 );
 
 CREATE TABLE payin_transfers
@@ -732,27 +750,24 @@ CREATE VIEW current_takes AS
      WHERE amount IS NOT NULL;
 
 CREATE FUNCTION compute_payment_providers(bigint) RETURNS bigint AS $$
-    SELECT CASE WHEN p.email IS NULL AND p.kind <> 'group' AND p.join_time >= '2022-12-06' THEN 0
-           ELSE coalesce((
-               SELECT sum(DISTINCT array_position(
-                                       enum_range(NULL::payment_providers),
-                                       a.provider::payment_providers
-                                   ))
-                 FROM payment_accounts a
-                WHERE ( a.participant = p.id OR
-                        a.participant IN (
-                            SELECT t.member
-                              FROM current_takes t
-                             WHERE t.team = p.id
-                               AND t.amount <> 0
-                        )
-                      )
-                  AND a.is_current IS TRUE
-                  AND a.verified IS TRUE
-                  AND coalesce(a.charges_enabled, true)
-           ), 0) END
-      FROM participants p
-     WHERE p.id = $1;
+    SELECT coalesce((
+        SELECT sum(DISTINCT array_position(
+                                enum_range(NULL::payment_providers),
+                                a.provider::payment_providers
+                            ))
+          FROM payment_accounts a
+         WHERE ( a.participant = $1 OR
+                 a.participant IN (
+                     SELECT t.member
+                       FROM current_takes t
+                      WHERE t.team = $1
+                        AND t.amount <> 0
+                 )
+               )
+           AND a.is_current IS TRUE
+           AND a.verified IS TRUE
+           AND coalesce(a.charges_enabled, true)
+    ), 0);
 $$ LANGUAGE SQL STRICT;
 
 CREATE FUNCTION update_payment_providers() RETURNS trigger AS $$
@@ -833,8 +848,8 @@ CREATE OR REPLACE FUNCTION update_payment_accounts() RETURNS trigger AS $$
     BEGIN
         UPDATE payment_accounts
            SET verified = coalesce(NEW.verified, false)
-         WHERE id = NEW.address
-           AND participant = NEW.participant;
+         WHERE participant = NEW.participant
+           AND lower(id) = lower(NEW.address);
         RETURN NULL;
     END;
 $$ LANGUAGE plpgsql;
@@ -1091,6 +1106,7 @@ CREATE TABLE user_secrets
 , id            int           NOT NULL
 , secret        text          NOT NULL
 , mtime         timestamptz   NOT NULL DEFAULT current_timestamp
+, latest_use    date
 , UNIQUE (participant, id)
 );
 

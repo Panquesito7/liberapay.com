@@ -11,7 +11,8 @@ from psycopg2.extras import execute_batch
 from ..constants import SEPA
 from ..exceptions import (
     AccountSuspended, BadDonationCurrency, MissingPaymentAccount,
-    RecipientAccountSuspended, NoSelfTipping, UserDoesntAcceptTips,
+    NoSelfTipping, ProhibitedSourceCountry, RecipientAccountSuspended,
+    UnableToDeterminePayerCountry, UserDoesntAcceptTips,
 )
 from ..i18n.currencies import Money, MoneyBasket
 from ..utils import group_by
@@ -57,6 +58,19 @@ def prepare_payin(db, payer, amount, route, proto_transfers, off_session=False):
 
     if payer.is_suspended or not payer.get_email_address():
         raise AccountSuspended()
+
+    if route.network == 'paypal':
+        # The country of origin check for PayPal payments is in the
+        # `liberapay.payin.paypal.capture_order` function.
+        pass
+    else:
+        for pt in proto_transfers:
+            if (allowed_countries := pt.recipient.recipient_settings.patron_countries):
+                if route.country not in allowed_countries:
+                    if route.country:
+                        raise ProhibitedSourceCountry(pt.recipient, route.country)
+                    else:
+                        raise UnableToDeterminePayerCountry()
 
     with db.get_cursor() as cursor:
         payin = cursor.one("""
@@ -123,12 +137,16 @@ def update_payin(
             """, (payin_id, status, error))
 
         if status in ('pending', 'succeeded'):
-            cursor.run("""
+            route = cursor.one("""
                 UPDATE exchange_routes
                    SET status = 'consumed'
                  WHERE id = %s
-                   AND one_off IS TRUE
+                   AND one_off
+                   AND status = 'chargeable'
+             RETURNING exchange_routes
             """, (payin.route,))
+            if route:
+                route.invalidate()
 
         # Lock to avoid concurrent updates
         cursor.run("SELECT * FROM participants WHERE id = %s FOR UPDATE",
@@ -221,7 +239,7 @@ def adjust_payin_transfers(db, payin, net_amount):
                         db, team, provider, payer, payer_country,
                         prorated_amount, tip, sepa_only=True,
                     )
-                except (MissingPaymentAccount, NoSelfTipping):
+                except (AccountSuspended, MissingPaymentAccount, NoSelfTipping, RecipientAccountSuspended):
                     team_amounts = resolve_amounts(prorated_amount, {
                         pt.id: pt.amount.convert(prorated_amount.currency)
                         for pt in transfers
@@ -282,6 +300,7 @@ def resolve_tip(
         a list of `ProtoTransfer` objects
 
     Raises:
+        AccountSuspended: if the payer is suspended
         MissingPaymentAccount: if no suitable destination has been found
         NoSelfTipping: if the donor would end up sending money to themself
         RecipientAccountSuspended: if the tippee's account is suspended
@@ -383,11 +402,14 @@ def resolve_team_donation(
         a list of `ProtoTransfer` objects
 
     Raises:
+        AccountSuspended: if the payer is suspended
         MissingPaymentAccount: if no suitable destination has been found
         NoSelfTipping: if the payer would end up sending money to themself
         RecipientAccountSuspended: if the team or all of its members are suspended
 
     """
+    if payer.is_suspended:
+        raise AccountSuspended(payer)
     if team.is_suspended:
         raise RecipientAccountSuspended(team)
     currency = payment_amount.currency
@@ -540,6 +562,9 @@ def resolve_amounts(
 
     Returns a copy of `base_amounts` with updated values.
     """
+    if available_amount < (minimum_amount or 0):
+        raise ValueError("available_amount can't be less than minimum_amount or 0")
+
     currency = available_amount.currency
     zero = Money.ZEROS[currency]
     inf = Money('inf', currency)
@@ -718,7 +743,7 @@ def prepare_payin_transfer(
                 'pre', clock_timestamp())
      RETURNING *
     """, (payin.id, payin.payer, recipient.id, destination.pk, context, amount,
-          unit_amount, n_units, period, team, visibility))
+          unit_amount, n_units, period, team, abs(visibility)))
 
 
 def update_payin_transfer(
@@ -756,6 +781,9 @@ def update_payin_transfer(
             return
         if remote_id and pt.remote_id != remote_id:
             raise AssertionError(f"the remote IDs don't match: {pt.remote_id!r} != {remote_id!r}")
+
+        if status == 'suspended' and pt.old_status in ('failed', 'succeeded'):
+            raise ValueError(f"can't change status from {pt.old_status!r} to {status!r}")
 
         if status != pt.old_status:
             cursor.run("""
@@ -894,6 +922,7 @@ def abort_payin(db, payin, error='aborted by payer'):
 
 def record_payin_refund(
     db, payin_id, remote_id, amount, reason, description, status, error=None, ctime=None,
+    notify=None,
 ):
     """Record a charge refund.
 
@@ -906,6 +935,7 @@ def record_payin_refund(
         status (str): the current status of the refund (`refund_status` SQL type)
         error (str): error message, if the refund has failed
         ctime (datetime): when the refund was initiated
+        notify (bool | None): whether to notify the payer
 
     Returns:
         Record: the row inserted in the `payin_refunds` table
@@ -930,11 +960,12 @@ def record_payin_refund(
                     AND old.remote_id = %(remote_id)s
                ) AS old_status
     """, locals())
-    notify = (
-        refund.status in ('pending', 'succeeded') and
-        refund.status != refund.old_status and
-        refund.ctime > (utcnow() - timedelta(hours=24))
-    )
+    if notify is None:
+        notify = (
+            refund.status in ('pending', 'succeeded') and
+            refund.status != refund.old_status and
+            refund.ctime > (utcnow() - timedelta(hours=24))
+        )
     if notify:
         payin = db.one("SELECT * FROM payins WHERE id = %s", (refund.payin,))
         payer = db.Participant.from_id(payin.payer)

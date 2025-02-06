@@ -3,9 +3,11 @@ from collections import defaultdict
 from datetime import date, timedelta
 from decimal import Decimal
 from email.utils import formataddr
+from functools import cached_property
 from hashlib import pbkdf2_hmac, md5, sha1
 from operator import attrgetter, itemgetter
 from os import urandom
+from random import randint
 from threading import Lock
 from time import sleep
 from types import SimpleNamespace
@@ -14,8 +16,9 @@ from urllib.parse import quote as urlquote, urlencode
 import uuid
 
 import aspen_jinja2_renderer
-from cached_property import cached_property
 from dateutil.parser import parse as parse_date
+from dns.exception import DNSException
+from dns.resolver import Cache as DNSCache, Resolver as DNSResolver
 from html2text import html2text
 from markupsafe import escape as htmlescape
 from pando import json, Response
@@ -27,11 +30,11 @@ import requests
 
 from liberapay.billing.payday import compute_next_payday_date
 from liberapay.constants import (
-    ASCII_ALLOWED_IN_USERNAME, AVATAR_QUERY, BASE64URL_CHARS, CURRENCIES,
+    ASCII_ALLOWED_IN_USERNAME, BASE64URL_CHARS, CURRENCIES,
     DONATION_LIMITS, EMAIL_VERIFICATION_TIMEOUT, EVENTS, HTML_A,
     PASSWORD_MAX_SIZE, PASSWORD_MIN_SIZE, PAYPAL_CURRENCIES,
     PERIOD_CONVERSION_RATES, PRIVILEGES,
-    PUBLIC_NAME_MAX_SIZE, SEPA, SESSION, SESSION_TIMEOUT,
+    PUBLIC_NAME_MAX_SIZE, SEPA, SESSION, SESSION_TIMEOUT, SESSION_TIMEOUT_LONG,
     USERNAME_MAX_SIZE, USERNAME_SUFFIX_BLACKLIST,
 )
 from liberapay.exceptions import (
@@ -59,12 +62,14 @@ from liberapay.exceptions import (
     TooManyRequests,
     TooManyUsernameChanges,
     UnableToSendEmail,
+    UnacceptedDonationVisibility,
     UnexpectedCurrency,
     UsernameAlreadyTaken,
     UsernameBeginsWithRestrictedCharacter,
     UsernameContainsInvalidCharacters,
     UsernameEndsWithForbiddenSuffix,
     UsernameIsEmpty,
+    UsernameIsPurelyNumerical,
     UsernameIsRestricted,
     UsernameTooLong,
     ValueTooLong,
@@ -82,6 +87,7 @@ from liberapay.payin.prospect import PayinProspect
 from liberapay.security.crypto import constant_time_compare
 from liberapay.utils import (
     deserialize, erase_cookie, get_recordable_headers, serialize, set_cookie,
+    tweak_avatar_url,
     markdown,
 )
 from liberapay.utils.emails import (
@@ -97,6 +103,10 @@ TEN_YEARS = timedelta(days=3652)
 
 
 email_lock = Lock()
+
+DNS = DNSResolver()
+DNS.lifetime = 1.0  # 1 second timeout, per https://github.com/liberapay/liberapay.com/pull/1043#issuecomment-377891723
+DNS.cache = DNSCache()
 
 
 class Participant(Model, MixinTeam):
@@ -432,33 +442,47 @@ class Participant(Model, MixinTeam):
             else:
                 rate_limit = False
         r = cls.db.one("""
-            SELECT p, s.secret, s.mtime
+            SELECT p, s.secret, s.mtime, s.latest_use
               FROM user_secrets s
               JOIN participants p ON p.id = s.participant
              WHERE s.participant = %s
                AND s.id = %s
         """, (p_id, session_id))
         if not r:
+            erase_cookie(cookies, SESSION)
             return None, 'invalid'
-        p, stored_secret, mtime = r
+        p, stored_secret, mtime, latest_use = r
         if not constant_time_compare(stored_secret, secret):
+            erase_cookie(cookies, SESSION)
             return None, 'invalid'
         if rate_limit:
             cls.db.decrement_rate_limit('log-in.session.ip-addr', str(request.source))
-        if mtime > utcnow() - SESSION_TIMEOUT:
+        now = utcnow()
+        today = now.date()
+        if session_id >= 800 and session_id < 810:
+            if (latest_use or mtime.date()) < today - SESSION_TIMEOUT_LONG:
+                return None, 'expired'
+        elif mtime > now - SESSION_TIMEOUT:
             p.session = SimpleNamespace(id=session_id, secret=secret, mtime=mtime)
         elif allow_downgrade:
-            if mtime > utcnow() - FOUR_WEEKS:
+            if mtime > now - FOUR_WEEKS:
                 p.regenerate_session(
                     SimpleNamespace(id=session_id, secret=secret, mtime=mtime),
                     cookies,
                     suffix='.ro',  # stands for "read only"
                 )
             else:
-                set_cookie(cookies, SESSION, f"{p.id}:!:", expires=utcnow() + TEN_YEARS)
+                set_cookie(cookies, SESSION, f"{p.id}:!:", expires=now + TEN_YEARS)
                 return None, 'expired'
         else:
             return None, 'expired'
+        if not latest_use or latest_use < today:
+            cls.db.run("""
+                UPDATE user_secrets
+                   SET latest_use = current_date
+                 WHERE participant = %s
+                   AND id = %s
+            """, (p_id, session_id))
         p.authenticated = True
         return p, 'valid'
 
@@ -478,6 +502,9 @@ class Participant(Model, MixinTeam):
 
         The new secret is guaranteed to be different from the old one.
         """
+        if session.id >= 800 and session.id < 810:
+            # Sessions in this range aren't meant to be regenerated automatically.
+            return
         if self.is_suspended:
             if not suffix:
                 suffix = '.ro'
@@ -705,7 +732,8 @@ class Participant(Model, MixinTeam):
                  LIMIT 1
             """, locals())
             if row and row.lang != langs[0]:
-                convert_to = langs[0]
+                if langs[0] in i18n.CONVERTERS.get(row.lang, ()):
+                    convert_to = langs[0]
         else:
             conversions = {}
             for lang in langs:
@@ -714,7 +742,8 @@ class Participant(Model, MixinTeam):
                 for target_lang in converters:
                     if conversions.get(target_lang, '') is None:
                         conversions[lang] = target_lang
-                    conversions.setdefault(target_lang, lang)
+                    if lang in i18n.CONVERTERS.get(target_lang, ()):
+                        conversions.setdefault(target_lang, lang)
                 del converters
             langs = list(conversions.keys())
             row = self.db.one("""
@@ -1242,7 +1271,7 @@ class Participant(Model, MixinTeam):
         else:
             name = (self.get_current_identity() or {}).get('name')
         message['to'] = [formataddr((name, email))]
-        message['subject'] = spt['subject'].render(context).strip()
+        message['subject'] = spt['-/subject'].render(context).strip()
         self._rendering_email_to, self._email_session = email_row, None
         message['html'] = render('text/html', context_html)
         message['text'] = render('text/plain', context)
@@ -1354,10 +1383,12 @@ class Participant(Model, MixinTeam):
         """)
 
     def set_email_lang(self, lang, cursor=None):
-        (cursor or self.db).run(
-            "UPDATE participants SET email_lang=%s WHERE id=%s",
-            (lang, self.id)
-        )
+        with self.db.get_cursor(cursor=cursor) as c:
+            c.run(
+                "UPDATE participants SET email_lang=%s WHERE id=%s",
+                (lang, self.id)
+            )
+            self.add_event(c, 'set_email_lang', lang)
         self.set_attributes(email_lang=lang)
 
 
@@ -1510,7 +1541,7 @@ class Participant(Model, MixinTeam):
                 self.fill_notification_context(context)
                 context.update(notif_context)
                 context['notification_ts'] = ts
-                d['subject'] = spt['subject'].render(context).strip()
+                d['subject'] = spt['-/subject'].render(context).strip()
                 d['html'] = spt['text/html'].render(context).strip()
             except Exception as e:
                 d['sentry_ident'] = website.tell_sentry(e).get('sentry_ident')
@@ -1729,14 +1760,21 @@ class Participant(Model, MixinTeam):
 
     @cached_property
     def recipient_settings(self):
-        return self.db.one("""
+        r = self.db.one("""
             SELECT *
               FROM recipient_settings
              WHERE participant = %s
         """, (self.id,), default=Object(
             participant=self.id,
-            patron_visibilities=(7 if self.status == 'stub' else 0),
+            patron_visibilities=(7 if self.status == 'stub' else None),
+            patron_countries=None,
         ))
+        if r.patron_countries:
+            if r.patron_countries.startswith('-'):
+                r.patron_countries = set(i18n.COUNTRIES) - set(r.patron_countries[1:].split(','))
+            else:
+                r.patron_countries = set(r.patron_countries.split(','))
+        return r
 
     def update_recipient_settings(self, **kw):
         cols, vals = zip(*kw.items())
@@ -1792,24 +1830,23 @@ class Participant(Model, MixinTeam):
             extra_query = []
             if log_in == 'required' or log_in == 'auto' and not self.has_password:
                 primary_email = self.get_email_address()
-                if email_row.address.lower() == primary_email.lower():
+                if primary_email and email_row.address.lower() == primary_email.lower():
                     # Only send login links to the primary email address
                     session = self._email_session
                     if not session:
-                        session = self.start_session(suffix='.em', id_min=1001, id_max=1010)
+                        try:
+                            session = self.start_session(suffix='.em', id_min=1001, id_max=1010)
+                        except AccountSuspended:
+                            session = self.start_session(suffix='.ro', id_min=1001, id_max=1010)
                         self._email_session = session
-                    extra_query.append(('log-in.id', self.id))
-                    extra_query.append(('log-in.key', session.id))
-                    extra_query.append(('log-in.token', session.secret))
-                    if log_in != 'required':
-                        extra_query.append(('log-in.required', 'no'))
-                else:
-                    try:
-                        raise AssertionError('%r != %r' % (email_row.address, primary_email))
-                    except AssertionError as e:
-                        website.tell_sentry(e)
-                        if log_in == 'required':
-                            raise
+                    if session:
+                        extra_query.append(('log-in.id', self.id))
+                        extra_query.append(('log-in.key', session.id))
+                        extra_query.append(('log-in.token', session.secret))
+                        if log_in != 'required':
+                            extra_query.append(('log-in.required', 'no'))
+                elif log_in == 'required':
+                    raise AssertionError('%r != %r' % (email_row.address, primary_email))
             if not email_row.verified:
                 if not email_row.nonce:
                     email_row = self._rendering_email_to = self.db.one("""
@@ -2021,6 +2058,16 @@ class Participant(Model, MixinTeam):
                 fallback_currency = 'USD'
             return fallback_currency, accepted
 
+    @cached_property
+    def donates_in_multiple_currencies(self):
+        return self.db.one("""
+            SELECT count(DISTINCT amount::currency) > 1
+              FROM current_tips
+             WHERE tipper = %s
+               AND amount > 0
+               AND renewal_mode > 0
+        """, (self.id,))
+
 
     # More Random Stuff
     # =================
@@ -2036,6 +2083,9 @@ class Participant(Model, MixinTeam):
         if set(suggested) - ASCII_ALLOWED_IN_USERNAME:
             raise UsernameContainsInvalidCharacters(suggested)
 
+        if suggested.isdigit():
+            raise UsernameIsPurelyNumerical(suggested)
+
         if suggested[0] == '.':
             raise UsernameBeginsWithRestrictedCharacter(suggested)
 
@@ -2047,7 +2097,8 @@ class Participant(Model, MixinTeam):
             raise UsernameIsRestricted(suggested)
 
     def change_username(self, suggested, cursor=None, recorder=None):
-        self.check_username(suggested)
+        if suggested != f'~{self.id}':
+            self.check_username(suggested)
         recorder_id = getattr(recorder, 'id', None)
 
         if suggested != self.username:
@@ -2136,12 +2187,14 @@ class Participant(Model, MixinTeam):
             raise ValueContainsForbiddenCharacters(new_public_name, bad_chars)
 
         if new_public_name != self.public_name:
+            if new_public_name == '':
+                new_public_name = None
             with self.db.get_cursor(cursor) as c:
                 r = c.one("""
                     UPDATE participants
                        SET public_name = %s
                      WHERE id = %s
-                       AND (public_name IS NULL OR public_name <> %s)
+                       AND coalesce(public_name, '') <> coalesce(%s, '')
                  RETURNING id
                 """, (new_public_name, self.id, new_public_name))
                 if r:
@@ -2150,7 +2203,7 @@ class Participant(Model, MixinTeam):
 
         return new_public_name
 
-    def update_avatar(self, src=None, cursor=None, avatar_email=None, check=True):
+    def update_avatar(self, src=None, cursor=None, avatar_email=None, refresh=False):
         if self.status == 'stub':
             assert src is None
 
@@ -2164,9 +2217,66 @@ class Participant(Model, MixinTeam):
         if platform == 'libravatar' or platform is None and email:
             if not email:
                 return
-            avatar_id = md5(email.strip().lower().encode('utf8')).hexdigest()
-            avatar_url = 'https://seccdn.libravatar.org/avatar/'+avatar_id
-            avatar_url += AVATAR_QUERY
+            # https://wiki.libravatar.org/api/
+            #
+            # We only use the first SRV record that we choose; if there is an
+            # error talking to that server, we give up, instead of retrying with
+            # another record.  pyLibravatar does the same.
+            normalized_email = email.strip().lower()
+            avatar_origin = 'https://seccdn.libravatar.org'
+            try:
+                # Look up the SRV record to use.
+                email_domain = normalized_email.rsplit('@', 1)[1]
+                try:
+                    srv_records = DNS.resolve('_avatars-sec._tcp.'+email_domain, 'SRV')
+                    scheme = 'https'
+                except Exception:
+                    srv_records = DNS.resolve('_avatars._tcp.'+email_domain, 'SRV')
+                    scheme = 'http'
+                # Filter down to just the records with the "highest" `.priority`
+                # (lower number = higher priority); for the libravatar API tells us:
+                #
+                # > Libravatar clients MUST only consider servers listed in the
+                # > highest SRV priority.
+                top_priority = min(rec.priority for rec in srv_records)
+                srv_records = [rec for rec in srv_records if rec.priority == top_priority]
+                # Of those, choose randomly based on their relative `.weight`s;
+                # for the libravatar API tells us:
+                #
+                # > They MUST honour relative weights.
+                #
+                # RFC 2782 (at the top of page 4) gives us this algorithm for
+                # randomly selecting a record based on the weights:
+                srv_records.sort(key=attrgetter('weight'))  # ensure that .weight=0 recs are first in the list
+                weight_choice = randint(0, sum(rec.weight for rec in srv_records))
+                weight_sum = 0
+                for rec in srv_records:
+                    weight_sum += rec.weight
+                    if weight_sum >= weight_choice:
+                        choice_record = rec
+                        break
+
+                # Build the `avatar_origin` URL.
+                # The Dnspython library has already validated that `.target` is
+                # a valid DNS name and that `.port` is a uint16.
+                host = choice_record.target.canonicalize().to_text(omit_final_dot=True)
+                port = choice_record.port
+                if port == 0:
+                    # Port zero isn't supposed to be used and typically can't be. The
+                    # Libravatar wiki doesn't clearly specify what to do in this case.
+                    pass
+                elif (scheme == 'http' and port != 80) or (scheme == 'https' and port != 443):
+                    # Only include an explicit port number if it's not the default
+                    # port for the scheme.
+                    avatar_origin = '%s://%s:%d' % (scheme, host, port)
+                else:
+                    avatar_origin = '%s://%s' % (scheme, host)
+            except DNSException:
+                pass
+            except Exception as e:
+                website.tell_sentry(e)
+            avatar_id = md5(normalized_email.encode('utf8')).hexdigest()
+            avatar_url = avatar_origin + '/avatar/' + avatar_id
 
         elif platform is None:
             avatar_url = (cursor or self.db).one("""
@@ -2190,7 +2300,14 @@ class Participant(Model, MixinTeam):
                  LIMIT 1
             """, (self.id, platform, user_id or None))
 
-        if avatar_url and avatar_url != self.avatar_url and check and website.app_conf.check_avatar_urls:
+        avatar_url = tweak_avatar_url(avatar_url, increment=refresh)
+        check_url = (
+            avatar_url and
+            avatar_url != self.avatar_url and
+            self.status != 'stub' and
+            website.app_conf.check_avatar_urls
+        )
+        if check_url:
             # Check that the new avatar URL returns a 200.
             try:
                 r = requests.head(avatar_url, allow_redirects=True, timeout=5)
@@ -2217,9 +2334,17 @@ class Participant(Model, MixinTeam):
             if goal.currency != self.main_currency:
                 raise UnexpectedCurrency(goal, self.main_currency)
         with self.db.get_cursor(cursor) as c:
+            r = c.one("""
+                UPDATE participants
+                   SET goal = %(new_goal)s
+                 WHERE id = %(p_id)s
+                   AND ( (goal IS NULL) <> (%(new_goal)s IS NULL) OR goal <> %(new_goal)s )
+             RETURNING id
+            """, dict(new_goal=goal, p_id=self.id))
+            if r is None:
+                return
             json = None if goal is None else str(goal)
             self.add_event(c, 'set_goal', json)
-            c.run("UPDATE participants SET goal=%s WHERE id=%s", (goal, self.id))
             self.set_attributes(goal=goal)
             if not self.accepts_tips:
                 tippers = c.all("""
@@ -2389,7 +2514,7 @@ class Participant(Model, MixinTeam):
 
 
     def set_tip_to(self, tippee, periodic_amount, period='weekly', renewal_mode=None,
-                   visibility=None, update_self=True, update_tippee=True):
+                   visibility=None, update_schedule=True, update_tippee=True):
         """Given a Participant or username, and amount as str, returns a dict.
 
         We INSERT instead of UPDATE, so that we have history to explore. The
@@ -2414,7 +2539,7 @@ class Participant(Model, MixinTeam):
             raise NoSelfTipping
 
         if periodic_amount == 0:
-            return self.stop_tip_to(tippee)
+            return self.stop_tip_to(tippee, update_schedule=update_schedule)
 
         periodic_amount = periodic_amount.convert_if_currency_is_phased_out()
         amount = (periodic_amount * PERIOD_CONVERSION_RATES[period]).round_down()
@@ -2425,6 +2550,8 @@ class Participant(Model, MixinTeam):
                 raise BadAmount(periodic_amount, period, limits)
             if amount.currency not in tippee.accepted_currencies_set:
                 raise BadDonationCurrency(tippee, amount.currency)
+            if visibility and not tippee.accepts_tip_visibility(visibility):
+                raise UnacceptedDonationVisibility(tippee, visibility)
 
         # Insert tip
         t = self.db.one("""\
@@ -2463,12 +2590,12 @@ class Participant(Model, MixinTeam):
         t.tipper_p = self
         t.tippee_p = tippee
 
-        if update_self:
-            # Update giving amount of tipper
-            updated = self.update_giving()
-            for u in updated:
-                if u.id == t.id:
-                    t.set_attributes(is_funded=u.is_funded)
+        # Update giving amount of tipper
+        updated = self.update_giving()
+        for u in updated:
+            if u.id == t.id:
+                t.set_attributes(is_funded=u.is_funded)
+        if update_schedule:
             self.schedule_renewals()
         if update_tippee and t.is_funded:
             # Update receiving amount of tippee
@@ -2532,6 +2659,15 @@ class Participant(Model, MixinTeam):
                     AND (visibility < 0) IS NOT %(hide)s
               RETURNING tips
         """, dict(tipper=self.id, tippee=tippee_id, hide=hide))
+
+
+    def accepts_tip_visibility(self, visibility):
+        bit = 2 ** (visibility - 1)
+        acceptable_visibilites = self.recipient_settings.patron_visibilities or 1
+        if self.payment_providers == 2:
+            acceptable_visibilites &= 6
+            acceptable_visibilites |= 2
+        return acceptable_visibilites & bit > 0
 
 
     @cached_property
@@ -2620,10 +2756,19 @@ class Participant(Model, MixinTeam):
                            (self.id,))
 
             # Get renewable tips
+            next_payday = compute_next_payday_date()
             renewable_tips = cursor.all("""
-                SELECT t.*::tips, tippee_p
+                SELECT t.*::tips, tippee_p, last_pt::payin_transfers
                   FROM current_tips t
                   JOIN participants tippee_p ON tippee_p.id = t.tippee
+             LEFT JOIN LATERAL (
+                           SELECT pt.*
+                             FROM payin_transfers pt
+                            WHERE pt.payer = t.tipper
+                              AND coalesce(pt.team, pt.recipient) = t.tippee
+                         ORDER BY pt.ctime DESC
+                            LIMIT 1
+                       ) last_pt ON true
                  WHERE t.tipper = %s
                    AND t.renewal_mode > 0
                    AND t.paid_in_advance IS NOT NULL
@@ -2631,25 +2776,22 @@ class Participant(Model, MixinTeam):
                    AND ( tippee_p.goal IS NULL OR tippee_p.goal >= 0 )
                    AND tippee_p.is_suspended IS NOT TRUE
                    AND tippee_p.payment_providers > 0
-                   AND NOT EXISTS (
-                           SELECT 1
-                             FROM ( SELECT pt.*
-                                      FROM payin_transfers pt
-                                     WHERE pt.payer = t.tipper
-                                       AND coalesce(pt.team, pt.recipient) = t.tippee
-                                  ORDER BY pt.ctime DESC
-                                     LIMIT 1
-                                  ) pt
-                            WHERE pt.status IN ('pending', 'failed')
-                       )
               ORDER BY t.tippee
             """, (self.id,))
-            for tip, tippee_p in renewable_tips:
+            for tip, tippee_p, last_pt in renewable_tips:
                 tip.tippee_p = tippee_p
                 tip.periodic_amount = tip.periodic_amount.convert_if_currency_is_phased_out()
                 tip.amount = tip.amount.convert_if_currency_is_phased_out()
                 tip.paid_in_advance = tip.paid_in_advance.convert_if_currency_is_phased_out()
-            renewable_tips = [tip for tip, tippee_p in renewable_tips]
+                tip.due_date = tip.compute_renewal_due_date(next_payday, cursor)
+            renewable_tips = [
+                tip for tip, tippee_p, last_pt in renewable_tips
+                if last_pt.id is None or
+                   last_pt.status == 'succeeded' or
+                   last_pt.status == 'failed' and
+                   last_pt.ctime.date() < (tip.due_date - timedelta(weeks=1)) and
+                   tip.due_date >= date(2024, 9, 4)
+            ]
 
             # Get the existing schedule
             current_schedule = cursor.all("""
@@ -2726,7 +2868,7 @@ class Participant(Model, MixinTeam):
                             tip.renewal_amount = last_payment_amount.convert(tip.amount.currency)
                         else:
                             tip.renewal_amount = None
-                        if not tip.renewal_amount or tip.renewal_amount < (tip.amount * 2):
+                        if not tip.renewal_amount or tip.renewal_amount < tip.amount:
                             pp = PayinProspect(self, [tip], 'stripe')
                             tip.renewal_amount = pp.moderate_proposed_amount
                         del last_payment_amount
@@ -2754,10 +2896,8 @@ class Participant(Model, MixinTeam):
 
             # Group the tips into payments
             # 1) Group the tips by renewal_mode and currency.
-            next_payday = compute_next_payday_date()
             naive_tip_groups = defaultdict(list)
             for tip in renewable_tips:
-                tip.due_date = tip.compute_renewal_due_date(next_payday, cursor)
                 naive_tip_groups[(tip.renewal_mode, tip.amount.currency)].append(tip)
             del renewable_tips
             # 2) Subgroup by payment processor and geography.
@@ -2773,7 +2913,7 @@ class Participant(Model, MixinTeam):
                 for naive_group in naive_groups:
                     naive_group.sort(key=due_date_getter)
                     group = None
-                    execution_date = weeks_until_execution = None  # for flake8
+                    execution_date = weeks_until_execution = None  # for the linter
                     for tip in naive_group:
                         last_payment_amount = last_payment_amounts.get(tip.tippee)
                         # Start a new group if…
@@ -3150,7 +3290,7 @@ class Participant(Model, MixinTeam):
 
         return tips, pledges
 
-    def get_tips_awaiting_payment(self, weeks_early=3):
+    def get_tips_awaiting_payment(self, weeks_early=3, exclude_recipients_of=None):
         """Fetch a list of the user's donations that need to be renewed, and
         determine if some of them can be grouped into a single charge.
 
@@ -3166,14 +3306,33 @@ class Participant(Model, MixinTeam):
         - 'suspended': the tippee's account is suspended
 
         """
+        params = dict(tipper_id=self.id, weeks_early=weeks_early)
+        if exclude_recipients_of:
+            exclude = """
+               AND t.tippee NOT IN (
+                       SELECT coalesce(pt.team, pt.recipient)
+                         FROM payin_transfers pt
+                        WHERE pt.payin = %(payin_id)s
+                   )
+            """
+            params['payin_id'] = exclude_recipients_of.id
+        else:
+            exclude = ""
         tips = self.db.all("""
             SELECT t.*, p AS tippee_p
               FROM current_tips t
               JOIN participants p ON p.id = t.tippee
-             WHERE t.tipper = %s
+         LEFT JOIN scheduled_payins sp ON sp.payer = t.tipper
+                                      AND sp.payin IS NULL
+                                      AND t.tippee::text IN (
+                                              SELECT tr->>'tippee_id'
+                                                FROM json_array_elements(sp.transfers) tr
+                                          )
+             WHERE t.tipper = %(tipper_id)s
                AND t.renewal_mode > 0
                AND ( t.paid_in_advance IS NULL OR
-                     t.paid_in_advance < (t.amount * %s)
+                     t.paid_in_advance < (t.amount * %(weeks_early)s) OR
+                     sp.execution_date <= (current_date + interval '%(weeks_early)s weeks')
                    )
                AND p.status = 'active'
                AND ( p.goal IS NULL OR p.goal >= 0 )
@@ -3184,9 +3343,12 @@ class Participant(Model, MixinTeam):
                          JOIN exchange_routes r ON r.id = pi.route
                         WHERE pt.payer = t.tipper
                           AND COALESCE(pt.team, pt.recipient) = t.tippee
-                          AND ( pi.status = 'pending' OR pt.status = 'pending' )
+                          AND ( pi.status IN ('awaiting_review', 'pending') OR
+                                pt.status IN ('awaiting_review', 'pending') OR
+                                pi.status = 'succeeded' AND
+                                pi.ctime > (current_timestamp - interval '5 days') )
                         LIMIT 1
-                   )
+                   ){}
           ORDER BY ( SELECT 1
                        FROM current_takes take
                       WHERE take.team = t.tippee
@@ -3194,7 +3356,7 @@ class Participant(Model, MixinTeam):
                    ) NULLS FIRST
                  , (t.paid_in_advance).amount / (t.amount).amount NULLS FIRST
                  , t.ctime
-        """, (self.id, weeks_early))
+        """.format(exclude), params)
         return self.group_tips_into_payments(tips)
 
     def group_tips_into_payments(self, tips):
@@ -3230,41 +3392,7 @@ class Participant(Model, MixinTeam):
                     groups['self_donation'].append(tip)
                 else:
                     n_fundable += 1
-                    if tippee_p.payment_providers & 1 == 1:
-                        members = set(members)
-                        members.discard(self.id)
-                        in_sepa = self.db.one("""
-                            SELECT true
-                              FROM current_takes t
-                              JOIN payment_accounts a ON a.participant = t.member
-                             WHERE t.team = %(tippee)s
-                               AND t.member IN %(members)s
-                               AND a.provider = 'stripe'
-                               AND a.is_current
-                               AND a.country IN %(SEPA)s
-                             LIMIT 1
-                        """, dict(members=members, tippee=tip.tippee, SEPA=SEPA))
-                        if in_sepa:
-                            group = stripe_europe.setdefault(tip.amount.currency, [])
-                            if len(group) == 0:
-                                groups['fundable'].append(group)
-                            group.append(tip)
-                        else:
-                            groups['fundable'].append([tip])
-                    else:
-                        groups['fundable'].append([tip])
-            else:
-                n_fundable += 1
-                if tippee_p.payment_providers & 1 == 1:
-                    in_sepa = self.db.one("""
-                        SELECT true
-                          FROM payment_accounts a
-                         WHERE a.participant = %(tippee)s
-                           AND a.provider = 'stripe'
-                           AND a.is_current
-                           AND a.country IN %(SEPA)s
-                         LIMIT 1
-                    """, dict(tippee=tip.tippee, SEPA=SEPA))
+                    in_sepa = tip.tippee_p.has_stripe_sepa_for(self)
                     if in_sepa:
                         group = stripe_europe.setdefault(tip.amount.currency, [])
                         if len(group) == 0:
@@ -3272,9 +3400,48 @@ class Participant(Model, MixinTeam):
                         group.append(tip)
                     else:
                         groups['fundable'].append([tip])
+            else:
+                n_fundable += 1
+                in_sepa = tip.tippee_p.has_stripe_sepa_for(self)
+                if in_sepa:
+                    group = stripe_europe.setdefault(tip.amount.currency, [])
+                    if len(group) == 0:
+                        groups['fundable'].append(group)
+                    group.append(tip)
                 else:
                     groups['fundable'].append([tip])
         return groups, n_fundable
+
+    def has_stripe_sepa_for(self, tipper):
+        if tipper == self or self.payment_providers & 1 == 0:
+            return False
+        if self.kind == 'group':
+            return self.db.one("""
+                SELECT true
+                  FROM current_takes t
+                  JOIN participants p ON p.id = t.member
+                  JOIN payment_accounts a ON a.participant = t.member
+                 WHERE t.team = %(tippee)s
+                   AND t.member <> %(tipper)s
+                   AND t.amount <> 0
+                   AND p.is_suspended IS NOT TRUE
+                   AND a.provider = 'stripe'
+                   AND a.is_current
+                   AND a.charges_enabled
+                   AND a.country IN %(SEPA)s
+                 LIMIT 1
+            """, dict(tipper=tipper.id, tippee=self.id, SEPA=SEPA))
+        else:
+            return self.db.one("""
+                SELECT true
+                  FROM payment_accounts a
+                 WHERE a.participant = %(tippee)s
+                   AND a.provider = 'stripe'
+                   AND a.is_current
+                   AND a.charges_enabled
+                   AND a.country IN %(SEPA)s
+                 LIMIT 1
+            """, dict(tippee=self.id, SEPA=SEPA))
 
     def get_tips_to(self, tippee_ids):
         return self.db.all("""
@@ -3341,7 +3508,7 @@ class Participant(Model, MixinTeam):
         """, (self.id, platform, is_team))
         accounts.sort(key=lambda a: (website.platforms[a.platform].rank, a.is_team, a.user_id))
         if url_required:
-            accounts = [a for a in accounts if a.platform_data.account_url]
+            accounts = [a for a in accounts if a.platform_data.account_url and a.missing_since is None]
         return accounts
 
     def take_over(self, account, have_confirmation=False):
@@ -3652,6 +3819,30 @@ class Participant(Model, MixinTeam):
         self.set_attributes(**{column: r})
         return 1
 
+    @cached_property
+    def guessed_country(self):
+        identity = self.get_current_identity()
+        if identity:
+            country = identity['postal_address'].get('country')
+            if country:
+                return country
+        return self._guessed_country
+
+    @property
+    def _guessed_country(self):
+        state = website.state.get(None)
+        if state:
+            locale, request = state['locale'], state['request']
+            return locale.territory or request.source_country
+
+    @property
+    def can_attempt_payment(self):
+        return (
+            not self.is_suspended and
+            self.status == 'active' and
+            bool(self.get_email_address())
+        )
+
 
 class NeedConfirmation(Exception):
     """Represent the case where we need user confirmation during a merge.
@@ -3699,6 +3890,28 @@ def clean_up_closed_accounts():
         p.erase_personal_information()
         p.invalidate_exchange_routes()
     return len(participants)
+
+
+def free_up_usernames():
+    n = website.db.one("""
+        WITH updated AS (
+            UPDATE participants
+               SET username = '~' || id::text
+             WHERE username NOT LIKE '~%'
+               AND marked_as IN ('fraud', 'spam')
+               AND kind IN ('individual', 'organization')
+               AND (
+                       SELECT e.ts
+                         FROM events e
+                        WHERE e.participant = participants.id
+                          AND e.type = 'flags_changed'
+                     ORDER BY e.ts DESC
+                        LIMIT 1
+                   ) < (current_timestamp - interval '3 weeks')
+         RETURNING id
+        ) SELECT count(*) FROM updated;
+    """)
+    print(f"Freed up {n} username{'s' if n > 1 else ''}.")
 
 
 def send_account_disabled_notifications():
@@ -3767,6 +3980,25 @@ def generate_profile_description_missing_notifications():
         sleep(1)
         p.notify('profile_description_missing', force_email=True)
     n = len(participants)
+    participants = website.db.all("""
+        SELECT DISTINCT p
+          FROM payin_transfers pt
+          JOIN participants p ON p.id = pt.recipient
+         WHERE pt.status = 'awaiting_review'
+           AND p.status = 'active'
+           AND ( p.goal IS NULL OR p.goal >= 0 )
+           AND p.id NOT IN (SELECT DISTINCT participant FROM statements)
+           AND p.id NOT IN (
+                   SELECT DISTINCT n.participant
+                     FROM notifications n
+                    WHERE n.event = 'profile_description_missing'
+                      AND n.ts >= (current_timestamp - interval '1 week')
+               )
+    """)
+    for p in participants:
+        sleep(1)
+        p.notify('profile_description_missing', force_email=True)
+    n += len(participants)
     if n:
         s = '' if n == 1 else 's'
         print(f"Sent {n} profile_description_missing notification{s}.")

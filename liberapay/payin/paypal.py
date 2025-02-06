@@ -6,10 +6,15 @@ from time import sleep
 import requests
 from pando.utils import utcnow
 
-from ..exceptions import PaymentError
+from ..exceptions import (
+    PaymentError, ProhibitedSourceCountry, UnableToDeterminePayerCountry,
+)
 from ..i18n.currencies import Money
 from ..website import website
-from .common import abort_payin, update_payin, update_payin_transfer
+from .common import (
+    abort_payin, update_payin, update_payin_transfer, record_payin_refund,
+    record_payin_transfer_reversal,
+)
 
 
 logger = logging.getLogger('paypal')
@@ -68,6 +73,12 @@ ORDER_STATUSES_MAP = {
     'SAVED': 'pending',
     'VOIDED': 'failed',
 }
+REFUND_STATUSES_MAP = {
+    'CANCELLED': 'failed',
+    'COMPLETED': 'succeeded',
+    'FAILED': 'failed',
+    'PENDING': 'pending',
+}
 
 locale_re = re.compile("^[a-z]{2}(?:-[A-Z][a-z]{3})?(?:-(?:[A-Z]{2}))?$")
 
@@ -102,10 +113,10 @@ def create_order(db, payin, payer, return_url, cancel_url, state):
         (f'-{locale.territory}' if locale.territory else '')
     )
     if not locale_re.match(locale_tag):
-        website.tell_sentry(Warning(
+        logger.warning(
             f"the locale tag `{locale_tag}` doesn't match the format expected by PayPal; "
             f"falling back to `{locale.language}`"
-        ))
+        )
         locale_tag = locale.language
     data = {
         "intent": "CAPTURE",
@@ -172,6 +183,35 @@ def capture_order(db, payin):
 
     Doc: https://developer.paypal.com/docs/api/orders/v2/#orders_capture
     """
+    # Check the country the payment is coming from, if a recipient cares
+    limited_recipients = db.all("""
+        SELECT recipient_p
+          FROM payin_transfers pt
+          JOIN recipient_settings rs ON rs.participant = pt.recipient
+          JOIN participants recipient_p ON recipient_p.id = pt.recipient
+         WHERE pt.payin = %s
+           AND rs.patron_countries IS NOT NULL
+    """, (payin.id,))
+    if limited_recipients:
+        url = 'https://api.%s/v2/checkout/orders/%s' % (
+            website.app_conf.paypal_domain, payin.remote_id
+        )
+        response = _init_session().get(url)
+        if response.status_code != 200:
+            raise PaymentError('PayPal')
+        order = response.json()
+        payer_country = order.get('payer', {}).get('address', {}).get('country_code')
+        if not payer_country:
+            raise UnableToDeterminePayerCountry()
+        for recipient in limited_recipients:
+            if (allowed_countries := recipient.recipient_settings.patron_countries):
+                if payer_country not in allowed_countries:
+                    state = website.state.get()
+                    _, locale = state['_'], state['locale']
+                    error = ProhibitedSourceCountry(recipient, payer_country).msg(_, locale)
+                    error += " (error code: ProhibitedSourceCountry)"
+                    return abort_payin(db, payin, error)
+    # Ask PayPal to settle the payment
     url = 'https://api.%s/v2/checkout/orders/%s/capture' % (
         website.app_conf.paypal_domain, payin.remote_id
     )
@@ -196,12 +236,39 @@ def record_order_result(db, payin, order):
         # This payin has already been aborted, don't reset it.
         return payin
     error = order['status'] if status == 'failed' else None
-    payin = update_payin(db, payin.id, order['id'], status, error)
+    refunded_amount = sum(
+        sum(
+            Money(refund['amount']['value'], refund['amount']['currency_code'])
+            for refund in pu.get('payments', {}).get('refunds', ())
+        )
+        for pu in order['purchase_units']
+    ) or None
+    payin = update_payin(
+        db, payin.id, order['id'], status, error, refunded_amount=refunded_amount
+    )
 
     # Update the payin transfers
     for pu in order['purchase_units']:
+        pt_id = pu['reference_id']
+        reversed_amount = payin.amount.zero()
+        for refund in pu.get('payments', {}).get('refunds', ()):
+            refund_amount = refund['amount']
+            refund_amount = Money(refund_amount['value'], refund_amount['currency_code'])
+            reversed_amount += refund_amount
+            refund_description = refund.get('note_to_payer')
+            refund_status = REFUND_STATUSES_MAP[refund['status']]
+            refund_error = refund.get('status_details', {}).get('reason')
+            payin_refund = record_payin_refund(
+                db, payin.id, refund['id'], refund_amount, None, refund_description,
+                refund_status, refund_error, refund['create_time'], notify=False,
+
+            )
+            record_payin_transfer_reversal(
+                db, pt_id, refund['id'], refund_amount, payin_refund.id, refund['create_time']
+            )
+        if reversed_amount == 0:
+            reversed_amount = None
         for capture in pu.get('payments', {}).get('captures', ()):
-            pt_id = pu['reference_id']
             pt_remote_id = capture['id']
             pt_status = CAPTURE_STATUSES_MAP[capture['status']]
             pt_error = capture.get('status_details', {}).get('reason')
@@ -216,7 +283,7 @@ def record_order_result(db, payin, order):
             net_amount = Money(net_amount['value'], net_amount['currency_code'])
             update_payin_transfer(
                 db, pt_id, pt_remote_id, pt_status, pt_error,
-                amount=net_amount, fee=pt_fee
+                amount=net_amount, fee=pt_fee, reversed_amount=reversed_amount
             )
 
     return payin

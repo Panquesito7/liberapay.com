@@ -1,4 +1,4 @@
-% from "templates/macros/icons.html" import glyphicon
+% from "templates/macros/icons.html" import icon with context
 % from "templates/macros/postal-addresses.html" import postal_address_form_v2 with context
 
 
@@ -22,7 +22,7 @@
 
     % if 'postal_address.country' in wanted
     <label>
-        % set country = identity.postal_address.get('country') or request.country
+        % set country = identity.postal_address.get('country') or user.guessed_country
         <span>{{ _("Country (residence)") }}</span>
         <select name="postal_address.country" class="form-control country" {{ required }}>
             <option></option>
@@ -35,7 +35,7 @@
 
     % if 'nationality' in wanted
     <label>
-        % set country = identity.nationality or request.country
+        % set country = identity.nationality or user.guessed_country
         <span>{{ _("Nationality") }}</span>
         <select name="nationality" class="form-control country" {{ required }}>
             <option></option>
@@ -63,7 +63,7 @@
             <span title='{{ _(
                       "Your main professional activity."
                   ) }}' data-toggle="tooltip" data-placement="top">{{
-                glyphicon('question-sign')
+                icon('question-sign')
             }}</span>
         </span>
         <input name="occupation" {{ required }} maxlength=200

@@ -126,6 +126,11 @@ class UsernameContainsInvalidCharacters(UsernameError):
         return _("The username '{0}' contains invalid characters.", self.username)
 
 
+class UsernameIsPurelyNumerical(UsernameError):
+    def msg(self, _):
+        return _("The username '{0}' is purely numerical. This isn't allowed.")
+
+
 class UsernameIsRestricted(UsernameError):
     def msg(self, _):
         return _("The username '{0}' is restricted.", self.username)
@@ -459,6 +464,19 @@ class BadDonationCurrency(LazyResponseXXX):
         )
 
 
+class UnacceptedDonationVisibility(LazyResponseXXX):
+    code = 403
+    def msg(self, _):
+        tippee, visibility = self.args
+        return _(
+            "{username} no longer accepts secret donations.", username=tippee.username,
+        ) if visibility == 1 else _(
+            "{username} no longer accepts private donations.", username=tippee.username,
+        ) if visibility == 2 else _(
+            "{username} no longer accepts public donations.", username=tippee.username,
+        )
+
+
 class UnexpectedCurrency(LazyResponse400):
 
     def __init__(self, unexpected_amount, expected_currency):
@@ -538,6 +556,31 @@ class MissingPaymentAccount(LazyResponseXXX):
             "Your donation to {recipient} cannot be processed right now because the "
             "account of the beneficiary isn't ready to receive money.",
             recipient=self.args[0].username
+        )
+
+
+class ProhibitedSourceCountry(LazyResponseXXX):
+    code = 403
+
+    def __init__(self, recipient, country):
+        super().__init__()
+        self.recipient = recipient
+        self.country = country
+
+    def msg(self, _, locale):
+        return _(
+            "{username} does not accept donations from {country}.",
+            username=self.recipient.username, country=locale.Country(self.country)
+        )
+
+
+class UnableToDeterminePayerCountry(LazyResponseXXX):
+    code = 500
+    def msg(self, _):
+        return _(
+            "The processing of your payment has failed because our software was "
+            "unable to determine which country the money would come from. This "
+            "isn't supposed to happen."
         )
 
 

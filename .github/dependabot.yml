@@ -1,0 +1,27 @@
+# https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+version: 2
+updates:
+  - package-ecosystem: "pip"
+    directory: "/" # Location of package manifests
+    schedule:
+      interval: "monthly"
+    ignore:
+      - dependency-name: "aspen"
+      - dependency-name: "botocore"
+        update-types: ["version-update:semver-patch"]
+      - dependency-name: "boto3"
+        update-types: ["version-update:semver-patch"]
+      - dependency-name: "pando"
+      - dependency-name: "psycopg2-pool"
+    groups:
+      aws:
+        patterns: ["botocore", "boto3", "jmespath", "s3transfer"]
+      jinja:
+        patterns: ["aspen-jinja2", "Jinja2", "MarkupSafe"]
+      markdown:
+        patterns: ["misaka", "cffi", "pycparser"]
+      oauth:
+        patterns: ["requests-oauthlib", "oauthlib"]
+      requests:
+        patterns: ["requests", "certifi", "chardet", "charset-normalizer", "idna", "urllib3"]
+    open-pull-requests-limit: 10

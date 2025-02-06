@@ -6,14 +6,16 @@ from time import sleep
 from pando import json
 
 from ..billing.payday import compute_next_payday_date
+from ..constants import SEPA
 from ..cron import logger
 from ..exceptions import (
-    AccountSuspended, MissingPaymentAccount, NoSelfTipping,
+    AccountSuspended, BadDonationCurrency, MissingPaymentAccount, NoSelfTipping,
     RecipientAccountSuspended, UserDoesntAcceptTips, NextAction,
 )
 from ..i18n.currencies import Money
 from ..website import website
 from ..utils import utcnow
+from ..utils.types import Object
 from .common import prepare_payin, resolve_tip
 from .stripe import charge
 
@@ -22,7 +24,7 @@ def reschedule_renewals():
     """This function looks for inconsistencies in scheduled payins.
     """
     donors = website.db.all("""
-        SELECT p
+        SELECT p, tips.count AS expected
           FROM ( SELECT tip.tipper, count(*)
                    FROM current_tips tip
                    JOIN participants tippee_p ON tippee_p.id = tip.tippee
@@ -61,7 +63,19 @@ def reschedule_renewals():
                     WHERE sp.payer = p.id
                       AND sp.payin IS NULL
                ), 0)
-        UNION
+    """)
+    for p, expected in donors:
+        logger.info(f"Rescheduling the renewals of participant ~{p.id}")
+        new_schedule = p.schedule_renewals()
+        actual = sum(len(sp.transfers) for sp in new_schedule)
+        if actual < expected:
+            logger.warning(
+                "Rescheduling the renewals of participant ~%s failed to correct "
+                "the imbalance: expected %s, found %s",
+                p.id, expected, actual,
+            )
+        sleep(0.1)
+    donors = website.db.all("""
         SELECT ( SELECT p FROM participants p WHERE p.id = tip.tipper )
           FROM current_tips tip
           JOIN participants tippee_p ON tippee_p.id = tip.tippee
@@ -126,7 +140,7 @@ def send_donation_reminder_notifications():
     today = utcnow().date()
     next_payday = compute_next_payday_date()
     for payer, payins in rows:
-        if payer.is_suspended or payer.status != 'active':
+        if not payer.can_attempt_payment:
             continue
         payins.sort(key=itemgetter('execution_date'))
         _check_scheduled_payins(db, payer, payins, automatic=False)
@@ -187,61 +201,78 @@ def send_upcoming_debit_notifications():
            AND sp.notifs_count = 0
            AND sp.payin IS NULL
            AND sp.ctime < (current_timestamp - interval '6 hours')
-      GROUP BY sp.payer, (sp.amount).currency
+      GROUP BY sp.payer
         HAVING min(sp.execution_date) <= (current_date + interval '14 days')
-      ORDER BY sp.payer, (sp.amount).currency
+      ORDER BY sp.payer
     """)
     for payer, payins in rows:
-        if payer.is_suspended or payer.status != 'active' or not payer.get_email_address():
+        if not payer.can_attempt_payment:
             continue
         _check_scheduled_payins(db, payer, payins, automatic=True)
         if not payins:
             continue
-        payins.sort(key=itemgetter('execution_date'))
-        context = {
-            'payins': payins,
-            'total_amount': sum(sp['amount'] for sp in payins),
-        }
-        for sp in context['payins']:
+        payins.sort(key=lambda sp: (
+            sp['amount'].currency, sp['execution_date'], sp['id']
+        ))
+        routes = website.db.all("""
+            SELECT r
+              FROM exchange_routes r
+             WHERE r.participant = %(payer_id)s
+               AND r.status = 'chargeable'
+               AND r.network::text LIKE 'stripe-%%'
+        """, dict(payer_id=payer.id))
+        for route in routes:
+            route.__dict__['participant'] = payer
+        grouped_payins = defaultdict(list)
+        for sp in payins:
             for tr in sp['transfers']:
                 del tr['tip'], tr['beneficiary']
-        if len(payins) > 1:
-            last_execution_date = payins[-1]['execution_date']
-            max_execution_date = max(sp['execution_date'] for sp in payins)
-            assert last_execution_date == max_execution_date
-            context['ndays'] = (max_execution_date - utcnow().date()).days
-        while True:
-            route = db.one("""
-                SELECT r
-                  FROM exchange_routes r
-                 WHERE r.participant = %s
-                   AND r.status = 'chargeable'
-                   AND r.network::text LIKE 'stripe-%%'
-              ORDER BY r.is_default NULLS LAST
-                     , r.network = 'stripe-sdd' DESC
-                     , r.ctime DESC
-                 LIMIT 1
-            """, (payer.id,))
-            if route is None:
+            currency = sp['amount'].currency
+            routes.sort(key=lambda r: (
+                -(r.is_default_for == currency),
+                -(r.is_default is True),
+                -(r.network == 'stripe-sdd'),
+                -(r.ctime.timestamp()),
+            ))
+            recipients_are_in_sepa = (
+                len(sp['transfers']) > 1 or db.Participant.from_id(
+                    sp['transfers'][0]['tippee_id']
+                ).has_stripe_sepa_for(payer)
+            )
+            suitable_route = None
+            for route in routes:
+                if route.network == 'stripe-sdd' and not recipients_are_in_sepa:
+                    continue
+                suitable_route = route
                 break
-            route.sync_status()
-            if route.status == 'chargeable':
-                break
-        if route:
-            event = 'upcoming_debit'
-            context['instrument_brand'] = route.get_brand()
-            context['instrument_partial_number'] = route.get_partial_number()
-        else:
-            event = 'missing_route'
-        payer.notify(event, email_unverified_address=True, **context)
-        counts[event] += 1
-        db.run("""
-            UPDATE scheduled_payins
-               SET notifs_count = notifs_count + 1
-                 , last_notif_ts = now()
-             WHERE payer = %s
-               AND id IN %s
-        """, (payer.id, tuple(sp['id'] for sp in payins)))
+            grouped_payins[(currency, suitable_route)].append(sp)
+            del suitable_route
+        del payins
+        for (currency, route), payins in grouped_payins.items():
+            context = {
+                'payins': payins,
+                'total_amount': sum(sp['amount'] for sp in payins),
+            }
+            if len(payins) > 1:
+                last_execution_date = payins[-1]['execution_date']
+                max_execution_date = max(sp['execution_date'] for sp in payins)
+                assert last_execution_date == max_execution_date
+                context['ndays'] = (max_execution_date - utcnow().date()).days
+            if route:
+                event = 'upcoming_debit'
+                context['instrument_brand'] = route.get_brand()
+                context['instrument_partial_number'] = route.get_partial_number()
+            else:
+                event = 'missing_route'
+            payer.notify(event, email_unverified_address=True, **context)
+            counts[event] += 1
+            db.run("""
+                UPDATE scheduled_payins
+                   SET notifs_count = notifs_count + 1
+                     , last_notif_ts = now()
+                 WHERE payer = %s
+                   AND id IN %s
+            """, (payer.id, tuple(sp['id'] for sp in payins)))
     for k, n in sorted(counts.items()):
         logger.info("Sent %i %s notifications." % (n, k))
 
@@ -253,8 +284,12 @@ def execute_scheduled_payins():
     counts = defaultdict(int)
     retry = False
     rows = db.all("""
-        SELECT sp.id, sp.execution_date, sp.transfers
-             , p AS payer, r.*::exchange_routes AS route
+        SELECT p AS payer, json_agg(json_build_object(
+                   'id', sp.id,
+                   'execution_date', sp.execution_date,
+                   'transfers', sp.transfers,
+                   'route', r.id
+               )) AS scheduled_payins
           FROM scheduled_payins sp
           JOIN participants p ON p.id = sp.payer
           JOIN LATERAL (
@@ -263,8 +298,33 @@ def execute_scheduled_payins():
                   WHERE r.participant = sp.payer
                     AND r.status = 'chargeable'
                     AND r.network::text LIKE 'stripe-%%'
-                    AND ( sp.amount::currency = 'EUR' OR r.network <> 'stripe-sdd' )
-               ORDER BY r.is_default NULLS LAST
+                    AND ( r.network <> 'stripe-sdd' OR
+                          sp.amount::currency = 'EUR' AND EXISTS
+                          ( SELECT 1
+                              FROM json_array_elements(sp.transfers) tr
+                              JOIN LATERAL (
+                                       SELECT 1
+                                         FROM payment_accounts a
+                                        WHERE ( a.participant = (tr->>'tippee_id')::bigint OR
+                                                a.participant IN (
+                                                    SELECT t.member
+                                                      FROM current_takes t
+                                                     WHERE t.team = (tr->>'tippee_id')::bigint
+                                                       AND t.amount <> 0
+                                                )
+                                              )
+                                          AND a.provider = 'stripe'
+                                          AND a.is_current IS TRUE
+                                          AND a.verified IS TRUE
+                                          AND a.charges_enabled IS TRUE
+                                          AND a.country IN %(SEPA)s
+                                        LIMIT 1
+                                   ) a ON true
+                             LIMIT 1
+                          )
+                        )
+               ORDER BY r.is_default_for = sp.amount::currency DESC NULLS LAST
+                      , r.is_default DESC NULLS LAST
                       , r.ctime DESC
                   LIMIT 1
                ) r ON true
@@ -274,32 +334,31 @@ def execute_scheduled_payins():
            AND sp.automatic
            AND sp.payin IS NULL
            AND p.is_suspended IS NOT TRUE
-      ORDER BY sp.execution_date, sp.id
-    """)
-    for sp_id, execution_date, transfers, payer, route in rows:
-        route.__dict__['participant'] = payer
-        route.sync_status()
-        if route.status != 'chargeable':
-            retry = True
-            continue
+      GROUP BY p.id
+      ORDER BY p.id
+    """, dict(SEPA=SEPA,))
+    for payer, scheduled_payins in rows:
+        scheduled_payins[:] = [Object(**sp) for sp in scheduled_payins]
+        for sp in scheduled_payins:
+            sp.route = db.ExchangeRoute.from_id(payer, sp.route)
+            if sp.route.status != 'chargeable':
+                retry = True
+                scheduled_payins.remove(sp)
+
+    def unpack():
+        for payer, scheduled_payins in rows:
+            last = len(scheduled_payins)
+            for i, sp in enumerate(scheduled_payins, 1):
+                yield sp.id, sp.execution_date, sp.transfers, payer, sp.route, i == last
+
+    for sp_id, execution_date, transfers, payer, route, update_donor in unpack():
         transfers, canceled, impossible, actionable = _filter_transfers(
             payer, transfers, automatic=True
         )
-        if actionable:
-            for tr in actionable:
-                tr['execution_date'] = execution_date
-                del tr['beneficiary'], tr['tip']
-            payer.notify(
-                'renewal_actionable',
-                transfers=actionable,
-                email_unverified_address=True,
-                force_email=True,
-            )
-            counts['renewal_actionable'] += 1
         if transfers:
             payin_amount = sum(tr['amount'] for tr in transfers)
             proto_transfers = []
-            sepa_only = len(transfers) > 1
+            sepa_only = len(transfers) > 1 or route.network == 'stripe-sdd'
             for tr in list(transfers):
                 try:
                     proto_transfers.extend(resolve_tip(
@@ -314,6 +373,10 @@ def execute_scheduled_payins():
                     UserDoesntAcceptTips,
                 ):
                     impossible.append(tr)
+                    transfers.remove(tr)
+                    payin_amount -= tr['amount']
+                except BadDonationCurrency:
+                    actionable.append(tr)
                     transfers.remove(tr)
                     payin_amount -= tr['amount']
         if transfers:
@@ -331,7 +394,7 @@ def execute_scheduled_payins():
                  WHERE id = %s
             """, (payin.id, sp_id))
             try:
-                payin = charge(db, payin, payer, route)
+                payin = charge(db, payin, payer, route, update_donor=update_donor)
             except NextAction:
                 payer.notify(
                     'renewal_unauthorized',
@@ -341,7 +404,7 @@ def execute_scheduled_payins():
                     force_email=True,
                 )
                 counts['renewal_unauthorized'] += 1
-                return
+                continue
             if payin.status == 'failed' and route.status == 'expired':
                 can_retry = db.one("""
                     SELECT count(*) > 0
@@ -372,6 +435,17 @@ def execute_scheduled_payins():
             """, (payer.id, sp_id))
         else:
             db.run("DELETE FROM scheduled_payins WHERE id = %s", (sp_id,))
+        if actionable:
+            for tr in actionable:
+                tr['execution_date'] = execution_date
+                del tr['beneficiary'], tr['tip']
+            payer.notify(
+                'renewal_actionable',
+                transfers=actionable,
+                email_unverified_address=True,
+                force_email=True,
+            )
+            counts['renewal_actionable'] += 1
         if impossible:
             for tr in impossible:
                 tr['execution_date'] = execution_date
@@ -436,6 +510,8 @@ def _check_scheduled_payins(db, payer, payins, automatic):
 def _filter_transfers(payer, transfers, automatic):
     """Splits scheduled transfers into 4 lists: okay, canceled, impossible, actionable.
     """
+    if not payer.can_attempt_payment:
+        return [], list(transfers), [], []
     canceled_transfers = []
     impossible_transfers = []
     actionable_transfers = []
@@ -445,7 +521,8 @@ def _filter_transfers(payer, transfers, automatic):
           FROM payin_transfers pt
           JOIN payins pi ON pi.id = pt.payin
          WHERE pt.payer = %s
-           AND ( pi.status = 'pending' OR pt.status = 'pending' )
+           AND ( pi.status IN ('awaiting_review', 'pending') OR
+                 pt.status IN ('awaiting_review', 'pending') )
     """, (payer.id,)))
     for tr in transfers:
         if isinstance(tr['amount'], dict):
@@ -477,7 +554,7 @@ def execute_reviewed_payins():
           JOIN participants payer_p ON payer_p.id = pi.payer
           JOIN exchange_routes r ON r.id = pi.route
          WHERE pi.status = 'awaiting_review'
-           AND NOT EXISTS (
+           AND ( payer_p.is_suspended IS FALSE OR NOT EXISTS (
                    SELECT 1
                      FROM payin_transfers pt
                      JOIN participants recipient_p ON recipient_p.id = pt.recipient
@@ -490,7 +567,7 @@ def execute_reviewed_payins():
                                  AND e.type = 'flags_changed'
                             ) > (current_timestamp - interval '6 hours')
                           )
-               )
+               ) )
     """)
     for payin, payer, route in payins:
         route.__dict__['participant'] = payer

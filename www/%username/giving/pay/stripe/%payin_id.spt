@@ -12,7 +12,7 @@ from liberapay.payin.common import (
 )
 from liberapay.payin.prospect import PayinProspect
 from liberapay.payin.stripe import (
-    charge, create_source_from_token, repr_stripe_error, settle_payin,
+    charge, repr_stripe_error, settle_payin,
 )
 from liberapay.utils import check_address_v2, get_participant
 
@@ -25,8 +25,9 @@ identity = payer.get_current_identity() or {}
 
 del currency
 
-payment_type = request.qs.get('method', 'card')
+payment_type = request.qs.get_choice('method', ('card', 'sdd'), default='card')
 
+error = None
 if request.method == 'POST':
     website.check_payin_allowed(request, user, 'stripe-' + payment_type)
 
@@ -41,6 +42,7 @@ if request.method == 'POST':
         payin_amount = Money(payin_amount, payin_currency)
     payin_amount = payin_amount.convert_if_currency_is_phased_out()
     del payin_currency
+    payin_amount = payin_amount.round()
 
     tips = website.db.all("""
         SELECT t.*, p AS tippee_p
@@ -48,10 +50,11 @@ if request.method == 'POST':
           JOIN participants p ON p.id = t.tippee
          WHERE t.tipper = %s
            AND t.id IN %s
+           AND t.renewal_mode > 0
            AND p.payment_providers & %s > 0
       ORDER BY t.id
     """, (payer.id, set(body.parse_list('tips', int)), STRIPE_BIT))
-    if len(set(tip.amount.currency for tip in tips)) != 1:
+    if set(tip.amount.currency for tip in tips) != {payin_amount.currency}:
         raise response.invalid_input(body.get('tips'), 'tips', 'body')
 
     prospect = PayinProspect(payer, tips, 'stripe')
@@ -76,70 +79,63 @@ if request.method == 'POST':
         postal_address = None
 
     try:
-        if 'token' in body:
-            return_url = payer.url('giving/pay/stripe/complete')
-            one_off = body.get('keep') != 'true'
-            owner_info = {
-                'email': payer.get_email_address(),
-                'name': body.get('owner.name'),
-            }
-            source = create_source_from_token(
-                body.word('token'), one_off, payin_amount, owner_info, return_url
-            )
-            route = ExchangeRoute.attach_stripe_source(payer, source, one_off)
-            if body.parse_boolean('set_as_default', default=False):
-                route.set_as_default()
-        elif 'stripe_pm_id' in body:
+        if 'stripe_pm_id' in body:
             one_off = body.get('keep') != 'true'
             pm = stripe.PaymentMethod.retrieve(body.word('stripe_pm_id'))
             route = ExchangeRoute.attach_stripe_payment_method(payer, pm, one_off)
-            if body.parse_boolean('set_as_default', default=False):
-                route.set_as_default()
         else:
             route = ExchangeRoute.from_id(payer, body.get_int('route'), _raise=False)
             if route is None:
                 raise response.invalid_input(body.get('route'), 'route', 'body')
-            route.sync_status()
+        if not route.one_off:
+            if body.parse_boolean('set_as_default', default=False):
+                route.set_as_default()
+            set_as_default_for = body.get_currency('set_as_default_for', None)
+            if set_as_default_for:
+                route.set_as_default_for(set_as_default_for)
 
     except stripe.error.StripeError as e:
-        raise response.error(e.http_status or 500, _(
+        route = None
+        error = _(
             "The payment processor {name} returned an error: “{error_message}”.",
             name='Stripe', error_message=repr_stripe_error(e)
-        ))
+        )
 
-    if not route:
-        raise response.error(400, _(
-            "The payment instrument is invalid, please select or add another one."
-        ))
+    if route:
+        try:
+            if postal_address and not (route.get_postal_address() or {}).get('line1'):
+                route.set_postal_address(postal_address)
+        except stripe.error.StripeError as e:
+            website.tell_sentry(e)
 
-    try:
-        if postal_address and not (route.get_postal_address() or {}).get('line1'):
-            route.set_postal_address(postal_address)
-    except stripe.error.StripeError as e:
-        website.tell_sentry(e)
+        transfer_amounts = resolve_amounts(
+            payin_amount, {tip.id: tip.amount for tip in tips}
+        )
+        payer_country = route.country or payer.guessed_country
+        proto_transfers = []
+        sepa_only = len(tips) > 1 or route.network == 'stripe-sdd'
+        for tip in tips:
+            proto_transfers.extend(resolve_tip(
+                website.db, tip, tip.tippee_p, 'stripe', payer, payer_country,
+                transfer_amounts[tip.id], sepa_only=sepa_only,
+            ))
+        payin = prepare_payin(website.db, payer, payin_amount, route, proto_transfers)[0]
 
-    transfer_amounts = resolve_amounts(
-        payin_amount, {tip.id: tip.amount for tip in tips}
-    )
-    payer_country = route.country or request.country
-    proto_transfers = []
-    sepa_only = len(tips) > 1
-    for tip in tips:
-        proto_transfers.extend(resolve_tip(
-            website.db, tip, tip.tippee_p, 'stripe', payer, payer_country,
-            transfer_amounts[tip.id], sepa_only=sepa_only,
-        ))
-    payin = prepare_payin(website.db, payer, payin_amount, route, proto_transfers)[0]
+        msg = _("Request in progress, please wait…")
+        response.refresh(state, url=payer.path('giving/pay/stripe/%i' % payin.id), msg=msg)
 
-    msg = _("Request in progress, please wait…")
-    response.refresh(state, url=payer.path('giving/pay/stripe/%i' % payin.id), msg=msg)
+    else:
+        if not error:
+            error = _("The payment instrument is invalid, please select or add another one.")
+        if request.headers.get(b'Accept', b'').startswith(b'application/json'):
+            raise response.error(400, error)
 
 payin_id = request.path['payin_id']
 
 if payin_id == 'complete':
     payin = website.db.one("""
         SELECT pi.*
-          FROM payin pi
+          FROM payins pi
           JOIN exchange_routes r ON r.id = pi.route
          WHERE pi.participant = %s
            AND r.network = 'stripe'
@@ -176,7 +172,7 @@ elif payin_id:
         elif act.type == 'use_stripe_sdk':
             client_secret = act.client_secret
         else:
-            raise NotImplementedError()
+            raise NotImplementedError(act.type)
     tell_payer_to_fill_profile = (
         payin.status in ('pending', 'succeeded') and
         not (payer.public_name or payer.username) and
@@ -188,36 +184,11 @@ elif payin_id:
         """, (payin.id,)) > 0
     )
 
-else:
-    routes = website.db.all("""
-        SELECT r
-          FROM exchange_routes r
-         WHERE r.participant = %s
-           AND r.status = 'chargeable'
-           AND r.network::text LIKE %s
-           AND (r.one_off IS FALSE OR r.ctime > (current_timestamp - interval '6 hours'))
-      ORDER BY r.is_default NULLS LAST
-             , r.network = 'stripe-sdd' DESC
-             , r.id DESC
-    """, (payer.id, 'stripe-' + (payment_type or '%')))
-    if routes:
-        route = None
-        while routes:
-            route = routes[0]
-            route.sync_status()
-            if route:
-                break
-            routes = routes[1:]
-        payment_type = route.network.split('-', 1)[-1]
-        del route
-    if not payment_type:
-        response.redirect(payer.path('giving/pay'))
-
 tippees = request.qs.parse_list('beneficiary', int, default=None)
 if tippees:
     tips = [
         tip for tip in payer.get_tips_to(tippees)
-        if tip.tippee_p.payment_providers & STRIPE_BIT > 0
+        if tip.renewal_mode > 0 and tip.tippee_p.payment_providers & STRIPE_BIT > 0
     ]
     if len(set(tip.amount.currency for tip in tips)) != 1:
         raise response.invalid_input(tippees, 'beneficiary', 'querystring')
@@ -227,6 +198,18 @@ if tippees:
             raise response.redirect(payer.path(
                 'giving/pay?redirect_reason=unaccepted_currency'
             ))
+    routes = website.db.all("""
+        SELECT r
+          FROM exchange_routes r
+         WHERE r.participant = %s
+           AND r.status = 'chargeable'
+           AND r.network::text LIKE %s
+           AND (r.one_off IS FALSE OR r.ctime > (current_timestamp - interval '6 hours'))
+      ORDER BY r.is_default_for = %s DESC NULLS LAST
+             , r.is_default DESC NULLS LAST
+             , r.network = 'stripe-sdd' DESC
+             , r.id DESC
+    """, (payer.id, 'stripe-' + payment_type, payment.currency))
     ask_for_postal_address = (
         payment_type == 'sdd' or
         len(tips) == 1 and
@@ -247,7 +230,19 @@ if tippees:
              LIMIT 1
         """, tippee_ids=tuple(tip.tippee for tip in tips))
     )
+    stripe_on_behalf_of = ''
+    if len(tips) == 1:
+        proto_transfers = resolve_tip(
+            website.db, tips[0], tips[0].tippee_p, 'stripe', payer, payer.guessed_country,
+            tips[0].amount * 52
+        )
+        if len(proto_transfers) == 1:
+            if proto_transfers[0].destination.country not in constants.SEPA:
+                stripe_on_behalf_of = proto_transfers[0].destination.id
+        del proto_transfers
     del tips
+    # Note: the `stripe_on_behalf_of` value isn't 100% accurate. This can be fixed
+    # later if it causes too many problems.
 
 elif not payin_id:
     response.redirect(payer.path('giving/pay'))
@@ -255,19 +250,13 @@ elif not payin_id:
 if user == payer:
     payer.mark_notifications_as_read('donate_reminder')
 
-# https://stripe.com/docs/security#content-security-policy
-csp = response.headers[b'Content-Security-Policy']
-csp = csp.allow(b'connect-src', b"api.stripe.com")
-csp = csp.allow(b'frame-src', b"js.stripe.com hooks.stripe.com")
-csp = csp.allow(b'script-src', b"js.stripe.com")
-response.headers[b'Content-Security-Policy'] = csp
-
 title = _("Funding your donations")
 
 [---] text/html
-% from "templates/macros/postal-addresses.html" import postal_address_form_v2 with context
-
 % extends "templates/layouts/base-thin.html"
+
+% from "templates/macros/icons.html" import icon with context
+% from "templates/macros/postal-addresses.html" import postal_address_form_v2 with context
 
 % block thin_content
 
@@ -362,10 +351,23 @@ title = _("Funding your donations")
 
 % else
 
+    % if error
+        <output class="alert alert-danger">{{ error }}</output>
+    % endif
+
     <noscript><div class="alert alert-danger">{{ _("JavaScript is required") }}</div></noscript>
 
     <form action="javascript:" method="POST" id="stripe"
+          data-before-submit="call:Liberapay.stripe_before_submit"
+          data-msg-stripe-missing='{{ _(
+              "The initialization of a required component has failed. If you use a "
+              "browser extension that blocks requests, for example NoScript, please "
+              "make sure it’s allowing requests to the “stripe.com” domain."
+          ) }}'
+          data-msg-submitting="{{ _('Request in progress, please wait…') }}"
+          data-stripe-on-behalf-of="{{ stripe_on_behalf_of }}"
           data-stripe-pk="{{ website.app_conf.stripe_publishable_key }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}" />
         % if len(payment.recipient_names) == 1
             <p>{{ _(
                 "Your donation of {amount} to {recipient} is awaiting payment.",
@@ -388,7 +390,6 @@ title = _("Funding your donations")
         % endif
         <p>{{ _("Please select or input a payment amount:") }}</p>
         <fieldset id="amount">
-            <input type="hidden" name="csrf_token" value="{{ csrf_token }}" />
             <input type="hidden" name="currency" value="{{ payment.currency }}" />
             <input type="hidden" name="tips" value="{{ payment.tip_ids }}" />
             <ul class="list-group radio-group">
@@ -446,7 +447,7 @@ title = _("Funding your donations")
             </ul>
         </fieldset>
 
-        <div class="text-info">{{ glyphicon('info-sign') }} {{ _(
+        <div class="text-info">{{ icon('info-sign') }} {{ _(
             "Liberapay does not store money, the entire amount of your payment will "
             "go immediately to the {payment_provider} accounts of the recipients.",
             payment_provider='Stripe',
@@ -460,7 +461,7 @@ title = _("Funding your donations")
             % if route.network == 'stripe-card'
             <p>{{ _(
                 "We will charge your {brand} card (last four digits: {last4}).",
-                brand=route.get_brand(), last4=route.get_partial_number()
+                brand=route.get_brand(), last4=route.get_last4()
             ) }}</p>
             <button class="btn btn-default btn-sm" type="button" data-modify="#card-form">{{
                 _("Use another card")
@@ -500,26 +501,37 @@ title = _("Funding your donations")
         </div>
         % endif
 
+        <input type="hidden" name="owner.email" value="{{ payer.get_email_address() }}" />
         % if payment_type == 'card'
         <fieldset id="card-form" class="form-group {{ 'hidden' if routes else '' }}">
             <p>{{ _("Please input your name and card number:") }}</p>
             <input name="owner.name" autocomplete="name" required minlength=3
                    class="form-control mb-3" placeholder="{{ _('Jane Doe') }}" />
             <div id="stripe-element" data-type="card" class="form-control mb-3"></div>
-            <span id="stripe-errors" role="alert" class="invalid-msg"></span>
-            <p class="help-block">{{ glyphicon('lock') }} {{ _(
+            <output id="stripe-errors" class="alert alert-danger"></output>
+            <p class="help-block">{{ icon('secure') }} {{ _(
                 "This data will be sent directly to the payment processor "
                 "{name} through an encrypted connection.",
                 name='<a href="https://stripe.com/" target="_blank" rel="noopener noreferrer">Stripe</a>'|safe
             ) }}</p>
             <label>
-                <input type="checkbox" name="keep" value="true" checked />
+                <input type="checkbox" name="keep" value="true" checked data-toggle="enable" data-target="#set-as-default" />
                 {{ _("Remember the card number for next time") }}
             </label><br>
+            <fieldset id="set-as-default">
+            % if payer.donates_in_multiple_currencies
+            <label>
+                <input type="checkbox" name="set_as_default_for" value="{{ payment.currency }}" checked />
+                {{ _("Use this payment instrument by default for future payments in {currency}",
+                     currency=Currency(payment.currency)) }}
+            </label>
+            % else
             <label>
                 <input type="checkbox" name="set_as_default" value="true" checked />
                 {{ _("Use this payment instrument by default for future payments") }}
             </label>
+            % endif
+            </fieldset>
             <br><br>
         </fieldset>
         % elif payment_type == 'sdd'
@@ -530,7 +542,7 @@ title = _("Funding your donations")
             <input name="owner.name" autocomplete="name" required minlength=3
                    class="form-control mb-3" placeholder="{{ _('Jane Doe') }}" />
             <div id="stripe-element" data-type="iban" class="form-control mb-3"></div>
-            <span id="stripe-errors" role="alert" class="invalid-msg"></span>
+            <output id="stripe-errors" class="alert alert-danger"></output>
             <p class="help-block">{{ _(
                 "By providing your IBAN and confirming this payment, you are authorizing "
                 "{platform} and {provider}, our payment service provider, to send instructions "
@@ -543,14 +555,16 @@ title = _("Funding your donations")
                 provider='<a href="https://stripe.com/" target="_blank" rel="noopener noreferrer">Stripe</a>'|safe
             ) }}</p>
             <label>
-                <input type="checkbox" name="keep" value="true" checked />
+                <input type="checkbox" name="keep" value="true" checked data-toggle="enable" data-target="#set-as-default" />
                 {{ _("Remember the bank account number for future payments") }}
             </label><br>
+            <fieldset id="set-as-default">
             <label>
-                <input type="checkbox" name="set_as_default" value="true" checked />
-                {{ _("Use this payment instrument by default for future payments") }}
-            </label>
-            <br>
+                <input type="checkbox" name="set_as_default_for" value="{{ payment.currency }}" checked />
+                {{ _("Use this payment instrument by default for future payments in {currency}",
+                     currency=Currency(payment.currency)) }}
+            </label><br>
+            </fieldset>
         </fieldset>
         % endif
 
@@ -568,6 +582,10 @@ title = _("Funding your donations")
         % endif
 
         <br>
+        <output class="alert alert-danger hidden msg-postal-address-required">{{ _(
+            "Please fill in your postal address. It's required because the IBAN "
+            "you've provided emanates from outside the European Union."
+        ) }}</output>
         <button class="btn btn-primary btn-lg btn-block">{{ _(
             "Initiate the payment"
         ) }}</button>
@@ -578,5 +596,6 @@ title = _("Funding your donations")
 % endblock
 
 % block scripts
+    % do response.csp_allow_stripe()
     <script src="https://js.stripe.com/v3/"></script>
 % endblock

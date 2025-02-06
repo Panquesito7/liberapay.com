@@ -1,6 +1,6 @@
 from datetime import timedelta
+from functools import cached_property
 
-from cached_property import cached_property
 from postgres.orm import Model
 
 
@@ -85,7 +85,8 @@ class Tip(Model):
               JOIN payins pi ON pi.id = pt.payin
              WHERE pt.payer = %(tipper)s
                AND coalesce(pt.team, pt.recipient) = %(tippee)s
-               AND (pt.status = 'pending' OR pi.status = 'pending')
+               AND (pt.status IN ('awaiting_review', 'pending') OR
+                    pi.status IN ('awaiting_review', 'pending'))
         """, dict(tipper=self.tipper, tippee=self.tippee))
 
     @cached_property

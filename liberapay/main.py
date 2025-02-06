@@ -10,6 +10,7 @@ else:
     _init_modules = set(sys.modules.keys())
 
 import builtins
+import http.cookies
 from ipaddress import ip_address
 import os
 import signal
@@ -36,7 +37,8 @@ from liberapay.i18n.currencies import Money, MoneyBasket, fetch_currency_exchang
 from liberapay.models.account_elsewhere import refetch_elsewhere_data
 from liberapay.models.community import Community
 from liberapay.models.participant import (
-    Participant, clean_up_closed_accounts, send_account_disabled_notifications,
+    Participant, clean_up_closed_accounts, free_up_usernames,
+    send_account_disabled_notifications,
     generate_profile_description_missing_notifications
 )
 from liberapay.models.repository import refetch_repos
@@ -46,6 +48,7 @@ from liberapay.payin.cron import (
     send_upcoming_debit_notifications,
 )
 from liberapay.security import authentication, csrf, set_default_security_headers
+from liberapay.security.csp import csp_allow, csp_allow_stripe
 from liberapay.utils import (
     b64decode_s, b64encode_s, erase_cookie, http_caching, set_cookie,
 )
@@ -59,7 +62,9 @@ from liberapay.utils.state_chain import (
     create_response_object,
     delegate_error_to_simplate,
     detect_obsolete_browsers,
+    drop_accept_all_header,
     enforce_rate_limits,
+    get_response_for_exception,
     insert_constants,
     merge_responses,
     no_response_body_for_HEAD_requests,
@@ -92,24 +97,35 @@ website.renderer_factories['jinja2'] = jinja2.Factory(rp)
 website.renderer_factories['jinja2_html_jswrapped'] = jinja2_jswrapped.Factory(rp)
 website.renderer_factories['jinja2_xml_min'] = jinja2_xml_min.Factory(rp)
 website.renderer_factories['scss'] = scss.Factory(rp)
+website.default_renderers_by_media_type['-/subject'] = 'jinja2'
 website.default_renderers_by_media_type['text/html'] = 'jinja2'
 website.default_renderers_by_media_type['text/plain'] = 'jinja2'
 
-def _assert(x):
-    assert x, repr(x)
+def _assert(x, msg=None):
+    if not x:
+        raise AssertionError(msg or repr(x))
+    return x
+
+def soft_assert(x, msg):
+    if not x:
+        try:
+            raise AssertionError(msg)
+        except AssertionError as e:
+            website.tell_sentry(e)
     return x
 
 website.renderer_factories['jinja2'].Renderer.global_context.update(builtins.__dict__)
 website.renderer_factories['jinja2'].Renderer.global_context.update({
     # This is shared via class inheritance with jinja2_* renderers.
     'assert': _assert,
+    'b64decode_s': b64decode_s,
+    'b64encode_s': b64encode_s,
     'Bold': Bold,
     'Community': Community,
     'Country': Country,
     'Currency': Currency,
-    'b64decode_s': b64decode_s,
-    'b64encode_s': b64encode_s,
     'generate_session_token': Participant.generate_session_token,
+    'soft_assert': soft_assert,
     'to_age': to_age,
     'to_javascript': utils.to_javascript,
     'urlquote': urlquote,
@@ -169,20 +185,21 @@ if conf:
     cron(intervals.get('dequeue_emails', 60), Participant.dequeue_emails, True)
     cron(intervals.get('send_newsletters', 60), Participant.send_newsletters, True)
     cron(intervals.get('send_account_disabled_notifications', 600), send_account_disabled_notifications, True)
-    cron(intervals.get('refetch_elsewhere_data', 120), refetch_elsewhere_data, True)
-    cron(intervals.get('refetch_repos', 60), refetch_repos, True)
+    cron(intervals.get('refetch_elsewhere_data', 30), refetch_elsewhere_data, True)
+    cron(intervals.get('refetch_repos', 20), refetch_repos, True)
     cron(Weekly(weekday=3, hour=2), create_payday_issue, True)
     cron(intervals.get('clean_up_counters', 3600), website.db.clean_up_counters, True)
     cron(Daily(hour=1), clean_up_emails, True)
-    cron(Daily(hour=2), reschedule_renewals, True)
-    cron(Daily(hour=3), send_upcoming_debit_notifications, True)
-    cron(Daily(hour=4), execute_scheduled_payins, True)
+    cron(Daily(hour=2), fetch_currency_exchange_rates, True)
+    cron(Daily(hour=3), reschedule_renewals, True)
+    cron(Daily(hour=4), send_upcoming_debit_notifications, True)
+    cron(Daily(hour=5), execute_scheduled_payins, True)
     cron(Daily(hour=8), clean_up_closed_accounts, True)
     cron(Daily(hour=12), generate_profile_description_missing_notifications, True)
-    cron(Daily(hour=16), fetch_currency_exchange_rates, True)
     cron(Daily(hour=17), paypal.sync_all_pending_payments, True)
     cron(Daily(hour=18), Payday.update_cached_amounts, True)
     cron(Daily(hour=19), Participant.delete_old_feedback, True)
+    cron(Daily(hour=20), free_up_usernames, True)
     cron(intervals.get('notify_patrons', 1200), Participant.notify_patrons, True)
     if conf.ses_feedback_queue_url:
         cron(intervals.get('fetch_email_bounces', 60), handle_email_bounces, True)
@@ -207,6 +224,7 @@ algorithm.functions = [
 
     canonize,
     algorithm['extract_accept_header'],
+    drop_accept_all_header,
     set_default_security_headers,
     csrf.add_csrf_token_to_state,
     set_up_i18n,
@@ -230,9 +248,8 @@ algorithm.functions = [
 
     merge_responses,
     turn_socket_error_into_50X,
-
     tell_sentry,
-    algorithm['get_response_for_exception'],
+    get_response_for_exception,
     delegate_error_to_simplate,
 
     bypass_csp_for_form_redirects,
@@ -263,14 +280,6 @@ def check_payin_allowed(website, request, user, method=None):
         website.db.hit_rate_limit('payin.from-ip-addr', request.source, TooManyAttempts)
 
 Website.check_payin_allowed = check_payin_allowed
-
-
-# Monkey patch python's stdlib
-# ============================
-
-from http.cookies import Morsel
-
-Morsel._reserved['samesite'] = 'SameSite'
 
 
 # Monkey patch aspen and pando
@@ -327,12 +336,37 @@ def _Querystring_derive(self, **kw):
             new_qs[k] = v
     return '?' + urlencode(new_qs, doseq=True)
 aspen.http.request.Querystring.derive = _Querystring_derive
+del _Querystring_derive
 
 if hasattr(aspen.http.request.Querystring, 'serialize'):
     raise Warning('aspen.http.request.Querystring.serialize() already exists')
 def _Querystring_serialize(self, **kw):
     return ('?' + urlencode(self, doseq=True)) if self else ''
 aspen.http.request.Querystring.serialize = _Querystring_serialize
+del _Querystring_serialize
+
+pando.http.request.Headers.__init__ = pando.http.mapping.CaseInsensitiveMapping.__init__
+
+if hasattr(pando.http.request.Request, 'cookies'):
+    raise Warning('pando.http.request.Request.cookies already exists')
+def _cookies(self):
+    cookies = self.__dict__.get('cookies')
+    if cookies is None:
+        header = self.headers.get(b'Cookie', b'').decode('utf8', 'backslashreplace')
+        cookies = {}
+        for item in header.split(';'):
+            try:
+                k, v = item.split('=', 1)
+            except ValueError:
+                continue
+            k = k.strip()
+            if len(v) > 1 and v.startswith('"') and v.endswith('"'):
+                v = http.cookies._unquote(v)
+            cookies[k] = v
+        self.__dict__['cookies'] = cookies
+    return cookies
+pando.http.request.Request.cookies = property(_cookies)
+del _cookies
 
 if hasattr(pando.http.request.Request, 'queued_success_messages'):
     raise Warning('pando.http.request.Request.queued_success_messages already exists')
@@ -341,6 +375,7 @@ def _queued_success_messages(self):
         self._queued_success_messages = map(b64decode_s, self.qs.all('success'))
     return self._queued_success_messages
 pando.http.request.Request.queued_success_messages = property(_queued_success_messages)
+del _queued_success_messages
 
 if hasattr(pando.http.request.Request, 'source'):
     raise Warning('pando.http.request.Request.source already exists')
@@ -357,6 +392,7 @@ def _source(self):
         self.__dict__['source'] = ip_address(addr)
     return self.__dict__['source']
 pando.http.request.Request.source = property(_source)
+del _source
 
 if hasattr(pando.http.request.Request, 'find_input_name'):
     raise Warning('pando.http.request.Request.find_input_name already exists')
@@ -366,12 +402,22 @@ def _find_input_name(self, value):
         if any(map(value.__eq__, values)):
             return k
 pando.http.request.Request.find_input_name = _find_input_name
+del _find_input_name
+
+if hasattr(pando.Response, 'csp_allow'):
+    raise Warning('pando.Response.csp_allow() already exists')
+pando.Response.csp_allow = csp_allow
+
+if hasattr(pando.Response, 'csp_allow_stripe'):
+    raise Warning('pando.Response.csp_allow_stripe() already exists')
+pando.Response.csp_allow_stripe = csp_allow_stripe
 
 if hasattr(pando.Response, 'encode_url'):
     raise Warning('pando.Response.encode_url() already exists')
 def _encode_url(url):
     return maybe_encode(urlquote(url, string.punctuation))
 pando.Response.encode_url = staticmethod(_encode_url)
+del _encode_url
 
 if hasattr(pando.Response, 'error'):
     raise Warning('pando.Response.error() already exists')
@@ -380,6 +426,7 @@ def _error(self, code, msg=''):
     self.body = msg
     return self
 pando.Response.error = _error
+del _error
 
 if hasattr(pando.Response, 'invalid_input'):
     raise Warning('pando.Response.invalid_input() already exists')
@@ -392,6 +439,7 @@ def _invalid_input(self, input_value, input_name, input_location, code=400,
     self.body = msg % (input_name, input_value, input_location)
     raise self
 pando.Response.invalid_input = _invalid_input
+del _invalid_input
 
 if hasattr(pando.Response, 'success'):
     raise Warning('pando.Response.success() already exists')
@@ -400,6 +448,7 @@ def _success(self, code=200, msg=''):
     self.body = msg
     raise self
 pando.Response.success = _success
+del _success
 
 if hasattr(pando.Response, 'json'):
     raise Warning('pando.Response.json() already exists')
@@ -409,6 +458,7 @@ def _json(self, obj, code=200):
     self.headers[b'Content-Type'] = b'application/json'
     raise self
 pando.Response.json = _json
+del _json
 
 if hasattr(pando.Response, 'sanitize_untrusted_url'):
     raise Warning('pando.Response.sanitize_untrusted_url() already exists')
@@ -421,6 +471,7 @@ def _sanitize_untrusted_url(response, url):
     # ^ this is safe because we don't accept requests with unknown hosts
     return response.website.canonical_scheme + '://' + host + url
 pando.Response.sanitize_untrusted_url = _sanitize_untrusted_url
+del _sanitize_untrusted_url
 
 if hasattr(pando.Response, 'redirect'):
     raise Warning('pando.Response.redirect() already exists')
@@ -431,6 +482,7 @@ def _redirect(response, url, code=302, trusted_url=True):
     response.headers[b'Location'] = response.encode_url(url)
     raise response
 pando.Response.redirect = _redirect
+del _redirect
 
 if hasattr(pando.Response, 'refresh'):
     raise Warning('pando.Response.refresh() already exists')
@@ -438,6 +490,7 @@ def _refresh(response, state, **extra):
     # https://en.wikipedia.org/wiki/Meta_refresh
     raise response.render('simplates/refresh.spt', state, **extra)
 pando.Response.refresh = _refresh
+del _refresh
 
 if hasattr(pando.Response, 'render'):
     raise Warning('pando.Response.render() already exists')
@@ -452,18 +505,21 @@ def _render(response, path, state, **extra):
     render_response(state, resource, response, website)
     raise response
 pando.Response.render = _render
+del _render
 
 if hasattr(pando.Response, 'set_cookie'):
     raise Warning('pando.Response.set_cookie() already exists')
 def _set_cookie(response, *args, **kw):
     set_cookie(response.headers.cookie, *args, **kw)
 pando.Response.set_cookie = _set_cookie
+del _set_cookie
 
 if hasattr(pando.Response, 'erase_cookie'):
     raise Warning('pando.Response.erase_cookie() already exists')
 def _erase_cookie(response, *args, **kw):
     erase_cookie(response.headers.cookie, *args, **kw)
 pando.Response.erase_cookie = _erase_cookie
+del _erase_cookie
 
 if hasattr(pando.Response, 'text'):
     raise Warning('pando.Response.text already exists')
@@ -471,7 +527,20 @@ def _decode_body(self):
     body = self.body
     return body.decode('utf8') if isinstance(body, bytes) else body
 pando.Response.text = property(_decode_body)
+del _decode_body
 
+def _str(self):
+    r = f"{self.code} {self._status()}"
+    if self.code >= 301 and self.code < 400 and b'Location' in self.headers:
+        r += f" (Location: {self.headers[b'Location'].decode('ascii', 'backslashreplace')})"
+    body = self.body
+    if body:
+        if isinstance(body, bytes):
+            body = body.decode('ascii', 'backslashreplace')
+        r += f":\n{body}"
+    return r
+pando.Response.__str__ = _str
+del _str
 
 # Log some performance information
 # ================================

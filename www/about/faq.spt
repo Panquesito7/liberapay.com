@@ -60,9 +60,13 @@ title = _("Frequently Asked Questions")
     ) }}
 
     <dd>{{ _(
-        "Yes. However, Liberapay isn't a shield: we can't protect anyone from being "
-        "banned by {link_open}the underlying payment processors{link_close}.",
-        link_open='<a href="/about/payment-processors">'|safe,
+        "The payment processors Liberapay supports have unfavourable policies towards "
+        "sexual content. {paypal_link}PayPal requires pre-approval{link_close}, and "
+        "{stripe_link}Stripe prohibits it entirely{link_close}. So, while it is "
+        "possible to use Liberapay for some adult-only content, it is usually better "
+        "to use a platform specialized in such content.",
+        paypal_link='<a href="https://www.paypal.com/webapps/mpp/ua/legalhub-full">'|safe,
+        stripe_link='<a href="https://stripe.com/legal/restricted-businesses">'|safe,
         link_close='</a>'|safe,
     ) }}</dd>
 
@@ -168,10 +172,14 @@ title = _("Frequently Asked Questions")
         "The available payment methods depend on which payment processors are "
         "supported by the recipient. If a payment is processed by Stripe, then "
         "most credit and debit cards ({list_of_card_brands}) are accepted, as "
-        "well as SEPA Direct Debits (for Euro donations only). If a payment is "
-        "through PayPal, then it's possible to pay in various ways, however "
-        "the donor needs to have or create a PayPal account.",
-        list_of_card_brands=["Visa", "Mastercard", "American Express", "UnionPay"]
+        "well as SEPA Direct Debits (only for donations in euros to recipients "
+        "in SEPA countries). If a payment is through PayPal, then it's possible "
+        "to pay in various ways, however the donor needs to have or create a "
+        "PayPal account.",
+        list_of_card_brands=[
+            "American Express", "Cartes Bancaires", "Diners", "Discover", "JCB",
+            "Mastercard", "UnionPay", "Visa"
+        ]
     ) }}</dd>
 
 
@@ -184,6 +192,15 @@ title = _("Frequently Asked Questions")
         "{average_fee_paypal} for the payments processed by PayPal."
         , average_fee_stripe=Percent(average_fee_stripe, min_precision=2) if average_fee_stripe else '[unknown]'
         , average_fee_paypal=Percent(average_fee_paypal, min_precision=2) if average_fee_paypal else '[unknown]'
+    ) }}</dd>
+
+
+    {{ dt(_("How and when do I receive the money sent by my patrons?"), 'payouts') }}
+
+    <dd>{{ _(
+        "Money sent by a donor immediately goes to your Stripe or PayPal account. "
+        "By default Stripe then automatically sends the funds to your bank account, "
+        "whereas PayPal simply stores them until you spend or withdraw them."
     ) }}</dd>
 
 
@@ -231,23 +248,15 @@ title = _("Frequently Asked Questions")
     <dd>{{ _("Probably not, but it depends on the tax rules of your country.") }}</dd>
 
 
-    {{ dt(_("What are wallets?"), 'wallets') }}
+    {{ dt(_("Is a Liberapay account a wallet?"), 'wallets') }}
 
     <dd>{{ _(
-        "Liberapay used to hold the funds of donors in wallets, but we no longer do "
-        "that. Instead the full amount of a donation is immediately transferred to "
-        "the recipient."
+        "Not since mid-2018. Money sent by a donor immediately goes to the "
+        "recipient. Previously, funds were held in the donor's account and "
+        "disbursed little by little to the recipient every week. That system "
+        "was definitively abandoned due to its very significant drawbacks."
     ) }}</dd>
 
-
-    {{ dt(_("What is “payday”?"), 'payday') }}
-
-    <p>{{ _(
-        "Payday is a program ({0}this one{1}) that we run every Wednesday. It "
-        "executes donations and notifies donors and recipients.",
-        '<a href="https://github.com/liberapay/liberapay.com/blob/master/liberapay/billing/payday.py">'|safe,
-        '</a>'|safe
-    ) }}</p>
 
 </dl>
 </div>

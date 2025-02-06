@@ -10,17 +10,15 @@
 </head>
 <body>
 
-    <header class="text-right">
-        <a class="btn btn-default btn-lg print">
-            <span class="glyphicon glyphicon-print"></span> {{ _("Print") }}
-        </a>
+    <header class="text-center">
+        <a class="btn btn-primary btn-lg print">{{ _("Print") }}</a>
     </header>
 
     <div class="sheet"><div class="page">
         % block header
         <header class="flex">
             <div>
-                <img src="{{ website.asset('liberapay/icon-v2_white-on-yellow.svg') }}" />
+                <img src="{{ website.asset('liberapay/icon-v2_black-on-yellow.svg') }}" alt="{{ _('Liberapay logo') }}" />
                 Liberapay
             </div>
             <div>support@liberapay.com</div>
@@ -29,6 +27,10 @@
 
         {% block content %}{% endblock %}
     </div></div>
+
+    <footer class="text-center">
+        <a class="btn btn-primary btn-lg print">{{ _("Print") }}</a>
+    </footer>
 
     <script src="{{ website.asset('paper.js') }}"></script>
 

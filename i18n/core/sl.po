@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.10.3\n"
+"Generated-By: Babel 2.16.0\n"
 
 #, fuzzy, python-brace-format
 msgid "The translation of this page from English is not yet complete. {link_start}You can contribute{link_end}."
@@ -265,10 +265,6 @@ msgstr "{date}: {money_amount} na {recipient}"
 msgid "{date}: {money_amount} split between {recipients}"
 msgstr "{date}: {money_amount} razdeljeno med {recipients}"
 
-#, fuzzy
-msgid "Add a payment instrument"
-msgstr "Dodajanje plačilnega instrumenta"
-
 #, fuzzy, python-brace-format
 msgid "Invoice from {0} on Liberapay"
 msgstr "Račun iz {0} na Liberapay"
@@ -371,7 +367,7 @@ msgstr "Če je banka plačilo izpodbijala, ne da bi se posvetovala z vami, jo mo
 
 #, fuzzy, python-brace-format
 msgid "To help your bank figure out what happened, you can send them a copy of {link_start}this document{link_end}."
-msgstr "Da bi banki pomagali ugotoviti, kaj se je zgodilo, ji lahko pošljete kopijo tega dokumenta {link_start}{link_end} ."
+msgstr "Da bi banki pomagali ugotoviti, kaj se je zgodilo, ji lahko pošljete kopijo {link_start}tega dokumenta{link_end}."
 
 #, fuzzy
 msgid "Your payment has failed"
@@ -459,7 +455,7 @@ msgstr "Z vašega bančnega računa ({partial_account_number}) smo sprožili dir
 
 #, fuzzy, python-brace-format
 msgid "This operation is being carried out based on {link_start}the mandate {mandate_id}{link_end} that you signed on {acceptance_date}, authorizing Liberapay (SEPA creditor {creditor_identifier}) to send instructions to your bank to debit your account and your bank to debit your account in accordance with those instructions."
-msgstr "{mandate_id}{link_end} Ta operacija se izvaja na podlagi pooblastila {link_start}, ki ste ga podpisali na {acceptance_date} in s katerim ste Liberapay (SEPA upnik {creditor_identifier}) pooblastili, da vaši banki pošlje navodila za obremenitev vašega računa, vaša banka pa, da v skladu s temi navodili obremeni vaš račun."
+msgstr "Ta operacija se izvaja na podlagi pooblastila {link_start}{mandate_id}{link_end}, ki ste ga podpisali na {acceptance_date} in s katerim ste Liberapay (SEPA upnik {creditor_identifier}) pooblastili, da vaši banki pošlje navodila za obremenitev vašega računa, vaša banka pa, da v skladu s temi navodili obremeni vaš račun."
 
 #, fuzzy
 msgid "If you did not authorize this payment, please let us know. We will tell you whether a refund can be initiated by us or if you have to request it from your bank."
@@ -643,7 +639,7 @@ msgstr "Vaš profil Liberapay je nepopoln"
 
 #, fuzzy, python-brace-format
 msgid "Your {link_start}public profile page{link_end} is missing a description. Without this information, we may be unable to confirm that your use of our platform is legitimate, and consequently your account may be marked as fraudulent and disabled. An incomplete profile is also less likely to attract donations, so we strongly recommend that you fill yours."
-msgstr "Na vaši strani javnega profila {link_start}{link_end} manjka opis. Brez teh informacij morda ne bomo mogli potrditi, da je vaša uporaba naše platforme zakonita, zato bo vaš račun morda označen kot goljufiv in onemogočen. Z nepopolnim profilom je tudi manj verjetno, da boste pritegnili donacije, zato vam toplo priporočamo, da svoj profil izpolnite."
+msgstr "Na {link_start}vaši strani javnega profila{link_end} manjka opis. Brez teh informacij morda ne bomo mogli potrditi, da je vaša uporaba naše platforme zakonita, zato bo vaš račun morda označen kot goljufiv in onemogočen. Z nepopolnim profilom je tudi manj verjetno, da boste pritegnili donacije, zato vam toplo priporočamo, da svoj profil izpolnite."
 
 #, fuzzy
 msgid "Edit your profile"
@@ -799,11 +795,11 @@ msgstr "Zdi se, da ste našli napako! Opravičujemo se za nevšečnosti, vendar 
 
 #, fuzzy, python-brace-format
 msgid "The requested page could not be found. Please {link_open}contact us{link_close} if you need assistance."
-msgstr "Zahtevane strani ni bilo mogoče najti. Če potrebujete pomoč, se obrnite na {link_open}{link_close} ."
+msgstr "Zahtevane strani ni bilo mogoče najti. Če potrebujete pomoč, {link_open}se obrnite na{link_close}."
 
 #, fuzzy, python-brace-format
 msgid "Your request has been rejected by our software. Please {link_open}contact us{link_close} if you need assistance."
-msgstr "Naša programska oprema je vašo zahtevo zavrnila. Če potrebujete pomoč, nam pišite na {link_open}{link_close} ."
+msgstr "Naša programska oprema je vašo zahtevo zavrnila. Če potrebujete pomoč, {link_open}nam pišite na{link_close}."
 
 #, fuzzy
 msgid "Error message:"
@@ -945,18 +941,6 @@ msgstr "Veliko"
 msgid "Maximum"
 msgstr "Največ"
 
-#, fuzzy, python-brace-format
-msgid "You've consumed your quota of requests, you can try again {in_N_minutes}."
-msgstr "Porabili ste kvoto zahtevkov, lahko poskusite znova {in_N_minutes}."
-
-#, fuzzy
-msgid "You're making requests too fast, please try again later."
-msgstr "Prehitro pošiljate zahteve, poskusite znova pozneje."
-
-#, fuzzy, python-brace-format
-msgid "{0} returned an error, please try again later."
-msgstr "{0} vrnil napako, poskusite znova pozneje."
-
 #, fuzzy
 msgid "example@mastodon.social"
 msgstr "example@mastodon.social"
@@ -996,6 +980,10 @@ msgstr "Uporabniško ime '{0}' je predolgo."
 #, fuzzy, python-brace-format
 msgid "The username '{0}' contains invalid characters."
 msgstr "Uporabniško ime '{0}' vsebuje neveljavne znake."
+
+#, fuzzy, python-brace-format
+msgid "The username '{0}' is purely numerical. This isn't allowed."
+msgstr "Uporabniško ime '{0}' je zgolj številčno. To ni dovoljeno."
 
 #, fuzzy, python-brace-format
 msgid "The username '{0}' is restricted."
@@ -1154,6 +1142,18 @@ msgid "{username} doesn't accept donations in {rejected_currency}."
 msgstr "{username} ne sprejema donacij v {rejected_currency}."
 
 #, fuzzy, python-brace-format
+msgid "{username} no longer accepts secret donations."
+msgstr "{username} ne sprejema več skrivnih donacij."
+
+#, fuzzy, python-brace-format
+msgid "{username} no longer accepts private donations."
+msgstr "{username} ne sprejema več zasebnih donacij."
+
+#, fuzzy, python-brace-format
+msgid "{username} no longer accepts public donations."
+msgstr "{username} ne sprejema več javnih donacij."
+
+#, fuzzy, python-brace-format
 msgid "The amount {money_amount} isn't in the expected currency ({expected_currency})."
 msgstr "Znesek {money_amount} ni v pričakovani valuti ({expected_currency})."
 
@@ -1192,6 +1192,14 @@ msgstr "Tega plačila ni mogoče obdelati, ker je račun prejemnika trenutno blo
 #, fuzzy, python-brace-format
 msgid "Your donation to {recipient} cannot be processed right now because the account of the beneficiary isn't ready to receive money."
 msgstr "Vaše donacije za {recipient} trenutno ni mogoče obdelati, ker račun upravičenca ni pripravljen za prejem denarja."
+
+#, fuzzy, python-brace-format
+msgid "{username} does not accept donations from {country}."
+msgstr "{username} ne sprejema donacij od {country}."
+
+#, fuzzy
+msgid "The processing of your payment has failed because our software was unable to determine which country the money would come from. This isn't supposed to happen."
+msgstr "Obdelava vašega plačila je bila neuspešna, ker naša programska oprema ni mogla ugotoviti, iz katere države prihaja denar. To se ne bi smelo zgoditi."
 
 #, fuzzy
 msgid "You've already changed your main currency recently, please retry later (e.g. in a week) or contact support@liberapay.com."
@@ -1256,14 +1264,6 @@ msgstr "Časovna omejitev prehoda"
 #, fuzzy, python-brace-format
 msgid "The {platform} user you're looking for hasn't joined Liberapay, and it's not possible to create a stub profile for them."
 msgstr "Uporabnik {platform}, ki ga iščete, se ni pridružil Liberapayu, zato zanj ni mogoče ustvariti profila."
-
-#, fuzzy, python-brace-format
-msgid "'{0}' doesn't seem to be a valid user id on {platform}."
-msgstr "'{0}' se ne zdi, da je veljavno uporabniško ime na {platform}."
-
-#, fuzzy, python-brace-format
-msgid "There doesn't seem to be a user named {0} on {1}."
-msgstr "Zdi se, da na spletnem mestu {1} ni uporabnika z imenom {0}."
 
 #, fuzzy, python-brace-format
 msgid "Liberapay donation to {username} (team {team_name})"
@@ -1342,11 +1342,36 @@ msgid "You are not authorized to access this page."
 msgstr "Niste pooblaščeni za dostop do te strani."
 
 #, fuzzy
+msgid "The changes have been saved."
+msgstr "Spremembe so shranjene."
+
+#, fuzzy
 msgid "Processing your request failed because our server was unable to communicate with a service located on another machine. This is a temporary issue, please try again later."
 msgstr "Obdelava vaše zahteve ni uspela, ker naš strežnik ni mogel komunicirati s storitvijo, ki se nahaja v drugem računalniku. To je začasna težava, poskusite znova pozneje."
 
+#, fuzzy, python-brace-format
+msgid "'{0}' doesn't seem to be a valid user id on {platform}."
+msgstr "'{0}' se ne zdi, da je veljavno uporabniško ime na {platform}."
+
+#, fuzzy, python-brace-format
+msgid "{0} returned an error, please try again later."
+msgstr "{0} vrnil napako, poskusite znova pozneje."
+
+#, fuzzy, python-brace-format
+msgid "You've consumed your quota of requests, you can try again {in_N_minutes}."
+msgstr "Porabili ste kvoto zahtevkov, lahko poskusite znova {in_N_minutes}."
+
+#, fuzzy
+msgid "You're making requests too fast, please try again later."
+msgstr "Prehitro pošiljate zahteve, poskusite znova pozneje."
+
+#, fuzzy, python-brace-format
+msgid "There doesn't seem to be a user named {0} on {1}."
+msgstr "Zdi se, da na spletnem mestu {1} ni uporabnika z imenom {0}."
+
+#, fuzzy
 msgid "This profile is marked as spam or fraud."
-msgstr ""
+msgstr "Ta profil je označen kot neželena pošta ali goljufija."
 
 #, fuzzy
 msgid "Cancel"
@@ -1617,6 +1642,10 @@ msgid "Account"
 msgstr "Račun"
 
 #, fuzzy
+msgid "Close Account"
+msgstr "Zapri račun"
+
+#, fuzzy
 msgid "Emails"
 msgstr "E-pošta"
 
@@ -1639,6 +1668,10 @@ msgstr "Odjavi"
 #, fuzzy
 msgid "Print"
 msgstr "Tiskaj"
+
+#, fuzzy
+msgid "Liberapay logo"
+msgstr "Logotip Liberapay"
 
 #, fuzzy, python-brace-format
 msgid "{0} has {n} patron."
@@ -1681,10 +1714,6 @@ msgid "Switch to a different account"
 msgstr "Prehod na drug račun"
 
 #, fuzzy
-msgid "The changes have been saved."
-msgstr "Spremembe so shranjene."
-
-#, fuzzy
 msgid "We've sent you a single-use login link. Check your inbox, open the provided link in a new tab, then come back to this page and click on the button below to carry on with what you wanted to do."
 msgstr "Poslali smo vam povezavo za prijavo za enkratno uporabo. Preverite svoj poštni predal, odprite zagotovljeno povezavo v novem zavihku, nato se vrnite na to stran in kliknite spodnji gumb ter nadaljujte z delom, ki ste ga želeli opraviti."
 
@@ -1725,8 +1754,8 @@ msgid "If you need to change the password of your Liberapay account, you can do 
 msgstr "Če morate spremeniti geslo svojega računa Liberapay, lahko to storite spodaj. Za varnost mora biti geslo vašega računa naključno generirano in se ne sme uporabljati nikjer drugje. Priporočamo uporabo upravitelja gesel."
 
 #, fuzzy
-msgid "Setting a password allows you to log in directly, instead of waiting for a single-use link sent via email. However, we recommend keeping your account passwordless if you don't use a password manager, because in order to be secure the password of your account should be randomly generated and not used anywhere else."
-msgstr "Z nastavitvijo gesla se lahko prijavite neposredno in ne čakate na povezavo za enkratno uporabo, poslano po e-pošti. Če ne uporabljate upravitelja gesel, vam priporočamo, da račun ostane brez gesla, saj mora biti geslo vašega računa zaradi varnosti naključno generirano in se ne sme uporabljati nikjer drugje."
+msgid "Setting a password allows you to log in directly, instead of waiting for a single-use link sent via email. However, we only recommend setting a password if you use a password manager, because in order to be secure the password should be randomly generated and not used anywhere else."
+msgstr "Z nastavitvijo gesla se lahko prijavite neposredno in ne čakate na povezavo za enkratno uporabo, poslano po e-pošti. Vendar priporočamo nastavitev gesla le, če uporabljate upravitelja gesel, saj mora biti geslo zaradi varnosti naključno ustvarjeno in se ne sme uporabljati nikjer drugje."
 
 #, fuzzy
 msgid "Current password"
@@ -1917,12 +1946,12 @@ msgid "Overview"
 msgstr "Pregled"
 
 #, fuzzy
-msgid "Organizations"
-msgstr "Organizacije"
+msgid "Recipients"
+msgstr "Prejemniki"
 
 #, fuzzy
-msgid "Individuals"
-msgstr "Posamezniki"
+msgid "Hopefuls"
+msgstr "Hopefuls"
 
 #, fuzzy
 msgid "Unclaimed Donations"
@@ -1943,6 +1972,10 @@ msgstr "Ime"
 #, fuzzy
 msgid "Currencies"
 msgstr "Valute"
+
+#, fuzzy
+msgid "Countries"
+msgstr "Države"
 
 #, fuzzy
 msgid "Goal"
@@ -1993,7 +2026,7 @@ msgid "{username} hasn't configured any payment method yet, so your donation can
 msgstr "{username} še ni konfiguriral nobenega načina plačila, zato vaše donacije trenutno ni mogoče obdelati. Ko bo plačilo mogoče, vas bomo o tem obvestili."
 
 #, fuzzy, python-brace-format
-msgid "Donations to {username} can be paid using a credit or debit card ({list_of_card_brands}), or by direct debit of a Euro bank account (for donations in Euro only)."
+msgid "Donations to {username} can be paid using a credit or debit card ({list_of_card_brands}), or by direct debit of a euro bank account (for donations in euro only)."
 msgstr "Donacije na {username} lahko plačate s kreditno ali debetno kartico ({list_of_card_brands}) ali z direktno obremenitvijo evrskega bančnega računa (samo za donacije v eurih)."
 
 #, fuzzy, python-brace-format
@@ -2001,8 +2034,12 @@ msgid "Donations to {username} are processed through PayPal."
 msgstr "Donacije za {username} se obdelujejo prek sistema PayPal."
 
 #, fuzzy, python-brace-format
-msgid "Donations to {username} can be paid using: a credit or debit card ({list_of_card_brands}), a Euro bank account (SEPA Direct Debit), or a PayPal account."
-msgstr "Donacije za {username} lahko plačate s kreditno ali debetno kartico ({list_of_card_brands}), bančnim računom v evrih (direktna obremenitev SEPA) ali računom PayPal."
+msgid "Donations to {username} can be paid using: a credit or debit card ({list_of_card_brands}), a euro bank account (SEPA Direct Debit), or a PayPal account."
+msgstr "Donacije za {username} lahko plačate s kreditno ali debetno kartico ({list_of_card_brands}), bančnim računom v eurih (direktna obremenitev SEPA) ali računom PayPal."
+
+#, fuzzy
+msgid "Payment Card"
+msgstr "Plačilna kartica"
 
 #, fuzzy
 msgid "Country"
@@ -2065,6 +2102,10 @@ msgid "(fork)"
 msgstr "(vilice)"
 
 #, fuzzy
+msgid "Stars"
+msgstr "Zvezde"
+
+#, fuzzy
 msgid "Updated this week"
 msgstr "Posodobljeno ta teden"
 
@@ -2109,18 +2150,6 @@ msgid "Your nominal take from the {0} team is limited to {1} this week. {2}Why?{
 msgstr "Vaš nominalni prevzem od ekipe {0} je ta teden omejen na {1}. {2}Zakaj?{3}"
 
 #, fuzzy
-msgid "Last Payday"
-msgstr "Zadnji dan plačila"
-
-#, fuzzy
-msgid "n/a"
-msgstr "ni na voljo"
-
-#, fuzzy
-msgid "Next Payday"
-msgstr "Naslednji dan plačila"
-
-#, fuzzy
 msgid "Member"
 msgstr "Član"
 
@@ -2131,6 +2160,22 @@ msgstr "Nazivni prevzem"
 #, fuzzy
 msgid "Actual Take"
 msgstr "Dejanski prevzem"
+
+#, fuzzy
+msgid "On Liberapay, donations are paid in advance. This column shows how much money each member has received in advance through this team. An advance increases every time a member receives a new payment from a donor through the team, and decreases every week."
+msgstr "Pri Liberapayu so donacije plačane vnaprej. V tem stolpcu je prikazano, koliko denarja je vsak član prejel vnaprej prek te ekipe. Predplačilo se poveča vsakič, ko član prek te ekipe prejme novo plačilo od donatorja, in se zmanjša vsak teden."
+
+#, fuzzy
+msgid "Advance"
+msgstr "Predhodno"
+
+#, fuzzy, python-brace-format
+msgid "Last week: {0}"
+msgstr "Prejšnji teden: {0}"
+
+#, fuzzy
+msgid "no take"
+msgstr "brez prevzema"
 
 #, fuzzy
 msgid "auto"
@@ -2149,20 +2194,16 @@ msgid "Leftover"
 msgstr "Preostanek"
 
 #, fuzzy, python-brace-format
+msgid "It looks like you are in {country}. {username} does not accept donations coming from that country."
+msgstr "Videti je, da ste v {country}. {username} ne sprejema donacij iz te države."
+
+#, fuzzy, python-brace-format
 msgid "Your current donation to {name} is in {currency}, but they now only accept donations in {accepted_currency}. You can convert your donation to that currency, or discontinue it."
 msgstr "Vaša trenutna donacija za {name} je v {currency}, vendar zdaj sprejemajo donacije le še v {accepted_currency}. Donacijo lahko pretvorite v to valuto ali pa jo prenehate sprejemati."
 
 #, fuzzy, python-brace-format
 msgid "Your current donation to {name} is in {currency}, but they no longer accept that currency. The suggested new currency is the {accepted_currency}, but you can choose another one."
 msgstr "Vaša trenutna donacija za {name} je v {currency}, vendar te valute ne sprejemajo več. Predlagana nova valuta je {accepted_currency}, vendar lahko izberete tudi drugo."
-
-#, fuzzy
-msgid "Modify"
-msgstr "Spremeni"
-
-#, fuzzy
-msgid "Discontinue"
-msgstr "Prekinitev"
 
 #, fuzzy, python-brace-format
 msgid "You are currently donating {money_amount} per week to {recipient_name}. The form below enables you to modify or stop your donation."
@@ -2186,7 +2227,7 @@ msgid_plural "The {currency_name} isn't your preferred currency? {n} others are 
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
-msgstr[3] ""
+msgstr[3] "{currency_name} ni vaša priljubljena valuta? Podprte so tudi druge valute {n}:"
 
 #, fuzzy, python-brace-format
 msgid "The {currency_name} isn't your preferred currency? {username} also accepts {n} other:"
@@ -2194,11 +2235,11 @@ msgid_plural "The {currency_name} isn't your preferred currency? {username} also
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
-msgstr[3] ""
+msgstr[3] "{currency_name} ni vaša priljubljena valuta? {username} sprejema tudi druge {n}:"
 
 #, fuzzy
-msgid "not supported by PayPal"
-msgstr "PayPal ne podpira"
+msgid "supported by PayPal"
+msgstr "podpira PayPal"
 
 #, fuzzy
 msgid "Switch"
@@ -2243,6 +2284,14 @@ msgstr "Ročno podaljšanje"
 #, fuzzy
 msgid "A reminder to renew your donation will be sent to you via email."
 msgstr "Opomnik za obnovitev donacije boste prejeli po e-pošti."
+
+#, fuzzy
+msgid "Discontinue the donation"
+msgstr "Prekinitev donacije"
+
+#, fuzzy
+msgid "Cancel the pledge"
+msgstr "Prekličite obljubo"
 
 #, fuzzy, python-brace-format
 msgid "{username} has chosen not to see who their patrons are, so your donation will be secret."
@@ -2289,14 +2338,6 @@ msgid "{username} hasn't yet specified whether they want to see who their patron
 msgstr "{username} še ni navedel, ali želi videti, kdo so njegovi pokrovitelji, zato bo vaša donacija tajna."
 
 #, fuzzy
-msgid "Discontinue the donation"
-msgstr "Prekinitev donacije"
-
-#, fuzzy
-msgid "Cancel the pledge"
-msgstr "Prekličite obljubo"
-
-#, fuzzy
 msgid "People who contribute to the commons need you to support their work. Building free software, spreading free knowledge, these things take time and cost money, not only to do the initial work, but also to maintain it over time."
 msgstr "Ljudje, ki prispevajo v skupno lastnino, potrebujejo vašo podporo pri svojem delu. Izdelava proste programske opreme, širjenje prostega znanja, vse to zahteva čas in denar, ne le za začetno delo, temveč tudi za vzdrževanje."
 
@@ -2307,6 +2348,50 @@ msgstr "Liberapayjev sistem ponavljajočih se donacij je zasnovan tako, da ustva
 #, fuzzy
 msgid "You are in sandbox mode, do not input any real payment or personal data!"
 msgstr "Nahajate se v načinu peskovnika, zato ne vnašajte nobenih dejanskih plačilnih ali osebnih podatkov!"
+
+#, fuzzy
+msgid "The credentials have been generated."
+msgstr "Pooblastila so bila ustvarjena."
+
+#, fuzzy
+msgid "The credentials have been revoked."
+msgstr "Pooblastila so bila preklicana."
+
+#, fuzzy
+msgid "Constant session"
+msgstr "Stalna seja"
+
+#, fuzzy
+msgid "You can automate downloading private information from your account by including the following HTTP header in your requests:"
+msgstr "Prenos zasebnih podatkov iz računa lahko avtomatizirate tako, da v zahteve vključite naslednjo glavo HTTP:"
+
+#, fuzzy
+msgid "For example, you can download the list of your currently active patrons by executing the following command:"
+msgstr "Seznam trenutno aktivnih varovancev lahko na primer prenesete z naslednjim ukazom:"
+
+#, fuzzy
+msgid "To minimize the risks to you, these credentials can only be used to fetch data, not to modify anything in your account, and they will automatically expire if unused for a year."
+msgstr "Da bi čim bolj zmanjšali tveganja za vas, lahko te poverilnice uporabljate samo za pridobivanje podatkov, ne pa za spreminjanje česar koli v svojem računu, in če jih ne uporabljate eno leto, samodejno potečejo."
+
+#, fuzzy
+msgid "Revoke credentials"
+msgstr "Preklic pooblastil"
+
+#, fuzzy
+msgid "The credentials have expired."
+msgstr "Pooblastila so potekla."
+
+#, fuzzy
+msgid "Regenerate credentials"
+msgstr "Obnovitev poverilnic"
+
+#, fuzzy
+msgid "To simplify automating downloads of private information from your account, you can generate long-lived read-only credentials."
+msgstr "Če želite poenostaviti avtomatizacijo prenosa zasebnih podatkov iz računa, lahko ustvarite dolgoročne poverilnice samo za branje."
+
+#, fuzzy
+msgid "Generate credentials"
+msgstr "Ustvarjanje poverilnic"
 
 #, fuzzy
 msgid "Dashboard"
@@ -2389,6 +2474,14 @@ msgid "One-time donations aren't properly supported yet, but you can discontinue
 msgstr "Enkratne donacije še niso ustrezno podprte, vendar lahko donacijo prekinete takoj po prvem plačilu."
 
 #, fuzzy
+msgid "Will I get a receipt?"
+msgstr "Ali bom dobil potrdilo o prejemu?"
+
+#, fuzzy
+msgid "A receipt is automatically available for every payment."
+msgstr "Za vsako plačilo je samodejno na voljo potrdilo."
+
+#, fuzzy
 msgid "What is this website? I don't recognize it."
 msgstr "Kaj je to spletno mesto? Ne prepoznam je."
 
@@ -2415,6 +2508,10 @@ msgstr "Revidirana direktiva o plačilnih storitvah"
 #, fuzzy, python-brace-format
 msgid "Your new avatar URL is: {0}"
 msgstr "URL vašega novega avatarja je: {0}"
+
+#, fuzzy
+msgid "Your profile no longer has an avatar."
+msgstr "Vaš profil nima več avatarja."
 
 #, fuzzy, python-brace-format
 msgid "You have selected {platform} as your avatar source but you haven't connected any {platform} account."
@@ -2451,6 +2548,18 @@ msgstr "Pustite"
 #, fuzzy
 msgid "Explore communities"
 msgstr "Raziščite skupnosti"
+
+#, fuzzy
+msgid "You have to check at least one box."
+msgstr "Označiti morate vsaj eno polje."
+
+#, fuzzy
+msgid "Which countries should your donors be allowed to send you money from?"
+msgstr "Iz katerih držav vam lahko donatorji pošiljajo denar?"
+
+#, fuzzy
+msgid "We recommend limiting the origins of donations only if you are required to by law."
+msgstr "Priporočamo, da izvor donacij omejite le, če to od vas zahteva zakon."
 
 #, fuzzy
 msgid "The submitted settings are incoherent."
@@ -2503,10 +2612,6 @@ msgstr[3] ""
 #, fuzzy
 msgid "Connect an account"
 msgstr "Povezovanje računa"
-
-#, fuzzy
-msgid "Our YouTube integration has been disabled by Google. We're working on re-implementing this feature in a different way."
-msgstr "Google je onemogočil našo integracijo z YouTubom. Delamo na tem, da bi to funkcijo ponovno uvedli na drugačen način."
 
 #, fuzzy
 msgid "I'm grateful for gifts, but don't have a specific funding goal."
@@ -2605,8 +2710,40 @@ msgid "We can also import lists of repositories for your teams:"
 msgstr "Uvozimo lahko tudi sezname skladišč za vaše ekipe:"
 
 #, fuzzy, python-brace-format
-msgid "The submitted summary is too long ({0} > {1})."
-msgstr "Predloženi povzetek je predolg ({0} > {1})."
+msgid "<unused singular (hash=82d03d589b58d2a8c99d043ba5f91b84)>"
+msgid_plural "The summary can't be more than {n} characters long."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] "Povzetek ne sme biti daljši od {n} znakov."
+
+#, fuzzy, python-brace-format
+msgid "<unused singular (hash=e77fbb49c028c11bb9d859698c4a5363)>"
+msgid_plural "The full description must be at least {n} characters long."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] "Celoten opis mora biti dolg vsaj {n} znakov."
+
+#, fuzzy, python-brace-format
+msgid "<unused singular (hash=df724b624e486f3c07109838b9a4b3f0)>"
+msgid_plural "The full description can't be more than {n} characters long."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] "Celoten opis ne sme biti daljši od {n} znakov."
+
+#, fuzzy
+msgid "The full description can't be identical to the summary."
+msgstr "Celoten opis ne more biti enak povzetku."
+
+#, fuzzy
+msgid "The summary can't be only your name."
+msgstr "V povzetku ne sme biti samo vaše ime."
+
+#, fuzzy
+msgid "The description can't be only your name."
+msgstr "V opisu ne sme biti samo vaše ime."
 
 #, fuzzy
 msgid "This is a preview."
@@ -2619,6 +2756,10 @@ msgstr "Odlomek, ki bo uporabljen v družabnih medijih:"
 #, fuzzy
 msgid "Preview of the short description"
 msgstr "Predogled kratkega opisa"
+
+#, fuzzy
+msgid "Including your username in the short description is redundant. The short description is always displayed immediately below the username."
+msgstr "Vključitev uporabniškega imena v kratek opis je odveč. Kratek opis je vedno prikazan takoj pod uporabniškim imenom."
 
 #, fuzzy
 msgid "Publish"
@@ -2871,6 +3012,10 @@ msgid "You have enabled automatic renewals for some or all of your donations, bu
 msgstr "Omogočili ste samodejno obnavljanje za nekatere ali vse svoje donacije, vendar nimate veljavnega plačilnega instrumenta, ki bi nam omogočil sprožitev samodejnih plačil, ko pride čas."
 
 #, fuzzy
+msgid "Add a payment instrument"
+msgstr "Dodajanje plačilnega instrumenta"
+
+#, fuzzy
 msgid "Donations"
 msgstr "Donacije"
 
@@ -2889,6 +3034,10 @@ msgstr "{money_amount}{small}/mesec{end_small}"
 #, fuzzy, python-brace-format
 msgid "{money_amount}{small}/year{end_small}"
 msgstr "{money_amount}{small}/leto{end_small}"
+
+#, fuzzy
+msgid "Modify"
+msgstr "Spremeni"
 
 #, fuzzy, python-brace-format
 msgid "Started {timespan_ago}."
@@ -2925,6 +3074,10 @@ msgstr "Naslednje plačilo je treba plačati na {in_N_weeks_months_or_years}."
 #, fuzzy
 msgid "Renew now"
 msgstr "Obnovite zdaj"
+
+#, fuzzy, python-brace-format
+msgid "The recipient no longer accepts payments in {currency}."
+msgstr "Prejemnik ne sprejema več plačil v {currency}."
 
 #, fuzzy
 msgid "Pending payment completion."
@@ -3019,10 +3172,6 @@ msgid "Please choose a payment method:"
 msgstr "Izberite način plačila:"
 
 #, fuzzy
-msgid "Card"
-msgstr "Kartica"
-
-#, fuzzy
 msgid "Currently unavailable"
 msgstr "Trenutno ni na voljo"
 
@@ -3031,11 +3180,15 @@ msgid "Pay by card"
 msgstr "Plačilo s kartico"
 
 #, fuzzy
-msgid "Euro donations only"
-msgstr "Samo donacije v evrih"
+msgid "Only for donations to SEPA countries"
+msgstr "Samo za donacije v države SEPA"
 
 #, fuzzy
-msgid "Euro bank accounts only"
+msgid "Only for donations in euros"
+msgstr "Samo za donacije v evrih"
+
+#, fuzzy
+msgid "Only euro bank accounts"
 msgstr "Samo bančni računi v eurih"
 
 #, fuzzy
@@ -3079,8 +3232,12 @@ msgid "Failure"
 msgstr "Neuspeh"
 
 #, fuzzy, python-brace-format
-msgid "The payment processor {name} returned an error: “{error_message}”."
-msgstr "Obdelovalec plačil {name} je vrnil napako: \"{error_message}\"."
+msgid "PayPal status code: {0}"
+msgstr "Koda stanja PayPal: {0}"
+
+#, fuzzy, python-brace-format
+msgid "error message: {0}"
+msgstr "sporočilo o napaki: {0}"
 
 #, fuzzy
 msgid "The payment has been initiated."
@@ -3122,6 +3279,10 @@ msgstr "PayPal prejemniku razkrije vaše ime in e-poštni naslov."
 msgid "Initiate the payment"
 msgstr "Začetek plačila"
 
+#, fuzzy, python-brace-format
+msgid "The payment processor {name} returned an error: “{error_message}”."
+msgstr "Obdelovalec plačil {name} je vrnil napako: \"{error_message}\"."
+
 #, fuzzy
 msgid "The payment instrument is invalid, please select or add another one."
 msgstr "Plačilni instrument je neveljaven, izberite ali dodajte drugega."
@@ -3140,7 +3301,11 @@ msgstr "Vaše plačilo je bilo sproženo. Vaši banki bo posredovano pozneje, ko
 
 #, fuzzy, python-brace-format
 msgid "Your bank can reject this payment. We recommend sending a copy of {link_start}the mandate{link_end} to your bank if you're not sure that it properly handles {currency} direct debit instructions."
-msgstr "Vaša banka lahko to plačilo zavrne.{link_end} {currency} Če niste prepričani, da banka pravilno obdeluje navodila za direktno obremenitev, ji priporočamo, da ji pošljete kopijo pooblastila {link_start}."
+msgstr "Vaša banka lahko to plačilo zavrne. Če niste prepričani, da banka pravilno obdeluje navodila za direktno obremenitev {currency}, ji priporočamo, da ji pošljete kopijo {link_start}pooblastila{link_end}."
+
+#, fuzzy
+msgid "The initialization of a required component has failed. If you use a browser extension that blocks requests, for example NoScript, please make sure it’s allowing requests to the “stripe.com” domain."
+msgstr "Inicializacija zahtevane komponente je bila neuspešna. Če uporabljate razširitev brskalnika, ki blokira zahteve, na primer NoScript, preverite, ali dovoljuje zahteve za domeno \"stripe.com\"."
 
 #, fuzzy, python-brace-format
 msgid "We will charge your {brand} card (last four digits: {last4})."
@@ -3178,6 +3343,10 @@ msgstr "Ti podatki bodo prek šifrirane povezave poslani neposredno obdelovalcu 
 msgid "Remember the card number for next time"
 msgstr "Zapomnite si številko kartice za naslednjič"
 
+#, fuzzy, python-brace-format
+msgid "Use this payment instrument by default for future payments in {currency}"
+msgstr "Ta plačilni instrument privzeto uporabljajte za prihodnja plačila v {currency}"
+
 #, fuzzy
 msgid "Use this payment instrument by default for future payments"
 msgstr "Privzeta uporaba tega plačilnega instrumenta za prihodnja plačila"
@@ -3197,6 +3366,10 @@ msgstr "Zapomnite si številko bančnega računa za prihodnja plačila."
 #, fuzzy, python-brace-format
 msgid "In order to reduce the risk of this payment being rejected, we recommend that you input your postal address below. It will be stored encrypted in our database and sent to the payment processor ({processor_name})."
 msgstr "Da bi zmanjšali tveganje zavrnitve tega plačila, vam priporočamo, da spodaj vpišete svoj poštni naslov. Ta bo šifrirano shranjen v naši zbirki podatkov in poslan obdelovalcu plačil ({processor_name})."
+
+#, fuzzy
+msgid "Please fill in your postal address. It's required because the IBAN you've provided emanates from outside the European Union."
+msgstr "Vpišite svoj poštni naslov. Ta je potreben, ker IBAN, ki ste ga navedli, izvira iz države zunaj Evropske unije."
 
 #, fuzzy, python-brace-format
 msgid "'{0}' is not an acceptable amount (min={1}, max={2})"
@@ -3335,8 +3508,8 @@ msgid "Edit"
 msgstr "Uredi"
 
 #, fuzzy
-msgid "Statement"
-msgstr "Izjava"
+msgid "Description"
+msgstr "Opis"
 
 #, fuzzy, python-brace-format
 msgid "{0} owns the following accounts on other platforms:"
@@ -3423,11 +3596,11 @@ msgid "No data to show."
 msgstr "Ni podatkov, ki bi jih lahko prikazali."
 
 #, fuzzy, python-brace-format
-msgid "Income Per Week (in {currency})"
+msgid "Income per week (in {currency})"
 msgstr "Prihodki na teden (v {currency})"
 
 #, fuzzy
-msgid "Number of Patrons Per Week"
+msgid "Number of patrons per week"
 msgstr "Število obiskovalcev na teden"
 
 #, fuzzy
@@ -3555,10 +3728,6 @@ msgid "(Liberapay only supports one kind of invoice for now.)"
 msgstr "(Liberapay za zdaj podpira le eno vrsto računa.)"
 
 #, fuzzy
-msgid "Description"
-msgstr "Opis"
-
-#, fuzzy
 msgid "A short description of the invoice"
 msgstr "Kratek opis računa"
 
@@ -3622,6 +3791,10 @@ msgstr "delno povrnjeno"
 msgid "refunded"
 msgstr "povrnjeno"
 
+#, fuzzy
+msgid "suspended"
+msgstr "suspendiran"
+
 #, fuzzy, python-brace-format
 msgid "The totals below don't include donations through the old wallet system. You can find those in {link_start}your Wallet page{link_end}."
 msgstr "Spodnje vsote ne vključujejo donacij prek starega sistema denarnic. Te lahko najdete na spletni strani {link_start}your Wallet{link_end}."
@@ -3657,10 +3830,6 @@ msgstr "naboj"
 #, fuzzy
 msgid "This payment is awaiting to be manually checked by Liberapay staff for signs of fraud."
 msgstr "To plačilo čaka na ročno preverjanje, ki ga bo opravilo osebje Liberapay, da bi ugotovilo znake goljufije."
-
-#, fuzzy, python-brace-format
-msgid "error message: {0}"
-msgstr "sporočilo o napaki: {0}"
 
 #, fuzzy
 msgid "hidden"
@@ -3718,9 +3887,9 @@ msgstr "tajna donacija za {recipient_name} za njihovo vlogo v ekipi {team_name}"
 msgid "This payment must be manually approved by the recipient through {provider}'s website."
 msgstr "To plačilo mora prejemnik ročno odobriti na spletnem mestu {provider}."
 
-#, fuzzy, python-brace-format
-msgid "PayPal status code: {0}"
-msgstr "Koda stanja PayPal: {0}"
+#, fuzzy
+msgid "The payer's account is suspended due to a suspicion of fraud or other unauthorized action."
+msgstr "Plačnikov račun je blokiran zaradi suma goljufije ali drugega nepooblaščenega dejanja."
 
 #, fuzzy
 msgid "There were no transactions during this period."
@@ -3847,28 +4016,52 @@ msgid "{username} doesn't have any active patrons."
 msgstr "{username} nima aktivnih pokroviteljev."
 
 #, fuzzy
-msgid "Liberapay now supports non-anonymous donations, do you want to know who your patrons are?"
-msgstr "Liberapay zdaj podpira neanonimne donacije, želite vedeti, kdo so vaši pokrovitelji?"
+msgid "Visibility levels"
+msgstr "Ravni vidljivosti"
 
 #, fuzzy
-msgid "Enable non-anonymous donations"
-msgstr "Omogočite neanonimne donacije"
+msgid "Liberapay supports three visibility levels for donations. Each level can be turned on or off, but at least one of them must be enabled."
+msgstr "Liberapay podpira tri ravni vidnosti donacij. Vsako raven lahko vklopite ali izklopite, vendar mora biti omogočena vsaj ena od njih."
 
 #, fuzzy, python-brace-format
-msgid "You have opted-in to see who your patrons are. If you change your mind, then {link_start}click here to disable non-anonymous donations{link_end}."
-msgstr "Prijavili ste se, da vidite, kdo so vaši pokrovitelji. Če si premislite, potem {link_start}kliknite tukaj in onemogočite neanonimne donacije{link_end}."
+msgid "Secret donations aren't possible with PayPal. You should either disable secret donations or {link_start}add a Stripe account{link_end}."
+msgstr "Skrivne donacije s sistemom PayPal niso mogoče. Tajne donacije morate onemogočiti ali pa {link_start}dodati račun Stripe{link_end}."
 
-#, fuzzy, python-brace-format
-msgid "You've chosen not to see who your patrons are. If you change your mind, then {link_start}click here to enable non-anonymous donations{link_end}."
-msgstr "Odločili ste se, da ne boste videli, kdo so vaši pokrovitelji. Če si premislite, potem {link_start}kliknite tukaj, da omogočite neanonimne donacije{link_end}."
+#, fuzzy
+msgid "Secret donations aren't possible when the payer uses PayPal."
+msgstr "Tajne donacije niso mogoče, če plačnik uporablja PayPal."
+
+#, fuzzy
+msgid "Allow secret donations"
+msgstr "Omogočite skrivne donacije"
+
+#, fuzzy
+msgid "Allow private donations"
+msgstr "dovoliti zasebne donacije."
+
+#, fuzzy
+msgid "Allow public donations"
+msgstr "Omogočiti javne donacije"
+
+#, fuzzy
+msgid "This is what your prospective donors currently see:"
+msgstr "To trenutno vidijo vaši potencialni donatorji:"
+
+#, fuzzy
+msgid "This is what your prospective donors will see with the new settings:"
+msgstr "To bodo videli vaši potencialni donatorji z novimi nastavitvami:"
 
 #, fuzzy
 msgid "Data export"
 msgstr "Izvozi podatkov"
 
 #, fuzzy
-msgid "Download the list of currently active patrons"
-msgstr "Prenesite seznam trenutno aktivnih pokroviteljev"
+msgid "Download the list of currently active patrons who chose to make their donations public"
+msgstr "Prenesite seznam trenutno aktivnih pokroviteljev, ki so se odločili za objavo svojih donacij"
+
+#, fuzzy
+msgid "Download the list of all currently active patrons"
+msgstr "Prenesite seznam vseh trenutno aktivnih pokroviteljev"
 
 #, fuzzy
 msgid "Download the record of all patrons in the last ten years"
@@ -3886,9 +4079,29 @@ msgstr "Niste član nobene ekipe."
 msgid "{username} isn't a member of any team."
 msgstr "{username} ni član nobene ekipe."
 
+#, fuzzy
+msgid "The payment account has been successfully disconnected."
+msgstr "Plačilni račun je bil uspešno odklopljen."
+
+#, fuzzy
+msgid "This payment account is no longer accessible. It is now disconnected."
+msgstr "Ta plačilni račun ni več dostopen. Zdaj je odklopljen."
+
+#, fuzzy
+msgid "The data has been successfully refreshed."
+msgstr "Podatki so bili uspešno osveženi."
+
 #, fuzzy, python-brace-format
-msgid "You have to {link_open}fill your profile{link_close} before you can start to receive donations."
-msgstr "Preden lahko začnete prejemati donacije, morate {link_open}izpolniti svoj profil{link_close}."
+msgid "You have to {link_open}confirm your email address{link_close} before you can start to receive donations."
+msgstr "Preden lahko začnete prejemati donacije, morate {link_open}potrditi svoj e-poštni naslov{link_close}."
+
+#, fuzzy, python-brace-format
+msgid "You have to {link_open}set your username{link_close} before you can start to receive donations."
+msgstr "Preden začnete prejemati donacije, morate {link_open}nastaviti svoje uporabniško ime{link_close}."
+
+#, fuzzy, python-brace-format
+msgid "You have to {link_open}add a profile description{link_close} before you can start to receive donations."
+msgstr "Preden začnete prejemati donacije, morate {link_open}dodati opis profila{link_close}."
 
 #, fuzzy
 msgid "To receive donations you must connect at least one account from a supported payment processor. This page allows you to do so."
@@ -3903,7 +4116,7 @@ msgid "We recommend connecting both Stripe and PayPal if they're both available 
 msgstr "Priporočamo, da povežete Stripe in PayPal, če sta na voljo v vaši državi."
 
 #, fuzzy
-msgid "With Stripe your donors can pay by card or direct debit directly from the Liberapay website. (Direct debits are currently only supported from Euro bank accounts.)"
+msgid "With Stripe your donors can pay by card or direct debit directly from the Liberapay website. (Direct debits are currently only supported from euro bank accounts.)"
 msgstr "S storitvijo Stripe lahko vaši donatorji plačujejo s kartico ali direktno bremenitvijo neposredno s spletnega mesta Liberapay. (Neposredne bremenitve so trenutno podprte le z bančnih računov v evrih.)"
 
 #, fuzzy, python-brace-format
@@ -4047,6 +4260,10 @@ msgid "This payment is a donation, no goods or services are to be provided in ex
 msgstr "To plačilo je donacija, v zameno ni treba zagotoviti nobenega blaga ali storitev, Liberapay pa ni pobral nobenega davka."
 
 #, fuzzy
+msgid "Income history"
+msgstr "Zgodovina prihodkov"
+
+#, fuzzy
 msgid "You can't receive new donations until you've configured payment processing."
 msgstr "Dokler ne konfigurirate obdelave plačil, ne morete prejemati novih donacij."
 
@@ -4055,16 +4272,16 @@ msgid "Donations through teams make up {income_percent} of your income ({team_in
 msgstr "Donacije prek ekip predstavljajo {income_percent} vaših prihodkov ({team_income} od {total_income}) in {patrons_percent} vaših donatorjev ({nteampatrons} od {npatrons})."
 
 #, fuzzy
-msgid "Details of Donations"
-msgstr "Podrobnosti o donacijah"
+msgid "Details of personal donations"
+msgstr "Podrobnosti o osebnih donacijah"
 
 #, fuzzy
 msgid "This section doesn't include data on donations through teams, it only shows the donations that you receive personally."
 msgstr "Ta razdelek ne vključuje podatkov o donacijah prek ekip, temveč le donacije, ki jih prejmete osebno."
 
 #, fuzzy
-msgid "Recent Changes"
-msgstr "Nedavne spremembe"
+msgid "Recent changes to personal donations"
+msgstr "Nedavne spremembe osebnih donacij"
 
 #, fuzzy, python-brace-format
 msgid "A new donation of {amount} per week has been created."
@@ -4085,6 +4302,10 @@ msgstr "Donacija se je s {old_amount} na teden znižala na {new_amount}."
 #, fuzzy, python-brace-format
 msgid "A donation of {amount} per week has been restarted."
 msgstr "Ponovno se je začela izplačevati donacija v višini {amount} na teden."
+
+#, fuzzy
+msgid "Statistics on personal donations"
+msgstr "Statistični podatki o osebnih donacijah"
 
 #, fuzzy
 msgid "The table below lists the donations you receive, grouped by amount."
@@ -4167,8 +4388,20 @@ msgid "Bank Account"
 msgstr "Bančni račun"
 
 #, fuzzy
+msgid "This instrument is used by default."
+msgstr "Ta instrument se uporablja privzeto."
+
+#, fuzzy
 msgid "default"
 msgstr "privzeto"
+
+#, fuzzy, python-brace-format
+msgid "This instrument is used by default for payments in {currency}."
+msgstr "Ta instrument se privzeto uporablja za plačila na spletni strani {currency}."
+
+#, fuzzy, python-brace-format
+msgid "default for {currency}"
+msgstr "privzeto za {currency}"
 
 #, fuzzy
 msgid "view mandate"
@@ -4206,6 +4439,22 @@ msgstr "Ta plačilni instrument še ni bil uporabljen."
 msgid "Set as default"
 msgstr "Nastavljeno kot privzeto"
 
+#, fuzzy, python-brace-format
+msgid "Stop using this instrument by default for payments in {currency}."
+msgstr "Prenehajte privzeto uporabljati ta instrument za plačila na spletnem mestu {currency}."
+
+#, fuzzy, python-brace-format
+msgid "Unset as default for {currency}"
+msgstr "Odstavljeno kot privzeto za {currency}"
+
+#, fuzzy, python-brace-format
+msgid "Use this instrument by default for payments in {currency}."
+msgstr "Ta instrument privzeto uporabljajte za plačila na spletnem mestu {currency}."
+
+#, fuzzy, python-brace-format
+msgid "Set as default for {currency}"
+msgstr "Nastavljeno kot privzeto za {currency}"
+
 #, fuzzy
 msgid "You don't have any valid payment instrument."
 msgstr "Nimate nobenega veljavnega plačilnega instrumenta."
@@ -4219,12 +4468,16 @@ msgid "Add a card"
 msgstr "Dodajanje kartice"
 
 #, fuzzy
-msgid "Add a bank account"
-msgstr "Dodajanje bančnega računa"
+msgid "Euro Bank Account"
+msgstr "Bančni račun v evrih"
 
 #, fuzzy
-msgid "Close Account"
-msgstr "Zapri račun"
+msgid "Only for donations in euros to recipients in SEPA countries"
+msgstr "Samo za donacije v evrih prejemnikom v državah SEPA"
+
+#, fuzzy
+msgid "Add a bank account"
+msgstr "Dodajanje bančnega računa"
 
 #, fuzzy
 msgid "Data retention"
@@ -4556,7 +4809,7 @@ msgstr "S to kodo na svoje spletno mesto dodajte gradnik, ki prikazuje znesek do
 
 #, fuzzy, python-brace-format
 msgid "This widget is not available because it is not compatible with the {link_open}privacy settings{link_close} you have chosen."
-msgstr "Ta gradnik ni na voljo, ker ni združljiv z izbranimi nastavitvami zasebnosti {link_open}{link_close} ."
+msgstr "Ta gradnik ni na voljo, ker ni združljiv z izbranimi {link_open}nastavitvami zasebnosti{link_close}."
 
 #, fuzzy
 msgid "Or, if you'd like a widget that shows how much you're giving:"
@@ -4588,7 +4841,7 @@ msgstr "Če vaše sporočilo ni napisano v angleščini ali francoščini, ga bo
 
 #, fuzzy, python-brace-format
 msgid "If you think you've found a technical vulnerability in our system, please follow the instructions in {link_start}the {page_name} page{link_end} instead of sending us an email."
-msgstr "Če menite, da ste v našem sistemu odkrili tehnično ranljivost, namesto da nam pošljete e-poštno sporočilo, upoštevajte navodila na strani {link_start} {page_name} {link_end} ."
+msgstr "Če menite, da ste v našem sistemu odkrili tehnično ranljivost, namesto da nam pošljete e-poštno sporočilo, upoštevajte navodila na {link_start}strani {page_name}{link_end}."
 
 #, fuzzy
 msgid "We currently don't have a phone number."
@@ -4627,8 +4880,8 @@ msgid "Not safe for work"
 msgstr "Ni varno za delo"
 
 #, fuzzy, python-brace-format
-msgid "Yes. However, Liberapay isn't a shield: we can't protect anyone from being banned by {link_open}the underlying payment processors{link_close}."
-msgstr "Da. Vendar Liberapay ni ščit: nikogar ne moremo zaščititi pred prepovedjo prek {link_open}osnovnih plačilnih procesorjev{link_close}."
+msgid "The payment processors Liberapay supports have unfavourable policies towards sexual content. {paypal_link}PayPal requires pre-approval{link_close}, and {stripe_link}Stripe prohibits it entirely{link_close}. So, while it is possible to use Liberapay for some adult-only content, it is usually better to use a platform specialized in such content."
+msgstr "Obdelovalci plačil, ki jih podpira Liberapay, imajo neugodne politike glede spolnih vsebin. {paypal_link}PayPal zahteva predhodno odobritev{link_close}, {stripe_link}Stripe pa jo v celoti prepoveduje{link_close}. Čeprav je torej Liberapay mogoče uporabiti za nekatere vsebine, namenjene le odraslim, je običajno bolje uporabiti platformo, specializirano za takšne vsebine."
 
 #, fuzzy
 msgid "Can I modify or stop my donations?"
@@ -4695,8 +4948,8 @@ msgid "See the “{page_name}” page."
 msgstr "Oglejte si stran \"{page_name}\"."
 
 #, fuzzy, python-brace-format
-msgid "The available payment methods depend on which payment processors are supported by the recipient. If a payment is processed by Stripe, then most credit and debit cards ({list_of_card_brands}) are accepted, as well as SEPA Direct Debits (for Euro donations only). If a payment is through PayPal, then it's possible to pay in various ways, however the donor needs to have or create a PayPal account."
-msgstr "Razpoložljivi načini plačila so odvisni od tega, katere plačilne procesorje podpira prejemnik. Če plačilo obdeluje Stripe, je sprejeta večina kreditnih in debetnih kartic ({list_of_card_brands}) ter direktne obremenitve SEPA (samo za donacije v evrih). Če plačilo poteka prek sistema PayPal, potem je mogoče plačevati na različne načine, vendar mora donator imeti ali ustvariti račun PayPal."
+msgid "The available payment methods depend on which payment processors are supported by the recipient. If a payment is processed by Stripe, then most credit and debit cards ({list_of_card_brands}) are accepted, as well as SEPA Direct Debits (only for donations in euros to recipients in SEPA countries). If a payment is through PayPal, then it's possible to pay in various ways, however the donor needs to have or create a PayPal account."
+msgstr "Razpoložljivi načini plačila so odvisni od tega, katere plačilne procesorje podpira prejemnik. Če plačilo obdeluje Stripe, je sprejeta večina kreditnih in debetnih kartic ({list_of_card_brands}) ter direktne obremenitve SEPA (samo za donacije v evrih prejemnikom v državah SEPA). Če je plačilo izvedeno prek sistema PayPal, potem je mogoče plačevati na različne načine, vendar mora donator imeti ali ustvariti račun PayPal."
 
 #, fuzzy
 msgid "What are the payment processing fees?"
@@ -4705,6 +4958,14 @@ msgstr "Kakšne so pristojbine za obdelavo plačil?"
 #, fuzzy, python-brace-format
 msgid "The fees vary by payment processor, payment method, countries and currencies. In the last year, the average fee percentages have been {average_fee_stripe} for the payments processed by Stripe and {average_fee_paypal} for the payments processed by PayPal."
 msgstr "Pristojbine se razlikujejo glede na obdelovalca plačila, način plačila, države in valute. V zadnjem letu so bili povprečni odstotki pristojbin {average_fee_stripe} za plačila, ki jih obdeluje Stripe, in {average_fee_paypal} za plačila, ki jih obdeluje PayPal."
+
+#, fuzzy
+msgid "How and when do I receive the money sent by my patrons?"
+msgstr "Kako in kdaj prejmem denar, ki so ga poslali moji pokrovitelji?"
+
+#, fuzzy
+msgid "Money sent by a donor immediately goes to your Stripe or PayPal account. By default Stripe then automatically sends the funds to your bank account, whereas PayPal simply stores them until you spend or withdraw them."
+msgstr "Denar, ki ga donator pošlje, se takoj prenese na vaš račun Stripe ali PayPal. Privzeto Stripe nato sredstva samodejno pošlje na vaš bančni račun, PayPal pa jih preprosto shrani, dokler jih ne porabite ali dvignete."
 
 #, fuzzy
 msgid "Why do I see partial refunds in the Stripe dashboard?"
@@ -4751,20 +5012,12 @@ msgid "Probably not, but it depends on the tax rules of your country."
 msgstr "Verjetno ne, vendar je to odvisno od davčnih predpisov v vaši državi."
 
 #, fuzzy
-msgid "What are wallets?"
-msgstr "Kaj so denarnice?"
+msgid "Is a Liberapay account a wallet?"
+msgstr "Ali je račun Liberapay denarnica?"
 
 #, fuzzy
-msgid "Liberapay used to hold the funds of donors in wallets, but we no longer do that. Instead the full amount of a donation is immediately transferred to the recipient."
-msgstr "Liberapay je sredstva donatorjev hranil v denarnicah, vendar tega ne počnemo več. Namesto tega se celoten znesek donacije takoj prenese na prejemnika."
-
-#, fuzzy
-msgid "What is “payday”?"
-msgstr "Kaj je \"payday\"?"
-
-#, fuzzy, python-brace-format
-msgid "Payday is a program ({0}this one{1}) that we run every Wednesday. It executes donations and notifies donors and recipients."
-msgstr "Payday je program ({0}ta{1}), ki ga izvajamo vsako sredo. Izvaja donacije ter obvešča donatorje in prejemnike."
+msgid "Not since mid-2018. Money sent by a donor immediately goes to the recipient. Previously, funds were held in the donor's account and disbursed little by little to the recipient every week. That system was definitively abandoned due to its very significant drawbacks."
+msgstr "Ne od sredine leta 2018. Denar, ki ga pošlje donator, je takoj namenjen prejemniku. Prej so bila sredstva shranjena na donatorjevem računu in so se prejemniku izplačevala po malem vsak teden. Ta sistem je bil zaradi zelo pomembnih pomanjkljivosti dokončno opuščen."
 
 #, fuzzy
 msgid "You can get updates from us on the following social networks:"
@@ -4786,21 +5039,57 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#, fuzzy, python-brace-format
-msgid "<unused singular (hash=15422027494f4dee6eed143ece78c0ce)>"
-msgid_plural "Liberapay is fully available to creators in {n} territories:"
-msgstr[0] "Liberapay je v celoti na voljo ustvarjalcem na ozemljih {n}:"
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+#, fuzzy
+msgid "Donations can only be received in territories where at least one supported payment processor is available. Moreover, some features are only available in some of the territories supported by a payment processor."
+msgstr "Donacije lahko prejmete le na območjih, kjer je na voljo vsaj en podprt plačilni procesor. Poleg tega so nekatere funkcije na voljo le na nekaterih ozemljih, ki jih podpira plačilni procesor."
 
 #, fuzzy, python-brace-format
-msgid "<unused singular (hash=ce784fd8cdb312cf56226bbd42d07d18)>"
-msgid_plural "Additionally, Liberapay is partially available to creators in {paypal_link_open}the {n} countries supported by PayPal{link_close}."
-msgstr[0] "Poleg tega je Liberapay delno na voljo ustvarjalcem v {paypal_link_open} {n} državah, ki jih podpira PayPal{link_close}."
+msgid "The currently supported payment processors are {Stripe} and {PayPal}. You can find a list of the differences between them {link_start}in the “{page_name}” page{link_end}."
+msgstr "Trenutno podprti procesorji za plačila so {Stripe} in {PayPal}. Seznam razlik med njimi najdete {link_start}na strani \"{page_name}\"{link_end}."
+
+#, fuzzy
+msgid "Best supported territories"
+msgstr "Najbolje podprta ozemlja"
+
+#, fuzzy, python-brace-format
+msgid "<unused singular (hash=79acddfc1b997a9b2e4aa18d930e097e)>"
+msgid_plural "Creators in these {n} territories benefit from all of Liberapay's features:"
+msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
-msgstr[3] ""
+msgstr[3] "Ustvarjalci na teh ozemljih {n} imajo koristi od vseh funkcij Liberapayja:"
+
+#, fuzzy
+msgid "Well supported territories"
+msgstr "Dobro podprta območja"
+
+#, fuzzy, python-brace-format
+msgid "<unused singular (hash=d6ace91b81f74c1f52f602d3d7009ed8)>"
+msgid_plural "Liberapay is also available to creators in the {n} territories listed below. However, donations going to those territories cannot be grouped to lower the payment processing fees, and the euro direct debit payment method isn't available to the donors."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] "Liberapay je na voljo tudi ustvarjalcem na spodaj navedenih ozemljih {n}. Vendar pa donacij, namenjenih na ta ozemlja, ni mogoče združiti v skupine, da bi znižali pristojbine za obdelavo plačil, prav tako pa donatorjem ni na voljo način plačila z direktno obremenitvijo v evrih."
+
+#, fuzzy
+msgid "Barely supported territories"
+msgstr "komaj podprta ozemlja"
+
+#, fuzzy, python-brace-format
+msgid "<unused singular (hash=53cbe5d36eacd9bcc6b8eed3023c884b)>"
+msgid_plural "Liberapay is partly available to creators in the {n} territories listed below, which are supported by PayPal but not by Stripe."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] "Liberapay je delno na voljo ustvarjalcem na spodaj navedenih ozemljih {n}, ki jih podpira PayPal, ne pa tudi Stripe."
+
+#, fuzzy
+msgid "Unsupported territories"
+msgstr "Nepodprta ozemlja"
+
+#, fuzzy
+msgid "If you don't live or have a registered business in one of the territories listed above, then you currently can't use Liberapay to receive donations. Sorry."
+msgstr "Če ne živite ali nimate registriranega podjetja na enem od zgoraj navedenih ozemelj, trenutno ne morete uporabljati Liberapay za prejemanje donacij. Žal."
 
 #, fuzzy
 msgid "What is Liberapay?"
@@ -4871,8 +5160,8 @@ msgid "This page contains links to and information about the Liberapay logo. We 
 msgstr "Ta stran vsebuje povezave in informacije o logotipu Liberapay. Upamo, da vam bo še posebej koristila, če pišete članek o Liberapayu ali če želite dodati povezave po meri na profil Liberapay na svoji spletni strani."
 
 #, fuzzy
-msgid "The Liberapay logo is composed of the two letters “lp”. It's usually colored either white-on-yellow, black-on-yellow, or just black."
-msgstr "Logotip Liberapay je sestavljen iz dveh črk \"lp\". Običajno je obarvan belo-rumeno, črno-rumeno ali samo črno."
+msgid "The Liberapay logo is composed of the two letters “lp”. It's usually colored black-on-yellow or just black. We used a white-on-yellow variant in the past, but it's now phased out as its contrast was deemed too low."
+msgstr "Logotip Liberapay je sestavljen iz dveh črk \"lp\". Običajno je obarvan črno-rumeno ali samo črno. V preteklosti smo uporabljali različico v beli barvi, vendar smo jo zdaj ukinili, saj je bil njen kontrast premajhen."
 
 #, fuzzy, python-brace-format
 msgid "The Liberapay yellow is {yellow_color_code}, the black is {black_color_code}."
@@ -4887,20 +5176,8 @@ msgid "You can view and download our logos below or {link_start}on GitHub{link_e
 msgstr "Naše logotipe si lahko ogledate in prenesete spodaj ali na {link_start}na spletnem mestu GitHub{link_end}."
 
 #, fuzzy
-msgid "Download the white-on-yellow SVG"
-msgstr "Prenesite SVG v beli in rumeni barvi"
-
-#, fuzzy, python-brace-format
-msgid "Download the white-on-yellow PNG ({x_y} pixels)"
-msgstr "Prenesite bel na rumenem PNG ({x_y} pikslov)"
-
-#, fuzzy
-msgid "Download the black SVG"
-msgstr "Prenesite črni SVG"
-
-#, fuzzy, python-brace-format
-msgid "Download the black PNG ({x_y} pixels)"
-msgstr "Prenesite črno PNG ({x_y} pikslov)"
+msgid "Liberapay logo, black-on-yellow"
+msgstr "Logotip Liberapay, črna na rumeni podlagi"
 
 #, fuzzy
 msgid "Download the black-on-yellow SVG"
@@ -4911,12 +5188,16 @@ msgid "Download the black-on-yellow PNG ({x_y} pixels)"
 msgstr "Prenesite črno-rumeno PNG ({x_y} pikslov)"
 
 #, fuzzy
-msgid "Fonts"
-msgstr "Pisave"
+msgid "Liberapay logo, black"
+msgstr "Logotip Liberapay, črn"
+
+#, fuzzy
+msgid "Download the black SVG"
+msgstr "Prenesite črni SVG"
 
 #, fuzzy, python-brace-format
-msgid "The Liberapay logo is included in the {fa_link_start}Fork Awesome{link_end} font in two forms: {fa_liberapay_link} and {fa_liberapay_square_link}."
-msgstr "Logotip Liberapay je vključen v pisavo {fa_link_start}Fork Awesome{link_end} v dveh oblikah: {fa_liberapay_link} in {fa_liberapay_square_link}."
+msgid "Download the black PNG ({x_y} pixels)"
+msgstr "Prenesite črno PNG ({x_y} pikslov)"
 
 #, fuzzy
 msgid "Here is a list of differences between them:"
@@ -4929,6 +5210,10 @@ msgstr "Pristojbine za obdelavo plačil so pri Stripu običajno nižje kot pri P
 #, fuzzy
 msgid "Stripe allows renewing donations automatically, whereas PayPal currently requires donors to confirm every payment."
 msgstr "Stripe omogoča samodejno podaljševanje donacij, PayPal pa trenutno zahteva, da donatorji potrdijo vsako plačilo."
+
+#, fuzzy
+msgid "Donations through Stripe can be secret, whereas PayPal always allows donors and recipients to see each other's names and email addresses."
+msgstr "Donacije prek Stripe so lahko tajne, medtem ko PayPal donatorjem in prejemnikom vedno omogoča, da vidijo imena in e-poštne naslove drug drugega."
 
 #, fuzzy
 msgid "Stripe allows donating to multiple creators at once in some cases, whereas PayPal always requires separate payments."
@@ -4951,9 +5236,9 @@ msgid "PayPal only supports {n_paypal_currencies} of the {n_liberapay_currencies
 msgstr "PayPal podpira le {n_paypal_currencies} od {n_liberapay_currencies} valut, ki jih podpirata Liberapay in Stripe."
 
 #, fuzzy, python-brace-format
-msgid "<unused singular (hash=901d1e29a8c2a0e16ff208c9a8fda012)>"
-msgid_plural "PayPal is available to creators in more than 200 countries, whereas Stripe only supports {n} countries in a suitable way."
-msgstr[0] "PayPal je ustvarjalcem na voljo v več kot 200 državah, Stripe pa na ustrezen način podpira le {n} držav."
+msgid "<unused singular (hash=47f7d13f5771b30f0bcf49ea3acd518b)>"
+msgid_plural "PayPal is available to creators in more than 100 countries, whereas Stripe only supports {n} countries in a suitable way."
+msgstr[0] "PayPal je ustvarjalcem na voljo v več kot 100 državah, Stripe pa na ustrezen način podpira le {n} držav."
 msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
@@ -5044,7 +5329,7 @@ msgstr "Kot previdnostni ukrep proti kraji identitete v primeru uhajanja podatko
 
 #, fuzzy, python-brace-format
 msgid "If you think you've found a security issue, and it's not already in our list of {known_issues_link}known low-severity issues{link_close}, then please {hackerone_report_link}report it to us through HackerOne{link_close}."
-msgstr "Če menite, da ste odkrili varnostno težavo, in je še ni na našem seznamu {known_issues_link}znanih težav z nizko stopnjo tveganja{link_close}, nam jo sporočite prek portala HackerOne {hackerone_report_link}{link_close} ."
+msgstr "Če menite, da ste odkrili varnostno težavo, in je še ni na našem seznamu {known_issues_link}znanih težav z nizko stopnjo tveganja{link_close}, nam jo {hackerone_report_link}sporočite prek portala HackerOne{link_close}."
 
 #, fuzzy
 msgid "Policy"
@@ -5203,8 +5488,8 @@ msgid "Teams don't have a hierarchy, all their members are equal and set their o
 msgstr "Ekipe nimajo hierarhije, vsi njihovi člani so enakopravni in sami določajo svoje cilje."
 
 #, fuzzy, python-brace-format
-msgid "You can change your takes from {0}your teams dashboard{1}. It contains tables that show the nominal takes of all members for the next and previous payday, as well as an estimate of the actual amounts of money they'll receive in the next payday."
-msgstr "Prevzeme lahko spremenite na spletnem mestu {0}na nadzorni plošči ekipe{1}. V njej so tabele, ki prikazujejo nominalne prejemke vseh članov za naslednji in prejšnji dan izplačila ter oceno dejanskih zneskov denarja, ki jih bodo prejeli v naslednjem dnevu izplačila."
+msgid "You can change your takes from {0}your teams dashboard{1}. It contains tables that show the nominal takes of all members, as well as an estimate of the actual amounts of money that will be deducted at the end of the current weekly cycle."
+msgstr "Prevzeme lahko spremenite na spletnem mestu {0}na nadzorni plošči ekipe{1}. V njej so tabele, ki prikazujejo nominalne prejemke vseh članov in oceno dejanskih zneskov denarja, ki bodo odšteti ob koncu trenutnega tedenskega cikla."
 
 #, fuzzy
 msgid "The nominal takes are the raw numbers that the members input themselves, the actual takes are computed by the system: first it sums up the nominal takes, then it computes the percentage that each take represents, and finally it applies those percentages to the available income. Nominal takes also act as maximums: the actual takes are never higher than the nominal ones, even if additional income is available."
@@ -5227,16 +5512,16 @@ msgid "Regulation of take amounts"
 msgstr "Uredba o količinah ulova"
 
 #, fuzzy
-msgid "When “take throttling” is enabled for a team, its members can't raise their takes higher than a maximum computed on the basis of the nominal takes at the time of the previous payday. This mechanism is meant to encourage inviting new contributors to join the team, by ensuring that they won't take a disproportionate share of the income in their first weeks."
-msgstr "Če je za ekipo omogočeno omejevanje prevzemov, njeni člani ne morejo povečati svojih prevzemov nad najvišjo vrednost, izračunano na podlagi nominalnih prevzemov ob prejšnjem izplačilu. Namen tega mehanizma je spodbuditi nove sodelavce, da se pridružijo ekipi, saj zagotavlja, da v prvih tednih ne bodo prevzeli nesorazmernega deleža prihodkov."
+msgid "When “take throttling” is enabled for a team, its members can't raise their takes higher than a maximum computed on the basis of the nominal takes at the end of the previous weekly cycle. This mechanism is meant to encourage inviting new contributors to join the team, by ensuring that they won't take a disproportionate share of the income in their first weeks."
+msgstr "Če je za ekipo omogočeno omejevanje prevzemov, njeni člani ne morejo povečati svojih prevzemov nad najvišjo vrednost, izračunano na podlagi nominalnih prevzemov ob koncu prejšnjega tedenskega cikla. Namen tega mehanizma je spodbuditi nove sodelavce, da se pridružijo ekipi, saj zagotavlja, da v prvih tednih ne bodo prejeli nesorazmernega deleža prihodkov."
 
 #, fuzzy, python-brace-format
-msgid "The limit works like this: you can always increase your take to {amount} if it was below that, you can double your take compared to the previous week, you can raise your take to claim the team's leftover income, and you can bring your take up to the level of the median take in the previous payday. Whichever of these possibilities results in the highest amount is your maximum take for the week."
-msgstr "Omejitev deluje na naslednji način: vedno lahko povečate svoj prejemek na {amount}, če je bil pod tem zneskom, lahko podvojite svoj prejemek v primerjavi s prejšnjim tednom, lahko povečate svoj prejemek in zahtevate preostali dohodek ekipe ter lahko svoj prejemek povečate na raven mediane prejemka v prejšnjem plačilnem dnevu. Katera koli od teh možnosti prinese najvišji znesek, je vaš najvišji prejemek v tednu."
+msgid "The limit works like this: you can always increase your take to {amount} if it was below that, you can double your take compared to the previous week, you can raise your take to claim the team's leftover income, and you can bring your take up to the level of the median take at the end of the previous weekly cycle. Whichever of these possibilities results in the highest amount is your maximum take for the week."
+msgstr "Omejitev deluje na naslednji način: vedno lahko povečate svoj dohodek na {amount}, če je bil pod njim, lahko podvojite svoj dohodek v primerjavi s prejšnjim tednom, lahko povečate svoj dohodek in zahtevate preostali dohodek ekipe ter lahko svoj dohodek povečate na raven mediane dohodka ob koncu prejšnjega tedenskega cikla. Katera koli od teh možnosti prinese najvišji znesek, je vaš najvišji prejem za teden."
 
 #, fuzzy
-msgid "Takes are not limited if the team has only one member, or if the previous week's takes were all zero (which is the case for any new team that has been created after the most recent payday)."
-msgstr "Prevzemi niso omejeni, če ima ekipa samo enega člana ali če so bili vsi prevzemi v prejšnjem tednu enaki nič (kar velja za vsako novo ekipo, ki je bila ustanovljena po zadnjem izplačilu)."
+msgid "Takes are not limited if the team has only one member, or if the previous week's takes were all zero (which is the case for any new team that has been created during the current weekly cycle)."
+msgstr "Prevzemi niso omejeni, če ima ekipa samo enega člana ali če so bili vsi prevzemi v prejšnjem tednu enaki nič (kar velja za vsako novo ekipo, ki je bila ustanovljena v tekočem tedenskem ciklu)."
 
 #, fuzzy
 msgid "Please contact support if you want to enable or disable the take limits for an existing team. Don't forget to include evidence that the change has been approved by the other team members."
@@ -5347,32 +5632,32 @@ msgid "Explore other platforms:"
 msgstr "Raziščite druge platforme:"
 
 #, fuzzy
-msgid "Liberapay provides several ways of finding great people to donate to:"
-msgstr "Liberapay omogoča več načinov iskanja odličnih ljudi, ki jim lahko darujete:"
+msgid "This page lists Liberapay users who are hoping to receive their first donations."
+msgstr "Na tej strani so navedeni uporabniki Liberapaya, ki upajo, da bodo prejeli prve donacije."
 
 #, fuzzy
-msgid "A team is a group of users working on a specific project."
-msgstr "Ekipa je skupina uporabnikov, ki delajo na določenem projektu."
+msgid "Despite our efforts, some of the listed profiles may be spam or fraud."
+msgstr "Kljub našim prizadevanjem so lahko nekateri navedeni profili neželena pošta ali goljufije."
 
 #, fuzzy
-msgid "Explore Teams"
-msgstr "Raziščite ekipe"
+msgid "Profiles only start appearing in the list 72 hours after they're created."
+msgstr "Profili se na seznamu začnejo pojavljati šele 72 ur po tem, ko so bili ustvarjeni."
 
 #, fuzzy
-msgid "Great nonprofits and companies trying to improve the world."
-msgstr "Velike neprofitne organizacije in podjetja, ki si prizadevajo izboljšati svet."
+msgid "People and projects who receive donations through Liberapay."
+msgstr "Ljudje in projekti, ki prejemajo donacije prek Liberapay."
 
 #, fuzzy
-msgid "Explore Organizations"
-msgstr "Raziščite organizacije"
+msgid "Explore Recipients"
+msgstr "Raziščite prejemnike"
 
 #, fuzzy
-msgid "People like you who contribute to the commons (art, knowledge, software, …)."
-msgstr "Ljudje, kot ste vi, ki prispevate k skupnemu bogastvu (umetnost, znanje, programska oprema, ...)."
+msgid "Users who are hoping to receive their first donations through Liberapay."
+msgstr "Uporabniki, ki upajo, da bodo prejeli svoje prve donacije prek Liberapay."
 
 #, fuzzy
-msgid "Explore Individuals"
-msgstr "Raziščite posameznike"
+msgid "Explore Hopefuls"
+msgstr "Raziščite hopefuls"
 
 #, fuzzy
 msgid "Liberapay allows pledging to fund people who haven't joined the site yet."
@@ -5402,29 +5687,49 @@ msgstr "Brskajte po računih, ki jih imajo uporabniki Liberapayja na drugih plat
 msgid "Explore Social Networks"
 msgstr "Raziščite družbena omrežja"
 
+#, fuzzy
+msgid "Individuals"
+msgstr "Posamezniki"
+
 #, fuzzy, python-brace-format
 msgid "The top {0} individuals on Liberapay are:"
 msgstr "Najpomembnejši {0} posamezniki na Liberapayu so:"
 
-#, fuzzy, python-brace-format
-msgid "List of individuals on Liberapay, page {number}:"
-msgstr "Seznam posameznikov na Liberapayu, stran {number}:"
+#, fuzzy
+msgid "Sort by"
+msgstr "Razvrsti po"
+
+#, fuzzy
+msgid "income"
+msgstr "dohodek"
+
+#, fuzzy
+msgid "creation date"
+msgstr "datum ustvarjanja"
+
+#, fuzzy
+msgid "sort order"
+msgstr "vrstni red"
+
+#, fuzzy
+msgid "in descending order"
+msgstr "v padajočem vrstnem redu"
+
+#, fuzzy
+msgid "in ascending order"
+msgstr "v naraščajočem vrstnem redu"
+
+#, fuzzy
+msgid "Organizations"
+msgstr "Organizacije"
 
 #, fuzzy, python-brace-format
 msgid "The top {0} organizations on Liberapay are:"
 msgstr "Najpomembnejše {0} organizacije na Liberapayu so:"
 
-#, fuzzy, python-brace-format
-msgid "List of organizations on Liberapay, page {number}:"
-msgstr "Seznam organizacij na Liberapayu, stran {number}:"
-
 #, fuzzy
 msgid "Create an organization account"
 msgstr "Ustvarite račun organizacije"
-
-#, fuzzy
-msgid "Top pledges"
-msgstr "Najvišje obljube"
 
 #, fuzzy
 msgid "Please don't spam the people and projects listed below with messages inviting them to join Liberapay or asking them why they haven't."
@@ -5447,6 +5752,38 @@ msgid "We can help you find pledgees if you connect your accounts:"
 msgstr "Če povežete svoje račune, vam lahko pomagamo poiskati zastavitelje:"
 
 #, fuzzy, python-brace-format
+msgid "The individual receiving the most money through Liberapay is:"
+msgid_plural "The {n} individuals receiving the most money through Liberapay are:"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] "{n} posamezniki, ki prek Liberapayja prejmejo največ denarja, so:"
+
+#, fuzzy, python-brace-format
+msgid "The organization receiving the most money through Liberapay is:"
+msgid_plural "The {n} organizations receiving the most money through Liberapay are:"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] "Organizacije {n}, ki so prek Liberapayja prejele največ denarja, so:"
+
+#, fuzzy, python-brace-format
+msgid "The team receiving the most money through Liberapay is:"
+msgid_plural "The {n} teams receiving the most money through Liberapay are:"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] "Ekipe {n}, ki so prek Liberapayja prejele največ denarja, so:"
+
+#, fuzzy, python-brace-format
+msgid "The Liberapay account receiving the most money is:"
+msgid_plural "The {n} Liberapay accounts receiving the most money are:"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] "Največ denarja so prejeli računi {n} Liberapay:"
+
+#, fuzzy, python-brace-format
 msgid "The most popular repository currently linked to a Liberapay account is:"
 msgid_plural "The {n} most popular repositories currently linked to a Liberapay account are:"
 msgstr[0] "{n} najbolj priljubljenih repozitorijev, ki so trenutno povezani z računom Liberapay, so:"
@@ -5455,16 +5792,16 @@ msgstr[2] "{n} najbolj priljubljenih repozitorijev, ki so trenutno povezani z ra
 msgstr[3] "{n} najbolj priljubljenih repozitorijev, ki so trenutno povezani z računom Liberapay, so:"
 
 #, fuzzy, python-brace-format
-msgid "List of repositories currently linked to a Liberapay account, page {number}:"
-msgstr "Seznam skladišč, ki so trenutno povezana z računom Liberapay, stran {number}:"
-
-#, fuzzy, python-brace-format
 msgid "by {author_name}"
 msgstr "po {author_name}"
 
 #, fuzzy
-msgid "Stars"
-msgstr "Zvezde"
+msgid "stars count"
+msgstr "število zvezd"
+
+#, fuzzy
+msgid "connection date"
+msgstr "datum priključitve"
 
 #, fuzzy
 msgid "Browse your favorite repositories"
@@ -5481,10 +5818,6 @@ msgstr[0] "Najboljša {n} ekipa na Liberapayu je:"
 msgstr[1] "Najboljše {n} ekipe na Liberapayu so:"
 msgstr[2] "Najboljše {n} ekipe na Liberapayu so:"
 msgstr[3] "Najboljše {n} ekipe na Liberapayu so:"
-
-#, fuzzy, python-brace-format
-msgid "List of teams on Liberapay, page {number}:"
-msgstr "Seznam ekip na Liberapayu, stran {number}:"
 
 #, fuzzy
 msgid "Create a team"
@@ -5580,7 +5913,7 @@ msgstr[3] ""
 
 #, fuzzy, python-brace-format
 msgid "You are currently refusing donations, you can change that in {0}your profile settings{1}."
-msgstr "Trenutno zavračate donacije, kar lahko spremenite v nastavitvah svojega profila {0}{1} ."
+msgstr "Trenutno zavračate donacije, kar lahko spremenite v {0}nastavitvah svojega profila{1}."
 
 #, fuzzy, python-brace-format
 msgid "Congratulations, you have reached your goal of receiving {0} per week!"
@@ -5664,7 +5997,7 @@ msgstr "Notranje delovanje"
 
 #, fuzzy, python-brace-format
 msgid "Liberapay is run transparently by a {1}non-profit organization{0}, its {2}source code{0} is public."
-msgstr "Liberapay transparentno upravlja neprofitna organizacija {1}{0} , njena izvorna koda {2}{0} pa je javna."
+msgstr "Liberapay transparentno upravlja {1}neprofitna organizacija{0}, njena {2}izvorna koda{0} pa je javna."
 
 #, fuzzy, python-brace-format
 msgid "We rely on your support to keep Liberapay running and {link_start}improving{link_end}."
@@ -5748,7 +6081,7 @@ msgstr "Sponzorji"
 
 #, fuzzy, python-brace-format
 msgid "Donations from businesses and nonprofits are welcome on Liberapay. If you have any questions, don't hesitate to {0}contact us{1}."
-msgstr "Donacije podjetij in neprofitnih organizacij so dobrodošle na Liberapayu. Če imate kakršna koli vprašanja, nam pišite na {0}{1} ."
+msgstr "Donacije podjetij in neprofitnih organizacij so dobrodošle na Liberapayu. Če imate kakršna koli vprašanja, {0}nam pišite na{1}."
 
 #, fuzzy, python-brace-format
 msgid "There is currently {n} sponsor on the platform, this section is our way of thanking them."
@@ -5874,7 +6207,7 @@ msgstr "Raziščite neprevzete donacije"
 
 #, fuzzy, python-brace-format
 msgid "This page is for pledges to the {platform} user {user_name}:"
-msgstr "Ta stran je namenjena obljubam uporabnika {platform} {user_name} :"
+msgstr "Ta stran je namenjena obljubam uporabnika {platform} {user_name}:"
 
 #, fuzzy
 msgid "No description available."
@@ -6013,6 +6346,10 @@ msgid "Transfer the account"
 msgstr "Prenos računa"
 
 #, fuzzy, python-brace-format
+msgid "The {provider} account you are attempting to connect is linked to another Liberapay account marked as fraudulent."
+msgstr "Račun {provider}, ki ga poskušate povezati, je povezan z drugim računom Liberapay, ki je označen kot goljufiv."
+
+#, fuzzy, python-brace-format
 msgid "Connecting a {platform} account"
 msgstr "Povezovanje računa {platform}"
 
@@ -6037,8 +6374,8 @@ msgid "Whose work do you appreciate?"
 msgstr "Čigavo delo cenite?"
 
 #, fuzzy
-msgid "Found a matching username"
-msgid_plural "Found matching usernames"
+msgid "Found a matching user name"
+msgid_plural "Found matching user names"
 msgstr[0] "Najdeno ustrezno uporabniško ime"
 msgstr[1] ""
 msgstr[2] ""
@@ -6073,8 +6410,8 @@ msgid "{username} has a repository named {repo_name} in their {platform} account
 msgstr "{username} ima v svojem računu {platform} skladišče z imenom {repo_name}."
 
 #, fuzzy
-msgid "Found a matching user statement"
-msgid_plural "Found matching user statements"
+msgid "Found a matching user description"
+msgid_plural "Found matching user descriptions"
 msgstr[0] "Najdena je bila ustrezna izjava uporabnika"
 msgstr[1] ""
 msgstr[2] ""

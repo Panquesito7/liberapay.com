@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.10.3\n"
+"Generated-By: Babel 2.16.0\n"
 
 #, fuzzy, python-brace-format
 msgid "The translation of this page from English is not yet complete. {link_start}You can contribute{link_end}."
@@ -108,7 +108,7 @@ msgstr[2] "Tu ai {n} donatiii de refacut:"
 
 #, python-brace-format
 msgid "If you wish to modify or stop a donation, click on the following link: {link_start}manage my donations{link_end}."
-msgstr "Dacă dorești să modifici sau să închei o donație, apasă pe link-ul următor {link_start} donațiile mele {link_end}."
+msgstr "Dacă dorești să modifici sau să închei o donație, apasă pe link-ul următor {link_start}donațiile mele{link_end}."
 
 msgid "Your email address is temporarily blacklisted"
 msgstr "Adresa dumneavoastră de email este blocată temporar"
@@ -247,10 +247,6 @@ msgstr "{date}: {money_amount} la {recipient}"
 #, fuzzy, python-brace-format
 msgid "{date}: {money_amount} split between {recipients}"
 msgstr "{date}: {money_amount} împărțit între {recipients}"
-
-#, fuzzy
-msgid "Add a payment instrument"
-msgstr "Adăugați un instrument de plată"
 
 #, python-brace-format
 msgid "Invoice from {0} on Liberapay"
@@ -423,7 +419,7 @@ msgstr "A fost inițiată o debitare directă de {money_amount} din contul dvs. 
 
 #, fuzzy, python-brace-format
 msgid "We have initiated a direct debit of {money_amount} from your {bank_name} account ({partial_account_number})."
-msgstr "Am inițializat un debit direct de {money_amount} de la contul bancar al dumneavoastră ({partial_account_number})."
+msgstr "Am inițializat un debit direct de {money_amount} de la contul bancar {bank_name} al dumneavoastră ({partial_account_number})."
 
 #, python-brace-format
 msgid "We have initiated a direct debit of {money_amount} from your bank account ({partial_account_number})."
@@ -609,7 +605,7 @@ msgstr "Profilul dumneavoastră Liberapay este incomplet"
 
 #, fuzzy, python-brace-format
 msgid "Your {link_start}public profile page{link_end} is missing a description. Without this information, we may be unable to confirm that your use of our platform is legitimate, and consequently your account may be marked as fraudulent and disabled. An incomplete profile is also less likely to attract donations, so we strongly recommend that you fill yours."
-msgstr "Pagina dvs. de profil public {link_start}{link_end} nu are o descriere. Fără aceste informații, este posibil să nu putem confirma că utilizarea platformei noastre este legitimă și, prin urmare, contul dvs. poate fi marcat ca fiind fraudulos și dezactivat. De asemenea, un profil incomplet are mai puține șanse să atragă donații, așa că vă recomandăm cu tărie să îl completați pe al dumneavoastră."
+msgstr "{link_start}Pagina dvs. de profil public{link_end} nu are o descriere. Fără aceste informații, este posibil să nu putem confirma că utilizarea platformei noastre este legitimă și, prin urmare, contul dvs. poate fi marcat ca fiind fraudulos și dezactivat. De asemenea, un profil incomplet are mai puține șanse să atragă donații, așa că vă recomandăm cu tărie să îl completați pe al dumneavoastră."
 
 msgid "Edit your profile"
 msgstr "Editați-vă profilul"
@@ -716,7 +712,7 @@ msgstr[2] ""
 
 #, fuzzy, python-brace-format
 msgid "If you wish to modify your donations, click on the following link: {link_start}manage my donations{link_end}."
-msgstr "Dacă dorești să modifici sau să închei o donație, apasă pe link-ul următor {link_start} donațiile mele {link_end}."
+msgstr "Dacă dorești să modifici sau să închei o donație, apasă pe link-ul următor {link_start}donațiile mele{link_end}."
 
 #, fuzzy, python-brace-format
 msgid "A receipt will be available once the payment has been successfully processed. You can see all your payments and receipts in {link_start}your account's ledger{link_end}."
@@ -751,11 +747,11 @@ msgstr "Se pare că ați găsit o defecțiune! Ne cerem scuze pentru inconvenien
 
 #, fuzzy, python-brace-format
 msgid "The requested page could not be found. Please {link_open}contact us{link_close} if you need assistance."
-msgstr "Pagina solicitată nu a putut fi găsită. Vă rugăm să ne contactați la {link_open}{link_close} dacă aveți nevoie de asistență."
+msgstr "Pagina solicitată nu a putut fi găsită. Vă rugăm să {link_open}ne contactați{link_close} dacă aveți nevoie de asistență."
 
 #, fuzzy, python-brace-format
 msgid "Your request has been rejected by our software. Please {link_open}contact us{link_close} if you need assistance."
-msgstr "Cererea dvs. a fost respinsă de software-ul nostru. Vă rugăm să ne contactați la {link_open}{link_close} dacă aveți nevoie de asistență."
+msgstr "Cererea dvs. a fost respinsă de software-ul nostru. Vă rugăm să {link_open}ne contactați{link_close} dacă aveți nevoie de asistență."
 
 msgid "Error message:"
 msgstr "Mesajul erorii:"
@@ -870,17 +866,6 @@ msgstr "Mare"
 msgid "Maximum"
 msgstr "Maximă"
 
-#, python-brace-format
-msgid "You've consumed your quota of requests, you can try again {in_N_minutes}."
-msgstr "Ați consumat norma de cereri, puteți încerca din nou {in_N_minutes}."
-
-msgid "You're making requests too fast, please try again later."
-msgstr "Ați făcut cereri prea rapid, încercați din nou mai târziu."
-
-#, python-brace-format
-msgid "{0} returned an error, please try again later."
-msgstr "{0} a returnat o eroare, încercați din nou mai târziu."
-
 msgid "example@mastodon.social"
 msgstr "exemplu@mastodon.social"
 
@@ -915,6 +900,10 @@ msgstr "Numele de utilizator „{0}” este prea lung."
 #, python-brace-format
 msgid "The username '{0}' contains invalid characters."
 msgstr "Numele de utilizator „{0}” conține caractere nevalide."
+
+#, fuzzy, python-brace-format
+msgid "The username '{0}' is purely numerical. This isn't allowed."
+msgstr "Numele de utilizator '{0}' este pur numeric. Acest lucru nu este permis."
 
 #, python-brace-format
 msgid "The username '{0}' is restricted."
@@ -1063,6 +1052,18 @@ msgid "{username} doesn't accept donations in {rejected_currency}."
 msgstr "{username} nu acceptă donații în {rejected_currency}."
 
 #, fuzzy, python-brace-format
+msgid "{username} no longer accepts secret donations."
+msgstr "{username} nu mai acceptă donații secrete."
+
+#, fuzzy, python-brace-format
+msgid "{username} no longer accepts private donations."
+msgstr "{username} nu mai acceptă donații private."
+
+#, fuzzy, python-brace-format
+msgid "{username} no longer accepts public donations."
+msgstr "{username} nu mai acceptă donații publice."
+
+#, fuzzy, python-brace-format
 msgid "The amount {money_amount} isn't in the expected currency ({expected_currency})."
 msgstr "Suma {money_amount} nu este în moneda așteptată ({expected_currency})."
 
@@ -1099,6 +1100,14 @@ msgstr "Această plată nu poate fi procesată deoarece contul destinatarului es
 #, fuzzy, python-brace-format
 msgid "Your donation to {recipient} cannot be processed right now because the account of the beneficiary isn't ready to receive money."
 msgstr "Donația dvs. către {recipient} nu poate fi procesată în acest moment deoarece contul beneficiarului nu este pregătit să primească bani."
+
+#, fuzzy, python-brace-format
+msgid "{username} does not accept donations from {country}."
+msgstr "{username} nu acceptă donații de la {country}."
+
+#, fuzzy
+msgid "The processing of your payment has failed because our software was unable to determine which country the money would come from. This isn't supposed to happen."
+msgstr "Procesarea plății dvs. a eșuat deoarece software-ul nostru nu a putut determina din ce țară provin banii. Acest lucru nu ar trebui să se întâmple."
 
 msgid "You've already changed your main currency recently, please retry later (e.g. in a week) or contact support@liberapay.com."
 msgstr "Ați schimbat deja valuta principală în ultima vreme, încercați mai târziu (de ex. într-o săptămână) sau contactați support@liberapay.com."
@@ -1151,14 +1160,6 @@ msgstr "Gateway Timeout"
 #, fuzzy, python-brace-format
 msgid "The {platform} user you're looking for hasn't joined Liberapay, and it's not possible to create a stub profile for them."
 msgstr "Utilizatorul {platform} pe care îl căutați nu s-a înscris pe Liberapay și nu este posibil să creați un profil pentru el."
-
-#, python-brace-format
-msgid "'{0}' doesn't seem to be a valid user id on {platform}."
-msgstr "„{0}” nu pare a fi un id valid de utilizator pe {platform}."
-
-#, python-brace-format
-msgid "There doesn't seem to be a user named {0} on {1}."
-msgstr "Nu pare a exista un utilizator numit {0} pe {1}."
 
 #, fuzzy, python-brace-format
 msgid "Liberapay donation to {username} (team {team_name})"
@@ -1231,11 +1232,34 @@ msgstr "Verificarea cookie-urilor…"
 msgid "You are not authorized to access this page."
 msgstr "Nu aveți autorizația de a accesa această pagină."
 
+msgid "The changes have been saved."
+msgstr "Schimbările au fost înregistrate."
+
 msgid "Processing your request failed because our server was unable to communicate with a service located on another machine. This is a temporary issue, please try again later."
 msgstr "Procesarea cererii dumneavoastră a eșuat pentru că serverul nostru nu a putut comunica cu un serviciu localizat pe altă mașină. Aceasta este o problemă temporară, reîncercați mai târziu."
 
+#, python-brace-format
+msgid "'{0}' doesn't seem to be a valid user id on {platform}."
+msgstr "„{0}” nu pare a fi un id valid de utilizator pe {platform}."
+
+#, python-brace-format
+msgid "{0} returned an error, please try again later."
+msgstr "{0} a returnat o eroare, încercați din nou mai târziu."
+
+#, python-brace-format
+msgid "You've consumed your quota of requests, you can try again {in_N_minutes}."
+msgstr "Ați consumat norma de cereri, puteți încerca din nou {in_N_minutes}."
+
+msgid "You're making requests too fast, please try again later."
+msgstr "Ați făcut cereri prea rapid, încercați din nou mai târziu."
+
+#, python-brace-format
+msgid "There doesn't seem to be a user named {0} on {1}."
+msgstr "Nu pare a exista un utilizator numit {0} pe {1}."
+
+#, fuzzy
 msgid "This profile is marked as spam or fraud."
-msgstr ""
+msgstr "Acest profil este marcat ca fiind spam sau fraudă."
 
 msgid "Cancel"
 msgstr "Anulează"
@@ -1463,6 +1487,9 @@ msgstr "Identitate"
 msgid "Account"
 msgstr "Cont"
 
+msgid "Close Account"
+msgstr "Închide contul"
+
 msgid "Emails"
 msgstr "E-mailuri"
 
@@ -1480,6 +1507,10 @@ msgstr "Deconectare"
 
 msgid "Print"
 msgstr "Tipărește"
+
+#, fuzzy
+msgid "Liberapay logo"
+msgstr "Logo Liberapay"
 
 #, python-brace-format
 msgid "{0} has {n} patron."
@@ -1514,9 +1545,6 @@ msgstr "Donează"
 
 msgid "Switch to a different account"
 msgstr "Comută la un cont diferit"
-
-msgid "The changes have been saved."
-msgstr "Schimbările au fost înregistrate."
 
 msgid "We've sent you a single-use login link. Check your inbox, open the provided link in a new tab, then come back to this page and click on the button below to carry on with what you wanted to do."
 msgstr "V-am trimis o legătură de autentificare valabilă doar o dată. Verificați-vă e-mailul, deschideți legătura oferită într-un nou tab, apoi reveniți la această pagină și apăsați pe butonul de mai jos pentru a continua acțiunea dorită."
@@ -1556,8 +1584,8 @@ msgid "If you need to change the password of your Liberapay account, you can do 
 msgstr "Dacă aveți nevoie să schimbați parola contului dumneavoastră Liberapay, puteți face acest lucru mai jos. Pentru a fi sigură, parola contului dvs. trebuie să fie generată aleatoriu și să nu fie folosită în altă parte. Vă recomandăm cu tărie utilizarea unui manager de parole."
 
 #, fuzzy
-msgid "Setting a password allows you to log in directly, instead of waiting for a single-use link sent via email. However, we recommend keeping your account passwordless if you don't use a password manager, because in order to be secure the password of your account should be randomly generated and not used anywhere else."
-msgstr "Setarea unei parole vă permite să vă conectați direct, în loc să așteptați un link de unică folosință trimis prin e-mail. Cu toate acestea, vă recomandăm să vă păstrați contul fără parolă dacă nu folosiți un manager de parole, deoarece, pentru a fi sigură, parola contului dvs. ar trebui să fie generată aleatoriu și să nu fie folosită nicăieri altundeva."
+msgid "Setting a password allows you to log in directly, instead of waiting for a single-use link sent via email. However, we only recommend setting a password if you use a password manager, because in order to be secure the password should be randomly generated and not used anywhere else."
+msgstr "Setarea unei parole vă permite să vă conectați direct, în loc să așteptați un link de unică folosință trimis prin e-mail. Cu toate acestea, vă recomandăm să setați o parolă doar dacă utilizați un manager de parole, deoarece, pentru a fi sigură, parola trebuie să fie generată aleatoriu și să nu fie utilizată în altă parte."
 
 msgid "Current password"
 msgstr "Parola curentă"
@@ -1707,11 +1735,13 @@ msgstr "Logouri"
 msgid "Overview"
 msgstr "Vedere de ansamblu"
 
-msgid "Organizations"
-msgstr "Organizații"
+#, fuzzy
+msgid "Recipients"
+msgstr "Beneficiari"
 
-msgid "Individuals"
-msgstr "Indivizi"
+#, fuzzy
+msgid "Hopefuls"
+msgstr "Speranțe"
 
 msgid "Unclaimed Donations"
 msgstr "Donări Nerevendicate"
@@ -1727,6 +1757,10 @@ msgstr "Nume"
 
 msgid "Currencies"
 msgstr "Valute"
+
+#, fuzzy
+msgid "Countries"
+msgstr "Țări"
 
 msgid "Goal"
 msgstr "Țel"
@@ -1769,16 +1803,20 @@ msgid "{username} hasn't configured any payment method yet, so your donation can
 msgstr "{username} nu a configurat încă nicio metodă de plată, așa că donația dvs. nu poate fi procesată în acest moment. Vă vom anunța atunci când plata va fi posibilă."
 
 #, fuzzy, python-brace-format
-msgid "Donations to {username} can be paid using a credit or debit card ({list_of_card_brands}), or by direct debit of a Euro bank account (for donations in Euro only)."
-msgstr "Donațiile către {username} pot fi plătite cu ajutorul unui card de credit sau de debit ({list_of_card_brands}), sau prin debitare directă dintr-un cont bancar în euro (numai pentru donații în euro)."
+msgid "Donations to {username} can be paid using a credit or debit card ({list_of_card_brands}), or by direct debit of a euro bank account (for donations in euro only)."
+msgstr "Donațiile către {username} pot fi plătite folosind un card de credit sau de debit ({list_of_card_brands}), sau prin debitare directă a unui cont bancar în euro (doar pentru donații în euro)."
 
 #, python-brace-format
 msgid "Donations to {username} are processed through PayPal."
 msgstr "Donațiile către {username} sunt procesate prin PayPal."
 
 #, fuzzy, python-brace-format
-msgid "Donations to {username} can be paid using: a credit or debit card ({list_of_card_brands}), a Euro bank account (SEPA Direct Debit), or a PayPal account."
-msgstr "Donațiile către {username} pot fi plătite utilizând: un card de credit sau de debit ({list_of_card_brands}), un cont bancar în euro (SEPA Direct Debit) sau un cont PayPal."
+msgid "Donations to {username} can be paid using: a credit or debit card ({list_of_card_brands}), a euro bank account (SEPA Direct Debit), or a PayPal account."
+msgstr "Donațiile către {username} pot fi plătite folosind: un card de credit sau de debit ({list_of_card_brands}), un cont bancar în euro (SEPA Direct Debit) sau un cont PayPal."
+
+#, fuzzy
+msgid "Payment Card"
+msgstr "Card de plată"
 
 msgid "Country"
 msgstr "Țară"
@@ -1828,6 +1866,9 @@ msgstr "Vizualizează cotele de venit"
 msgid "(fork)"
 msgstr "(fork)"
 
+msgid "Stars"
+msgstr "Stele"
+
 msgid "Updated this week"
 msgstr "Actualizat această săptămână"
 
@@ -1864,15 +1905,6 @@ msgstr "Prin crearea unui cont Liberapay sunteți de acord cu {0}Termenii și co
 msgid "Your nominal take from the {0} team is limited to {1} this week. {2}Why?{3}"
 msgstr "Beneficiul dumneavoastră nominal de la echipa {0} este limitat la {1} această săptămână. {2}De ce?{3}"
 
-msgid "Last Payday"
-msgstr "Ultima zi de plată"
-
-msgid "n/a"
-msgstr "neaplicabil"
-
-msgid "Next Payday"
-msgstr "Următoarea zi de plată"
-
 msgid "Member"
 msgstr "Membru"
 
@@ -1881,6 +1913,22 @@ msgstr "Beneficiu nominal"
 
 msgid "Actual Take"
 msgstr "Beneficiu real"
+
+#, fuzzy
+msgid "On Liberapay, donations are paid in advance. This column shows how much money each member has received in advance through this team. An advance increases every time a member receives a new payment from a donor through the team, and decreases every week."
+msgstr "Pe Liberapay, Donațiile sunt plătite în avans. Această coloană arată câți bani a primit în avans fiecare membru prin intermediul acestei echipe. Un avans crește de fiecare dată când un membru primește o nouă plată de la un donator prin intermediul echipei și scade în fiecare săptămână."
+
+#, fuzzy
+msgid "Advance"
+msgstr "Avans"
+
+#, fuzzy, python-brace-format
+msgid "Last week: {0}"
+msgstr "Săptămâna trecută: {0}"
+
+#, fuzzy
+msgid "no take"
+msgstr "nu luați"
 
 msgid "auto"
 msgstr "automat"
@@ -1896,19 +1944,16 @@ msgid "Leftover"
 msgstr "Exces"
 
 #, fuzzy, python-brace-format
+msgid "It looks like you are in {country}. {username} does not accept donations coming from that country."
+msgstr "Se pare că vă aflați pe {country}. {username} nu acceptă donații din această țară."
+
+#, fuzzy, python-brace-format
 msgid "Your current donation to {name} is in {currency}, but they now only accept donations in {accepted_currency}. You can convert your donation to that currency, or discontinue it."
 msgstr "Donația dvs. curentă către {name} este în {currency}, dar acum acceptă doar donații în {accepted_currency}. Puteți converti donația dvs. în această monedă sau o puteți întrerupe."
 
 #, fuzzy, python-brace-format
 msgid "Your current donation to {name} is in {currency}, but they no longer accept that currency. The suggested new currency is the {accepted_currency}, but you can choose another one."
 msgstr "Donația dvs. actuală către {name} este în {currency}, dar nu mai acceptă această monedă. Noua monedă sugerată este {accepted_currency}, dar puteți alege alta."
-
-msgid "Modify"
-msgstr "Modifică"
-
-#, fuzzy
-msgid "Discontinue"
-msgstr "Întrerupeți"
 
 #, fuzzy, python-brace-format
 msgid "You are currently donating {money_amount} per week to {recipient_name}. The form below enables you to modify or stop your donation."
@@ -1939,8 +1984,9 @@ msgstr[0] "{currency_name} nu este valuta dumneavoastră preferată? {username} 
 msgstr[1] "{currency_name} nu este valuta dumneavoastră preferată? {username} acceptă de asemenea alte {n} valute:"
 msgstr[2] "{currency_name} nu este valuta dumneavoastră preferată? {username} acceptă de asemenea alte {n} de valute:"
 
-msgid "not supported by PayPal"
-msgstr "nesuportată de PayPal"
+#, fuzzy
+msgid "supported by PayPal"
+msgstr "susținut de PayPal"
 
 msgid "Switch"
 msgstr "Comută"
@@ -1980,6 +2026,13 @@ msgstr "Reînnoire manuală"
 #, fuzzy
 msgid "A reminder to renew your donation will be sent to you via email."
 msgstr "O atenționare de reînnoire a donației vă va fi trimisă prin e-mail."
+
+#, fuzzy
+msgid "Discontinue the donation"
+msgstr "Întrerupeți donația"
+
+msgid "Cancel the pledge"
+msgstr "Anulează angajamentul"
 
 #, fuzzy, python-brace-format
 msgid "{username} has chosen not to see who their patrons are, so your donation will be secret."
@@ -2025,13 +2078,6 @@ msgstr "Toată lumea va putea să vadă că susțineți {username}."
 msgid "{username} hasn't yet specified whether they want to see who their patrons are, so your donation will be secret."
 msgstr "{username} nu a specificat încă dacă dorește să vadă cine sunt patronii săi, așa că donația dvs. va fi secretă."
 
-#, fuzzy
-msgid "Discontinue the donation"
-msgstr "Întrerupeți donația"
-
-msgid "Cancel the pledge"
-msgstr "Anulează angajamentul"
-
 msgid "People who contribute to the commons need you to support their work. Building free software, spreading free knowledge, these things take time and cost money, not only to do the initial work, but also to maintain it over time."
 msgstr "Oamenii ce contribuie la cultura publică au nevoie de dumneavoastră pentru a-și susține munca. Dezvoltarea programelor libere, distribuirea liberă a cunoștiințelor, sunt acțiuni ce durează timp și costă bani, nu numai pentru a face munca inițială, dar și pentru a o întreține de-alungul timpului."
 
@@ -2040,6 +2086,50 @@ msgstr "Sistemul de donații recurent al Liberapay este conceput pentru a oferi 
 
 msgid "You are in sandbox mode, do not input any real payment or personal data!"
 msgstr "Sunteți în modul de test, nu introduceți plăți reale sau date personale!"
+
+#, fuzzy
+msgid "The credentials have been generated."
+msgstr "Acreditările au fost generate."
+
+#, fuzzy
+msgid "The credentials have been revoked."
+msgstr "Acreditările au fost revocate."
+
+#, fuzzy
+msgid "Constant session"
+msgstr "Sesiune constantă"
+
+#, fuzzy
+msgid "You can automate downloading private information from your account by including the following HTTP header in your requests:"
+msgstr "Puteți automatiza descărcarea informațiilor private din contul dvs. prin includerea următorului antet HTTP în solicitările dvs:"
+
+#, fuzzy
+msgid "For example, you can download the list of your currently active patrons by executing the following command:"
+msgstr "De exemplu, puteți descărca lista patronilor dvs. activi în prezent executând următoarea comandă:"
+
+#, fuzzy
+msgid "To minimize the risks to you, these credentials can only be used to fetch data, not to modify anything in your account, and they will automatically expire if unused for a year."
+msgstr "Pentru a minimiza riscurile pentru dvs., aceste acreditări pot fi utilizate numai pentru a obține date, nu pentru a modifica nimic în contul dvs. și vor expira automat dacă nu sunt utilizate timp de un an."
+
+#, fuzzy
+msgid "Revoke credentials"
+msgstr "Revocați acreditările"
+
+#, fuzzy
+msgid "The credentials have expired."
+msgstr "Acreditările au expirat."
+
+#, fuzzy
+msgid "Regenerate credentials"
+msgstr "Regenerarea acreditărilor"
+
+#, fuzzy
+msgid "To simplify automating downloads of private information from your account, you can generate long-lived read-only credentials."
+msgstr "Pentru a simplifica automatizarea descărcărilor de informații private din contul dvs., puteți genera acreditări de lungă durată numai pentru citire."
+
+#, fuzzy
+msgid "Generate credentials"
+msgstr "Generarea acreditărilor"
 
 msgid "Dashboard"
 msgstr "Tablou de bord"
@@ -2113,6 +2203,14 @@ msgid "One-time donations aren't properly supported yet, but you can discontinue
 msgstr "Donațiile unice nu sunt încă acceptate în mod corespunzător, dar puteți întrerupe donația imediat după prima plată."
 
 #, fuzzy
+msgid "Will I get a receipt?"
+msgstr "Voi primi o chitanță?"
+
+#, fuzzy
+msgid "A receipt is automatically available for every payment."
+msgstr "Pentru fiecare plată este disponibilă automat o chitanță."
+
+#, fuzzy
 msgid "What is this website? I don't recognize it."
 msgstr "Ce este acest site? Nu-l recunosc."
 
@@ -2139,6 +2237,10 @@ msgstr "Directiva revizuită privind serviciile de plată"
 #, python-brace-format
 msgid "Your new avatar URL is: {0}"
 msgstr "Noul URL al avatarului dumneavoastră este: {0}"
+
+#, fuzzy
+msgid "Your profile no longer has an avatar."
+msgstr "Profilul tău nu mai are avatar."
 
 #, fuzzy, python-brace-format
 msgid "You have selected {platform} as your avatar source but you haven't connected any {platform} account."
@@ -2168,6 +2270,18 @@ msgstr "Părăsește"
 
 msgid "Explore communities"
 msgstr "Explorează comunități"
+
+#, fuzzy
+msgid "You have to check at least one box."
+msgstr "Trebuie să bifați cel puțin o căsuță."
+
+#, fuzzy
+msgid "Which countries should your donors be allowed to send you money from?"
+msgstr "Din ce țări ar trebui să li se permită donatorilor dumneavoastră să vă trimită bani?"
+
+#, fuzzy
+msgid "We recommend limiting the origins of donations only if you are required to by law."
+msgstr "Vă recomandăm să limitați originea donațiilor numai dacă legea vă obligă să faceți acest lucru."
 
 msgid "The submitted settings are incoherent."
 msgstr "Configurările trimise sunt incoerente."
@@ -2213,10 +2327,6 @@ msgstr[2] ""
 #, fuzzy
 msgid "Connect an account"
 msgstr "Conectați un cont"
-
-#, fuzzy
-msgid "Our YouTube integration has been disabled by Google. We're working on re-implementing this feature in a different way."
-msgstr "Integrarea noastră în YouTube a fost dezactivată de Google. Lucrăm la reimplementarea acestei funcții într-un mod diferit."
 
 msgid "I'm grateful for gifts, but don't have a specific funding goal."
 msgstr "Sunt deschis la daruri, dar nu am un țel de finanțare specific."
@@ -2294,9 +2404,38 @@ msgstr "Putem importa o listă cu depozitele dumneavoastră de la:"
 msgid "We can also import lists of repositories for your teams:"
 msgstr "Putem de asemenea importa liste cu depozitele echipelor dumneavoastră:"
 
-#, python-brace-format
-msgid "The submitted summary is too long ({0} > {1})."
-msgstr "Sumarul trimis este prea lung ({0} > {1})."
+#, fuzzy, python-brace-format
+msgid "<unused singular (hash=82d03d589b58d2a8c99d043ba5f91b84)>"
+msgid_plural "The summary can't be more than {n} characters long."
+msgstr[0] "<unused singular (hash=82d03d589b58d58d2a8c99d043ba5f91b84)>"
+msgstr[1] ""
+msgstr[2] "Rezumatul nu poate avea mai mult de {n} caractere."
+
+#, fuzzy, python-brace-format
+msgid "<unused singular (hash=e77fbb49c028c11bb9d859698c4a5363)>"
+msgid_plural "The full description must be at least {n} characters long."
+msgstr[0] "<unused singular (hash=e77fbb49c028c11bb9d859698c4a5363)>"
+msgstr[1] ""
+msgstr[2] "Descrierea completă trebuie să aibă cel puțin {n} caractere."
+
+#, fuzzy, python-brace-format
+msgid "<unused singular (hash=df724b624e486f3c07109838b9a4b3f0)>"
+msgid_plural "The full description can't be more than {n} characters long."
+msgstr[0] "<unused singular (hash=df724b624e486f3c0710109838b9a4b3f0)>"
+msgstr[1] ""
+msgstr[2] "Descrierea completă nu poate avea mai mult de {n} caractere."
+
+#, fuzzy
+msgid "The full description can't be identical to the summary."
+msgstr "Descrierea completă nu poate fi identică cu rezumatul."
+
+#, fuzzy
+msgid "The summary can't be only your name."
+msgstr "Rezumatul nu poate fi doar numele dumneavoastră."
+
+#, fuzzy
+msgid "The description can't be only your name."
+msgstr "Descrierea nu poate fi doar numele tău."
 
 msgid "This is a preview."
 msgstr "Aceasta este o previzualizare."
@@ -2307,6 +2446,10 @@ msgstr "Extras care va fi folosit pe mediile sociale:"
 #, fuzzy
 msgid "Preview of the short description"
 msgstr "Previzualizare a descrierii scurte"
+
+#, fuzzy
+msgid "Including your username in the short description is redundant. The short description is always displayed immediately below the username."
+msgstr "Includerea numelui dvs. de utilizator în descrierea scurtă este redundantă. Descrierea scurtă este întotdeauna afișată imediat sub numele de utilizator."
 
 #, fuzzy
 msgid "Publish"
@@ -2524,6 +2667,10 @@ msgstr "Deoarece ați ales să faceți o donație publică, vă recomandăm să 
 msgid "You have enabled automatic renewals for some or all of your donations, but you don't have any valid payment instrument that would allow us to initiate the automatic payments when the time comes."
 msgstr "Ați activat reînnoirea automată a unora sau a tuturor donațiilor dumneavoastră, dar nu aveți niciun instrument de plată valabil care să ne permită să inițiem plățile automate la momentul potrivit."
 
+#, fuzzy
+msgid "Add a payment instrument"
+msgstr "Adăugați un instrument de plată"
+
 msgid "Donations"
 msgstr "Donații"
 
@@ -2541,6 +2688,9 @@ msgstr "{money_amount}{small}/lună{end_small}"
 #, fuzzy, python-brace-format
 msgid "{money_amount}{small}/year{end_small}"
 msgstr "{money_amount}{small}/an{end_small}"
+
+msgid "Modify"
+msgstr "Modifică"
 
 #, python-brace-format
 msgid "Started {timespan_ago}."
@@ -2574,6 +2724,10 @@ msgstr "Următoarea plată este scadentă {in_N_weeks_months_or_years}."
 
 msgid "Renew now"
 msgstr "Reînnoiește acum"
+
+#, fuzzy, python-brace-format
+msgid "The recipient no longer accepts payments in {currency}."
+msgstr "Beneficiarul nu mai acceptă plăți în {currency}."
 
 #, fuzzy
 msgid "Pending payment completion."
@@ -2661,9 +2815,6 @@ msgstr "PayPal este în prezent singura opțiune disponibilă pentru a finanța 
 msgid "Please choose a payment method:"
 msgstr "Selectați o metodă de plată:"
 
-msgid "Card"
-msgstr "Card"
-
 msgid "Currently unavailable"
 msgstr "Indisponibil momentan"
 
@@ -2671,11 +2822,17 @@ msgstr "Indisponibil momentan"
 msgid "Pay by card"
 msgstr "Plătiți cu cardul"
 
-msgid "Euro donations only"
-msgstr "Numai donații în euro"
+#, fuzzy
+msgid "Only for donations to SEPA countries"
+msgstr "Numai pentru Donații către țările SEPA"
 
-msgid "Euro bank accounts only"
-msgstr "Numai conturi bancare în Euro"
+#, fuzzy
+msgid "Only for donations in euros"
+msgstr "Numai pentru Donații în euro"
+
+#, fuzzy
+msgid "Only euro bank accounts"
+msgstr "Numai conturi bancare în euro"
 
 #, fuzzy
 msgid "Pay by direct debit"
@@ -2714,9 +2871,13 @@ msgstr "Plata de {charge_amount} a fost efectuată cu succes."
 msgid "Failure"
 msgstr "Eșec"
 
-#, fuzzy, python-brace-format
-msgid "The payment processor {name} returned an error: “{error_message}”."
-msgstr "Procesatorul de plăți {name} a returnat o eroare: \"{error_message}\"."
+#, python-brace-format
+msgid "PayPal status code: {0}"
+msgstr "Cod de stare PayPal: {0}"
+
+#, python-brace-format
+msgid "error message: {0}"
+msgstr "mesaj de eroare: {0}"
 
 msgid "The payment has been initiated."
 msgstr "Plata a fost inițiată."
@@ -2752,6 +2913,10 @@ msgstr "PayPal dezvăluie destinatarului numele și adresa dvs. de e-mail."
 msgid "Initiate the payment"
 msgstr "Inițiază plata"
 
+#, fuzzy, python-brace-format
+msgid "The payment processor {name} returned an error: “{error_message}”."
+msgstr "Procesatorul de plăți {name} a returnat o eroare: \"{error_message}\"."
+
 #, fuzzy
 msgid "The payment instrument is invalid, please select or add another one."
 msgstr "Instrumentul de plată nu este valid, vă rugăm să selectați sau să adăugați altul."
@@ -2771,6 +2936,10 @@ msgstr "Plata dvs. a fost inițiată. Aceasta va fi transmisă băncii dumneavoa
 #, fuzzy, python-brace-format
 msgid "Your bank can reject this payment. We recommend sending a copy of {link_start}the mandate{link_end} to your bank if you're not sure that it properly handles {currency} direct debit instructions."
 msgstr "Banca dumneavoastră poate respinge această plată. Vă recomandăm să trimiteți o copie a {link_start}mandatului{link_end} băncii dvs. dacă nu sunteți sigur că aceasta gestionează corect instrucțiunile de debitare directă {currency}."
+
+#, fuzzy
+msgid "The initialization of a required component has failed. If you use a browser extension that blocks requests, for example NoScript, please make sure it’s allowing requests to the “stripe.com” domain."
+msgstr "Inițializarea unei componente necesare a eșuat. Dacă utilizați o extensie de browser care blochează cererile, de exemplu NoScript, vă rugăm să vă asigurați că aceasta permite cererile către domeniul \"stripe.com\"."
 
 #, python-brace-format
 msgid "We will charge your {brand} card (last four digits: {last4})."
@@ -2803,6 +2972,10 @@ msgstr "Aceste date vor fi trimise direct către procesatorul de plăți {name} 
 msgid "Remember the card number for next time"
 msgstr "Ține minte acest card pentru data viitoare"
 
+#, fuzzy, python-brace-format
+msgid "Use this payment instrument by default for future payments in {currency}"
+msgstr "Utilizați acest instrument de plată în mod implicit pentru plățile viitoare în {currency}"
+
 #, fuzzy
 msgid "Use this payment instrument by default for future payments"
 msgstr "Utilizați acest instrument de plată în mod implicit pentru plățile viitoare"
@@ -2820,6 +2993,10 @@ msgstr "Ține minte numărul de cont bancar pentru plățile viitoare"
 #, fuzzy, python-brace-format
 msgid "In order to reduce the risk of this payment being rejected, we recommend that you input your postal address below. It will be stored encrypted in our database and sent to the payment processor ({processor_name})."
 msgstr "Pentru a reduce riscul ca această plată să fie respinsă, vă recomandăm să introduceți adresa dvs. poștală mai jos. Aceasta va fi stocată în mod criptat în baza noastră de date și va fi trimisă procesatorului de plăți ({processor_name})."
+
+#, fuzzy
+msgid "Please fill in your postal address. It's required because the IBAN you've provided emanates from outside the European Union."
+msgstr "Vă rugăm să completați adresa dumneavoastră poștală. Aceasta este necesară deoarece IBAN-ul pe care l-ați furnizat provine din afara Uniunii Europene."
 
 #, python-brace-format
 msgid "'{0}' is not an acceptable amount (min={1}, max={2})"
@@ -2946,8 +3123,8 @@ msgstr "Acest profil este disponibil numai în {language}"
 msgid "Edit"
 msgstr "Editează"
 
-msgid "Statement"
-msgstr "Declarație"
+msgid "Description"
+msgstr "Descriere"
 
 #, python-brace-format
 msgid "{0} owns the following accounts on other platforms:"
@@ -3023,12 +3200,13 @@ msgstr "Vizualizează istoricul venitului"
 msgid "No data to show."
 msgstr "Nu există date de afișat."
 
-#, python-brace-format
-msgid "Income Per Week (in {currency})"
+#, fuzzy, python-brace-format
+msgid "Income per week (in {currency})"
 msgstr "Venit pe săptămână (în {currency})"
 
-msgid "Number of Patrons Per Week"
-msgstr "Număr de susținători pe săptămână"
+#, fuzzy
+msgid "Number of patrons per week"
+msgstr "Numărul de clienți pe săptămână"
 
 msgid "Invoice documents are private."
 msgstr "Documentele de facturi sunt private."
@@ -3134,9 +3312,6 @@ msgstr "Natură"
 msgid "(Liberapay only supports one kind of invoice for now.)"
 msgstr "(Liberapay suportă doar un tip de factură momentan.)"
 
-msgid "Description"
-msgstr "Descriere"
-
 msgid "A short description of the invoice"
 msgstr "O scurtă descriere a facturii"
 
@@ -3189,6 +3364,10 @@ msgstr "parțial rambursată"
 msgid "refunded"
 msgstr "returnat"
 
+#, fuzzy
+msgid "suspended"
+msgstr "suspendat"
+
 #, fuzzy, python-brace-format
 msgid "The totals below don't include donations through the old wallet system. You can find those in {link_start}your Wallet page{link_end}."
 msgstr "Totalurile de mai jos nu includ donațiile prin intermediul vechiului sistem de portofel. Le puteți găsi pe acestea pe {link_start}pagina Portofelul dvs.{link_end}."
@@ -3222,10 +3401,6 @@ msgstr "taxă"
 #, fuzzy
 msgid "This payment is awaiting to be manually checked by Liberapay staff for signs of fraud."
 msgstr "Această plată așteaptă să fie verificată manual de către personalul Liberapay pentru a detecta semne de fraudă."
-
-#, python-brace-format
-msgid "error message: {0}"
-msgstr "mesaj de eroare: {0}"
 
 #, fuzzy
 msgid "hidden"
@@ -3283,9 +3458,9 @@ msgstr "donație secretă către {recipient_name} pentru rolul lor în echipa {t
 msgid "This payment must be manually approved by the recipient through {provider}'s website."
 msgstr "Această plată trebuie să fie aprobată manual de către beneficiar prin intermediul site-ului {provider}."
 
-#, python-brace-format
-msgid "PayPal status code: {0}"
-msgstr "Cod de stare PayPal: {0}"
+#, fuzzy
+msgid "The payer's account is suspended due to a suspicion of fraud or other unauthorized action."
+msgstr "Contul plătitorului este suspendat ca urmare a unei suspiciuni de fraudă sau a unei alte acțiuni neautorizate."
 
 msgid "There were no transactions during this period."
 msgstr "Nu au fost tranzacții în timpul acestei perioade."
@@ -3395,28 +3570,52 @@ msgid "{username} doesn't have any active patrons."
 msgstr "{username} nu are niciun client activ."
 
 #, fuzzy
-msgid "Liberapay now supports non-anonymous donations, do you want to know who your patrons are?"
-msgstr "Liberapay suportă acum donații non-anonime, vrei să știi cine sunt patronii tăi?"
+msgid "Visibility levels"
+msgstr "Niveluri de vizibilitate"
 
 #, fuzzy
-msgid "Enable non-anonymous donations"
-msgstr "Activați donațiile non-anonime"
+msgid "Liberapay supports three visibility levels for donations. Each level can be turned on or off, but at least one of them must be enabled."
+msgstr "Liberapay suportă trei niveluri de vizibilitate pentru donații. Fiecare nivel poate fi activat sau dezactivat, dar cel puțin unul dintre ele trebuie să fie activat."
 
 #, fuzzy, python-brace-format
-msgid "You have opted-in to see who your patrons are. If you change your mind, then {link_start}click here to disable non-anonymous donations{link_end}."
-msgstr "Ați optat pentru a vedea cine sunt clienții dumneavoastră. Dacă vă răzgândiți, atunci {link_start}faceți clic aici pentru a dezactiva donațiile non-anonime{link_end}."
+msgid "Secret donations aren't possible with PayPal. You should either disable secret donations or {link_start}add a Stripe account{link_end}."
+msgstr "Donațiile secrete nu sunt posibile cu PayPal. Ar trebui fie să dezactivați donațiile secrete, fie {link_start}adăugați un cont Stripe{link_end}."
 
-#, fuzzy, python-brace-format
-msgid "You've chosen not to see who your patrons are. If you change your mind, then {link_start}click here to enable non-anonymous donations{link_end}."
-msgstr "Ați ales să nu vedeți cine vă sunt patronii. Dacă vă răzgândiți, atunci {link_start}faceți clic aici pentru a activa donațiile non-anonime{link_end}."
+#, fuzzy
+msgid "Secret donations aren't possible when the payer uses PayPal."
+msgstr "Donațiile secrete nu sunt posibile atunci când plătitorul folosește PayPal."
+
+#, fuzzy
+msgid "Allow secret donations"
+msgstr "Permiteți donații secrete"
+
+#, fuzzy
+msgid "Allow private donations"
+msgstr "Permiterea donațiilor private"
+
+#, fuzzy
+msgid "Allow public donations"
+msgstr "Permiterea donațiilor publice"
+
+#, fuzzy
+msgid "This is what your prospective donors currently see:"
+msgstr "Aceasta este ceea ce văd în prezent potențialii dumneavoastră donatori:"
+
+#, fuzzy
+msgid "This is what your prospective donors will see with the new settings:"
+msgstr "Iată ce vor vedea potențialii dumneavoastră donatori cu noile setări:"
 
 #, fuzzy
 msgid "Data export"
 msgstr "Exportul de date"
 
 #, fuzzy
-msgid "Download the list of currently active patrons"
-msgstr "Descărcați lista patronilor activi în prezent"
+msgid "Download the list of currently active patrons who chose to make their donations public"
+msgstr "Descărcați lista patronilor activi în prezent care au ales să facă publice donațiile lor"
+
+#, fuzzy
+msgid "Download the list of all currently active patrons"
+msgstr "Descărcați lista tuturor patronilor activi în prezent"
 
 #, fuzzy
 msgid "Download the record of all patrons in the last ten years"
@@ -3433,9 +3632,29 @@ msgstr "Nu sunteți un membru al vreunei echipe."
 msgid "{username} isn't a member of any team."
 msgstr "{username} nu este membru al niciunei echipe."
 
-#, python-brace-format
-msgid "You have to {link_open}fill your profile{link_close} before you can start to receive donations."
-msgstr "Trebuie să vă {link_open}completați profilul{link_close} înainte de a putea primi donații."
+#, fuzzy
+msgid "The payment account has been successfully disconnected."
+msgstr "Contul de plată a fost deconectat cu succes."
+
+#, fuzzy
+msgid "This payment account is no longer accessible. It is now disconnected."
+msgstr "Acest cont de plată nu mai este accesibil. Acum este deconectat."
+
+#, fuzzy
+msgid "The data has been successfully refreshed."
+msgstr "Datele au fost reîmprospătate cu succes."
+
+#, fuzzy, python-brace-format
+msgid "You have to {link_open}confirm your email address{link_close} before you can start to receive donations."
+msgstr "Trebuie să vă {link_open}confirmați adresa de e-mail{link_close} înainte de a începe să primiți donații."
+
+#, fuzzy, python-brace-format
+msgid "You have to {link_open}set your username{link_close} before you can start to receive donations."
+msgstr "Trebuie să {link_open}setați numele de utilizator{link_close} înainte de a putea începe să primiți donații."
+
+#, fuzzy, python-brace-format
+msgid "You have to {link_open}add a profile description{link_close} before you can start to receive donations."
+msgstr "Trebuie să {link_open}adăugați o descriere a profilului{link_close} înainte de a putea începe să primiți donații."
 
 msgid "To receive donations you must connect at least one account from a supported payment processor. This page allows you to do so."
 msgstr "Pentru a primi donații trebuie să conectați cel puțin un cont de la un furnizor de plăți suportat. Această pagină vă permite să faceți acest lucru."
@@ -3448,8 +3667,8 @@ msgid "We recommend connecting both Stripe and PayPal if they're both available 
 msgstr "Vă recomandăm să conectați ambele Stripe și PayPal dacă sunt disponibile în țara dumneavoastră."
 
 #, fuzzy
-msgid "With Stripe your donors can pay by card or direct debit directly from the Liberapay website. (Direct debits are currently only supported from Euro bank accounts.)"
-msgstr "Cu Stripe, donatorii dvs. pot plăti cu cardul sau prin debit direct de pe site-ul Liberapay. (În prezent, debitele directe sunt acceptate doar din conturile bancare în euro)."
+msgid "With Stripe your donors can pay by card or direct debit directly from the Liberapay website. (Direct debits are currently only supported from euro bank accounts.)"
+msgstr "Cu Stripe, donatorii dvs. pot plăti prin card sau debit direct direct de pe site-ul Liberapay. (În prezent, debitele directe sunt acceptate numai din conturile bancare în euro)."
 
 #, python-brace-format
 msgid "Account ID: {0}"
@@ -3588,6 +3807,10 @@ msgstr "Taxe"
 msgid "This payment is a donation, no goods or services are to be provided in exchange, no tax has been collected by Liberapay."
 msgstr "Această plată este o donație, nu se oferă bunuri sau servicii în schimb, nici o taxă nu a fost colectată de Liberapay."
 
+#, fuzzy
+msgid "Income history"
+msgstr "Istoricul veniturilor"
+
 msgid "You can't receive new donations until you've configured payment processing."
 msgstr "Nu puteți primi donații noi până când nu v-ați configurat procesarea plăților."
 
@@ -3595,15 +3818,17 @@ msgstr "Nu puteți primi donații noi până când nu v-ați configurat procesar
 msgid "Donations through teams make up {income_percent} of your income ({team_income} of {total_income}) and {patrons_percent} of your donors ({nteampatrons} of {npatrons})."
 msgstr "Donațiile prin intermediul echipelor reprezintă {income_percent} din veniturile dumneavoastră ({team_income} din {total_income}) și {patrons_percent} din donatorii dumneavoastră ({nteampatrons} din {npatrons})."
 
-msgid "Details of Donations"
-msgstr "Detaliile donațiilor"
+#, fuzzy
+msgid "Details of personal donations"
+msgstr "Detalii privind donațiile personale"
 
 #, fuzzy
 msgid "This section doesn't include data on donations through teams, it only shows the donations that you receive personally."
 msgstr "Această secțiune nu include date privind donațiile prin intermediul echipelor, ci doar donațiile pe care le primiți personal."
 
-msgid "Recent Changes"
-msgstr "Schimbări recente"
+#, fuzzy
+msgid "Recent changes to personal donations"
+msgstr "Modificări recente privind donațiile personale"
 
 #, python-brace-format
 msgid "A new donation of {amount} per week has been created."
@@ -3624,6 +3849,10 @@ msgstr "O donație a fost redusă de la {old_amount} pe săptămână la {new_am
 #, fuzzy, python-brace-format
 msgid "A donation of {amount} per week has been restarted."
 msgstr "A fost reluată o donație de {amount} pe săptămână."
+
+#, fuzzy
+msgid "Statistics on personal donations"
+msgstr "Statistici privind donațiile personale"
 
 msgid "The table below lists the donations you receive, grouped by amount."
 msgstr "Tabelul de mai jos listează donațiile pe care le primiți, grupate după sumă."
@@ -3697,8 +3926,19 @@ msgid "Bank Account"
 msgstr "Cont bancar"
 
 #, fuzzy
+msgid "This instrument is used by default."
+msgstr "Acest instrument este utilizat în mod implicit."
+
 msgid "default"
-msgstr "implicit"
+msgstr "Implicit"
+
+#, fuzzy, python-brace-format
+msgid "This instrument is used by default for payments in {currency}."
+msgstr "Acest instrument este utilizat în mod implicit pentru plățile în {currency}."
+
+#, fuzzy, python-brace-format
+msgid "default for {currency}"
+msgstr "implicit pentru {currency}"
 
 #, fuzzy
 msgid "view mandate"
@@ -3736,6 +3976,22 @@ msgstr "Acest instrument de plată nu a fost utilizat încă."
 msgid "Set as default"
 msgstr "Setați ca implicit"
 
+#, fuzzy, python-brace-format
+msgid "Stop using this instrument by default for payments in {currency}."
+msgstr "Nu mai utilizați acest instrument în mod implicit pentru plățile efectuate în {currency}."
+
+#, fuzzy, python-brace-format
+msgid "Unset as default for {currency}"
+msgstr "Dezactivat ca Implicit pentru {currency}"
+
+#, fuzzy, python-brace-format
+msgid "Use this instrument by default for payments in {currency}."
+msgstr "Utilizați acest instrument în mod implicit pentru plăți în {currency}."
+
+#, fuzzy, python-brace-format
+msgid "Set as default for {currency}"
+msgstr "Setat ca implicit pentru {currency}"
+
 #, fuzzy
 msgid "You don't have any valid payment instrument."
 msgstr "Nu aveți niciun instrument de plată valabil."
@@ -3749,11 +4005,16 @@ msgid "Add a card"
 msgstr "Adăugați un card"
 
 #, fuzzy
+msgid "Euro Bank Account"
+msgstr "Cont bancar în euro"
+
+#, fuzzy
+msgid "Only for donations in euros to recipients in SEPA countries"
+msgstr "Numai pentru donații în euro către destinatari din țările SEPA"
+
+#, fuzzy
 msgid "Add a bank account"
 msgstr "Adăugați un cont bancar"
-
-msgid "Close Account"
-msgstr "Închide contul"
 
 msgid "Data retention"
 msgstr "Reținere de date"
@@ -4108,8 +4369,8 @@ msgid "Not safe for work"
 msgstr "Nu este sigur pentru muncă"
 
 #, fuzzy, python-brace-format
-msgid "Yes. However, Liberapay isn't a shield: we can't protect anyone from being banned by {link_open}the underlying payment processors{link_close}."
-msgstr "Da. Cu toate acestea, Liberapay nu este un scut: nu putem proteja pe nimeni de a fi interzis prin {link_open}procesatorii de plată de bază{link_close}."
+msgid "The payment processors Liberapay supports have unfavourable policies towards sexual content. {paypal_link}PayPal requires pre-approval{link_close}, and {stripe_link}Stripe prohibits it entirely{link_close}. So, while it is possible to use Liberapay for some adult-only content, it is usually better to use a platform specialized in such content."
+msgstr "Procesatorii de plăți pe care Liberapay îi sprijină au politici nefavorabile față de conținutul sexual. {paypal_link}PayPal necesită o aprobare prealabilă{link_close}, iar {stripe_link}Stripe interzice în totalitate acest lucru{link_close}. Așadar, deși este posibil să folosiți Liberapay pentru anumite conținuturi destinate exclusiv adulților, este de obicei mai bine să folosiți o platformă specializată în astfel de conținuturi."
 
 #, fuzzy
 msgid "Can I modify or stop my donations?"
@@ -4166,8 +4427,8 @@ msgid "See the “{page_name}” page."
 msgstr "Consultați pagina „{page_name}”."
 
 #, fuzzy, python-brace-format
-msgid "The available payment methods depend on which payment processors are supported by the recipient. If a payment is processed by Stripe, then most credit and debit cards ({list_of_card_brands}) are accepted, as well as SEPA Direct Debits (for Euro donations only). If a payment is through PayPal, then it's possible to pay in various ways, however the donor needs to have or create a PayPal account."
-msgstr "Metodele de plată disponibile depind de procesatorii de plată acceptați de către destinatar. Dacă o plată este procesată de Stripe, atunci sunt acceptate majoritatea cardurilor de credit și de debit ({list_of_card_brands}), precum și debitele directe SEPA (numai pentru donații în euro). Dacă o plată se face prin PayPal, atunci este posibilă plata în diverse moduri, însă donatorul trebuie să aibă sau să creeze un cont PayPal."
+msgid "The available payment methods depend on which payment processors are supported by the recipient. If a payment is processed by Stripe, then most credit and debit cards ({list_of_card_brands}) are accepted, as well as SEPA Direct Debits (only for donations in euros to recipients in SEPA countries). If a payment is through PayPal, then it's possible to pay in various ways, however the donor needs to have or create a PayPal account."
+msgstr "Metodele de plată disponibile depind de procesoarele de plată acceptate de destinatar. Dacă o plată este procesată prin Stripe, atunci majoritatea cardurilor de credit și de debit ({list_of_card_brands}) sunt acceptate, precum și debitele directe SEPA (numai pentru donații în euro către destinatari din țările SEPA). Dacă o plată este efectuată prin PayPal, atunci este posibilă plata în diverse moduri, însă donatorul trebuie să aibă sau să creeze un cont PayPal."
 
 msgid "What are the payment processing fees?"
 msgstr "Care sunt taxele de procesare ale plăților?"
@@ -4175,6 +4436,14 @@ msgstr "Care sunt taxele de procesare ale plăților?"
 #, fuzzy, python-brace-format
 msgid "The fees vary by payment processor, payment method, countries and currencies. In the last year, the average fee percentages have been {average_fee_stripe} for the payments processed by Stripe and {average_fee_paypal} for the payments processed by PayPal."
 msgstr "Comisioanele variază în funcție de procesatorul de plăți, metoda de plată, țări și valute. În ultimul an, procentele medii ale comisioanelor au fost {average_fee_stripe} pentru plățile procesate de Stripe și {average_fee_paypal} pentru plățile procesate de PayPal."
+
+#, fuzzy
+msgid "How and when do I receive the money sent by my patrons?"
+msgstr "Cum și când primesc banii trimiși de patronii mei?"
+
+#, fuzzy
+msgid "Money sent by a donor immediately goes to your Stripe or PayPal account. By default Stripe then automatically sends the funds to your bank account, whereas PayPal simply stores them until you spend or withdraw them."
+msgstr "Banii trimiși de un donator ajung imediat în contul dumneavoastră Stripe sau PayPal. Implicit, Stripe trimite apoi automat fondurile în contul dvs. bancar, în timp ce PayPal le stochează pur și simplu până când le cheltuiți sau le retrageți."
 
 #, fuzzy
 msgid "Why do I see partial refunds in the Stripe dashboard?"
@@ -4214,19 +4483,13 @@ msgstr "Sunt donațiile prin Liberapay deductibile din taxe?"
 msgid "Probably not, but it depends on the tax rules of your country."
 msgstr "Probabil că nu, dar depinde de regulațiile taxelor și impozitelor din țara dumneavoastră."
 
-msgid "What are wallets?"
-msgstr "Ce sunt portofelele?"
+#, fuzzy
+msgid "Is a Liberapay account a wallet?"
+msgstr "Este un cont Liberapay un portofel?"
 
 #, fuzzy
-msgid "Liberapay used to hold the funds of donors in wallets, but we no longer do that. Instead the full amount of a donation is immediately transferred to the recipient."
-msgstr "Liberapay obișnuia să păstreze fondurile donatorilor în portofele, dar nu mai facem acest lucru. În schimb, suma totală a unei donații este transferată imediat către beneficiar."
-
-msgid "What is “payday”?"
-msgstr "Ce este „ziua de plată”?"
-
-#, fuzzy, python-brace-format
-msgid "Payday is a program ({0}this one{1}) that we run every Wednesday. It executes donations and notifies donors and recipients."
-msgstr "Payday este un program ({0}acesta{1}) pe care îl derulăm în fiecare miercuri. Acesta execută donațiile și notifică donatorii și beneficiarii."
+msgid "Not since mid-2018. Money sent by a donor immediately goes to the recipient. Previously, funds were held in the donor's account and disbursed little by little to the recipient every week. That system was definitively abandoned due to its very significant drawbacks."
+msgstr "Nu de la jumătatea anului 2018. Banii trimiși de un donator ajung imediat la beneficiar. Anterior, fondurile erau păstrate în contul donatorului și vărsate puțin câte puțin destinatarului în fiecare săptămână. Acest sistem a fost abandonat definitiv din cauza dezavantajelor sale foarte semnificative."
 
 msgid "You can get updates from us on the following social networks:"
 msgstr "Puteți primi actualizări de la noi pe următoarele rețele sociale:"
@@ -4246,19 +4509,54 @@ msgstr[0] "Donatorii pot alege între până la {n} valute, în funcție de pref
 msgstr[1] ""
 msgstr[2] ""
 
-#, fuzzy, python-brace-format
-msgid "<unused singular (hash=15422027494f4dee6eed143ece78c0ce)>"
-msgid_plural "Liberapay is fully available to creators in {n} territories:"
-msgstr[0] "Liberapay este pe deplin disponibil pentru creatorii din teritoriile {n}:"
-msgstr[1] ""
-msgstr[2] ""
+#, fuzzy
+msgid "Donations can only be received in territories where at least one supported payment processor is available. Moreover, some features are only available in some of the territories supported by a payment processor."
+msgstr "Donațiile pot fi primite numai în teritoriile în care este disponibil cel puțin un procesor de plăți acceptat. În plus, unele caracteristici sunt disponibile numai în unele dintre teritoriile acceptate de un procesator de plăți."
 
 #, fuzzy, python-brace-format
-msgid "<unused singular (hash=ce784fd8cdb312cf56226bbd42d07d18)>"
-msgid_plural "Additionally, Liberapay is partially available to creators in {paypal_link_open}the {n} countries supported by PayPal{link_close}."
-msgstr[0] "În plus, Liberapay este parțial disponibil pentru creatorii din {paypal_link_open} {n} țările acceptate de PayPal{link_close}."
+msgid "The currently supported payment processors are {Stripe} and {PayPal}. You can find a list of the differences between them {link_start}in the “{page_name}” page{link_end}."
+msgstr "Procesoarele de plată acceptate în prezent sunt {Stripe} și {PayPal}. Puteți găsi o listă a diferențelor dintre acestea {link_start}în pagina \"{page_name}\"{link_end}."
+
+#, fuzzy
+msgid "Best supported territories"
+msgstr "Teritoriile cele mai bine sprijinite"
+
+#, fuzzy, python-brace-format
+msgid "<unused singular (hash=79acddfc1b997a9b2e4aa18d930e097e)>"
+msgid_plural "Creators in these {n} territories benefit from all of Liberapay's features:"
+msgstr[0] "<unused singular (hash=79acddfc1b997a9b2e4aa18d930e097e)>"
 msgstr[1] ""
-msgstr[2] ""
+msgstr[2] "Creatorii din aceste teritorii {n} beneficiază de toate caracteristicile Liberapay:"
+
+#, fuzzy
+msgid "Well supported territories"
+msgstr "Teritorii bine susținute"
+
+#, fuzzy, python-brace-format
+msgid "<unused singular (hash=d6ace91b81f74c1f52f602d3d7009ed8)>"
+msgid_plural "Liberapay is also available to creators in the {n} territories listed below. However, donations going to those territories cannot be grouped to lower the payment processing fees, and the euro direct debit payment method isn't available to the donors."
+msgstr[0] "<unused singular (hash=d6ace91b81f74c1f52f602d3d7009ed8)>"
+msgstr[1] ""
+msgstr[2] "Liberapay este disponibil și pentru creatorii din teritoriile {n} enumerate mai jos. Cu toate acestea, Donațiile către aceste teritorii nu pot fi grupate pentru a reduce taxele de procesare a plăților, iar metoda de plată prin debit direct în euro nu este disponibilă pentru donatori."
+
+#, fuzzy
+msgid "Barely supported territories"
+msgstr "Teritorii abia sprijinite"
+
+#, fuzzy, python-brace-format
+msgid "<unused singular (hash=53cbe5d36eacd9bcc6b8eed3023c884b)>"
+msgid_plural "Liberapay is partly available to creators in the {n} territories listed below, which are supported by PayPal but not by Stripe."
+msgstr[0] "<unused singular (hash=53cbe5d36eacd9bcc6b8eed3023c884b)>"
+msgstr[1] ""
+msgstr[2] "Liberapay este parțial disponibil pentru creatorii din teritoriile {n} enumerate mai jos, care sunt acceptate de PayPal, dar nu și de Stripe."
+
+#, fuzzy
+msgid "Unsupported territories"
+msgstr "Teritorii nesusținute"
+
+#, fuzzy
+msgid "If you don't live or have a registered business in one of the territories listed above, then you currently can't use Liberapay to receive donations. Sorry."
+msgstr "Dacă nu locuiți sau nu aveți o afacere înregistrată în unul dintre teritoriile enumerate mai sus, atunci nu puteți utiliza Liberapay pentru a primi Donații. Ne pare rău."
 
 msgid "What is Liberapay?"
 msgstr "Ce este Liberapay?"
@@ -4319,8 +4617,8 @@ msgid "This page contains links to and information about the Liberapay logo. We 
 msgstr "Această pagină conține link-uri și informații despre logo-ul Liberapay. Sperăm că o veți găsi deosebit de utilă dacă scrieți un articol despre Liberapay sau dacă doriți să adăugați link-uri personalizate la profilul Liberapay de pe site-ul dumneavoastră."
 
 #, fuzzy
-msgid "The Liberapay logo is composed of the two letters “lp”. It's usually colored either white-on-yellow, black-on-yellow, or just black."
-msgstr "Logo-ul Liberapay este compus din două litere \"lp\". De obicei, este colorat fie în alb pe galben, fie în negru pe galben, fie doar în negru."
+msgid "The Liberapay logo is composed of the two letters “lp”. It's usually colored black-on-yellow or just black. We used a white-on-yellow variant in the past, but it's now phased out as its contrast was deemed too low."
+msgstr "Logo-ul Liberapay este compus din două litere \"lp\". De obicei, este colorat în negru pe galben sau doar negru. În trecut, am folosit o variantă alb pe galben, dar aceasta a fost eliminată treptat, deoarece contrastul său a fost considerat prea mic."
 
 #, fuzzy, python-brace-format
 msgid "The Liberapay yellow is {yellow_color_code}, the black is {black_color_code}."
@@ -4334,19 +4632,9 @@ msgstr "Logo-ul Liberapay este destul de liber de drepturi de autor datorită {C
 msgid "You can view and download our logos below or {link_start}on GitHub{link_end}."
 msgstr "Puteți vizualiza și descărca logourile noastre mai jos sau {link_start}de pe GitHub{link_end}."
 
-msgid "Download the white-on-yellow SVG"
-msgstr "Descarcă SVG-ul alb-pe-galben"
-
-#, python-brace-format
-msgid "Download the white-on-yellow PNG ({x_y} pixels)"
-msgstr "Descarcă PNG-ul alb-pe-galben ({x_y} pixeli)"
-
-msgid "Download the black SVG"
-msgstr "Descarcă SVG-ul negru"
-
-#, python-brace-format
-msgid "Download the black PNG ({x_y} pixels)"
-msgstr "Descarcă PNG-ul negru ({x_y} pixeli)"
+#, fuzzy
+msgid "Liberapay logo, black-on-yellow"
+msgstr "Logo Liberapay, negru pe galben"
 
 msgid "Download the black-on-yellow SVG"
 msgstr "Descărcați SVG-ul negru-pe-galben"
@@ -4356,12 +4644,15 @@ msgid "Download the black-on-yellow PNG ({x_y} pixels)"
 msgstr "Descărcați PNG negru pe galben ({x_y} pixeli)"
 
 #, fuzzy
-msgid "Fonts"
-msgstr "Fonturi"
+msgid "Liberapay logo, black"
+msgstr "Logo Liberapay, negru"
 
-#, fuzzy, python-brace-format
-msgid "The Liberapay logo is included in the {fa_link_start}Fork Awesome{link_end} font in two forms: {fa_liberapay_link} and {fa_liberapay_square_link}."
-msgstr "Logo-ul Liberapay este inclus în fontul {fa_link_start}Fork Awesome{link_end} sub două forme: {fa_liberapay_link} și {fa_liberapay_square_link}."
+msgid "Download the black SVG"
+msgstr "Descarcă SVG-ul negru"
+
+#, python-brace-format
+msgid "Download the black PNG ({x_y} pixels)"
+msgstr "Descarcă PNG-ul negru ({x_y} pixeli)"
 
 #, fuzzy
 msgid "Here is a list of differences between them:"
@@ -4374,6 +4665,10 @@ msgstr "Taxele de procesare a plăților sunt de obicei mai mici cu Stripe decâ
 #, fuzzy
 msgid "Stripe allows renewing donations automatically, whereas PayPal currently requires donors to confirm every payment."
 msgstr "Stripe permite reînnoirea automată a donațiilor, în timp ce PayPal cere în prezent donatorilor să confirme fiecare plată."
+
+#, fuzzy
+msgid "Donations through Stripe can be secret, whereas PayPal always allows donors and recipients to see each other's names and email addresses."
+msgstr "Donațiile prin Stripe pot fi secrete, în timp ce PayPal permite întotdeauna donatorilor și destinatarilor să vadă numele și adresele de e-mail ale celuilalt."
 
 #, fuzzy
 msgid "Stripe allows donating to multiple creators at once in some cases, whereas PayPal always requires separate payments."
@@ -4396,9 +4691,9 @@ msgid "PayPal only supports {n_paypal_currencies} of the {n_liberapay_currencies
 msgstr "PayPal acceptă doar {n_paypal_currencies} din {n_liberapay_currencies} monedele acceptate de Liberapay și Stripe."
 
 #, fuzzy, python-brace-format
-msgid "<unused singular (hash=901d1e29a8c2a0e16ff208c9a8fda012)>"
-msgid_plural "PayPal is available to creators in more than 200 countries, whereas Stripe only supports {n} countries in a suitable way."
-msgstr[0] "PayPal este disponibil pentru creatorii din peste 200 de țări, în timp ce Stripe acceptă doar {n} țări într-un mod adecvat."
+msgid "<unused singular (hash=47f7d13f5771b30f0bcf49ea3acd518b)>"
+msgid_plural "PayPal is available to creators in more than 100 countries, whereas Stripe only supports {n} countries in a suitable way."
+msgstr[0] "PayPal este disponibil pentru creatorii din peste 100 de țări, în timp ce Stripe acceptă doar {n} țări într-un mod adecvat."
 msgstr[1] ""
 msgstr[2] ""
 
@@ -4625,9 +4920,9 @@ msgstr "Partajarea fondurilor"
 msgid "Teams don't have a hierarchy, all their members are equal and set their own take."
 msgstr "Echipele nu au o ierarhie, toți membrii lor sunt egali și își stabilesc propriul beneficiu."
 
-#, python-brace-format
-msgid "You can change your takes from {0}your teams dashboard{1}. It contains tables that show the nominal takes of all members for the next and previous payday, as well as an estimate of the actual amounts of money they'll receive in the next payday."
-msgstr "Vă puteți schimba beneficiile din {0}tabloul de bord al echipei{1}. Conține tabele care arătă beneficiul nominal al tuturor membrilor pentru următoarea și precedenta zi de plată, de asemenea și o estimată a sumelor de bani pe care le vor primi la următoarea zi de plată."
+#, fuzzy, python-brace-format
+msgid "You can change your takes from {0}your teams dashboard{1}. It contains tables that show the nominal takes of all members, as well as an estimate of the actual amounts of money that will be deducted at the end of the current weekly cycle."
+msgstr "Puteți să vă modificați veniturile de pe {0}tabloul de bord al echipei{1}. Acesta conține tabele care arată contribuțiile nominale ale tuturor membrilor, precum și o estimare a sumelor reale de bani care vor fi deduse la sfârșitul ciclului săptămânal curent."
 
 msgid "The nominal takes are the raw numbers that the members input themselves, the actual takes are computed by the system: first it sums up the nominal takes, then it computes the percentage that each take represents, and finally it applies those percentages to the available income. Nominal takes also act as maximums: the actual takes are never higher than the nominal ones, even if additional income is available."
 msgstr "Beneficiile nominale sunt numere brute pe care membrii le introduc singuri, beneficiile reale sunt calculate de sistem: mai întâi se adună beneficiile nominale, apoi se computează procentele reprezentate de fiecare beneficiu, iar în final se aplică acele procente la venitul disponibil. Beneficiile nominale acționează ca maxime: beneficiile reale nu sunt niciodată mai mari decât cele nominale, chiar dacă sunt venituri disponibile."
@@ -4645,15 +4940,17 @@ msgstr "În mod implicit, toți membrii echipei au valoarea specială \"auto\", 
 msgid "Regulation of take amounts"
 msgstr "Reglementarea sumelor beneficiilor"
 
-msgid "When “take throttling” is enabled for a team, its members can't raise their takes higher than a maximum computed on the basis of the nominal takes at the time of the previous payday. This mechanism is meant to encourage inviting new contributors to join the team, by ensuring that they won't take a disproportionate share of the income in their first weeks."
-msgstr "Când „limitarea beneficiului” este activată pentru o echipă, membrii ei nu pot mări beneficiile lor mai mult decât un maxim calculat pe baza beneficiilor nominale la timpul zilei de plată precedente. Acest mecanism este conceput pentru a încuraja invitarea contribuitorilor noi în a se alătura echipei, asigurând că nu vor lua o parte disproporționată din venit în primele lor săptămâni."
+#, fuzzy
+msgid "When “take throttling” is enabled for a team, its members can't raise their takes higher than a maximum computed on the basis of the nominal takes at the end of the previous weekly cycle. This mechanism is meant to encourage inviting new contributors to join the team, by ensuring that they won't take a disproportionate share of the income in their first weeks."
+msgstr "Atunci când pentru o echipă este activată \"limitarea încasărilor\", membrii acesteia nu își pot crește încasările peste un maxim calculat pe baza încasărilor nominale la sfârșitul ciclului săptămânal anterior. Acest mecanism este menit să încurajeze invitarea noilor colaboratori să se alăture echipei, asigurându-se că aceștia nu vor lua o parte disproporționată din venituri în primele lor săptămâni."
 
-#, python-brace-format
-msgid "The limit works like this: you can always increase your take to {amount} if it was below that, you can double your take compared to the previous week, you can raise your take to claim the team's leftover income, and you can bring your take up to the level of the median take in the previous payday. Whichever of these possibilities results in the highest amount is your maximum take for the week."
-msgstr "Limita funcționează așa: vă puteți întotdeauna mări beneficiul cu {amount} dacă a fost mai jos de atât, puteți dubla beneficiul comparativ cu săptămâna trecută, puteți mări beneficiul pentru a revendica din excesul de venit al echipei, și puteți ridica beneficiul la nivelul beneficiului mediu din ziua de plată precedentă. Oricare dintre aceste posibilități rezultă în cea mai mare sumă va deveni beneficiul pentru acea săptămână."
+#, fuzzy, python-brace-format
+msgid "The limit works like this: you can always increase your take to {amount} if it was below that, you can double your take compared to the previous week, you can raise your take to claim the team's leftover income, and you can bring your take up to the level of the median take at the end of the previous weekly cycle. Whichever of these possibilities results in the highest amount is your maximum take for the week."
+msgstr "Limita funcționează în felul următor: puteți oricând să vă măriți încasările la {amount} dacă acestea au fost mai mici, puteți să vă dublați încasările față de săptămâna precedentă, puteți să vă măriți încasările pentru a revendica veniturile rămase ale echipei și puteți să vă aduceți încasările la nivelul încasărilor medii de la sfârșitul ciclului săptămânal precedent. Oricare dintre aceste posibilități generează cea mai mare sumă este încasarea maximă pentru săptămâna respectivă."
 
-msgid "Takes are not limited if the team has only one member, or if the previous week's takes were all zero (which is the case for any new team that has been created after the most recent payday)."
-msgstr "Beneficiile nu sunt limitate dacă echipa are doar un membru, sau dacă beneficiile din săptămânile trecute sunt toate zero (care este cazul pentru orice echipă nouă care a fost creeată după cea mai recentă zi de plată)."
+#, fuzzy
+msgid "Takes are not limited if the team has only one member, or if the previous week's takes were all zero (which is the case for any new team that has been created during the current weekly cycle)."
+msgstr "Încasările nu sunt limitate dacă echipa are un singur membru sau dacă în săptămâna precedentă toate încasările au fost zero (ceea ce este cazul oricărei echipe noi care a fost creată în timpul ciclului săptămânal curent)."
 
 #, fuzzy
 msgid "Please contact support if you want to enable or disable the take limits for an existing team. Don't forget to include evidence that the change has been approved by the other team members."
@@ -4748,26 +5045,33 @@ msgstr[2] "Aici sunt {n} de utilizatori Liberapay care și-au conectat contul {0
 msgid "Explore other platforms:"
 msgstr "Explorează alte platfomre:"
 
-msgid "Liberapay provides several ways of finding great people to donate to:"
-msgstr "Liberapay oferă câteva modalități de a găsi oameni măreți cărora să le donați:"
+#, fuzzy
+msgid "This page lists Liberapay users who are hoping to receive their first donations."
+msgstr "Această pagină conține lista utilizatorilor Liberapay care speră să primească primele lor donații."
 
-msgid "A team is a group of users working on a specific project."
-msgstr "O echipă este un grup de utilizatori ce lucrează la un proiect specific."
+#, fuzzy
+msgid "Despite our efforts, some of the listed profiles may be spam or fraud."
+msgstr "În ciuda eforturilor noastre, unele dintre profilurile listate pot fi spam sau fraudă."
 
-msgid "Explore Teams"
-msgstr "Explorează echipe"
+#, fuzzy
+msgid "Profiles only start appearing in the list 72 hours after they're created."
+msgstr "Profilurile încep să apară în listă doar la 72 de ore după ce au fost create."
 
-msgid "Great nonprofits and companies trying to improve the world."
-msgstr "Companii și non-profituri mărețe ce încearcă a îmbunătăți lumea."
+#, fuzzy
+msgid "People and projects who receive donations through Liberapay."
+msgstr "Persoane și proiecte care primesc donații prin Liberapay."
 
-msgid "Explore Organizations"
-msgstr "Explorează organizații"
+#, fuzzy
+msgid "Explore Recipients"
+msgstr "Explorați beneficiarii"
 
-msgid "People like you who contribute to the commons (art, knowledge, software, …)."
-msgstr "Oameni ca dumneavoastră care contribuie la cultura liberă (artă, cunoștințe, programe, …)."
+#, fuzzy
+msgid "Users who are hoping to receive their first donations through Liberapay."
+msgstr "Utilizatorii care speră să primească primele lor donații prin Liberapay."
 
-msgid "Explore Individuals"
-msgstr "Explorează indivizi"
+#, fuzzy
+msgid "Explore Hopefuls"
+msgstr "Explorați speranțe"
 
 msgid "Liberapay allows pledging to fund people who haven't joined the site yet."
 msgstr "Liberapay permite petiții pentru a finanța oameni care încă nu s-au alăturat sitului."
@@ -4790,27 +5094,46 @@ msgstr "Răsfoiți prin conturile pe care utilizatorii Liberapay le au pe alte p
 msgid "Explore Social Networks"
 msgstr "Explorează rețele sociale"
 
+msgid "Individuals"
+msgstr "Indivizi"
+
 #, python-brace-format
 msgid "The top {0} individuals on Liberapay are:"
 msgstr "Top {0} indivizi pe Liberapay sunt:"
 
-#, fuzzy, python-brace-format
-msgid "List of individuals on Liberapay, page {number}:"
-msgstr "Lista persoanelor fizice de pe Liberapay, pagina {number}:"
+#, fuzzy
+msgid "Sort by"
+msgstr "Sortează după"
+
+#, fuzzy
+msgid "income"
+msgstr "venit"
+
+#, fuzzy
+msgid "creation date"
+msgstr "data creării"
+
+#, fuzzy
+msgid "sort order"
+msgstr "ordine de sortare"
+
+#, fuzzy
+msgid "in descending order"
+msgstr "în ordine descrescătoare"
+
+#, fuzzy
+msgid "in ascending order"
+msgstr "în ordine crescătoare"
+
+msgid "Organizations"
+msgstr "Organizații"
 
 #, python-brace-format
 msgid "The top {0} organizations on Liberapay are:"
 msgstr "Top {0} organizații pe Liberapay sunt:"
 
-#, fuzzy, python-brace-format
-msgid "List of organizations on Liberapay, page {number}:"
-msgstr "Lista organizațiilor de pe Liberapay, pagina {number}:"
-
 msgid "Create an organization account"
 msgstr "Creează un cont de organizație"
-
-msgid "Top pledges"
-msgstr "Top angajamente"
 
 #, fuzzy
 msgid "Please don't spam the people and projects listed below with messages inviting them to join Liberapay or asking them why they haven't."
@@ -4828,6 +5151,34 @@ msgstr "Vă gândiți la cineva?"
 msgid "We can help you find pledgees if you connect your accounts:"
 msgstr "Vă putem ajuta să găsiți oameni sub angajament dacă vă conectați conturile:"
 
+#, fuzzy, python-brace-format
+msgid "The individual receiving the most money through Liberapay is:"
+msgid_plural "The {n} individuals receiving the most money through Liberapay are:"
+msgstr[0] "Persoana care a primit cei mai mulți bani prin Liberapay este:"
+msgstr[1] ""
+msgstr[2] "Persoanele {n} care primesc cei mai mulți bani prin intermediul Liberapay sunt:"
+
+#, fuzzy, python-brace-format
+msgid "The organization receiving the most money through Liberapay is:"
+msgid_plural "The {n} organizations receiving the most money through Liberapay are:"
+msgstr[0] "Organizația care a primit cei mai mulți bani prin Liberapay este:"
+msgstr[1] ""
+msgstr[2] "Organizațiile {n} care primesc cei mai mulți bani prin intermediul Liberapay sunt:"
+
+#, fuzzy, python-brace-format
+msgid "The team receiving the most money through Liberapay is:"
+msgid_plural "The {n} teams receiving the most money through Liberapay are:"
+msgstr[0] "Echipa care a primit cei mai mulți bani prin Liberapay este:"
+msgstr[1] ""
+msgstr[2] "Echipele {n} care au primit cei mai mulți bani prin Liberapay sunt:"
+
+#, fuzzy, python-brace-format
+msgid "The Liberapay account receiving the most money is:"
+msgid_plural "The {n} Liberapay accounts receiving the most money are:"
+msgstr[0] "Contul Liberapay care a primit cei mai mulți bani este:"
+msgstr[1] ""
+msgstr[2] "Conturile {n} Liberapay care au primit cei mai mulți bani sunt:"
+
 #, python-brace-format
 msgid "The most popular repository currently linked to a Liberapay account is:"
 msgid_plural "The {n} most popular repositories currently linked to a Liberapay account are:"
@@ -4835,16 +5186,17 @@ msgstr[0] "Cel mai popular depozit conectat momentan la un cont Liberapay este:"
 msgstr[1] "Cele mai populare {n} depozite conectate momentan la un cont Liberapay sunt:"
 msgstr[2] "Cele mai populare {n} de depozite conectate momentan la un cont Liberapay sunt:"
 
-#, fuzzy, python-brace-format
-msgid "List of repositories currently linked to a Liberapay account, page {number}:"
-msgstr "Lista depozitelor legate în prezent de un cont Liberapay, pagina {number}:"
-
 #, python-brace-format
 msgid "by {author_name}"
 msgstr "de {author_name}"
 
-msgid "Stars"
-msgstr "Stele"
+#, fuzzy
+msgid "stars count"
+msgstr "numărul de stele"
+
+#, fuzzy
+msgid "connection date"
+msgstr "data conexiunii"
 
 msgid "Browse your favorite repositories"
 msgstr "Navigați prin depozitele favorite"
@@ -4858,10 +5210,6 @@ msgid_plural "The top {n} teams on Liberapay are:"
 msgstr[0] "Echipa de top pe Liberapay este:"
 msgstr[1] "Top {n} echipe pe Liberapay sunt:"
 msgstr[2] "Top {n} de echipe pe Liberapay sunt:"
-
-#, fuzzy, python-brace-format
-msgid "List of teams on Liberapay, page {number}:"
-msgstr "Lista echipelor de pe Liberapay, pagina {number}:"
 
 msgid "Create a team"
 msgstr "Creează o echipă"
@@ -5325,6 +5673,10 @@ msgstr "Cum vor fi conturile după transfer"
 msgid "Transfer the account"
 msgstr "Transferă contul"
 
+#, fuzzy, python-brace-format
+msgid "The {provider} account you are attempting to connect is linked to another Liberapay account marked as fraudulent."
+msgstr "Contul {provider} pe care încercați să îl conectați este legat de un alt cont Liberapay marcat ca fiind fraudulos."
+
 #, python-brace-format
 msgid "Connecting a {platform} account"
 msgstr "Se conectează un cont de {platform}"
@@ -5346,8 +5698,9 @@ msgstr "Ne pare rău, nu am găsit nimic potrivit cererii dumneavoastră."
 msgid "Whose work do you appreciate?"
 msgstr "A cui muncă apreciați?"
 
-msgid "Found a matching username"
-msgid_plural "Found matching usernames"
+#, fuzzy
+msgid "Found a matching user name"
+msgid_plural "Found matching user names"
 msgstr[0] "S-a găsit un utilizator"
 msgstr[1] "S-au găsit utilizatori"
 msgstr[2] "S-au găsit utilizatori"
@@ -5375,8 +5728,9 @@ msgstr[2] "S-au găsit depozite"
 msgid "{username} has a repository named {repo_name} in their {platform} account"
 msgstr "{username} are un depozit numit {repo_name} în contul lor {platform}"
 
-msgid "Found a matching user statement"
-msgid_plural "Found matching user statements"
+#, fuzzy
+msgid "Found a matching user description"
+msgid_plural "Found matching user descriptions"
 msgstr[0] "S-a găsit o declarație de utilizator"
 msgstr[1] "S-au găsit declarații de utilizator"
 msgstr[2] "S-au găsit declarații de utilizator"

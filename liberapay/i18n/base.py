@@ -1,6 +1,7 @@
 from collections import namedtuple
 from datetime import date, datetime, timedelta
 from decimal import Decimal, InvalidOperation
+from functools import cached_property
 from sys import intern
 from unicodedata import combining, normalize
 import warnings
@@ -9,15 +10,15 @@ import babel.core
 from babel.dates import format_date, format_datetime, format_time, format_timedelta
 from babel.messages.pofile import Catalog
 from babel.numbers import parse_pattern
-from cached_property import cached_property
 from markupsafe import Markup
 import opencc
 from pando.utils import utcnow
 
-from ..constants import to_precision
 from ..exceptions import AmbiguousNumber, InvalidNumber
 from ..website import website
-from .currencies import CURRENCIES, CURRENCY_REPLACEMENTS, D_MAX, Money, MoneyBasket
+from .currencies import (
+    CURRENCIES, CURRENCY_REPLACEMENTS, D_MAX, Money, MoneyBasket, to_precision,
+)
 
 
 MONEY_AMOUNT_FORMAT = parse_pattern('#,##0.00')
@@ -108,8 +109,8 @@ class Locale(babel.core.Locale):
         super().__init__(*a, **kw)
         self.currency_formats['amount_only'] = MONEY_AMOUNT_FORMAT
         delta_p = self.currency_formats['standard'].pattern
-        minus_sign = self.number_symbols.get('minusSign', '-')
-        plus_sign = self.number_symbols.get('plusSign', '+')
+        minus_sign = self.number_symbols[self.default_numbering_system].get('minusSign', '-')
+        plus_sign = self.number_symbols[self.default_numbering_system].get('plusSign', '+')
         if ';' in delta_p:
             pos, neg = delta_p.split(';')
             assert len(neg) >= len(pos), (self, neg, pos)
@@ -234,10 +235,10 @@ class Locale(babel.core.Locale):
     def format_money(self, m, format='standard', trailing_zeroes=True):
         s = self.currency_formats[format].apply(
             m.amount, self, currency=m.currency, currency_digits=True,
-            decimal_quantization=True
+            decimal_quantization=True, numbering_system='default',
         )
         if trailing_zeroes is False:
-            i = s.find(self.number_symbols['decimal'])
+            i = s.find(self.number_symbols[self.default_numbering_system]['decimal'])
             if i != -1 and set(s[i+1:]) == ONLY_ZERO:
                 s = s[:i]
         return s
@@ -251,6 +252,7 @@ class Locale(babel.core.Locale):
         return format_datetime(*a, locale=self)
 
     def format_decimal(self, number, **kw):
+        kw.setdefault('numbering_system', 'default')
         return self.decimal_formats[None].apply(number, self, **kw)
 
     def format_list(self, l, pattern='standard', escape=_return_):
@@ -273,7 +275,10 @@ class Locale(babel.core.Locale):
             return '0'
         pattern = self.currency_formats['standard']
         items = (
-            pattern.apply(money.amount, self, currency=money.currency)
+            pattern.apply(
+                money.amount, self, currency=money.currency,
+                numbering_system='default',
+            )
             for money in basket if money
         )
         if sep == ',':
@@ -285,7 +290,7 @@ class Locale(babel.core.Locale):
     def format_money_delta(self, money):
         return self.currency_delta_pattern.apply(
             money.amount, self, currency=money.currency, currency_digits=True,
-            decimal_quantization=True
+            decimal_quantization=True, numbering_system='default',
         )
 
     def format_percent(self, number, min_precision=1, group_separator=True):
@@ -296,7 +301,7 @@ class Locale(babel.core.Locale):
         return self.percent_formats[None].apply(
             number, self,
             decimal_quantization=decimal_quantization,
-            group_separator=True,
+            group_separator=True, numbering_system='default',
         )
 
     def format_time(self, t, format='medium'):
@@ -308,8 +313,8 @@ class Locale(babel.core.Locale):
         return format_timedelta(o, locale=self, **kw)
 
     def parse_money_amount(self, string, currency, maximum=D_MAX):
-        group_symbol = self.number_symbols['group']
-        decimal_symbol = self.number_symbols['decimal']
+        group_symbol = self.number_symbols[self.default_numbering_system]['group']
+        decimal_symbol = self.number_symbols[self.default_numbering_system]['decimal']
         # Strip the string of spaces, and of the specified currency's symbol in
         # this locale (if that symbol exists).
         string = string.strip()
@@ -335,7 +340,11 @@ class Locale(babel.core.Locale):
         # https://github.com/liberapay/liberapay.com/issues/1066
         if group_symbol in string:
             proper = self.format_decimal(decimal, decimal_quantization=False)
-            if string != proper and string.rstrip('0') != (proper + decimal_symbol):
+            ambiguous = string != proper and (
+                (string + ('' if decimal_symbol in string else decimal_symbol)).rstrip('0') !=
+                (proper + ('' if decimal_symbol in proper else decimal_symbol)).rstrip('0')
+            )
+            if ambiguous:
                 # Irregular number format (e.g. `10.00` in German)
                 try:
                     proper_alt = (
@@ -412,8 +421,8 @@ COUNTRY_CODES = """
     SJ SK SL SM SN SO SR SS ST SV SX SY SZ TC TD TF TG TH TJ TK TL TM TN TO TR
     TT TV TW TZ UA UG UM US UY UZ VA VC VE VG VI VN VU WF WS YE YT ZA ZM ZW
 """.split()
-
 COUNTRIES = make_sorted_dict(COUNTRY_CODES, LOCALE_EN.territories)
+del COUNTRY_CODES
 
 
 def make_currencies_map():
@@ -430,14 +439,31 @@ def make_currencies_map():
                 continue
             if start_date:
                 start_date = date(*start_date)
+                if start_date > today:
+                    continue
             if end_date:
                 end_date = date(*end_date)
-            if (start_date is None or start_date <= today) and (end_date is None or end_date >= today):
-                assert country not in r
-                r[country] = currency
+                if end_date < today:
+                    continue
+            if (other_currency := r.get(country)):
+                if other_currency.startswith(country):
+                    if currency.startswith(country):
+                        raise Exception(
+                            f"found more than one currency for territory {country}: "
+                            f"{currency} and {other_currency}"
+                        )
+                    else:
+                        continue
+            r[country] = currency
     for currency, (_, new_currency, _) in CURRENCY_REPLACEMENTS.items():
         if currency[:2] not in r:
             r[currency[:2]] = new_currency
+    mapped_currencies = set(r.values())
+    for currency in CURRENCIES:
+        if currency not in mapped_currencies:
+            raise Exception(
+                f"currency {currency} isn't associated to any territories"
+            )
     return r
 
 CURRENCIES_MAP = make_currencies_map()
@@ -644,7 +670,7 @@ def set_up_i18n(state, request=None, exception=None):
         langs.extend(parse_accept_lang(
             request.headers.get(b"Accept-Language", b"").decode('ascii', 'replace')
         ))
-        locale = match_lang(langs, request.country)
+        locale = match_lang(langs, request.source_country)
     add_helpers_to_context(state, locale)
 
 
@@ -668,14 +694,18 @@ class DefaultString(str):
 DEFAULT_CURRENCY = DefaultString('EUR')
 
 
-def add_currency_to_state(request, user):
+def add_currency_to_state(request, user, locale):
     qs_currency = request.qs.get('currency')
     if qs_currency in CURRENCIES:
         return {'currency': qs_currency}
-    cookie = request.headers.cookie.get('currency')
-    if cookie and cookie.value in CURRENCIES:
-        return {'currency': cookie.value}
+    cookie = request.cookies.get('currency')
+    if cookie in CURRENCIES:
+        return {'currency': cookie}
     if user:
         return {'currency': user.main_currency}
     else:
-        return {'currency': CURRENCIES_MAP.get(request.country) or DEFAULT_CURRENCY}
+        return {'currency': (
+            CURRENCIES_MAP.get(locale.territory) or
+            CURRENCIES_MAP.get(request.source_country) or
+            DEFAULT_CURRENCY
+        )}

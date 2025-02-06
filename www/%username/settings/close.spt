@@ -8,15 +8,14 @@ if request.method == 'POST':
     feedback = request.body.get('feedback')
     participant.store_feedback(feedback)
     participant.close()
-    participant.sign_out(response.headers.cookie)
+    if user == participant:
+        user.sign_out(response.headers.cookie)
     response.redirect('/%s/' % participant.username)
 
 title = _("Close Account")
 subhead = participant.username
 
 [---] text/html
-% from "templates/macros/icons.html" import glyphicon
-
 % extends "templates/layouts/base.html"
 
 % block content

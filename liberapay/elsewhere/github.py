@@ -1,5 +1,4 @@
-from liberapay.elsewhere._base import PlatformOAuth2
-from liberapay.elsewhere._exceptions import CantReadMembership
+from liberapay.elsewhere._base import CantReadMembership, PlatformOAuth2
 from liberapay.elsewhere._extractors import key
 from liberapay.elsewhere._paginators import header_links_paginator
 
@@ -9,7 +8,6 @@ class GitHub(PlatformOAuth2):
     # Platform attributes
     name = 'github'
     display_name = 'GitHub'
-    fontawesome_name = name
     account_url = 'https://github.com/{user_name}'
     repo_url = 'https://github.com/{slug}'
     has_teams = True

@@ -2,6 +2,7 @@ from dateutil.parser import parse as parse_date
 
 from liberapay.i18n.base import LOCALE_EN as locale
 from liberapay.models.participant import Participant
+from liberapay.utils import form_post_success
 
 PT_STATUS_MAP = {
     'failed': 'danger',
@@ -9,6 +10,11 @@ PT_STATUS_MAP = {
 }
 ACCOUNT_MARKS = set(website.db.one("SELECT array_to_json(enum_range(NULL::account_mark))"))
 ACCOUNT_MARKS.add('')
+PAYMENT_INSTRUMENT_TYPES = {
+    'paypal': "PayPal",
+    'stripe-card': "card",
+    'stripe-sdd': "SEPA mandate",
+}
 
 [---]
 
@@ -39,14 +45,15 @@ if request.method == 'POST':
                 event_data['reason'] = request.body['reason']
             p.add_event(cursor, 'flags_changed', event_data, user.id)
 
-    raise response.json({'msg': (
+    form_post_success(state, msg=(
         f"Done, {updated} attribute has been updated." if updated == 1 else
         f"Done, {updated} attributes have been updated."
-    )})
+    ))
 
 last_showed = request.qs.get_int('last_showed', default=None)
 mode = request.qs.get('mode', 'all')
 if mode == 'all':
+    marked_as = request.qs.get('marked_as')
     participants = website.db.all("""
         SELECT p
              , c.name AS c_name
@@ -61,6 +68,8 @@ if mode == 'all':
                                   FROM email_blacklist bl
                                  WHERE lower(bl.address) = lower(e.address)
                                    AND (bl.ignore_after IS NULL OR bl.ignore_after > current_timestamp)
+                              ORDER BY bl.ignore_after DESC NULLS FIRST, bl.ts DESC
+                                 LIMIT 1
                             )
                         )
                    FROM emails e
@@ -71,6 +80,7 @@ if mode == 'all':
                   LIMIT 1
                ) AS email
              , ( SELECT json_build_object(
+                            'awaiting review', count(tip) FILTER (WHERE tip.status = 'awaiting review'),
                             'funded', count(tip) FILTER (WHERE tip.status = 'funded'),
                             'partially funded', count(tip) FILTER (WHERE tip.status = 'partially funded'),
                             'pending', count(tip) FILTER (WHERE tip.status = 'pending'),
@@ -86,12 +96,38 @@ if mode == 'all':
                                                    AND coalesce(pt.team, pt.recipient) = tip.tippee
                                                    AND (pt.status = 'pending' OR pi.status = 'pending')
                                             ) THEN 'pending'
+                                       WHEN EXISTS (
+                                                SELECT pt.id
+                                                  FROM payin_transfers pt
+                                                  JOIN payins pi ON pi.id = pt.payin
+                                                 WHERE pt.payer = p.id
+                                                   AND coalesce(pt.team, pt.recipient) = tip.tippee
+                                                   AND (pt.status = 'awaiting_review' OR pi.status = 'awaiting_review')
+                                            ) THEN 'awaiting review'
                                        ELSE 'unfunded'
                                   END) AS status
                             FROM current_tips tip
                            WHERE tip.tipper = p.id
                         ) tip
                ) AS outgoing_donations
+             , ( SELECT json_objectagg(r.network:r.count)
+                   FROM ( SELECT r.network
+                               , count(DISTINCT coalesce(r.fingerprint, r.address)) AS count
+                            FROM exchange_routes r
+                           WHERE r.participant = p.id
+                        GROUP BY r.network
+                        ORDER BY r.network
+                        ) r
+               ) AS payment_instruments
+             , ( SELECT json_objectagg(pi.status:pi.count)
+                   FROM ( SELECT pi.status
+                               , count(*) AS count
+                            FROM payins pi
+                           WHERE pi.payer = p.id
+                        GROUP BY pi.status
+                        ORDER BY pi.status
+                        ) pi
+               ) AS payin_counts
              , ( SELECT json_agg(json_build_object(
                             'provider', a.provider,
                             'id', a.id,
@@ -119,6 +155,8 @@ if mode == 'all':
                    FROM events e
                   WHERE e.participant = p.id
                     AND e.type = 'sign_up_request'
+               ORDER BY e.ts
+                  LIMIT 1
                ) AS sign_up_request
              , ( SELECT row_to_json(e)
                    FROM ( SELECT e.*, p2.username AS recorder_name
@@ -134,10 +172,11 @@ if mode == 'all':
      LEFT JOIN communities c ON c.participant = p.id
      LEFT JOIN feedback f ON f.participant = p.id
          WHERE coalesce(p.id < %s, true)
+           AND coalesce(p.marked_as = %s, true)
            AND (p.status <> 'stub' OR p.receiving > 0)
       ORDER BY p.id DESC
          LIMIT 25
-    """, (last_showed,))
+    """, (last_showed, marked_as))
     page_end = participants[-1][0].id if participants else None
 elif mode == 'new_recipients':
     participants = website.db.all("""
@@ -151,6 +190,8 @@ elif mode == 'new_recipients':
                                   FROM email_blacklist bl
                                  WHERE lower(bl.address) = lower(e.address)
                                    AND (bl.ignore_after IS NULL OR bl.ignore_after > current_timestamp)
+                              ORDER BY bl.ignore_after DESC NULLS FIRST, bl.ts DESC
+                                 LIMIT 1
                             )
                         )
                    FROM emails e
@@ -202,7 +243,7 @@ elif mode == 'new_recipients':
                ) ORDER BY pt.row_number) AS incoming_payments
              , ( SELECT f.feedback FROM feedback f WHERE f.participant = p.id ) AS feedback
           FROM ( SELECT pt.*
-                      , row_number() OVER (PARTITION BY pt.recipient ORDER BY pt.ctime DESC, pt.id DESC)
+                      , row_number() OVER (PARTITION BY pt.recipient ORDER BY pt.ctime ASC, pt.id ASC)
                    FROM payin_transfers pt
                   WHERE pt.status <> 'pre'
                     AND coalesce(pt.error <> 'aborted by payer', true)
@@ -212,14 +253,13 @@ elif mode == 'new_recipients':
           JOIN participants p ON p.id = pt.recipient
           JOIN participants payer ON payer.id = pt.payer
      LEFT JOIN participants team ON team.id = pt.team
-         WHERE p.marked_as IS NULL
-           AND pt.row_number <= 20
+         WHERE pt.row_number <= 20
       GROUP BY p.id
         HAVING coalesce(min(pt.id) < %s, true)
       ORDER BY min(pt.id) DESC
          LIMIT 25
     """, (last_showed,))
-    page_end = participants[-1].incoming_payments[-1]['id'] if participants else None
+    page_end = participants[-1].incoming_payments[0]['id'] if participants else None
 else:
     raise response.invalid_input(mode, 'mode', 'querystring')
 
@@ -228,7 +268,8 @@ title = "Users Admin"
 [---] text/html
 % from 'templates/macros/admin.html' import admin_form with context
 % from 'templates/macros/avatar-url.html' import avatar_img with context
-% from 'templates/macros/icons.html' import fontawesome, glyphicon
+% from 'templates/macros/elsewhere.html' import platform_icon_small with context
+% from 'templates/macros/icons.html' import icon with context
 % from 'templates/macros/nav.html' import querystring_nav with context
 % from "templates/macros/payment-methods.html" import payment_method_icon with context
 
@@ -266,19 +307,19 @@ title = "Users Admin"
     % if p.status == 'stub'
         % for account in elsewhere
             <div class="account">
+                <span aria-hidden="true">{{ platform_icon_small(account.platform_data) }}</span>
                 <a class="account-link" href="{{ account.html_url }}">
-                    {{ fontawesome(account.platform) }}
+                    <span class="sr-only">{{ account.platform_data.display_name }}:</span>
                     <span class="account-username">{{ account.friendly_name_long }}</span>
                 </a>
-                <br>
-                % if account.description
-                    <section class="profile-statement embedded raw">{{
-                        account.get_excerpt(500)
-                    }}</section>
-                % else
-                    (no description)
-                % endif
             </div>
+            % if account.description
+                <section class="profile-statement embedded raw">{{
+                    account.get_excerpt(500)
+                }}</section>
+            % else
+                (no description)
+            % endif
         % else
             (ghost stub account)
         % endfor
@@ -288,22 +329,30 @@ title = "Users Admin"
         % if row.email
             <strong>Email address:</strong> <span class="break-word-anywhere">{{ row.email.address }}</span>
             % if row.email.verified
-            <span class="text-success">{{ glyphicon('ok-sign', "Verified") }}</span>
+            <span class="text-success">{{ icon('ok-sign', "Verified") }}</span>
             % elif row.email.disavowed
-            <span class="text-danger">{{ glyphicon('exclamation-sign', "Disavowed") }}</span>
+            <span class="text-danger">{{ icon('exclamation-sign', "Disavowed") }}</span>
             % elif row.email.blacklist_reason
-            <span class="text-danger">{{ glyphicon('exclamation-sign', "Blacklisted (%s)" % row.email.blacklist_reason) }}</span>
+            <span class="text-danger">{{ icon('exclamation-sign', "Blacklisted (%s)" % row.email.blacklist_reason) }}</span>
             % else
-            <span class="text-warning">{{ glyphicon('warning-sign', "Unconfirmed") }}</span>
+            <span class="text-warning">{{ icon('warning-sign', "Unconfirmed") }}</span>
             % endif
             &nbsp;
-            <form action="/admin/emails" method="POST" target="_blank" class="inline-block middle">
+            <form action="/admin/emails" method="POST" target="_blank" class="inline-block">
                 <input type="hidden" name="csrf_token" value="{{ csrf_token }}" />
                 <input type="hidden" name="email" value="{{ row.email.address }}" />
                 <button class="link" name="action" value="lookup">{{
-                    glyphicon('search', "Look it up")
+                    icon('search', "Look it up")
                 }}</button>
             </form>
+            &nbsp;
+            <a href="/admin/email-domains?domain={{ row.email.address.rsplit('@', 1)[1] }}"
+               target="_blank" rel="noopener noreferrer" title="Look up the domain">@</a>
+            &nbsp;
+            <a href="https://verifymail.io/domain/{{ row.email.address.rsplit('@', 1)[1] }}"
+               target="_blank" rel="noopener noreferrer">{{
+                icon('external-link', "Check the domain")
+            }}</a>
         % else
             <strong>Email address:</strong> none.
         % endif
@@ -313,14 +362,17 @@ title = "Users Admin"
         % if elsewhere
             <br>
             % for account in elsewhere
-                <a class="account-link" href="{{ account.html_url }}">
-                    <span class="symbol-3ex">{{ fontawesome(account.platform) }}</span>
+                <a href="{{ account.html_url }}">
+                    <span class="symbol-3ex">{{ platform_icon_small(account.platform_data) }}</span>
                     <span>{{ account.friendly_name_long }}</span>
                 </a>
                 <br>
             % endfor
         % else
-            none. <span class="text-warning">{{ glyphicon('warning-sign') }}</span>
+            none.
+            % if row.payment_accounts
+            <span class="text-warning">{{ icon('warning-sign') }}</span>
+            % endif
         % endif
         </p>
         % endif
@@ -336,6 +388,29 @@ title = "Users Admin"
             none.
         % endif
         </p>
+
+        % if row.payment_instruments is defined
+        <p><strong>Payment instruments:</strong>
+        % if row.payment_instruments
+            % for network, count in row.payment_instruments.items()
+                {{ count }} {{ PAYMENT_INSTRUMENT_TYPES.get(network, network) }}
+                {{- '' if count == 1 else 's' }}
+                {{- '.' if loop.last else ',' }}
+            % endfor
+        % else
+            none.
+        % endif
+        % endif
+
+        <p><strong>Payment attempts:</strong>
+        % if row.payin_counts
+            % for status, count in row.payin_counts.items()
+                {{ count }} {{ status }}{{ '.' if loop.last else ',' }}
+            % endfor
+        % else
+            none.
+        % endif
+        </p>
         % endif
 
         <p><strong>Payment accounts:</strong>
@@ -343,9 +418,9 @@ title = "Users Admin"
             <br>
             % for account in row.payment_accounts
                 <span class="symbol-3ex">{{
-                    fontawesome('cc-stripe', "Stripe") if account.provider == 'stripe' else
-                    fontawesome('paypal', "PayPal") if account.provider == 'paypal' else
-                    fontawesome(account.provider, account.provider)
+                    icon('stripe', "Stripe") if account.provider == 'stripe' else
+                    icon('paypal', "PayPal") if account.provider == 'paypal' else
+                    icon(account.provider, account.provider)
                 }}</span>
                 % if account.is_current
                     {{ account.id }}
@@ -354,11 +429,11 @@ title = "Users Admin"
                 % endif
                 ({{ locale.countries.get(account.country, account.country) }})
                 % if account.verified and account.charges_enabled != False
-                    <span class="symbol text-success">{{ glyphicon('ok-sign', "OK") }}</span>
+                    <span class="symbol text-success">{{ icon('ok-sign', "OK") }}</span>
                 % elif account.verified
-                    <span class="symbol text-danger">{{ glyphicon('exclamation-sign', "Disabled") }}</span>
+                    <span class="symbol text-danger">{{ icon('exclamation-sign', "Disabled") }}</span>
                 % else
-                    <span class="symbol text-warning">{{ glyphicon('warning-sign', "Unconfirmed") }}</span>
+                    <span class="symbol text-warning">{{ icon('warning-sign', "Unconfirmed") }}</span>
                 % endif
                 <br>
             % endfor
@@ -426,7 +501,10 @@ title = "Users Admin"
                 <br>
             % endfor
         % elif not p.public_name
-            none. <span class="text-warning">{{ glyphicon('warning-sign') }}</span>
+            none.
+            % if row.payment_accounts
+            <span class="text-warning">{{ icon('warning-sign') }}</span>
+            % endif
         % endif
         </div>
 

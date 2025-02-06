@@ -8,6 +8,7 @@ from os.path import dirname, join, realpath
 import unittest
 
 import html5lib
+import pando
 from pando.testing.client import Client
 from pando.utils import utcnow
 from psycopg2 import IntegrityError, InternalError
@@ -62,6 +63,7 @@ class ClientWithAuth(Client):
     def build_wsgi_environ(self, method, *a, **kw):
         """Extend base class to support authenticating as a certain user.
         """
+        kw.setdefault('HTTP_USER_AGENT', f"Pando-test-client/{pando.__version__}")
 
         # csrf - for both anon and authenticated
         csrf_token = kw.get('csrf_token', 'ThisIsATokenThatIsThirtyTwoBytes')
@@ -86,8 +88,9 @@ class ClientWithAuth(Client):
         return environ
 
     def hit(self, method, url, *a, **kw):
-        if kw.pop('xhr', False):
-            kw['HTTP_X_REQUESTED_WITH'] = b'XMLHttpRequest'
+        if kw.pop('json', False):
+            kw['HTTP_ACCEPT'] = b'application/json'
+            kw.setdefault('raise_immediately', False)
 
         # prevent tell_sentry from reraising errors
         sentry_reraise = kw.pop('sentry_reraise', True)
@@ -422,18 +425,36 @@ class Harness(unittest.TestCase):
               RETURNING *
         """, locals())
 
-    def upsert_route(self, participant, network,
-                     status='chargeable', one_off=False, address='x', remote_user_id='x'):
+    def upsert_route(
+        self, participant, network, address='x',
+        status='chargeable', one_off=False, remote_user_id='x',
+        country=None, brand=None, last4=None, fingerprint=None, owner_name=None,
+        expiration_date=None,
+    ):
         r = self.db.one("""
             INSERT INTO exchange_routes AS r
-                        (participant, network, address, status, one_off, remote_user_id)
-                 VALUES (%s, %s, %s, %s, %s, %s)
+                        (participant, network, address,
+                         status, one_off, remote_user_id, country, brand, last4,
+                         fingerprint, owner_name, expiration_date)
+                 VALUES (%s, %s, %s,
+                         %s, %s, %s, %s, %s, %s,
+                         %s, %s, %s)
             ON CONFLICT (participant, network, address) DO UPDATE
                     SET status = excluded.status
                       , one_off = excluded.one_off
                       , remote_user_id = excluded.remote_user_id
+                      , country = excluded.country
+                      , brand = excluded.brand
+                      , last4 = excluded.last4
+                      , fingerprint = excluded.fingerprint
+                      , owner_name = excluded.owner_name
+                      , expiration_date = excluded.expiration_date
               RETURNING r
-        """, (participant.id, network, address, status, one_off, remote_user_id))
+        """, (
+            participant.id, network, address,
+            status, one_off, remote_user_id, country, brand, last4,
+            fingerprint, owner_name, expiration_date,
+        ))
         r.__dict__['participant'] = participant
         return r
 
@@ -449,9 +470,9 @@ class Harness(unittest.TestCase):
             'description': 'lorem ipsum',
             'details': '',
         }
-        r = self.client.PxST(
+        r = self.client.POST(
             '/~%s/invoices/new' % addressee.id, auth_as=sender,
-            data=invoice_data, xhr=True,
+            data=invoice_data, json=True,
         )
         assert r.code == 200, r.text
         invoice_id = json.loads(r.text)['invoice_id']

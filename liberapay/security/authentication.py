@@ -37,6 +37,7 @@ class _ANON:
 
     get_currencies_for = staticmethod(Participant.get_currencies_for)
     get_tip_to = staticmethod(Participant._zero_tip)
+    guessed_country = Participant._guessed_country
 
     def is_acting_as(self, privilege):
         return False
@@ -67,7 +68,7 @@ def sign_in_with_form_data(body, state):
 
     if body.get('log-in.id'):
         request = state['request']
-        src_addr, src_country = request.source, request.country
+        src_addr, src_country = request.source, request.source_country
         input_id = body['log-in.id'].strip()
         password = body.pop('log-in.password', None)
         id_type = None
@@ -211,7 +212,7 @@ def sign_in_with_form_data(body, state):
             raise UsernameAlreadyTaken(username)
         # Rate limit
         request = state['request']
-        src_addr, src_country = request.source, request.country
+        src_addr, src_country = request.source, request.source_country
         website.db.hit_rate_limit('sign-up.ip-addr', str(src_addr), TooManySignUps)
         website.db.hit_rate_limit('sign-up.ip-net', get_ip_net(src_addr), TooManySignUps)
         website.db.hit_rate_limit('sign-up.country', src_country, TooManySignUps)
@@ -250,7 +251,7 @@ def start_user_as_anon():
 def authenticate_user_if_possible(csrf_token, request, response, state, user, _):
     """This signs the user in.
     """
-    if state.get('etag'):
+    if state.get('etag') or request.path.raw.startswith('/callbacks/'):
         return
 
     db = state['website'].db
@@ -261,8 +262,8 @@ def authenticate_user_if_possible(csrf_token, request, response, state, user, _)
     # We want to try cookie auth first, but we want password and email auth to
     # supersede it.
     session_p = None
-    if SESSION in request.headers.cookie:
-        creds = request.headers.cookie[SESSION].value.split(':', 2)
+    if SESSION in request.cookies:
+        creds = request.cookies[SESSION].split(':', 2)
         if len(creds) == 2:
             creds = [creds[0], 1, creds[1]]
         if len(creds) == 3:
@@ -317,8 +318,6 @@ def authenticate_user_if_possible(csrf_token, request, response, state, user, _)
             if not session_id or session_id < '1001' or session_id > '1010':
                 raise response.render('simplates/log-in-link-is-invalid.spt', state)
             token = request.qs.get('log-in.token')
-            if not (token and token.endswith('.em')):
-                raise response.render('simplates/log-in-link-is-invalid.spt', state)
             required = request.qs.parse_boolean('log-in.required', default=True)
             p = Participant.authenticate_with_session(
                 id, session_id, token,
@@ -326,6 +325,7 @@ def authenticate_user_if_possible(csrf_token, request, response, state, user, _)
             )[0]
             if p:
                 if p.id != user.id:
+                    response.headers[b'Referrer-Policy'] = b'strict-origin'
                     submitted_confirmation_token = request.qs.get('log-in.confirmation')
                     if submitted_confirmation_token:
                         expected_confirmation_token = b64encode_s(blake2b(
@@ -354,7 +354,7 @@ def authenticate_user_if_possible(csrf_token, request, response, state, user, _)
                        AND mtime = %s
                 """, (p.id, p.session.id, p.session.mtime))
                 p.session = None
-                session_suffix = '.em'
+                session_suffix = token[-3:]
             elif required:
                 raise response.render('simplates/log-in-link-is-invalid.spt', state)
             del request.qs['log-in.id'], request.qs['log-in.key'], request.qs['log-in.token']

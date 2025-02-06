@@ -1,18 +1,27 @@
+from liberapay.exceptions import BadEmailAddress
 from liberapay.utils import form_post_success, get_participant
 
 [---]
 participant = get_participant(state, restrict=True, allow_member=True)
 
 if request.method == 'POST':
-    src, email = request.body['src'], request.body.get('email', '')
-
-    if src not in constants.AVATAR_SOURCES:
-        raise response.invalid_input(src, 'src', 'body')
-
-    new_avatar_url = participant.update_avatar(src+':', avatar_email=email)
+    action = request.body.get('action', 'set_source')
+    if action == 'refresh':
+        new_avatar_url = participant.update_avatar(refresh=True)
+    elif action == 'set_source':
+        src, email = request.body['src'], request.body.get('email', '')
+        if src not in constants.AVATAR_SOURCES:
+            raise response.invalid_input(src, 'src', 'body')
+        if email and '@' not in email:
+            raise BadEmailAddress(email)
+        new_avatar_url = participant.update_avatar(src+':', avatar_email=email)
+    else:
+        raise response.invalid_input(action, 'action', 'body')
     if new_avatar_url:
         msg = _("Your new avatar URL is: {0}", new_avatar_url)
-        form_post_success(state, msg=msg)
+    else:
+        msg = _("Your profile no longer has an avatar.")
+    form_post_success(state, msg=msg)
 
 else:
     src = participant.avatar_src
@@ -24,7 +33,7 @@ subhead = _("Avatar")
 [---] text/html
 % from 'templates/macros/avatar-url.html' import avatar_img, avatar_url with context
 % from "templates/macros/elsewhere.html" import auth_button with context
-% from 'templates/macros/icons.html' import glyphicon
+% from 'templates/macros/icons.html' import icon with context
 
 % extends "templates/layouts/profile-edit.html"
 
@@ -66,22 +75,22 @@ subhead = _("Avatar")
     <div class="buttons">
     <a class="btn btn-default" target="_blank" rel="noopener noreferrer"
        href="https://www.libravatar.org/accounts/login/">
-       {{ glyphicon('edit') }}
+       {{ icon('change-image') }}
        <span>{{ _("Modify your Libravatar") }}</span>
     </a>
     &nbsp;&nbsp;&nbsp;&nbsp;
     <a class="btn btn-default btn-sm" target="_blank" rel="noopener noreferrer"
        href="https://www.libravatar.org/">
-       {{ glyphicon('info-sign') }}
+       {{ icon('info-sign') }}
        <span>{{ _("What is Libravatar?") }}</span>
     </a>
     <br><br>
-    % if participant.avatar_url and request.method == 'GET'
-    <button class="btn btn-default" data-action="reload" type="button">
-       {{ glyphicon('refresh') }} <span>{{ _("Refresh") }}</span>
-    </button>
-    <noscript><span class="text-danger">{{ _("JavaScript is required") }}</span></noscript>
-    % endif
+    <form action="" method="POST">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}" />
+        <button class="btn btn-default" name="action" value="refresh">
+           {{ icon('refresh') }} <span>{{ _("Refresh") }}</span>
+        </button>
+    </form>
     </div>
     </div>
     % endif
@@ -89,6 +98,7 @@ subhead = _("Avatar")
 
     <form action="" method="POST" class="form-inline">
         <input type="hidden" name="csrf_token" value="{{ csrf_token }}" />
+        <input type="hidden" name="action" value="set_source" />
 
         <div class="form-group">
             <label for="avatar-src">{{ _("Avatar source") }}</label><br>

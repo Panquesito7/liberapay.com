@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.10.3\n"
+"Generated-By: Babel 2.16.0\n"
 
 #, python-brace-format
 msgid "The translation of this page from English is not yet complete. {link_start}You can contribute{link_end}."
@@ -15,32 +15,32 @@ msgstr "Terjemahan halaman ini daripada bahasa Inggeris masih belum lengkap. {li
 
 #, python-brace-format
 msgid "This page contains machine-translated text which hasn't yet been reviewed and might be inaccurate. {link_start}You can contribute{link_end}."
-msgstr "Halaman ini mengandungi tulisan terjemahan mesin yang masih belum disemak dan mungkin kurang tepat. {link_start}Anda boleh menyumbang terjemahan{link_end}."
+msgstr "Halaman ini mengandungi tulisan terjemahan mesin yang masih belum disemak dan mungkin kurang tepat. {link_start}Anda boleh menyumbang terjemahan anda{link_end}."
 
 msgid "Your Liberapay account has been disabled"
 msgstr "Akaun Liberapay anda telah dilumpuhkan"
 
 msgid "Your Liberapay account has been marked as fraudulent by a staff member. You are no longer able to send and receive payments."
-msgstr "Akaun Liberapay anda telah ditandakan sebagai fraud oleh ahli kakitangan. Anda sudah tidak mampu menghantar dan menerima pembayaran."
+msgstr "Akaun Liberapay anda telah ditandakan sebagai akaun palsu oleh kakitangan Liberapay. Anda tidak dapat lagi menghantar dan menerima pembayaran."
 
 msgid "Your Liberapay profile has been marked as spam by a staff member. It is now hidden."
-msgstr "Profil Liberapay anda telah ditandakan sebagai spam oleh ahli kakitangan. Ia telah disembunyikan."
+msgstr "Profil Liberapay anda telah ditandakan sebagai spam oleh kakitangan Liberapay. Ia kini telah disembunyikan."
 
 msgid "Greetings,"
 msgstr "Salam sejahtera,"
 
 msgid "Something wrong? This email was sent automatically, but you can contact us by replying to it."
-msgstr "Ada yang tidak kena? E-mel ini dihantar secara automatik, tetapi anda boleh hubungi kami dengan membalasnya."
+msgstr "Ada yang tidak kena? E-mel ini telah dihantar secara automatik, tetapi anda boleh hubungi kami dengan membalas e-mel tersebut."
 
 msgid "Change your email settings"
 msgstr "Tukar tetapan e-mel anda"
 
 #, python-brace-format
 msgid "It's time to renew your donation to {username} on Liberapay"
-msgstr "Tiba masa untuk memperbaharui derma anda kepada {username} di Liberapay"
+msgstr "Tiba masanya untuk memperbaharui derma anda kepada {username} di Liberapay"
 
 msgid "It's time to renew your donations on Liberapay"
-msgstr "Tiba masa untuk memperbaharui derma anda di Liberapay"
+msgstr "Tiba masanya untuk memperbaharui derma anda di Liberapay"
 
 #, python-brace-format
 msgid "Your donation of {amount} to {recipient} is awaiting payment."
@@ -73,7 +73,7 @@ msgstr "Telah menjangkau masa untuk memperbaharui derma anda di Liberapay"
 
 #, python-brace-format
 msgid "Your donation of {amount} per week to {username} needs to be renewed before {date}."
-msgstr "Derma anda sebanyak {amount} seminggu kepada {username} perlu diperbaharui sebelum {date}."
+msgstr "Derma anda sebanyak {amount} setiap minggu kepada {username} perlu diperbaharui sebelum {date}."
 
 #, python-brace-format
 msgid "Your donation of {amount} per month to {username} needs to be renewed before {date}."
@@ -85,7 +85,7 @@ msgstr "Derma anda sebanyak {amount} setahun kepada {username} perlu diperbaharu
 
 #, python-brace-format
 msgid "Your donation of {amount} per week to {username} was supposed to be renewed before {past_date}."
-msgstr "Derma anda sebanyak {amount} seminggu kepada {username} sepatutnya diperbaharui sebelum {past_date}."
+msgstr "Derma anda sebanyak {amount} setiap minggu kepada {username} sepatutnya diperbaharui sebelum {past_date}."
 
 #, python-brace-format
 msgid "Your donation of {amount} per month to {username} was supposed to be renewed before {past_date}."
@@ -113,7 +113,7 @@ msgstr "Alamat e-mel anda telah disenaraihitamkan"
 
 #, python-brace-format
 msgid "We are suspending sending notifications to your address {email_address} until {date}, because a recent attempt to email you has failed."
-msgstr "Kami hentikan penghantaran pemberitahuan ke alamat anda {email_address} sehingga {date}, kerana kami gagal menghantar e-mel kepada anda baru-baru ini."
+msgstr "Kami menggantung penghantaran pemberitahuan ke alamat anda {email_address} sehingga {date}, kerana kami gagal menghantar e-mel kepada anda baru-baru ini."
 
 #, python-brace-format
 msgid "We will no longer send emails to your address {email_address}, because a recent attempt to do so has failed."
@@ -156,10 +156,10 @@ msgstr[0] "Derma untuk peranan anda dalam kumpulan {team_name}: {money_amount} d
 msgstr[1] "Derma untuk peranan anda dalam kumpulan {team_name}: {money_amount} daripada {n} penderma."
 
 msgid "Donations through teams: none (you are not a member of any team)."
-msgstr "Derma menerusi kumpulan: tiada (anda bukan ahli sebarang kumpulan)."
+msgstr "Derma melalui kumpulan: tiada (anda bukan ahli sebarang kumpulan)."
 
 msgid "NB: Donations through Liberapay are now paid in advance instead of being transferred weekly. The numbers above match what you would have received this week under the old system."
-msgstr "PENTING: Derma melalui Liberapay kini dibayar terlebih dahulu dan bukannya dipindahkan secara mingguan. Jumlah di atas sepadan dengan apa yang anda patut terima pada minggu ini bawah sistem lama."
+msgstr "PENTING: Derma melalui Liberapay kini dibayar secara pendahuluan dan bukannya dipindahkan secara mingguan. Jumlah di atas sepadan dengan apa yang anda patut terima pada minggu ini di bawah sistem lama."
 
 #, python-brace-format
 msgid "Your invoice to {0} has been accepted - Liberapay"
@@ -224,7 +224,7 @@ msgstr "Anda mempunyai pembayaran sebanyak {amount} dijadualkan pada {payment_da
 msgid "<unused singular (hash=875d02423fb659ec81c96c1ca550c608)>"
 msgid_plural "You have {n} payments scheduled to renew your donations, but we can't process them because a valid payment instrument is missing."
 msgstr[0] "<unused singular (hash=875d02423fb659ec81c96c1ca550c608)>"
-msgstr[1] "Anda mempunyai {n} pembayaran dijadualkan untuk memperbaharui derma anda, tetapi kami tidak dapat memprosesnya kerana anda tidak mempunyai instrumen pembayaran yang sah."
+msgstr[1] "Anda mempunyai {n} pembayaran yang dijadualkan untuk perbaharu derma anda, tetapi kami tidak dapat memprosesnya kerana anda tiada instrumen pembayaran yang sah."
 
 msgid "The payment dates, amounts and recipients are:"
 msgstr "Tarikh, jumlah dan penerima pembayaran:"
@@ -236,9 +236,6 @@ msgstr "{date}: {money_amount} kepada {recipient}"
 #, python-brace-format
 msgid "{date}: {money_amount} split between {recipients}"
 msgstr "{date}: {money_amount} diagihkan kepada {recipients}"
-
-msgid "Add a payment instrument"
-msgstr "Tambah alat pembayaran"
 
 #, python-brace-format
 msgid "Invoice from {0} on Liberapay"
@@ -295,7 +292,7 @@ msgid "Your bank didn't provide a specific reason for this dispute."
 msgstr "Bank anda tidak menyediakan sebab khusus untuk pertikaian ini."
 
 msgid "The reason provided by your bank is: the provided account details are incorrect."
-msgstr "Sebab yang diberikan bank anda: maklumat akaun yang diberi tidak tepat."
+msgstr "Sebab yang diberikan bank anda: butiran akaun yang diberi tidak tepat."
 
 msgid "The reason provided by your bank is: the account didn't contain enough money to honor the payment."
 msgstr "Sebab yang diberikan bank anda: akaun tidak mempunyai wang yang cukup untuk meneruskan pembayaran."
@@ -407,7 +404,7 @@ msgid "This operation is being carried out based on {link_start}the mandate {man
 msgstr "Operasi ini sedang dijalankan berdasarkan {link_start}mandat {mandate_id}{link_end} yang anda tandatangan pada {acceptance_date}, membenarkan Liberapay (kreditor SEPA {creditor_identifier}) untuk menghantar arahan kepada bank anda untuk mendebitkan akaun anda dan untuk bank anda mendebitkan akaun anda mengikut arahan tersebut."
 
 msgid "If you did not authorize this payment, please let us know. We will tell you whether a refund can be initiated by us or if you have to request it from your bank."
-msgstr "Sekiranya anda tidak pernah membenarkan pembayaran ini, sila beritahu kami. Kami akan memberitahu anda sama ada pemulangan semula boleh dimulakan oleh pihak kami atau jika anda perlu memintanya menerusi bank anda."
+msgstr "Sekiranya anda tidak pernah membenarkan pembayaran ini, sila beritahu kami. Kami akan memberitahu anda sama ada pemulangan semula boleh dimulakan oleh pihak kami atau jika anda perlu memintanya daripada bank anda."
 
 #, python-brace-format
 msgid "Once this payment has been processed it should appear on your bank statement as “{descriptor}”."
@@ -446,7 +443,7 @@ msgid "You're missing out on donations through Liberapay"
 msgstr "Anda ketinggalan dalam pendermaan melalui Liberapay"
 
 msgid "Your patrons are currently unable to send you money through Liberapay because payment processing isn't set up for your account."
-msgstr "Pelanggan anda tidak mampu menghantar wang kepada anda kerana tiada pemproses pembayaran ditetapkan untuk akaun anda."
+msgstr "Pelanggan anda tidak mampu menghantar wang kepada anda ketika ini kerana tiada pemproses pembayaran ditetapkan untuk akaun anda."
 
 msgid "Configure payment processing"
 msgstr "Tetapkan pemprosesan pembayaran"
@@ -715,7 +712,7 @@ msgstr "Mesej ralat:"
 
 #, python-brace-format
 msgid "The details of this error have been recorded. If you decide to contact us, please include the following error identification code in your message: {0}."
-msgstr "Perincian ralat ini telah direkodkan. Jika anda membuat keputusan untuk menghubungi kami, sila sertakan kod pengenalan ralat berikut di dalam mesej anda: {0}."
+msgstr "Butiran ralat ini telah direkodkan. Jika anda membuat keputusan untuk menghubungi kami, sila sertakan kod pengenalan ralat berikut di dalam mesej anda: {0}."
 
 msgid "If you decide to contact us please include the following debugging information in your message:"
 msgstr "Jika anda membuat keputusan untuk menghubungi kami, sila masukkan maklumat nyahpepijat berikut dalam mesej anda:"
@@ -816,17 +813,6 @@ msgstr "Besar"
 msgid "Maximum"
 msgstr "Maksimum"
 
-#, python-brace-format
-msgid "You've consumed your quota of requests, you can try again {in_N_minutes}."
-msgstr "Anda telah menggunakan kesemua kuota permintaan, anda boleh cuba lagi {in_N_minutes}."
-
-msgid "You're making requests too fast, please try again later."
-msgstr "Anda membuat permintaan terlalu laju, sila cuba lagi kemudian."
-
-#, python-brace-format
-msgid "{0} returned an error, please try again later."
-msgstr "{0} mengembalikan ralat, sila cuba lagi kemudian."
-
 msgid "example@mastodon.social"
 msgstr "contoh@mastodon.social"
 
@@ -859,6 +845,10 @@ msgstr "Nama pengguna '{0}' terlalu panjang."
 #, python-brace-format
 msgid "The username '{0}' contains invalid characters."
 msgstr "Nama pengguna '{0}' mengandungi aksara tidak sah."
+
+#, python-brace-format
+msgid "The username '{0}' is purely numerical. This isn't allowed."
+msgstr "Nama pengguna '{0}' adalah berangka semata-mata. Perkara ini tidak dibenarkan."
 
 #, python-brace-format
 msgid "The username '{0}' is restricted."
@@ -915,7 +905,7 @@ msgstr "Cubaan kami untuk menyelesaikan domain {domain_name} telah gagal (mesej 
 
 #, python-brace-format
 msgid "Our attempt to establish a connection with the {domain_name} email server failed (error message: “{error_message}”)."
-msgstr "Cubaan kami untuk mewujudkan kaitan dengan pelayan e-mel {domain_name} telah gagal (mesej ralat: “{error_message}”)."
+msgstr "Cubaan kami untuk mewujudkan sambungan dengan pelayan e-mel {domain_name} telah gagal (mesej ralat: “{error_message}”)."
 
 #, python-brace-format
 msgid "'{domain_name}' is not a valid email domain."
@@ -1007,6 +997,18 @@ msgid "{username} doesn't accept donations in {rejected_currency}."
 msgstr "{username} tidak menerima derma dalam {rejected_currency}."
 
 #, python-brace-format
+msgid "{username} no longer accepts secret donations."
+msgstr "{username} tidak lagi menerima derma rahsia."
+
+#, python-brace-format
+msgid "{username} no longer accepts private donations."
+msgstr "{username} tidak lagi menerima derma peribadi."
+
+#, python-brace-format
+msgid "{username} no longer accepts public donations."
+msgstr "{username} tidak lagi menerima derma terbuka."
+
+#, python-brace-format
 msgid "The amount {money_amount} isn't in the expected currency ({expected_currency})."
 msgstr "Jumlah {money_amount} bukan di dalam mata wang yang dijangkakan ({expected_currency})."
 
@@ -1034,7 +1036,7 @@ msgid "\"{0}\" is not a valid community name."
 msgstr "\"{0}\" bukan nama komuniti yang sah."
 
 msgid "You are not allowed to do this because your account is currently suspended."
-msgstr "Anda tidak dibenarkan membuat perkara ini kerana akaun anda telah digantung."
+msgstr "Anda tidak dibenarkan membuat perkara ini kerana akaun anda telah digantung ketika ini."
 
 msgid "This payment cannot be processed because the account of the recipient is currently suspended."
 msgstr "Pembayaran ini tidak dapat diproses kerana akaun penerima digantung ketika ini."
@@ -1042,6 +1044,13 @@ msgstr "Pembayaran ini tidak dapat diproses kerana akaun penerima digantung keti
 #, python-brace-format
 msgid "Your donation to {recipient} cannot be processed right now because the account of the beneficiary isn't ready to receive money."
 msgstr "Derma anda kepada {recipient} tidak boleh diproses pada waktu ini kerana akaun penerima belum sedia untuk menerima wang."
+
+#, python-brace-format
+msgid "{username} does not accept donations from {country}."
+msgstr "{username} tidak menerima derma daripada {country}."
+
+msgid "The processing of your payment has failed because our software was unable to determine which country the money would come from. This isn't supposed to happen."
+msgstr "Pemprosesan pembayaran anda telah gagal kerana perisian kami tidak dapat menentukan negara mana wang tersebut akan datang. Perkara ini tidak sepatutnya berlaku."
 
 msgid "You've already changed your main currency recently, please retry later (e.g. in a week) or contact support@liberapay.com."
 msgstr "Anda telah menukar mata wang utama anda baru-baru ini, sila cuba lagi kemudian (cth. dalam seminggu) atau hubungi support@liberapay.com."
@@ -1092,15 +1101,7 @@ msgstr "Tempoh Get Laluan Tamat"
 
 #, python-brace-format
 msgid "The {platform} user you're looking for hasn't joined Liberapay, and it's not possible to create a stub profile for them."
-msgstr "Pengguna {platform} yang anda cari belum sertai Liberapay, dan puntung profil tidak boleh dicipta untuknya."
-
-#, python-brace-format
-msgid "'{0}' doesn't seem to be a valid user id on {platform}."
-msgstr "'{0}' tidak nampak seperti pengguna yang sah di {platform}."
-
-#, python-brace-format
-msgid "There doesn't seem to be a user named {0} on {1}."
-msgstr "Nampaknya tiada pengguna yang bernama {0} di {1}."
+msgstr "Pengguna {platform} yang anda cari belum sertai Liberapay, dan profil puntung tidak boleh dicipta untuknya."
 
 #, python-brace-format
 msgid "Liberapay donation to {username} (team {team_name})"
@@ -1167,11 +1168,33 @@ msgstr "Memeriksa kuki…"
 msgid "You are not authorized to access this page."
 msgstr "Anda tidak dibenarkan mencapai halaman ini."
 
+msgid "The changes have been saved."
+msgstr "Anda masih belum simpan perubahan yang dilakukan."
+
 msgid "Processing your request failed because our server was unable to communicate with a service located on another machine. This is a temporary issue, please try again later."
 msgstr "Permintaan anda gagal diproses kerana pelayan kami tidak mampu berhubung dengan perkhidmatan yang terletak di mesin yang lain. Ini isu sementara sahaja, sila cuba lagi kemudian."
 
+#, python-brace-format
+msgid "'{0}' doesn't seem to be a valid user id on {platform}."
+msgstr "'{0}' tidak nampak seperti pengguna yang sah di {platform}."
+
+#, python-brace-format
+msgid "{0} returned an error, please try again later."
+msgstr "{0} mengembalikan ralat, sila cuba lagi kemudian."
+
+#, python-brace-format
+msgid "You've consumed your quota of requests, you can try again {in_N_minutes}."
+msgstr "Anda telah menggunakan kesemua kuota permintaan, anda boleh cuba lagi {in_N_minutes}."
+
+msgid "You're making requests too fast, please try again later."
+msgstr "Anda membuat permintaan terlalu laju, sila cuba lagi kemudian."
+
+#, python-brace-format
+msgid "There doesn't seem to be a user named {0} on {1}."
+msgstr "Nampaknya tiada pengguna yang bernama {0} di {1}."
+
 msgid "This profile is marked as spam or fraud."
-msgstr ""
+msgstr "Profil ini telah ditandakan sebagai spam atau fraud."
 
 msgid "Cancel"
 msgstr "Batal"
@@ -1306,10 +1329,10 @@ msgid "Please try again in a few minutes."
 msgstr "Sila cuba lagi dalam beberapa minit."
 
 msgid "We're currently experiencing technical failures. As a result most things don't work. Sorry for the inconvenience, we'll get everything back to normal ASAP."
-msgstr "Kami sedang mengalami kegagalan teknikal. Oleh itu kebanyakan benda tidak berfungsi. Maaf atas segala kesulitan, kami akan pulihkan segalanya secepat mungkin."
+msgstr "Kami sedang mengalami kegagalan teknikal ketika ini. Oleh itu kebanyakan benda tidak berfungsi. Maaf atas segala kesulitan, kami akan pulihkan segalanya secepat mungkin."
 
 msgid "Liberapay is currently in read-only mode as we are migrating the database. This shouldn't take more than a few minutes."
-msgstr "Liberapay kini dalam mod baca-sahaja kerana kami sedang memindah pangkalan data. Ia sepatutnya memakan masa beberapa minit sahaja."
+msgstr "Liberapay berada dalam mod baca-sahaja ketika ini kerana kami sedang memindah pangkalan data. Ini sepatutnya tidak ambil masa yang lama."
 
 msgid "Toggle navigation"
 msgstr "Togol navigasi"
@@ -1382,6 +1405,9 @@ msgstr "Identiti"
 msgid "Account"
 msgstr "Akaun"
 
+msgid "Close Account"
+msgstr "Tutup Akaun"
+
 msgid "Emails"
 msgstr "E-mel"
 
@@ -1395,10 +1421,13 @@ msgid "Create a new team"
 msgstr "Cipta kumpulan baharu"
 
 msgid "Sign out"
-msgstr "Log Keluar"
+msgstr "Log keluar"
 
 msgid "Print"
 msgstr "Cetak"
+
+msgid "Liberapay logo"
+msgstr "Logo Liberapay"
 
 #, python-brace-format
 msgid "{0} has {n} patron."
@@ -1432,9 +1461,6 @@ msgstr "Derma"
 msgid "Switch to a different account"
 msgstr "Tukar ke akaun lain"
 
-msgid "The changes have been saved."
-msgstr "Anda masih belum simpan perubahan yang dilakukan."
-
 msgid "We've sent you a single-use login link. Check your inbox, open the provided link in a new tab, then come back to this page and click on the button below to carry on with what you wanted to do."
 msgstr "Kami telah menghantar pautan log masuk guna sekali. Periksa peti masuk e-mel anda, buka pautan yang diberi dalam tab baru, kemudian kembali semula ke halaman ini dan klik pada butang di bawah untuk teruskan apa yang anda ingin lakukan."
 
@@ -1467,8 +1493,8 @@ msgstr "Simpan"
 msgid "If you need to change the password of your Liberapay account, you can do so below. To be secure, the password of your account should be randomly generated and not used anywhere else. We strongly recommend the use of a password manager."
 msgstr "Sekiranya anda perlu menukar kata laluan akaun Liberapay anda, anda boleh lakukannya di bawah. Untuk selamat, kata laluan akaun anda patut dijana secara rawak dan tidak digunakan di tempat lain. Kami amat menggalakkan penggunaan pengurus kata laluan."
 
-msgid "Setting a password allows you to log in directly, instead of waiting for a single-use link sent via email. However, we recommend keeping your account passwordless if you don't use a password manager, because in order to be secure the password of your account should be randomly generated and not used anywhere else."
-msgstr "Penetapan kata laluan membolehkan anda log masuk secara terus, berbanding dengan menunggu pautan guna sekali untuk dihantar menerusi e-mel. Walau bagaimanapun, kami menggalakkan anda mengekalkan akaun anda tanpa kata laluan jika anda tidak menggunakan pengurus kata laluan, kerana untuk kekal selamat kata laluan akaun anda patut dijana secara rawak dan tidak digunakan di tempat lain."
+msgid "Setting a password allows you to log in directly, instead of waiting for a single-use link sent via email. However, we only recommend setting a password if you use a password manager, because in order to be secure the password should be randomly generated and not used anywhere else."
+msgstr "Penetapan kata laluan membolehkan anda log masuk secara terus, tanpa menunggu pautan guna sekali yang dihantar melalui e-mel. Namun begitu, kami hanya menggalakkan penetapan kata laluan jika anda menggunakan pengurus kata laluan, kerana kata laluan patut dijana secara rawak dan tidak digunakan di tempat lain untuk memastikan anda selamat."
 
 msgid "Current password"
 msgstr "Kata laluan semasa"
@@ -1477,7 +1503,7 @@ msgid "New password"
 msgstr "Kata laluan baru"
 
 msgid "Unset password"
-msgstr "Padam kata laluan"
+msgstr "Nyahtetapkan kata laluan"
 
 #, python-brace-format
 msgid "Maximum length is {0}."
@@ -1613,11 +1639,11 @@ msgstr "Logo"
 msgid "Overview"
 msgstr "Keseluruhan"
 
-msgid "Organizations"
-msgstr "Organisasi"
+msgid "Recipients"
+msgstr "Penerima"
 
-msgid "Individuals"
-msgstr "Individu"
+msgid "Hopefuls"
+msgstr "Pengharap"
 
 msgid "Unclaimed Donations"
 msgstr "Derma Tidak Dituntut"
@@ -1633,6 +1659,9 @@ msgstr "Nama"
 
 msgid "Currencies"
 msgstr "Mata wang"
+
+msgid "Countries"
+msgstr "Negara"
 
 msgid "Goal"
 msgstr "Matlamat"
@@ -1672,16 +1701,19 @@ msgid "{username} hasn't configured any payment method yet, so your donation can
 msgstr "{username} masih belum menetapkan kaedah pembayaran, jadi derma anda tidak boleh diproses pada waktu ini. Kami akan maklumkan anda apabila pembayaran boleh diproses."
 
 #, python-brace-format
-msgid "Donations to {username} can be paid using a credit or debit card ({list_of_card_brands}), or by direct debit of a Euro bank account (for donations in Euro only)."
-msgstr "Derma ke {username} boleh dibayar menggunakan kad kredit atau debit ({list_of_card_brands}), atau debit terus akaun bank Euro (untuk derma dalam mata wang Euro sahaja)."
+msgid "Donations to {username} can be paid using a credit or debit card ({list_of_card_brands}), or by direct debit of a euro bank account (for donations in euro only)."
+msgstr "Derma kepada {username} boleh dibayar menggunakan kad kredit atau debit ({list_of_card_brands}), atau melalui debit terus akaun bank euro (untuk derma dalam euro sahaja)."
 
 #, python-brace-format
 msgid "Donations to {username} are processed through PayPal."
 msgstr "Derma ke {username} diproses melalui PayPal."
 
 #, python-brace-format
-msgid "Donations to {username} can be paid using: a credit or debit card ({list_of_card_brands}), a Euro bank account (SEPA Direct Debit), or a PayPal account."
-msgstr "Derma ke {username} boleh dibayar menggunakan: kad kredit atau debit ({list_of_card_brands}), akaun bank Euro (Debit Terus SEPA), atau melalui PayPal."
+msgid "Donations to {username} can be paid using: a credit or debit card ({list_of_card_brands}), a euro bank account (SEPA Direct Debit), or a PayPal account."
+msgstr "Derma kepada {username} boleh dibayar menggunakan: kad kredit atau debit ({list_of_card_brands}), akaun bank euro (Debit Terus SEPA) atau akaun PayPal."
+
+msgid "Payment Card"
+msgstr "Kad pembayaran"
 
 msgid "Country"
 msgstr "Negara"
@@ -1724,10 +1756,13 @@ msgid "Mission accomplished!"
 msgstr "Matlamat berjaya dicapai!"
 
 msgid "View income shares"
-msgstr "Lihat syer pendapatan"
+msgstr "Lihat pembahagian pendapatan"
 
 msgid "(fork)"
 msgstr "(cabangkan)"
+
+msgid "Stars"
+msgstr "Bintang"
 
 msgid "Updated this week"
 msgstr "Dikemaskini minggu ini"
@@ -1765,15 +1800,6 @@ msgstr "Dengan mencipta akaun Liberapay anda menerima {0}Syarat Perkhidmatan{1} 
 msgid "Your nominal take from the {0} team is limited to {1} this week. {2}Why?{3}"
 msgstr "Perolehan nominal anda dari kumpulan {0} dihadkan kepada {1} minggu ini. {2}Kenapa?{3}"
 
-msgid "Last Payday"
-msgstr "Hari Bayaran Terakhir"
-
-msgid "n/a"
-msgstr "tiada"
-
-msgid "Next Payday"
-msgstr "Hari Bayaran Seterusnya"
-
 msgid "Member"
 msgstr "Ahli"
 
@@ -1782,6 +1808,19 @@ msgstr "Perolehan Nominal"
 
 msgid "Actual Take"
 msgstr "Perolehan Sebenar"
+
+msgid "On Liberapay, donations are paid in advance. This column shows how much money each member has received in advance through this team. An advance increases every time a member receives a new payment from a donor through the team, and decreases every week."
+msgstr "Di Liberapay, derma dibayar secara pendahuluan. Lajur ini menunjukkan jumlah wang yang setiap ahli kumpulan telah terima secara pendahuluan melalui kumpulan ini. Wang pendahuluan meningkat setiap kali seorang ahli menerima bayaran baharu daripada penderma melalui kumpulan, dan menurun setiap minggu."
+
+msgid "Advance"
+msgstr "Pendahuluan"
+
+#, python-brace-format
+msgid "Last week: {0}"
+msgstr "Minggu lepas: {0}"
+
+msgid "no take"
+msgstr "tiada perolehan"
 
 msgid "auto"
 msgstr "auto"
@@ -1796,6 +1835,10 @@ msgid "Leftover"
 msgstr "Baki"
 
 #, python-brace-format
+msgid "It looks like you are in {country}. {username} does not accept donations coming from that country."
+msgstr "Nampaknya anda berada di {country}. {username} tidak menerima derma yang datang dari negara tersebut."
+
+#, python-brace-format
 msgid "Your current donation to {name} is in {currency}, but they now only accept donations in {accepted_currency}. You can convert your donation to that currency, or discontinue it."
 msgstr "Derma anda kepada {name} pada ketika ini adalah dalam {currency}, tetapi kini derma hanya diterima dalam {accepted_currency}. Anda boleh tukarkan derma anda ke mata wang tersebut, atau tamatkannya."
 
@@ -1803,15 +1846,9 @@ msgstr "Derma anda kepada {name} pada ketika ini adalah dalam {currency}, tetapi
 msgid "Your current donation to {name} is in {currency}, but they no longer accept that currency. The suggested new currency is the {accepted_currency}, but you can choose another one."
 msgstr "Derma anda kepada {name} pada ketika ini adalah dalam {currency}, tetapi mata wang tersebut sudah tidak diterima. Mata wang baharu yang dicadangkan ialah {accepted_currency}, tetapi anda boleh pilih yang lain."
 
-msgid "Modify"
-msgstr "Ubah suai"
-
-msgid "Discontinue"
-msgstr "Tamatkan"
-
 #, python-brace-format
 msgid "You are currently donating {money_amount} per week to {recipient_name}. The form below enables you to modify or stop your donation."
-msgstr "Anda menderma sebanyak {money_amount} seminggu kepada {recipient_name} pada ketika ini. Borang berikut membolehkan anda mengubah suai atau menghentikan derma anda."
+msgstr "Anda menderma sebanyak {money_amount} setiap minggu kepada {recipient_name} pada ketika ini. Borang berikut membolehkan anda mengubah suai atau menghentikan derma anda."
 
 #, python-brace-format
 msgid "You are currently donating {money_amount} per month to {recipient_name}. The form below enables you to modify or stop your donation."
@@ -1836,8 +1873,8 @@ msgid_plural "The {currency_name} isn't your preferred currency? {username} also
 msgstr[0] "Anda tidak ingin gunakan {currency_name}? {username} juga menerima {n} mata wang lain:"
 msgstr[1] "Anda tidak ingin gunakan {currency_name}? {username} juga menerima {n} mata wang lain:"
 
-msgid "not supported by PayPal"
-msgstr "tidak disokong oleh PayPal"
+msgid "supported by PayPal"
+msgstr "disokong oleh PayPal"
 
 msgid "Switch"
 msgstr "Tukar"
@@ -1872,6 +1909,12 @@ msgstr "Pembaharuan manual"
 
 msgid "A reminder to renew your donation will be sent to you via email."
 msgstr "Peringatan untuk memperbaharui derma anda akan dihantar kepada anda melalui e-mel."
+
+msgid "Discontinue the donation"
+msgstr "Tamatkan derma"
+
+msgid "Cancel the pledge"
+msgstr "Batalkan perjanjian derma"
 
 #, python-brace-format
 msgid "{username} has chosen not to see who their patrons are, so your donation will be secret."
@@ -1913,20 +1956,47 @@ msgstr "Semua orang akan mampu melihat bahawa anda menyokong {username}."
 msgid "{username} hasn't yet specified whether they want to see who their patrons are, so your donation will be secret."
 msgstr "{username} masih belum menyatakan sama ada beliau ingin melihat siapa pelanggannya, jadi derma anda akan dirahsiakan."
 
-msgid "Discontinue the donation"
-msgstr "Tamatkan derma"
-
-msgid "Cancel the pledge"
-msgstr "Batalkan perjanjian derma"
-
 msgid "People who contribute to the commons need you to support their work. Building free software, spreading free knowledge, these things take time and cost money, not only to do the initial work, but also to maintain it over time."
 msgstr "Mereka yang menyumbang kepada khalayak ramai perlukan anda untuk menyokong kerja mereka. Membina perisian percuma dan menyebarkan pengetahuan secara percuma mengambil banyak masa dan menggunakan banyak wang, bukan sahaja ketika baru bermula tetapi juga ketika mengekalkannya."
 
 msgid "Liberapay's recurrent donations system is designed to provide a stable crowdfunded basic income to creators, enabling them to keep doing great work that benefits everyone. Ready to contribute? Then let's get started:"
-msgstr "Sistem derma berulang Liberapay direka untuk menyediakan pendapatan asas yang stabil daripada dana khalayak kepada para pencipta, membolehkan mereka terus mencipta sesuatu yang menguntungkan semua orang. Sedia untuk menyumbang? Maka mari mulakan:"
+msgstr "Sistem derma berulang Liberapay direka untuk menyediakan pendapatan asas yang stabil daripada dana khalayak kepada para pencipta, membolehkan mereka terus mencipta sesuatu yang memanfaatkan semua orang. Sedia untuk menyumbang? Maka mari mulakan:"
 
 msgid "You are in sandbox mode, do not input any real payment or personal data!"
 msgstr "Anda dalam mod kotak pasir, jangan masukkan sebarang pembayaran sebenar atau data peribadi!"
+
+msgid "The credentials have been generated."
+msgstr "Bukti kelayakan telah dijana."
+
+msgid "The credentials have been revoked."
+msgstr "Bukti kelayakan telah dimansuhkan."
+
+msgid "Constant session"
+msgstr "Sesi malar"
+
+msgid "You can automate downloading private information from your account by including the following HTTP header in your requests:"
+msgstr "Anda boleh mengautomatikkan muat turun maklumat peribadi daripada akaun anda dengan menyertakan pengepala HTTP berikut dalam permintaan anda:"
+
+msgid "For example, you can download the list of your currently active patrons by executing the following command:"
+msgstr "Sebagai contoh, anda boleh memuat turun senarai pelanggan anda yang sedang aktif dengan melakukan perintah berikut:"
+
+msgid "To minimize the risks to you, these credentials can only be used to fetch data, not to modify anything in your account, and they will automatically expire if unused for a year."
+msgstr "Untuk meminimumkan risiko kepada anda, bukti kelayakan ini hanya boleh digunakan untuk mengambil data, bukan untuk mengubah suai apa-apa dalam akaun anda, dan ia akan tamat tempoh secara automatiknya jika tidak digunakan selama setahun."
+
+msgid "Revoke credentials"
+msgstr "Mansuhkan bukti kelayakan"
+
+msgid "The credentials have expired."
+msgstr "Bukti kelayakan telah tamat tempoh."
+
+msgid "Regenerate credentials"
+msgstr "Jana semula bukti kelayakan"
+
+msgid "To simplify automating downloads of private information from your account, you can generate long-lived read-only credentials."
+msgstr "Untuk memudahkan anda mengautomatikkan muat turun maklumat peribadi daripada akaun anda, anda boleh menjana bukti kelayakan baca sahaja yang tahan lama."
+
+msgid "Generate credentials"
+msgstr "Jana bukti kelayakan"
 
 msgid "Dashboard"
 msgstr "Papan Pemuka"
@@ -1954,19 +2024,19 @@ msgstr[1] "{username} mempunyai {n} orang pelanggan yang bersedia untuk menyokon
 
 #, python-brace-format
 msgid "{username} currently receives {income_amount} per week. They have reached their funding goal ({goal_amount} per week), but your donation would still help them."
-msgstr "{username} kini menerima {income_amount} setiap minggu. Dia telah capai matlamat dananya ({goal_amount} setiap minggu), tetapi derma anda masih boleh membantunya."
+msgstr "{username} menerima {income_amount} setiap minggu pada ketika ini. Dia telah capai matlamat dananya ({goal_amount} setiap minggu), tetapi derma anda masih boleh membantunya."
 
 #, python-brace-format
 msgid "{username} currently receives {income_amount} per week, they need your help to reach their funding goal ({goal_amount} per week)."
-msgstr "{username} kini menerima {income_amount} setiap minggu, mereka perlukan bantuan anda untuk mencapai matlamat dana mereka ({goal_amount} setiap minggu)."
+msgstr "{username} menerima {income_amount} setiap minggu pada ketika ini, mereka perlukan bantuan anda untuk mencapai matlamat dana mereka ({goal_amount} setiap minggu)."
 
 #, python-brace-format
 msgid "{username}'s goal is to receive {money_amount} per week. Be the first to contribute!"
-msgstr "Matlamat {username} adalah untuk menerima {money_amount} seminggu. Jadilah penyumbang pertama!"
+msgstr "Matlamat {username} adalah untuk menerima {money_amount} setiap minggu. Jadilah penyumbang pertama!"
 
 #, python-brace-format
 msgid "{username} currently receives {money_amount} per week."
-msgstr "{username} kini menerima {money_amount} setiap minggu."
+msgstr "{username} menerima {money_amount} setiap minggu pada ketika ini."
 
 msgid "Recipient Identity"
 msgstr "Identiti Penerima"
@@ -1997,6 +2067,12 @@ msgstr "Bolehkah saya beri derma sekali sahaja?"
 msgid "One-time donations aren't properly supported yet, but you can discontinue your donation immediately after the first payment."
 msgstr "Derma satu kali belum disokong secara tertib lagi, tetapi anda boleh tamatkan derma serta-merta selepas pembayaran yang pertama."
 
+msgid "Will I get a receipt?"
+msgstr "Adakah saya akan mendapat resit?"
+
+msgid "A receipt is automatically available for every payment."
+msgstr "Resit tersedia secara automatik bagi setiap pembayaran."
+
 msgid "What is this website? I don't recognize it."
 msgstr "Apakah laman web ini? Saya tidak mengenalinya."
 
@@ -2019,6 +2095,9 @@ msgstr "Perintah Perkhidmatan Pembayaran Edisi Semakan"
 #, python-brace-format
 msgid "Your new avatar URL is: {0}"
 msgstr "URL avatar baru anda ialah: {0}"
+
+msgid "Your profile no longer has an avatar."
+msgstr "Profil anda sudah tidak ada avatar."
 
 #, python-brace-format
 msgid "You have selected {platform} as your avatar source but you haven't connected any {platform} account."
@@ -2049,12 +2128,21 @@ msgstr "Tinggal"
 msgid "Explore communities"
 msgstr "Teroka komuniti"
 
+msgid "You have to check at least one box."
+msgstr "Anda perlu menanda sekurang-kurangnya satu kotak."
+
+msgid "Which countries should your donors be allowed to send you money from?"
+msgstr "Dari negara manakah penderma anda yang dibenarkan menghantar wang kepada anda?"
+
+msgid "We recommend limiting the origins of donations only if you are required to by law."
+msgstr "Kami menggalakkan anda mengehadkan asal usul derma hanya jika anda diperlukan untuk berbuat sedemikian oleh undang-undang."
+
 msgid "The submitted settings are incoherent."
 msgstr "Tetapan yang anda cuba simpan mempunyai ketidakserasian."
 
 #, python-brace-format
 msgid "You currently receive the equivalent of {money_amount} per week from donations in currencies that you are about to reject. These donations will not be immediately converted to your main currency, instead each donor will be asked to switch to an accepted currency the next time they renew or modify their donation."
-msgstr "Anda menerima jumlah yang setara dengan {money_amount} seminggu ketika ini daripada derma dalam mata wang yang anda bakal tolak. Derma-derma ini tidak akan ditukarkan ke mata wang utama anda serta merta, sebaliknya setiap penderma akan diminta untuk bertukar ke mata wang yang diterima pada waktu seterusnya mereka memperbaharui atau mengubah suai derma mereka."
+msgstr "Anda menerima jumlah yang setara dengan {money_amount} setiap minggu ketika ini daripada derma dalam mata wang yang anda bakal tolak. Derma-derma ini tidak akan ditukarkan ke mata wang utama anda serta merta, sebaliknya setiap penderma akan diminta untuk bertukar ke mata wang yang diterima pada waktu seterusnya mereka memperbaharui atau mengubah suai derma mereka."
 
 msgid "Your currency settings are currently ignored because they're incompatible with the payment processor you're using."
 msgstr "Tetapan mata wang anda diabaikan ketika ini kerana ia tidak serasi dengan pemproses pembayaran yang anda guna."
@@ -2076,7 +2164,7 @@ msgstr "Menerima mata wang asing boleh meningkatkan kemungkinan pendapatan denga
 
 #, python-brace-format
 msgid "Stripe automatically converts funds into your main currency, but by default PayPal holds payments in foreign currencies until you tell it what to do. If you have a Business PayPal account, you can choose to automatically convert all incoming payments in foreign currencies to your main currency. This option is currently located in the “{link_open}Preferences for receiving payments{link_close}” page."
-msgstr "Stripe akan menukarkan dana ke dalam mata wang utama anda secara automatik, tetapi PayPal selalunya pegang pembayaran dalam mata wang asing sehingga anda tetapkan apa hendak dibuat. Jika anda ada akaun Business PayPal, anda boleh pilih untuk tukarkan kesemua pembayaran akan datang ke mata wang utama anda secara automatik. Pilihan tersebut berada di halaman “{link_open}Keutamaan penerimaan pembayaran{link_close}”."
+msgstr "Stripe akan menukarkan dana ke dalam mata wang utama anda secara automatik, tetapi PayPal selalunya pegang pembayaran dalam mata wang asing sehingga anda tetapkan apa hendak dibuat. Jika anda ada akaun Business PayPal, anda boleh pilih untuk tukarkan kesemua pembayaran akan datang ke mata wang utama anda secara automatik. Pilihan tersebut berada di halaman “{link_open}Keutamaan penerimaan pembayaran{link_close}” ketika ini."
 
 msgid "Connecting the accounts you own on other platforms makes your Liberapay profile easier to find, and helps to demonstrate that you are who you claim to be."
 msgstr "Kaitkan akaun yang anda miliki di platform lain membuatkan profil Liberapay anda lebih mudah dicari, dan membantu menunjukkan anda memang anda yang sebenar."
@@ -2084,17 +2172,14 @@ msgstr "Kaitkan akaun yang anda miliki di platform lain membuatkan profil Libera
 #, python-brace-format
 msgid "You currently have {n} connected account:"
 msgid_plural "You currently have {n} connected accounts:"
-msgstr[0] "Anda mempunyai {n} akaun terkait:"
-msgstr[1] "Anda mempunyai {n} akaun terkait:"
+msgstr[0] "Anda mempunyai {n} akaun terkait ketika ini:"
+msgstr[1] "Anda mempunyai {n} akaun terkait ketika ini:"
 
 msgid "Connect an account"
 msgstr "Kaitkan akaun"
 
-msgid "Our YouTube integration has been disabled by Google. We're working on re-implementing this feature in a different way."
-msgstr "Penyepaduan YouTube kami telah dilumpuhkan oleh pihak Google. Kami sedang berusaha untuk menyepadukan semula ciri ini dengan cara yang berlainan."
-
 msgid "I'm grateful for gifts, but don't have a specific funding goal."
-msgstr "Kalau dapat sedikit wang pun jadilah, saya tiada matlamat khusus."
+msgstr "Saya berterima kasih jika menerima hadiah, tetapi saya tiada matlamat dana yang khusus."
 
 msgid "I'm here as a patron."
 msgstr "Saya di sini sebagai penderma."
@@ -2107,7 +2192,7 @@ msgid "My goal is to receive {0}"
 msgstr "Matlamat saya ialah untuk menerima {0}"
 
 msgid "We're grateful for gifts, but don't have a specific funding goal."
-msgstr "Kalau dapat sedikit wang pun jadilah, kami tiada matlamat khusus."
+msgstr "Kami berterima kasih jika menerima hadiah, tetapi kami tiada matlamat dana yang khusus."
 
 msgid "We're here as a patron."
 msgstr "Kami di sini sebagai penderma."
@@ -2132,7 +2217,7 @@ msgid "Admin override is on.*"
 msgstr "Keutamaan pentadbir aktif.*"
 
 msgid "Save changes"
-msgstr "Simpan"
+msgstr "Simpan perubahan"
 
 msgid "*The referencing of Liberapay profiles is subject to admin approval."
 msgstr "*Perujukan profil Liberapay bergantung kepada kelulusan pentadbir."
@@ -2157,7 +2242,7 @@ msgid "← Go back"
 msgstr "← Pergi balik"
 
 msgid "The following repositories are currently displayed on your profile:"
-msgstr "Repositori berikut sedang dipaparkan pada profil anda:"
+msgstr "Repositori berikut sedang dipaparkan pada profil anda ketika ini:"
 
 msgid "We can import a list of your team's repositories from:"
 msgstr "Kami boleh mengimport senarai repositori kumpulan anda dari:"
@@ -2169,8 +2254,31 @@ msgid "We can also import lists of repositories for your teams:"
 msgstr "Kami juga boleh mengimport senarai repositori untuk kumpulan anda:"
 
 #, python-brace-format
-msgid "The submitted summary is too long ({0} > {1})."
-msgstr "Ringkasan yang dihantar terlalu panjang ({0} > {1})."
+msgid "<unused singular (hash=82d03d589b58d2a8c99d043ba5f91b84)>"
+msgid_plural "The summary can't be more than {n} characters long."
+msgstr[0] "<unused singular (hash=82d03d589b58d2a8c99d043ba5f91b84)>"
+msgstr[1] "Panjang ringkasan tidak boleh melebihi {n} aksara."
+
+#, python-brace-format
+msgid "<unused singular (hash=e77fbb49c028c11bb9d859698c4a5363)>"
+msgid_plural "The full description must be at least {n} characters long."
+msgstr[0] "<unused singular (hash=e77fbb49c028c11bb9d859698c4a5363)>"
+msgstr[1] "Panjang keterangan penuh mestilah sekurang-kurangnya {n} aksara."
+
+#, python-brace-format
+msgid "<unused singular (hash=df724b624e486f3c07109838b9a4b3f0)>"
+msgid_plural "The full description can't be more than {n} characters long."
+msgstr[0] "<unused singular (hash=df724b624e486f3c07109838b9a4b3f0)>"
+msgstr[1] "Panjang keterangan penuh tidak boleh melebihi {n} aksara."
+
+msgid "The full description can't be identical to the summary."
+msgstr "Keterangan penuh tidak boleh serupa dengan ringkasan."
+
+msgid "The summary can't be only your name."
+msgstr "Ringkasan tidak boleh mengandungi nama anda semata-mata."
+
+msgid "The description can't be only your name."
+msgstr "Keterangan tidak boleh mengandungi nama anda semata-mata."
 
 msgid "This is a preview."
 msgstr "Ini ialah pratonton."
@@ -2180,6 +2288,9 @@ msgstr "Petikan yang akan digunakan di media sosial:"
 
 msgid "Preview of the short description"
 msgstr "Pratonton bagi keterangan ringkas"
+
+msgid "Including your username in the short description is redundant. The short description is always displayed immediately below the username."
+msgstr "Tidak perlu letak nama pengguna anda dalam keterangan ringkas. Keterangan ringkas akan sentiasa dipaparkan terus di bawah nama pengguna."
 
 msgid "Publish"
 msgstr "Terbitkan"
@@ -2376,8 +2487,11 @@ msgstr "Memandangkan anda memilih untuk membuat derma terbuka, kami menggalakkan
 msgid "You have enabled automatic renewals for some or all of your donations, but you don't have any valid payment instrument that would allow us to initiate the automatic payments when the time comes."
 msgstr "Anda telah membolehkan pembaharuan automatik untuk sesetengah atau kesemua derma anda, tetapi anda masih belum mempunyai instrumen pembayaran sah yang akan membolehkan kami memulakan pembayaran automatik apabila tiba masanya."
 
+msgid "Add a payment instrument"
+msgstr "Tambah alat pembayaran"
+
 msgid "Donations"
-msgstr "Derma"
+msgstr "Derma-derma"
 
 #, python-brace-format
 msgid "You have {n} donation awaiting payment."
@@ -2393,6 +2507,9 @@ msgstr "{money_amount}{small}/bulan{end_small}"
 msgid "{money_amount}{small}/year{end_small}"
 msgstr "{money_amount}{small}/tahun{end_small}"
 
+msgid "Modify"
+msgstr "Ubah suai"
+
 #, python-brace-format
 msgid "Started {timespan_ago}."
 msgstr "Bermula sejak {timespan_ago}."
@@ -2402,7 +2519,7 @@ msgid "Started {timespan_ago_1}. Modified {timespan_ago_2}."
 msgstr "Bermula sejak {timespan_ago_1}. Diubahsuai {timespan_ago_2}."
 
 msgid "Automatic renewals are enabled for this donation, but are currently impossible due to payment processor limitations."
-msgstr "Pembaharuan automatik dibolehkan untuk derma ini, tetapi tidak dapat dilaksanakan pada ketika ini akibat pengehadan pemproses pembayaran."
+msgstr "Pembaharuan automatik dibolehkan untuk derma ini, tetapi tidak boleh dilaksanakan pada ketika ini akibat pengehadan pemproses pembayaran."
 
 msgid "Inactive because the account of the recipient is blacklisted."
 msgstr "Tidak aktif kerana akaun penerima disenaraihitamkan."
@@ -2422,6 +2539,10 @@ msgstr "Pembayaran seterusnya {in_N_weeks_months_or_years}."
 
 msgid "Renew now"
 msgstr "Perbaharui sekarang"
+
+#, python-brace-format
+msgid "The recipient no longer accepts payments in {currency}."
+msgstr "Penerima tidak lagi menerima pembayaran dalam {currency}."
 
 msgid "Pending payment completion."
 msgstr "Proses pembayaran belum selesai."
@@ -2457,7 +2578,7 @@ msgstr "Dimulakan {timespan_ago_1}. Dihentikan {timespan_ago_2}."
 
 #, python-brace-format
 msgid "This stopped donation still has {money_amount} paid in advance. That advance will be consumed every week until it reaches zero."
-msgstr "Derma yang dihentikan ini masih mempunyai {money_amount} dibayar terlebih dahulu. Jumlah yang dibayar terlebih dahulu tersebut akan digunakan setiap minggu sehingga ia mencecah kosong."
+msgstr "Derma yang dihentikan ini masih mempunyai {money_amount} dibayar secara pendahuluan. Jumlah wang pendahuluan tersebut akan digunakan setiap minggu sehingga ia mencecah kosong."
 
 msgid "Cancelled pledges"
 msgstr "Perjanjian dibatalkan"
@@ -2479,7 +2600,7 @@ msgstr "Ubah suai derma anda kepada {username}"
 msgid "<unused singular (hash=098cce804aadd8f637c3d509c3157b37)>"
 msgid_plural "Due to legal and technical limitations we are currently unable to process all your donations as a single payment. Instead you will have to make {n} separate payments. We apologize for the inconvenience."
 msgstr[0] "<unused singular (hash=098cce804aadd8f637c3d509c3157b37)>"
-msgstr[1] "Disebabkan had teknikal dan undang-undang, kami tidak mampu memproses kesemua derma anda sebagai pembayaran tunggal. Sebaliknya, anda perlu membuat {n} pembayaran berasingan. Kami memohon maaf atas kesulitan yang berlaku."
+msgstr[1] "Disebabkan had teknikal dan undang-undang, kami tidak mampu memproses kesemua derma anda sebagai pembayaran tunggal ketika ini. Sebaliknya, anda perlu membuat {n} pembayaran berasingan. Kami memohon maaf atas kesulitan yang berlaku."
 
 #, python-brace-format
 msgid "Send money to {recipients}"
@@ -2498,20 +2619,20 @@ msgstr "Hanya PayPal sahaja pilihan yang tersedia ketika ini untuk menambah dana
 msgid "Please choose a payment method:"
 msgstr "Sila pilih kaedah pembayaran:"
 
-msgid "Card"
-msgstr "Kad"
-
 msgid "Currently unavailable"
 msgstr "Belum ada ketika ini"
 
 msgid "Pay by card"
 msgstr "Bayar dengan kad"
 
-msgid "Euro donations only"
-msgstr "Derma Euro sahaja"
+msgid "Only for donations to SEPA countries"
+msgstr "Hanya untuk derma kepada negara SEPA"
 
-msgid "Euro bank accounts only"
-msgstr "Akaun bank Euro sahaja"
+msgid "Only for donations in euros"
+msgstr "Hanya untuk derma dalam euro"
+
+msgid "Only euro bank accounts"
+msgstr "Hanya untuk akaun bank euro"
 
 msgid "Pay by direct debit"
 msgstr "Bayar dengan debit terus"
@@ -2547,8 +2668,12 @@ msgid "Failure"
 msgstr "Gagal"
 
 #, python-brace-format
-msgid "The payment processor {name} returned an error: “{error_message}”."
-msgstr "Pemproses pembayaran {name} mengembalikan ralat: “{error_message}”."
+msgid "PayPal status code: {0}"
+msgstr "Kod status PayPal: {0}"
+
+#, python-brace-format
+msgid "error message: {0}"
+msgstr "mesej ralat: {0}"
 
 msgid "The payment has been initiated."
 msgstr "Pembayaran telah dimulakan."
@@ -2582,6 +2707,10 @@ msgstr "PayPal mendedahkan nama dan alamat e-mel anda kepada penerima."
 msgid "Initiate the payment"
 msgstr "Mulakan pembayaran"
 
+#, python-brace-format
+msgid "The payment processor {name} returned an error: “{error_message}”."
+msgstr "Pemproses pembayaran {name} mengembalikan ralat: “{error_message}”."
+
 msgid "The payment instrument is invalid, please select or add another one."
 msgstr "Alat pembayaran tidak sah, sila pilih atau tambah yang lain."
 
@@ -2598,6 +2727,9 @@ msgstr "Pembayaran anda telah dimulakan. Ia akan diserahkan kepada bank anda kem
 #, python-brace-format
 msgid "Your bank can reject this payment. We recommend sending a copy of {link_start}the mandate{link_end} to your bank if you're not sure that it properly handles {currency} direct debit instructions."
 msgstr "Bank anda boleh tolak pembayaran ini. Kami menggalakkan anda hantar salinan {link_start}mandat{link_end} ke bank anda jika anda tidak pasti sama ada mereka mengendalikan arahan debit terus {currency} dengan betul."
+
+msgid "The initialization of a required component has failed. If you use a browser extension that blocks requests, for example NoScript, please make sure it’s allowing requests to the “stripe.com” domain."
+msgstr "Pengasalan komponen yang diperlukan telah gagal. Jika anda menggunakan sambungan pelayar yang menyekat permintaan, contohnya NoScript, sila pastikan ia membenarkan permintaan kepada domain “stripe.com”."
 
 #, python-brace-format
 msgid "We will charge your {brand} card (last four digits: {last4})."
@@ -2629,6 +2761,10 @@ msgstr "Data ini akan dihantar terus ke pemproses pembayaran {name} melalui samb
 msgid "Remember the card number for next time"
 msgstr "Ingat nombor kad untuk urusan di lain hari"
 
+#, python-brace-format
+msgid "Use this payment instrument by default for future payments in {currency}"
+msgstr "Gunakan instrumen pembayaran ini secara lalainya untuk pembayaran masa depan dalam {currency}"
+
 msgid "Use this payment instrument by default for future payments"
 msgstr "Gunakan instrumen pembayaran ini secara lalainya untuk pembayaran masa hadapan"
 
@@ -2645,6 +2781,9 @@ msgstr "Ingat nombor akaun bank untuk pembayaran pada masa akan datang"
 #, python-brace-format
 msgid "In order to reduce the risk of this payment being rejected, we recommend that you input your postal address below. It will be stored encrypted in our database and sent to the payment processor ({processor_name})."
 msgstr "Untuk mengurangkan risiko pembayaran ini ditolak, kami menggalakkan anda mengisi alamat surat anda di bawah. Ia akan disimpan secara tersulit dalam pangkalan data kami dan dihantar ke pemproses pembayaran ({processor_name})."
+
+msgid "Please fill in your postal address. It's required because the IBAN you've provided emanates from outside the European Union."
+msgstr "Sila isikan alamat surat anda. Perkara ini diperlukan kerana IBAN yang anda berikan datang dari luar Kesatuan Eropah."
 
 #, python-brace-format
 msgid "'{0}' is not an acceptable amount (min={1}, max={2})"
@@ -2703,7 +2842,7 @@ msgstr[0] "Anda mempunyai {n} pembayaran dijadualkan:"
 msgstr[1] "Anda mempunyai {n} pembayaran dijadualkan:"
 
 msgid "You currently don't have any scheduled payment."
-msgstr "Anda tidak mempunyai sebarang pembayaran yang dijadualkan."
+msgstr "Anda tidak mempunyai sebarang pembayaran yang dijadualkan ketika ini."
 
 msgid "The provided postal address is incomplete."
 msgstr "Alamat surat-menyurat yang anda berikan tidak lengkap."
@@ -2721,7 +2860,7 @@ msgid "This page allows you to view and modify the identity information attached
 msgstr "Halaman ini membolehkan anda melihat dan mengubah maklumat identiti yang berkait dengan akaun anda. Hanya orang yang mempunyai kuasa sahaja boleh mengakses maklumat ini, kami tidak menunjukkannya kepada pengguna lain atau orang lain melainkan diperlukan oleh undang-undang atau jika anda meminta kami berbuat sedemikian."
 
 msgid "Income Shares"
-msgstr "Perkongsian Pendapatan"
+msgstr "Pembahagian Pendapatan"
 
 #, python-brace-format
 msgid "{0} receives {1} per week"
@@ -2759,8 +2898,8 @@ msgstr "Profil ini hanya didapati dalam {language}"
 msgid "Edit"
 msgstr "Edit"
 
-msgid "Statement"
-msgstr "Kenyataan"
+msgid "Description"
+msgstr "Keterangan"
 
 #, python-brace-format
 msgid "{0} owns the following accounts on other platforms:"
@@ -2811,7 +2950,7 @@ msgstr[1] "{username} menderma secara terbuka kepada {n} pencipta."
 
 #, python-brace-format
 msgid "{username} does not disclose how much they receive through Liberapay."
-msgstr "{username} tidak berkongsi maklumat penerimaan mereka menerusi Liberapay."
+msgstr "{username} tidak berkongsi maklumat penerimaan mereka melalui Liberapay."
 
 msgid "History"
 msgstr "Sejarah"
@@ -2831,11 +2970,11 @@ msgid "No data to show."
 msgstr "Tiada data untuk ditunjukkan."
 
 #, python-brace-format
-msgid "Income Per Week (in {currency})"
-msgstr "Pendapatan Setiap Minggu (dalam {currency})"
+msgid "Income per week (in {currency})"
+msgstr "Pendapatan setiap minggu (dalam {currency})"
 
-msgid "Number of Patrons Per Week"
-msgstr "Jumlah Penderma Setiap Minggu"
+msgid "Number of patrons per week"
+msgstr "Jumlah pelanggan setiap minggu"
 
 msgid "Invoice documents are private."
 msgstr "Dokumen invois adalah sulit."
@@ -2882,7 +3021,7 @@ msgid "Amount: {0}"
 msgstr "Jumlah: {0}"
 
 msgid "Details:"
-msgstr "Maklumat Lanjut:"
+msgstr "Butiran:"
 
 msgid "Documents:"
 msgstr "Dokumen:"
@@ -2928,7 +3067,7 @@ msgid "The description is too long."
 msgstr "Keterangan terlalu panjang."
 
 msgid "The details are too long."
-msgstr "Maklumat lanjut terlalu panjang."
+msgstr "Butiran terlalu panjang."
 
 #, python-brace-format
 msgid "Invoice {someone}"
@@ -2940,17 +3079,14 @@ msgstr "Sifat"
 msgid "(Liberapay only supports one kind of invoice for now.)"
 msgstr "(Liberapay hanya menyokong sejenis invois sahaja ketika ini.)"
 
-msgid "Description"
-msgstr "Keterangan"
-
 msgid "A short description of the invoice"
 msgstr "Keterangan pendek berkaitan invois"
 
 msgid "Details (optional)"
-msgstr "Maklumat lanjut (tidak wajib isi)"
+msgstr "Butiran (tidak wajib isi)"
 
 msgid "Details of the invoice (e.g. the breakdown of the amount into its components)"
-msgstr "Maklumat lanjut berkaitan invois (cth. perincian jumlah mengikut komponen)"
+msgstr "Butiran invois (cth. perincian jumlah mengikut komponen)"
 
 msgid "Documents (private)"
 msgstr "Dokumen (sulit)"
@@ -2993,6 +3129,9 @@ msgstr "dipulangkan semula sebahagiannya"
 msgid "refunded"
 msgstr "dipulangkan semula"
 
+msgid "suspended"
+msgstr "digantung"
+
 #, python-brace-format
 msgid "The totals below don't include donations through the old wallet system. You can find those in {link_start}your Wallet page{link_end}."
 msgstr "Jumlah di bawah tidak termasuk derma melalui sistem dompet lama. Anda boleh cari jumlah sistem lama di {link_start}halaman Dompet anda{link_end}."
@@ -3023,10 +3162,6 @@ msgstr "caj"
 
 msgid "This payment is awaiting to be manually checked by Liberapay staff for signs of fraud."
 msgstr "Pembayaran ini sedang menunggu untuk diperiksa secara manual oleh kakitangan Liberapay untuk tanda-tanda penipuan."
-
-#, python-brace-format
-msgid "error message: {0}"
-msgstr "mesej ralat: {0}"
 
 msgid "hidden"
 msgstr "disembunyikan"
@@ -3082,9 +3217,8 @@ msgstr "derma rahsia kepada {recipient_name} untuk peranannya dalam kumpulan {te
 msgid "This payment must be manually approved by the recipient through {provider}'s website."
 msgstr "Pembayaran ini mesti diluluskan secara manual oleh penerima melalui laman web {provider}."
 
-#, python-brace-format
-msgid "PayPal status code: {0}"
-msgstr "Kod status PayPal: {0}"
+msgid "The payer's account is suspended due to a suspicion of fraud or other unauthorized action."
+msgstr "Akaun pembayar telah digantung kerana disyaki berlaku penipuan atau tindakan lain yang tidak dibenarkan."
 
 msgid "There were no transactions during this period."
 msgstr "Tiada transaksi dibuat pada waktu ini."
@@ -3186,25 +3320,42 @@ msgstr "Anda tidak mempunyai pelanggan aktif."
 msgid "{username} doesn't have any active patrons."
 msgstr "{username} tidak mempunyai pelanggan aktif."
 
-msgid "Liberapay now supports non-anonymous donations, do you want to know who your patrons are?"
-msgstr "Liberapay kini menyokong derma bukan tanpa nama, adakah anda ingin ketahui siapa pelanggan anda?"
+msgid "Visibility levels"
+msgstr "Tahap kebolehlihatan"
 
-msgid "Enable non-anonymous donations"
-msgstr "Bolehkan derma bukan tanpa nama"
-
-#, python-brace-format
-msgid "You have opted-in to see who your patrons are. If you change your mind, then {link_start}click here to disable non-anonymous donations{link_end}."
-msgstr "Anda telah memilih untuk melihat siapa pelanggan anda. Jika anda mengubah fikiran, sila {link_start}klik sini untuk lumpuhkan derma bukan tanpa nama{link_end}."
+msgid "Liberapay supports three visibility levels for donations. Each level can be turned on or off, but at least one of them must be enabled."
+msgstr "Liberapay menyokong tiga tahap kebolehlihatan untuk derma. Setiap tahap boleh dihidupkan atau dimatikan, tetapi sekurang-kurangnya satu daripadanya mestilah dibolehkan."
 
 #, python-brace-format
-msgid "You've chosen not to see who your patrons are. If you change your mind, then {link_start}click here to enable non-anonymous donations{link_end}."
-msgstr "Anda telah memilih untuk tidak melihat siapa pelanggan anda. Jika anda mengubah fikiran, sila {link_start}klik sini untuk membolehkan derma bukan tanpa nama{link_end}."
+msgid "Secret donations aren't possible with PayPal. You should either disable secret donations or {link_start}add a Stripe account{link_end}."
+msgstr "Derma rahsia tidak boleh dilakukan menggunakan PayPal. Anda patut sama ada melumpuhkan derma rahsia atau {link_start}menambah akaun Stripe{link_end}."
+
+msgid "Secret donations aren't possible when the payer uses PayPal."
+msgstr "Derma rahsia tidak boleh dilakukan apabila pembayar menggunakan PayPal."
+
+msgid "Allow secret donations"
+msgstr "Benarkan derma rahsia"
+
+msgid "Allow private donations"
+msgstr "Benarkan derma peribadi"
+
+msgid "Allow public donations"
+msgstr "Benarkan derma terbuka"
+
+msgid "This is what your prospective donors currently see:"
+msgstr "Inilah apa yang bakal penderma anda nampak ketika ini:"
+
+msgid "This is what your prospective donors will see with the new settings:"
+msgstr "Inilah apa yang bakal penderma anda nampak dengan tetapan baharu:"
 
 msgid "Data export"
 msgstr "Eksport data"
 
-msgid "Download the list of currently active patrons"
-msgstr "Muat turun senarai pelanggan aktif semasa"
+msgid "Download the list of currently active patrons who chose to make their donations public"
+msgstr "Muat turun senarai pelanggan yang aktif ketika ini yang memilih untuk membuatkan derma mereka terbuka"
+
+msgid "Download the list of all currently active patrons"
+msgstr "Muat turun senarai semua pelanggan yang aktif ketika ini"
 
 msgid "Download the record of all patrons in the last ten years"
 msgstr "Muat turun rekod kesemua pelanggan dalam sepuluh tahun terdahulu"
@@ -3220,9 +3371,26 @@ msgstr "Anda bukan ahli mana-mana kumpulan."
 msgid "{username} isn't a member of any team."
 msgstr "{username} bukan ahli mana-mana kumpulan."
 
+msgid "The payment account has been successfully disconnected."
+msgstr "Akaun pembayaran telah berjaya diputuskan."
+
+msgid "This payment account is no longer accessible. It is now disconnected."
+msgstr "Akaun pembayaran ini sudah tidak boleh dicapai. Ia telah diputuskan."
+
+msgid "The data has been successfully refreshed."
+msgstr "Data telah berjaya disegarkan semula."
+
 #, python-brace-format
-msgid "You have to {link_open}fill your profile{link_close} before you can start to receive donations."
-msgstr "Anda perlu {link_open}mengisi profil anda{link_close} sebelum anda boleh menerima derma."
+msgid "You have to {link_open}confirm your email address{link_close} before you can start to receive donations."
+msgstr "Anda perlu {link_open}mengesahkan alamat e-mel anda{link_close} sebelum anda boleh mula menerima derma."
+
+#, python-brace-format
+msgid "You have to {link_open}set your username{link_close} before you can start to receive donations."
+msgstr "Anda perlu {link_open}menetapkan nama pengguna anda{link_close} sebelum anda boleh mula menerima derma."
+
+#, python-brace-format
+msgid "You have to {link_open}add a profile description{link_close} before you can start to receive donations."
+msgstr "Anda perlu {link_open}menambah keterangan profil{link_close} sebelum anda boleh mula menerima derma."
 
 msgid "To receive donations you must connect at least one account from a supported payment processor. This page allows you to do so."
 msgstr "Untuk menerima derma, anda mesti mengaitkan sekurang-kurangnya sebuah akaun daripada pemproses pembayaran yang disokong. Halaman ini membolehkan anda berbuat demikian."
@@ -3233,8 +3401,8 @@ msgstr "Penderma tidak perlu mengaitkan sebarang akaun pembayaran di bawah, ia h
 msgid "We recommend connecting both Stripe and PayPal if they're both available in your country."
 msgstr "Kami menggalakkan anda mengaitkan kedua-dua Stripe dan PayPal jika kedua-duanya terdapat di negara anda."
 
-msgid "With Stripe your donors can pay by card or direct debit directly from the Liberapay website. (Direct debits are currently only supported from Euro bank accounts.)"
-msgstr "Dengan Stripe, penderma anda boleh membayar dengan kad atau debit terus daripada laman web Liberapay. (Debit terus hanya boleh digunakan daripada akaun bank Euro.)"
+msgid "With Stripe your donors can pay by card or direct debit directly from the Liberapay website. (Direct debits are currently only supported from euro bank accounts.)"
+msgstr "Dengan Stripe, penderma anda boleh membayar menggunakan kad atau debit terus secara terus di laman web Liberapay. (Debit terus pada masa ini hanya menyokong transaksi daripada akaun bank euro.)"
 
 #, python-brace-format
 msgid "Account ID: {0}"
@@ -3295,7 +3463,7 @@ msgstr "Walau bagaimanapun, pembayaran telah dipulangkan semula sepenuhnya pada 
 
 #, python-brace-format
 msgid "{0} was paid in processing fees and {1} was distributed as detailed below."
-msgstr "{0} dibayar sebagai caj pemprosesan dan {1} diagihkan seperti dinyatakan di bawah."
+msgstr "{0} dibayar sebagai caj pemprosesan dan {1} diagihkan seperti butiran di bawah."
 
 #, python-brace-format
 msgid "However, {x_percent} of the payment ({refund_amount}) was refunded on {refund_date}."
@@ -3336,7 +3504,7 @@ msgid "Headquarters address: {0}"
 msgstr "Alamat ibu pejabat: {0}"
 
 msgid "Payment details"
-msgstr "Maklumat pembayaran"
+msgstr "Butiran pembayaran"
 
 #, python-brace-format
 msgid "Payment method: {brand} card, number ending in {last4}"
@@ -3364,6 +3532,9 @@ msgstr "Cukai"
 msgid "This payment is a donation, no goods or services are to be provided in exchange, no tax has been collected by Liberapay."
 msgstr "Pembayaran ini suatu derma, tiada barangan atau perkhidmatan yang diberikan sebagai pertukaran, tiada cukai dikutip oleh Liberapay."
 
+msgid "Income history"
+msgstr "Sejarah pendapatan"
+
 msgid "You can't receive new donations until you've configured payment processing."
 msgstr "Anda tidak boleh menerima derma baru sehingga anda menetapkan pemprosesan pembayaran."
 
@@ -3371,14 +3542,14 @@ msgstr "Anda tidak boleh menerima derma baru sehingga anda menetapkan pemprosesa
 msgid "Donations through teams make up {income_percent} of your income ({team_income} of {total_income}) and {patrons_percent} of your donors ({nteampatrons} of {npatrons})."
 msgstr "Derma melalui kumpulan mewakili {income_percent} daripada pendapatan keseluruhan anda ({team_income} daripada {total_income}) dan {patrons_percent} daripada penderma keseluruhan anda ({nteampatrons} daripada {npatrons})."
 
-msgid "Details of Donations"
-msgstr "Maklumat Pendermaan"
+msgid "Details of personal donations"
+msgstr "Butiran derma peribadi"
 
 msgid "This section doesn't include data on donations through teams, it only shows the donations that you receive personally."
 msgstr "Bahagian ini tidak mengambil kira data derma melalui kumpulan, ia hanya tunjukkan derma yang anda terima secara peribadi."
 
-msgid "Recent Changes"
-msgstr "Perubahan Terkini"
+msgid "Recent changes to personal donations"
+msgstr "Perubahan terkini kepada derma peribadi"
 
 #, python-brace-format
 msgid "A new donation of {amount} per week has been created."
@@ -3399,6 +3570,9 @@ msgstr "Derma telah dikurangkan daripada {old_amount} setiap minggu kepada {new_
 #, python-brace-format
 msgid "A donation of {amount} per week has been restarted."
 msgstr "Derma sebanyak {amount} setiap minggu telah dimulakan semula."
+
+msgid "Statistics on personal donations"
+msgstr "Statistik derma peribadi"
 
 msgid "The table below lists the donations you receive, grouped by amount."
 msgstr "Jadual di bawah menyenaraikan derma yang anda terima, dikumpulkan mengikut jumlah."
@@ -3466,8 +3640,19 @@ msgstr[1] "Anda mempunyai {n} alat pembayaran yang terkait."
 msgid "Bank Account"
 msgstr "Akaun Bank"
 
+msgid "This instrument is used by default."
+msgstr "Instrumen ini digunakan secara lalainya."
+
 msgid "default"
 msgstr "lalai"
+
+#, python-brace-format
+msgid "This instrument is used by default for payments in {currency}."
+msgstr "Instrumen ini digunakan secara lalainya bagi pembayaran dalam {currency}."
+
+#, python-brace-format
+msgid "default for {currency}"
+msgstr "lalai bagi {currency}"
 
 msgid "view mandate"
 msgstr "lihat mandat"
@@ -3502,6 +3687,22 @@ msgstr "Alat pembayaran ini masih belum digunakan."
 msgid "Set as default"
 msgstr "Tetap sebagai lalai"
 
+#, python-brace-format
+msgid "Stop using this instrument by default for payments in {currency}."
+msgstr "Berhenti menggunakan instrumen ini secara lalai bagi pembayaran dalam {currency}."
+
+#, python-brace-format
+msgid "Unset as default for {currency}"
+msgstr "Nyahtetapkan sebagai lalai untuk {currency}"
+
+#, python-brace-format
+msgid "Use this instrument by default for payments in {currency}."
+msgstr "Gunakan instrumen ini secara lalainya bagi pembayaran dalam {currency}."
+
+#, python-brace-format
+msgid "Set as default for {currency}"
+msgstr "Tetapkan sebagai lalai bagi {currency}"
+
 msgid "You don't have any valid payment instrument."
 msgstr "Anda tidak mempunyai sebarang alat pembayaran yang sah."
 
@@ -3511,11 +3712,14 @@ msgstr "Tambah alat pembayaran:"
 msgid "Add a card"
 msgstr "Tambah kad"
 
+msgid "Euro Bank Account"
+msgstr "Akaun Bank Euro"
+
+msgid "Only for donations in euros to recipients in SEPA countries"
+msgstr "Hanya untuk derma dalam euro kepada penerima di negara SEPA"
+
 msgid "Add a bank account"
 msgstr "Tambah akaun bank"
-
-msgid "Close Account"
-msgstr "Tutup Akaun"
 
 msgid "Data retention"
 msgstr "Simpanan data"
@@ -3806,7 +4010,7 @@ msgid "Use these code snippets to add a badge to your website or README:"
 msgstr "Gunakan cebisan kod ini untuk menambah lencana dalam laman web atau fail README anda:"
 
 msgid "Do not contact us if you are trying to reach one of our users. We do not relay messages, and we cannot reveal the identity or contact details of our users unless you have a valid court order."
-msgstr "Jangan hubungi kami jika anda cuba untuk menghubungi salah seorang pengguna kami. Kami tidak bantu salurkan mesej, dan kami tidak boleh dedahkan identiti atau maklumat perhubungan pengguna kami melainkan anda mempunyai perintah mahkamah yang sah."
+msgstr "Jangan hubungi kami jika anda cuba untuk menghubungi salah seorang pengguna kami. Kami tidak bantu salurkan mesej, dan kami tidak boleh dedahkan butiran identiti atau perhubungan pengguna kami melainkan anda mempunyai perintah mahkamah yang sah."
 
 msgid "To contact the Liberapay team privately:"
 msgstr "Untuk hubungi kumpulan Liberapay secara rahsia:"
@@ -3822,7 +4026,7 @@ msgid "If you think you've found a technical vulnerability in our system, please
 msgstr "Sekiranya anda rasa anda menjumpai kegoyahan teknikal dalam sistem kami, sila ikuti arahan di {link_start}halaman {page_name}{link_end} dan bukannya menghantar e-mel kepada kami."
 
 msgid "We currently don't have a phone number."
-msgstr "Kami masih belum mempunyai nombor telefon."
+msgstr "Kami belum mempunyai nombor telefon ketika ini."
 
 msgid "To report a problem or make a suggestion publicly:"
 msgstr "Untuk melaporkan masalah atau memberi cadangan secara terbuka:"
@@ -3851,8 +4055,8 @@ msgid "Not safe for work"
 msgstr "Tidak selamat di tempat kerja (seperti kandungan lucah, politik, dll.)"
 
 #, python-brace-format
-msgid "Yes. However, Liberapay isn't a shield: we can't protect anyone from being banned by {link_open}the underlying payment processors{link_close}."
-msgstr "Ya, boleh. Namun begitu, Liberapay bukanlah pelindung: kami tidak boleh melindungi sesiapa pun daripada disekat oleh {link_open}pemproses pembayaran yang disandarkan{link_close}."
+msgid "The payment processors Liberapay supports have unfavourable policies towards sexual content. {paypal_link}PayPal requires pre-approval{link_close}, and {stripe_link}Stripe prohibits it entirely{link_close}. So, while it is possible to use Liberapay for some adult-only content, it is usually better to use a platform specialized in such content."
+msgstr "Pemproses pembayaran yang Liberapay sokong mempunyai polisi yang tidak memuaskan terhadap kandungan seksual. {paypal_link}PayPal memerlukan prakelulusan{link_close}, dan {stripe_link}Stripe melarangnya secara keseluruhannya{link_close}. Oleh itu, walaupun anda boleh menggunakan Liberapay untuk sesetengah kandungan dewasa sahaja, biasanya lebih baik untuk menggunakan platform yang khusus bagi kandungan sebegitu."
 
 msgid "Can I modify or stop my donations?"
 msgstr "Bolehkah saya mengubah atau memberhentikan derma?"
@@ -3879,7 +4083,7 @@ msgstr "Kami mengambil berat hal pengantarabangsaan, perkhidmatan kami menyokong
 
 #, python-brace-format
 msgid "If you'd like more details, the Snowdrift.coop folks have compiled {0}a big list{1} of crowdfunding platforms and the differences between them."
-msgstr "Jika anda inginkan maklumat lanjut, pihak Snowdrift.coop telah menyenaraikan {0}senarai panjang{1} platform dana khalayak yang ada berserta perbezaan di antara mereka."
+msgstr "Jika anda inginkan butiran lanjut, pihak Snowdrift.coop telah menyenaraikan {0}senarai panjang{1} platform dana khalayak yang ada berserta perbezaan di antara mereka."
 
 msgid "Does Liberapay respect financial regulations?"
 msgstr "Adakah Liberapay mengikut syarat-syarat kewangan?"
@@ -3909,8 +4113,8 @@ msgid "See the “{page_name}” page."
 msgstr "Sila lihat halaman “{page_name}”."
 
 #, python-brace-format
-msgid "The available payment methods depend on which payment processors are supported by the recipient. If a payment is processed by Stripe, then most credit and debit cards ({list_of_card_brands}) are accepted, as well as SEPA Direct Debits (for Euro donations only). If a payment is through PayPal, then it's possible to pay in various ways, however the donor needs to have or create a PayPal account."
-msgstr "Kaedah pembayaran yang ada bergantung kepada pemproses pembayaran yang penerima boleh pakai. Jika pembayaran diproses oleh Stripe, maka kebanyakan kad kredit dan debit ({list_of_card_brands}) diterima, malah Debit Terus SEPA juga diterima (untuk derma Euro sahaja). Jika pembayaran diproses melalui PayPal, maka anda boleh membayar dalam pelbagai cara, namun penderma perlu ada atau cipta akaun PayPal."
+msgid "The available payment methods depend on which payment processors are supported by the recipient. If a payment is processed by Stripe, then most credit and debit cards ({list_of_card_brands}) are accepted, as well as SEPA Direct Debits (only for donations in euros to recipients in SEPA countries). If a payment is through PayPal, then it's possible to pay in various ways, however the donor needs to have or create a PayPal account."
+msgstr "Kaedah pembayaran yang tersedia bergantung pada pemproses pembayaran yang disokong oleh penerima. Sekiranya pembayaran diproses oleh Stripe, maka kebanyakan kad kredit dan debit ({list_of_card_brands}) diterima, serta Debit Terus SEPA (hanya untuk derma dalam euro kepada penerima di negara SEPA). Sekiranya pembayaran adalah melalui PayPal, maka anda boleh membayar dalam pelbagai cara, tetapi penderma perlu mempunyai atau mencipta akaun PayPal."
 
 msgid "What are the payment processing fees?"
 msgstr "Apakah caj pemprosesan pembayaran?"
@@ -3918,6 +4122,12 @@ msgstr "Apakah caj pemprosesan pembayaran?"
 #, python-brace-format
 msgid "The fees vary by payment processor, payment method, countries and currencies. In the last year, the average fee percentages have been {average_fee_stripe} for the payments processed by Stripe and {average_fee_paypal} for the payments processed by PayPal."
 msgstr "Caj berlainan mengikut pemproses pembayaran, kaedah pembayaran, negara dan mata wang. Pada tahun lepas, peratusan caj secara puratanya ialah {average_fee_stripe} untuk pembayaran diproses oleh Stripe dan {average_fee_paypal} untuk pembayaran diproses oleh PayPal."
+
+msgid "How and when do I receive the money sent by my patrons?"
+msgstr "Bagaimana dan bila saya menerima wang yang dihantar oleh pelanggan saya?"
+
+msgid "Money sent by a donor immediately goes to your Stripe or PayPal account. By default Stripe then automatically sends the funds to your bank account, whereas PayPal simply stores them until you spend or withdraw them."
+msgstr "Wang yang dihantar oleh penderma pergi ke akaun Stripe atau PayPal anda dengan serta-merta. Secara lalainya, Stripe kemudiannya menghantar dana secara automatik ke akaun bank anda, manakala PayPal hanya menyimpannya sehingga anda membelanjakannya atau mengeluarkannya."
 
 msgid "Why do I see partial refunds in the Stripe dashboard?"
 msgstr "Kenapa saya nampak pemulangan separa dalam papan pemuka Stripe?"
@@ -3929,14 +4139,14 @@ msgid "How are chargebacks handled?"
 msgstr "Bagaimanakah caj balik dikendalikan?"
 
 msgid "If despite our fraud prevention efforts you receive money whose origin is revealed to be fraudulent, it falls on you to pay it back."
-msgstr "Sekiranya anda menerima wang daripada sumber yang diketahui sebagai haram walaupun ia telah menembusi sistem pencegahan penipuan kami, menjadi tanggungjawab anda untuk memulangkannya semula."
+msgstr "Sekiranya anda menerima wang daripada sumber yang didedahkan sebagai fraud, walaupun ia terlepas dari sistem pencegahan penipuan kami, menjadi tanggungjawab anda untuk membayarnya semula."
 
 msgid "Is there a minimum or maximum amount I can give or receive?"
 msgstr "Adakah terdapatnya jumlah minimum atau maksimum saya boleh beri atau terima?"
 
 #, python-brace-format
 msgid "The minimum you can give any user is {0} per week, but in order to minimize processing fees you will be asked to pay for multiple weeks in advance."
-msgstr "Jumlah minimum anda boleh berikan kepada mana-mana pengguna ialah {0} setiap minggu, tetapi untuk meminimumkan caj pemprosesan, anda akan diminta membayar untuk beberapa minggu terlebih dahulu."
+msgstr "Jumlah minimum yang anda boleh berikan kepada mana-mana pengguna ialah {0} setiap minggu, tetapi untuk meminimumkan caj pemprosesan, anda akan diminta membayar untuk beberapa minggu secara pendahuluan."
 
 #, python-brace-format
 msgid "The maximum you can give any one user is {0} per week. This helps to stabilize income by reducing how dependent it is on a few large patrons."
@@ -3954,21 +4164,14 @@ msgstr "Adakah derma melalui Liberapay boleh ditolak cukai?"
 msgid "Probably not, but it depends on the tax rules of your country."
 msgstr "Mungkin tidak, tetapi ia bergantung kepada peraturan cukai negara anda."
 
-msgid "What are wallets?"
-msgstr "Apakah itu dompet?"
+msgid "Is a Liberapay account a wallet?"
+msgstr "Adakah akaun Liberapay itu suatu dompet?"
 
-msgid "Liberapay used to hold the funds of donors in wallets, but we no longer do that. Instead the full amount of a donation is immediately transferred to the recipient."
-msgstr "Liberapay pernah memegang dana penderma dalam dompet, tetapi kami sudah tidak berbuat sebegitu. Sekarang ini, jumlah penuh derma akan dipindahkan serta-merta kepada penerima."
-
-msgid "What is “payday”?"
-msgstr "Apakah itu “hari bayaran”?"
-
-#, python-brace-format
-msgid "Payday is a program ({0}this one{1}) that we run every Wednesday. It executes donations and notifies donors and recipients."
-msgstr "Hari bayaran ialah sebuah atur cara ({0}yang ini{1}) yang kami jalankan setiap hari Rabu. Ia melaksanakan proses pendermaan dan memaklumkan penderma dan penerima derma."
+msgid "Not since mid-2018. Money sent by a donor immediately goes to the recipient. Previously, funds were held in the donor's account and disbursed little by little to the recipient every week. That system was definitively abandoned due to its very significant drawbacks."
+msgstr "Tidak sejak pertengahan 2018. Wang yang dihantar oleh penderma pergi kepada penerima dengan serta-merta. Sebelum ini, dana disimpan dalam akaun penderma dan disalurkan sedikit demi sedikit kepada penerima setiap minggu. Sistem itu telah ditinggalkan secara muktamad kerana kelemahannya yang sangat ketara."
 
 msgid "You can get updates from us on the following social networks:"
-msgstr "Anda boleh mendapatkan kemas kini daripada kami menerusi rangkaian sosial berikut:"
+msgstr "Anda boleh mendapatkan kemas kini daripada kami di rangkaian sosial berikut:"
 
 #, python-brace-format
 msgid "You can also follow the {1}development of the Liberapay software{0}, the {2}adventures of the Liberapay legal entity{0}, and the {3}general discussions of the Liberapay team{0}."
@@ -3983,17 +4186,45 @@ msgid_plural "Donors can choose between up to {n} currencies, depending on the p
 msgstr[0] "<unused singular (hash=4cf42af35c271573d64f577e06447211)>"
 msgstr[1] "Penderma boleh pilih di antara sehingga {n} mata wang, bergantung kepada keutamaan penerima dan kemampuan pemproses pembayaran yang disandarkan."
 
-#, python-brace-format
-msgid "<unused singular (hash=15422027494f4dee6eed143ece78c0ce)>"
-msgid_plural "Liberapay is fully available to creators in {n} territories:"
-msgstr[0] "<unused singular (hash=15422027494f4dee6eed143ece78c0ce)>"
-msgstr[1] "Liberapay tersedia secara sepenuhnya kepada pencipta di {n} wilayah:"
+msgid "Donations can only be received in territories where at least one supported payment processor is available. Moreover, some features are only available in some of the territories supported by a payment processor."
+msgstr "Derma hanya boleh diterima di wilayah yang mana terdapat sekurang-kurangnya satu pemproses pembayaran yang disokong. Tambahan pula, sesetengah ciri hanya tersedia di sesetengah wilayah yang disokong oleh suatu pemproses pembayaran."
 
 #, python-brace-format
-msgid "<unused singular (hash=ce784fd8cdb312cf56226bbd42d07d18)>"
-msgid_plural "Additionally, Liberapay is partially available to creators in {paypal_link_open}the {n} countries supported by PayPal{link_close}."
-msgstr[0] "<unused singular (hash=ce784fd8cdb312cf56226bbd42d07d18)>"
-msgstr[1] "Di samping itu, Liberapay juga tersedia secara separa kepada pencipta di {paypal_link_open}{n} negara yang disokong oleh PayPal{link_close}."
+msgid "The currently supported payment processors are {Stripe} and {PayPal}. You can find a list of the differences between them {link_start}in the “{page_name}” page{link_end}."
+msgstr "Pemproses pembayaran yang disokong ketika ini ialah {Stripe} dan {PayPal}. Anda boleh lihat senarai perbezaan antara mereka {link_start}di halaman “{page_name}”{link_end}."
+
+msgid "Best supported territories"
+msgstr "Wilayah yang disokong dengan paling baik"
+
+#, python-brace-format
+msgid "<unused singular (hash=79acddfc1b997a9b2e4aa18d930e097e)>"
+msgid_plural "Creators in these {n} territories benefit from all of Liberapay's features:"
+msgstr[0] "<unused singular (hash=79acddfc1b997a9b2e4aa18d930e097e)>"
+msgstr[1] "Para pencipta di {n} wilayah ini mendapat manfaat daripada kesemua ciri-ciri Liberapay:"
+
+msgid "Well supported territories"
+msgstr "Wilayah yang disokong dengan agak baik"
+
+#, python-brace-format
+msgid "<unused singular (hash=d6ace91b81f74c1f52f602d3d7009ed8)>"
+msgid_plural "Liberapay is also available to creators in the {n} territories listed below. However, donations going to those territories cannot be grouped to lower the payment processing fees, and the euro direct debit payment method isn't available to the donors."
+msgstr[0] "<unused singular (hash=d6ace91b81f74c1f52f602d3d7009ed8)>"
+msgstr[1] "Liberapay juga tersedia kepada pencipta di {n} wilayah yang disenaraikan di bawah. Walau bagaimanapun, derma yang mengalir ke wilayah tersebut tidak boleh dikumpulkan untuk merendahkan caj pemprosesan pembayaran, dan kaedah pembayaran debit terus euro tidak tersedia kepada para penderma."
+
+msgid "Barely supported territories"
+msgstr "Wilayah yang disokong dengan cukup-cukup sahaja"
+
+#, python-brace-format
+msgid "<unused singular (hash=53cbe5d36eacd9bcc6b8eed3023c884b)>"
+msgid_plural "Liberapay is partly available to creators in the {n} territories listed below, which are supported by PayPal but not by Stripe."
+msgstr[0] "<unused singular (hash=53cbe5d36eacd9bcc6b8eed3023c884b)>"
+msgstr[1] "Liberapay tersedia secara separa kepada para pencipta di {n} wilayah yang disenaraikan di bawah, yang disokong oleh PayPal tetapi tidak disokong oleh Stripe."
+
+msgid "Unsupported territories"
+msgstr "Wilayah yang tidak disokong"
+
+msgid "If you don't live or have a registered business in one of the territories listed above, then you currently can't use Liberapay to receive donations. Sorry."
+msgstr "Jika anda tidak tinggal atau mempunyai perniagaan berdaftar di salah satu wilayah yang disenaraikan di atas, maka anda tidak mampu menggunakan Liberapay untuk menerima derma pada ketika ini. Harap maaf."
 
 msgid "What is Liberapay?"
 msgstr "Apakah itu Liberapay?"
@@ -4051,8 +4282,8 @@ msgstr "Polisi Privasi"
 msgid "This page contains links to and information about the Liberapay logo. We hope you'll find it especially useful if you're writing an article about Liberapay or if you want to add custom links to your Liberapay profile in your website."
 msgstr "Halaman ini mengandungi pautan ke dan maklumat berkaitan logo Liberapay. Kami berharap anda mendapat manfaat terutamanya ketika anda menulis artikel berkaitan Liberapay atau jika anda ingin menambah pautan sendiri ke profil Liberapay anda di laman web anda."
 
-msgid "The Liberapay logo is composed of the two letters “lp”. It's usually colored either white-on-yellow, black-on-yellow, or just black."
-msgstr "Logo Liberapay terdiri daripada dua huruf “lp”. Ia biasanya diwarnakan putih atas kuning, hitam atas kuning, atau hanya hitam."
+msgid "The Liberapay logo is composed of the two letters “lp”. It's usually colored black-on-yellow or just black. We used a white-on-yellow variant in the past, but it's now phased out as its contrast was deemed too low."
+msgstr "Logo Liberapay terdiri daripada dua huruf \"lp\". Ia biasanya berwarna hitam-kuning atau hitam sahaja. Kami menggunakan varian putih-kuning pada masa lalu, tetapi kini ia telah ditamatkan secara berperingkat kerana kadar kontrasnya dianggap terlalu rendah."
 
 #, python-brace-format
 msgid "The Liberapay yellow is {yellow_color_code}, the black is {black_color_code}."
@@ -4066,19 +4297,8 @@ msgstr "Logo Liberapay itu sendiri tidak berhakcipta kerana ia diterbitkan sebag
 msgid "You can view and download our logos below or {link_start}on GitHub{link_end}."
 msgstr "Anda boleh melihat dan memuat turun logo kami di bawah atau {link_start}di GitHub{link_end}."
 
-msgid "Download the white-on-yellow SVG"
-msgstr "Muat turun SVG putih atas kuning"
-
-#, python-brace-format
-msgid "Download the white-on-yellow PNG ({x_y} pixels)"
-msgstr "Muat turun PNG putih atas kuning ({x_y} piksel)"
-
-msgid "Download the black SVG"
-msgstr "Muat turun SVG hitam"
-
-#, python-brace-format
-msgid "Download the black PNG ({x_y} pixels)"
-msgstr "Muat turun PNG hitam ({x_y} piksel)"
+msgid "Liberapay logo, black-on-yellow"
+msgstr "Logo Liberapay, hitam-atas-kuning"
 
 msgid "Download the black-on-yellow SVG"
 msgstr "Muat turun SVG hitam atas kuning"
@@ -4087,12 +4307,15 @@ msgstr "Muat turun SVG hitam atas kuning"
 msgid "Download the black-on-yellow PNG ({x_y} pixels)"
 msgstr "Muat turun PNG hitam atas kuning ({x_y} piksel)"
 
-msgid "Fonts"
-msgstr "Fon"
+msgid "Liberapay logo, black"
+msgstr "Logo Liberapay, hitam"
+
+msgid "Download the black SVG"
+msgstr "Muat turun SVG hitam"
 
 #, python-brace-format
-msgid "The Liberapay logo is included in the {fa_link_start}Fork Awesome{link_end} font in two forms: {fa_liberapay_link} and {fa_liberapay_square_link}."
-msgstr "Logo Liberapay disertakan dalam fon {fa_link_start}Fork Awesome{link_end} dalam dua bentuk: {fa_liberapay_link} dan {fa_liberapay_square_link}."
+msgid "Download the black PNG ({x_y} pixels)"
+msgstr "Muat turun PNG hitam ({x_y} piksel)"
 
 msgid "Here is a list of differences between them:"
 msgstr "Ini senarai perbezaan antara mereka:"
@@ -4102,6 +4325,9 @@ msgstr "Caj perkhidmatan pemprosesan pembayaran selalunya lebih rendah di Stripe
 
 msgid "Stripe allows renewing donations automatically, whereas PayPal currently requires donors to confirm every payment."
 msgstr "Stripe membenarkan pembaharuan derma secara automatik, manakala PayPal ketika ini memerlukan penderma untuk mengesahkan setiap pembayaran."
+
+msgid "Donations through Stripe can be secret, whereas PayPal always allows donors and recipients to see each other's names and email addresses."
+msgstr "Derma melalui Stripe boleh jadi rahsia, manakala PayPal sentiasa membolehkan penderma dan penerima untuk melihat nama dan alamat e-mel masing-masing."
 
 msgid "Stripe allows donating to multiple creators at once in some cases, whereas PayPal always requires separate payments."
 msgstr "Stripe membolehkan pendermaan kepada beberapa orang pencipta pada masa yang sama dalam kes tertentu, manakala PayPal sentiasa memerlukan pembayaran berasingan."
@@ -4120,14 +4346,14 @@ msgid "PayPal only supports {n_paypal_currencies} of the {n_liberapay_currencies
 msgstr "PayPal hanya menyokong {n_paypal_currencies} daripada {n_liberapay_currencies} mata wang yang disokong oleh Liberapay dan Stripe."
 
 #, python-brace-format
-msgid "<unused singular (hash=901d1e29a8c2a0e16ff208c9a8fda012)>"
-msgid_plural "PayPal is available to creators in more than 200 countries, whereas Stripe only supports {n} countries in a suitable way."
-msgstr[0] "<unused singular (hash=901d1e29a8c2a0e16ff208c9a8fda012)>"
-msgstr[1] "PayPal tersedia kepada pencipta di lebih daripada 200 negara, manakala Stripe hanya menyokong {n} negara dalam cara yang sesuai."
+msgid "<unused singular (hash=47f7d13f5771b30f0bcf49ea3acd518b)>"
+msgid_plural "PayPal is available to creators in more than 100 countries, whereas Stripe only supports {n} countries in a suitable way."
+msgstr[0] "<unused singular (hash=47f7d13f5771b30f0bcf49ea3acd518b)>"
+msgstr[1] "PayPal tersedia kepada pencipta di lebih daripada 100 negara, manakala Stripe hanya menyokong {n} negara dalam cara yang sesuai."
 
 #, python-brace-format
 msgid "You can find more information on supported countries and currencies in {link_start}the “{page_name}” page{link_end}."
-msgstr "Anda boleh mendapatkan maklumat lanjut mengenai negara dan mata wang yang disokong menerusi {link_start}halaman “{page_name}”{link_end}."
+msgstr "Anda boleh mendapatkan maklumat lanjut mengenai negara dan mata wang yang disokong di {link_start}halaman “{page_name}”{link_end}."
 
 msgid "We do our best to protect everyone's privacy: we do not attempt to track people who visit our website, we strive to collect only the personal information we actually need, and we don't sell it to anyone."
 msgstr "Kami melakukan yang terbaik untuk melindungi privasi semua orang: kami tidak mencuba untuk menjejaki siapa yang melawat laman web kami, kami berusaha untuk hanya mengutip maklumat peribadi yang kami benar-benar perlukan, dan kami tidak menjualnya kepada sesiapa pun."
@@ -4158,7 +4384,7 @@ msgstr "Rangkaian sosial"
 
 #, python-brace-format
 msgid "Liberapay currently has integrations with {list_of_platforms}. When an account from one of those platforms is connected to a Liberapay profile, we retrieve and store some data from that platform, for example the unique identifier of the linked account. We only keep public information about the linked account, no private data."
-msgstr "Liberapay mempunyai penyepaduan dengan {list_of_platforms} pada waktu ini. Apabila sebuah akaun daripada salah satu platform tersebut dikaitkan ke profil Liberapay, kami mendapatkan dan menyimpan sesetengah data daripada platform tersebut, sebagai contohnya pengenal pasti bitara milik akaun yang dikaitkan. Kami hanya simpan maklumat umum mengenai akaun yang dikaitkan, bukan maklumat peribadi."
+msgstr "Liberapay mempunyai penyepaduan dengan {list_of_platforms} pada ketika ini. Apabila sebuah akaun daripada salah satu platform tersebut dikaitkan ke profil Liberapay, kami mendapatkan dan menyimpan sesetengah data daripada platform tersebut, sebagai contohnya pengenal pasti bitara milik akaun yang dikaitkan. Kami hanya simpan maklumat umum mengenai akaun yang dikaitkan, bukan maklumat peribadi."
 
 msgid "The primary purpose of these integrations is to confirm that a Liberapay account hasn't been created by an impostor attempting to profit from someone's else work."
 msgstr "Tujuan utama penyepaduan ini adalah untuk mengesahkan bahawa sesuatu akaun Liberapay tidak dicipta oleh penyamar yang cuba untuk memperoleh keuntungan daripada hasil kerja orang lain."
@@ -4184,7 +4410,7 @@ msgid "Liberapay does not tell creators who their patrons are. However, PayPal a
 msgstr "Liberapay tidak memberitahu pencipta siapa pelanggan mereka. Walau bagaimanapun, PayPal membolehkan penerima bayaran melihat nama dan alamat e-mel pembayar, oleh itu penderma yang tidak ingin mendedahkan diri mereka tidak patut pilih PayPal sebagai kaedah pembayaran."
 
 msgid "Similarly, PayPal allows a donor to see the name and email address of the recipient, and Stripe may expose the recipient's phone number, so creators who do not want to reveal their identities should not use these payment processors, unless they have carefully configured their accounts to only leak nonsensitive information (a business name instead of the creator's name, a dedicated email address and phone number instead of the creator's personal contact details)."
-msgstr "Begitu juga, PayPal membenarkan penderma untuk melihat nama dan alamat e-mel penerima, dan Stripe boleh dedahkan nombor telefon penerima, oleh itu pencipta yang tidak ingin dedahkan identiti mereka tidak patut gunakan pemproses pembayaran ini, melainkan mereka telah menetapkan dengan teliti akaun mereka supaya hanya maklumat tidak sensitif sahaja akan dibocorkan (nama perniagaan menggantikan nama sebenar pencipta, alamat e-mel dan nombor telefon khusus menggantikan maklumat perhubungan peribadi pencipta)."
+msgstr "Begitu juga, PayPal membenarkan penderma untuk melihat nama dan alamat e-mel penerima, dan Stripe boleh dedahkan nombor telefon penerima, oleh itu pencipta yang tidak ingin dedahkan identiti mereka tidak patut gunakan pemproses pembayaran ini, melainkan mereka telah menetapkan dengan teliti akaun mereka supaya hanya maklumat tidak sensitif sahaja akan dibocorkan (nama perniagaan menggantikan nama sebenar pencipta, alamat e-mel dan nombor telefon khusus menggantikan butiran perhubungan peribadi pencipta)."
 
 msgid "Encryption"
 msgstr "Penyulitan"
@@ -4204,11 +4430,11 @@ msgstr "Polisi"
 
 #, python-brace-format
 msgid "The details of our security policy (scope, rewards…) are available in {link_open}our HackerOne profile{link_close}."
-msgstr "Maklumat polisi keselamatan kami (skop, ganjaran…) boleh didapati di {link_open}profil HackerOne kami{link_close}."
+msgstr "Butiran polisi keselamatan kami (skop, ganjaran…) boleh didapati di {link_open}profil HackerOne kami{link_close}."
 
 #, python-brace-format
 msgid "Thanks to {link_open}everyone who has sent us a report through HackerOne{link_close}."
-msgstr "Terima kasih kepada {link_open}semua orang yang menghantar laporan kepada kami menerusi HackerOne{link_close}."
+msgstr "Terima kasih kepada {link_open}semua orang yang menghantar laporan kepada kami melalui HackerOne{link_close}."
 
 #, python-brace-format
 msgid "Liberapay was launched {timespan_ago} and has {n} user."
@@ -4279,7 +4505,7 @@ msgid "You're not allowed to do this because your account has been flagged. Plea
 msgstr "Anda tidak dibenarkan berbuat sedemikian kerana akaun anda telah ditandai bendera. Sila hubungi support@liberapay.com untuk mengetahui sebabnya dan untuk meminta akaun anda dibuang tanda bendera."
 
 msgid "A Liberapay team coordinates donations from multiple donors to multiple donees. The donors choose how much they want to give, the team members specify how they want to share the money, and Liberapay attempts to distribute the funds accordingly."
-msgstr "Sebuah kumpulan dalam Liberapay membahagikan derma daripada ramai penderma kepada ramai penerima derma. Penderma pilih berapa banyak mereka ingin berikan, ahli kumpulan nyatakan bagaimana mereka ingin kongsikan wang, dan Liberapay cuba untuk mengagihkan dana dengan sewajarnya."
+msgstr "Sebuah kumpulan dalam Liberapay menyelaraskan derma daripada ramai penderma kepada ramai penerima derma. Penderma pilih berapa banyak mereka ingin berikan, ahli kumpulan nyatakan bagaimana mereka ingin membahagikan wang, dan Liberapay cuba untuk mengagihkan dana dengan sewajarnya."
 
 msgid "A team account isn't meant to be used by the members of a single legal entity, it is designed for a group of independent individuals or organizations who work together on a common project. However, it's also okay to create a team account for a project that only has one contributor, as this allows marking a donation as being intended to support that project specifically rather than the person behind it."
 msgstr "Akaun kumpulan bukanlah bertujuan untuk digunakan semata-mata oleh ahli-ahli sebuah entiti sah, sebaliknya ia direka untuk sekumpulan individu bebas atau sekumpulan organisasi berbeza yang bekerja bersama untuk suatu projek. Namun begitu, anda juga boleh cipta akaun kumpulan untuk projek yang hanya ada seorang penyumbang, kerana ini membolehkan penandaan sesuatu derma itu ditujukan untuk menyokong projek tersebut secara khususnya dan bukannya untuk orang di sebalik projek tersebut."
@@ -4325,8 +4551,8 @@ msgid "Teams don't have a hierarchy, all their members are equal and set their o
 msgstr "Kumpulan tidak ada hierarki, semua ahli kumpulan sama rata dan menetapkan perolehan mereka sendiri."
 
 #, python-brace-format
-msgid "You can change your takes from {0}your teams dashboard{1}. It contains tables that show the nominal takes of all members for the next and previous payday, as well as an estimate of the actual amounts of money they'll receive in the next payday."
-msgstr "Anda boleh menukar perolehan anda melalui {0}papan pemuka kumpulan anda{1}. Ia mengandungi jadual yang menunjukkan perolehan nominal kesemua ahli untuk hari bayaran seterusnya dan sebelumnya, dan juga anggaran jumlah wang sebenar yang mereka akan terima dalam hari bayaran seterusnya."
+msgid "You can change your takes from {0}your teams dashboard{1}. It contains tables that show the nominal takes of all members, as well as an estimate of the actual amounts of money that will be deducted at the end of the current weekly cycle."
+msgstr "Anda boleh menukar perolehan anda daripada {0}papan pemuka kumpulan anda{1}. Papan pemuka tersebut mengandungi jadual yang menunjukkan perolehan nominal semua ahli, serta anggaran jumlah sebenar wang yang akan ditolak pada penghujung kitaran mingguan semasa."
 
 msgid "The nominal takes are the raw numbers that the members input themselves, the actual takes are computed by the system: first it sums up the nominal takes, then it computes the percentage that each take represents, and finally it applies those percentages to the available income. Nominal takes also act as maximums: the actual takes are never higher than the nominal ones, even if additional income is available."
 msgstr "Perolehan nominal ialah jumlah mentah yang para ahli masukkan sendiri, perolehan sebenar akan dikira oleh sistem: mula-mula ia menambah kesemua perolehan nominal, kemudian ia mengira peratusan setiap perolehan, dan akhirnya ia menggunakan peratusan tersebut untuk membahagikan pendapatan yang ada. Perolehan nominal juga bertindak sebagai nilai maksimum: perolehan sebenar tidak akan melebihi perolehan nominal, walaupun adanya pendapatan tambahan."
@@ -4343,15 +4569,15 @@ msgstr "Secara lalainya semua ahli kumpulan ditetapkan perolehan kepada nilai kh
 msgid "Regulation of take amounts"
 msgstr "Kawalan jumlah perolehan"
 
-msgid "When “take throttling” is enabled for a team, its members can't raise their takes higher than a maximum computed on the basis of the nominal takes at the time of the previous payday. This mechanism is meant to encourage inviting new contributors to join the team, by ensuring that they won't take a disproportionate share of the income in their first weeks."
-msgstr "Apabila “pendikit perolehan” ini dibolehkan penggunaan dalam kumpulan, ahlinya tidak boleh menaikkan perolehan mereka melampaui jumlah maksimum yang dikira berdasarkan asas perolehan nominal pada hari bayaran sebelumnya. Mekanisme ini bertujuan untuk menggalakkan penyumbang baru sertai kumpulan tersebut, dengan memastikan mereka tidak mengambil bahagian yang tidak seimbang daripada jumlah pendapatan dalam minggu-minggu awal mereka sertai kumpulan tersebut."
+msgid "When “take throttling” is enabled for a team, its members can't raise their takes higher than a maximum computed on the basis of the nominal takes at the end of the previous weekly cycle. This mechanism is meant to encourage inviting new contributors to join the team, by ensuring that they won't take a disproportionate share of the income in their first weeks."
+msgstr "Apabila \"pendikit perolehan\" dibolehkan bagi suatu kumpulan, ahlinya tidak boleh menaikkan perolehan mereka lebih tinggi daripada jumlah maksimum yang dikira berdasarkan perolehan nominal pada penghujung kitaran mingguan sebelumnya. Mekanisme ini bertujuan untuk menggalakkan penyumbang baharu dijemput untuk menyertai kumpulan, dengan memastikan bahawa mereka tidak akan mengambil bahagian pendapatan yang tidak seimbang dalam minggu pertama mereka."
 
 #, python-brace-format
-msgid "The limit works like this: you can always increase your take to {amount} if it was below that, you can double your take compared to the previous week, you can raise your take to claim the team's leftover income, and you can bring your take up to the level of the median take in the previous payday. Whichever of these possibilities results in the highest amount is your maximum take for the week."
-msgstr "Had tersebut adalah seperti ini: anda boleh sentiasa naikkan perolehan anda kepada {amount} jika sebelumnya ia kurang dari itu, anda boleh menggandakan perolehan anda berbanding minggu sebelumnya, anda boleh naikkan perolehan anda untuk mengambil baki pendapatan kumpulan, dan anda boleh naikkan perolehan anda ke tahap perolehan median dari hari bayaran sebelumnya. Salah satu pilihan ini yang mendatangkan jumlah tertinggi akan menjadi perolehan maksimum anda untuk minggu seterusnya."
+msgid "The limit works like this: you can always increase your take to {amount} if it was below that, you can double your take compared to the previous week, you can raise your take to claim the team's leftover income, and you can bring your take up to the level of the median take at the end of the previous weekly cycle. Whichever of these possibilities results in the highest amount is your maximum take for the week."
+msgstr "Had ini berfungsi seperti ini: anda sentiasa boleh menaikkan perolehan anda kepada {amount} jika lebih rendah daripada itu, anda boleh menggandakan perolehan anda berbanding minggu sebelumnya, anda boleh menaikkan perolehan anda untuk menuntut pendapatan kumpulan yang berbaki, dan anda boleh menaikkan perolehan anda sehingga tahap perolehan median pada akhir kitaran mingguan sebelumnya. Mana-mana satu daripada kemungkinan ini yang menghasilkan jumlah tertinggi ialah perolehan maksimum anda untuk minggu itu."
 
-msgid "Takes are not limited if the team has only one member, or if the previous week's takes were all zero (which is the case for any new team that has been created after the most recent payday)."
-msgstr "Perolehan tidak dihadkan jika kumpulan hanya ada seorang ahli, atau jika perolehan minggu sebelumnya semuanya kosong (iaitu perkara biasa untuk mana-mana kumpulan baru yang dicipta selepas hari bayaran terbaru)."
+msgid "Takes are not limited if the team has only one member, or if the previous week's takes were all zero (which is the case for any new team that has been created during the current weekly cycle)."
+msgstr "Perolehan tidak ada had jika kumpulan tersebut hanya ada seorang ahli, atau jika perolehan minggu sebelumnya semuanya kosong (yang berlaku untuk mana-mana kumpulan baharu yang telah dicipta ketika kitaran mingguan semasa)."
 
 msgid "Please contact support if you want to enable or disable the take limits for an existing team. Don't forget to include evidence that the change has been approved by the other team members."
 msgstr "Sila hubungi kami jika anda ingin membolehkan atau melumpuhkan had perolehan untuk kumpulan sedia ada. Jangan lupa untuk sertakan bukti bahawa perubahan ini telah dipersetujui oleh kesemua ahli-ahli kumpulan yang lain."
@@ -4439,26 +4665,26 @@ msgstr[1] "Di sini ada {n} pengguna Liberapay yang telah mengaitkan akaun {0} me
 msgid "Explore other platforms:"
 msgstr "Teroka platform lain:"
 
-msgid "Liberapay provides several ways of finding great people to donate to:"
-msgstr "Liberapay menyediakan beberapa cara untuk mencari orang yang hebat untuk anda dermakan:"
+msgid "This page lists Liberapay users who are hoping to receive their first donations."
+msgstr "Halaman ini menyenaraikan pengguna Liberapay yang berharap untuk menerima derma pertama mereka."
 
-msgid "A team is a group of users working on a specific project."
-msgstr "Kumpulan ialah sekumpulan pengguna yang bekerja dalam sesuatu projek tertentu."
+msgid "Despite our efforts, some of the listed profiles may be spam or fraud."
+msgstr "Meskipun kami berusaha menapis, sesetengah profil yang disenaraikan boleh jadi spam atau fraud."
 
-msgid "Explore Teams"
-msgstr "Teroka Kumpulan"
+msgid "Profiles only start appearing in the list 72 hours after they're created."
+msgstr "Profil hanya mula muncul dalam senarai selepas 72 jam ia dicipta."
 
-msgid "Great nonprofits and companies trying to improve the world."
-msgstr "Organisasi bukan untung dan syarikat yang hebat yang mencuba untuk menambah baik dunia."
+msgid "People and projects who receive donations through Liberapay."
+msgstr "Orang dan projek yang menerima derma melalui Liberapay."
 
-msgid "Explore Organizations"
-msgstr "Teroka Organisasi"
+msgid "Explore Recipients"
+msgstr "Teroka Penerima"
 
-msgid "People like you who contribute to the commons (art, knowledge, software, …)."
-msgstr "Manusia seperti anda yang menyumbang untuk kegunaan awam (seni, pengetahuan, perisian, …)."
+msgid "Users who are hoping to receive their first donations through Liberapay."
+msgstr "Pengguna yang berharap untuk menerima derma pertama mereka melalui Liberapay."
 
-msgid "Explore Individuals"
-msgstr "Teroka Individu"
+msgid "Explore Hopefuls"
+msgstr "Teroka Pengharap"
 
 msgid "Liberapay allows pledging to fund people who haven't joined the site yet."
 msgstr "Liberapay membenarkan anda berjanji untuk memberi dana kepada mereka yang masih belum sertai laman web ini."
@@ -4481,27 +4707,40 @@ msgstr "Layari akaun yang pengguna Liberapay ada di platform lain. Cari kenalan 
 msgid "Explore Social Networks"
 msgstr "Teroka Rangkaian Sosial"
 
+msgid "Individuals"
+msgstr "Individu"
+
 #, python-brace-format
 msgid "The top {0} individuals on Liberapay are:"
 msgstr "Individu {0} teratas di Liberapay ialah:"
 
-#, python-brace-format
-msgid "List of individuals on Liberapay, page {number}:"
-msgstr "Senarai individu wujud di Liberapay, halaman {number}:"
+msgid "Sort by"
+msgstr "Isih ikut"
+
+msgid "income"
+msgstr "pendapatan"
+
+msgid "creation date"
+msgstr "tarikh penciptaan"
+
+msgid "sort order"
+msgstr "tertib isihan"
+
+msgid "in descending order"
+msgstr "dalam tertib menurun"
+
+msgid "in ascending order"
+msgstr "dalam tertib menaik"
+
+msgid "Organizations"
+msgstr "Organisasi"
 
 #, python-brace-format
 msgid "The top {0} organizations on Liberapay are:"
 msgstr "Organisasi {0} teratas di Liberapay ialah:"
 
-#, python-brace-format
-msgid "List of organizations on Liberapay, page {number}:"
-msgstr "Senarai organisasi wujud di Liberapay, halaman {number}:"
-
 msgid "Create an organization account"
 msgstr "Cipta akaun organisasi"
-
-msgid "Top pledges"
-msgstr "Perjanjian teratas"
 
 msgid "Please don't spam the people and projects listed below with messages inviting them to join Liberapay or asking them why they haven't."
 msgstr "Tolong jangan spam orang dan projek yang disenaraikan di bawah dengan mesej mengajak mereka sertai Liberapay atau bertanyakan sebab mereka belum sertai."
@@ -4519,21 +4758,44 @@ msgid "We can help you find pledgees if you connect your accounts:"
 msgstr "Kami boleh bantu anda mencari orang untuk anda derma jika anda mengaitkan akaun anda:"
 
 #, python-brace-format
-msgid "The most popular repository currently linked to a Liberapay account is:"
-msgid_plural "The {n} most popular repositories currently linked to a Liberapay account are:"
-msgstr[0] "Repositori paling terkenal yang sekarang ini dipautkan kepada akaun Liberapay ialah:"
-msgstr[1] "{n} repositori paling terkenal yang sekarang ini dipautkan kepada akaun Liberapay ialah:"
+msgid "The individual receiving the most money through Liberapay is:"
+msgid_plural "The {n} individuals receiving the most money through Liberapay are:"
+msgstr[0] "Individu yang menerima wang terbanyak melalui Liberapay ialah:"
+msgstr[1] "{n} individu yang menerima wang terbanyak melalui Liberapay ialah:"
 
 #, python-brace-format
-msgid "List of repositories currently linked to a Liberapay account, page {number}:"
-msgstr "Senarai repositori yang dipautkan kepada akaun Liberapay ketika ini, halaman {number}:"
+msgid "The organization receiving the most money through Liberapay is:"
+msgid_plural "The {n} organizations receiving the most money through Liberapay are:"
+msgstr[0] "Organisasi yang menerima wang terbanyak melalui Liberapay ialah:"
+msgstr[1] "{n} organisasi yang menerima wang terbanyak melalui Liberapay ialah:"
+
+#, python-brace-format
+msgid "The team receiving the most money through Liberapay is:"
+msgid_plural "The {n} teams receiving the most money through Liberapay are:"
+msgstr[0] "Kumpulan yang menerima wang terbanyak melalui Liberapay ialah:"
+msgstr[1] "{n} kumpulan yang menerima wang terbanyak melalui Liberapay ialah:"
+
+#, python-brace-format
+msgid "The Liberapay account receiving the most money is:"
+msgid_plural "The {n} Liberapay accounts receiving the most money are:"
+msgstr[0] "Akaun Liberapay yang menerima wang terbanyak ialah:"
+msgstr[1] "{n} akaun Liberapay yang menerima wang terbanyak ialah:"
+
+#, python-brace-format
+msgid "The most popular repository currently linked to a Liberapay account is:"
+msgid_plural "The {n} most popular repositories currently linked to a Liberapay account are:"
+msgstr[0] "Repositori paling terkenal yang dipautkan ke akaun Liberapay ketika ini ialah:"
+msgstr[1] "{n} repositori paling terkenal yang dipautkan ke akaun Liberapay ketika ini ialah:"
 
 #, python-brace-format
 msgid "by {author_name}"
 msgstr "oleh {author_name}"
 
-msgid "Stars"
-msgstr "Bintang"
+msgid "stars count"
+msgstr "bilangan bintang"
+
+msgid "connection date"
+msgstr "tarikh sambungan"
 
 msgid "Browse your favorite repositories"
 msgstr "Layari repositori kegemaran anda"
@@ -4546,10 +4808,6 @@ msgid "The top team on Liberapay is:"
 msgid_plural "The top {n} teams on Liberapay are:"
 msgstr[0] "Kumpulan teratas di Liberapay ialah:"
 msgstr[1] "{n} kumpulan teratas di Liberapay ialah:"
-
-#, python-brace-format
-msgid "List of teams on Liberapay, page {number}:"
-msgstr "Senarai kumpulan wujud di Liberapay, halaman {number}:"
 
 msgid "Create a team"
 msgstr "Cipta kumpulan"
@@ -4613,7 +4871,7 @@ msgid "Are you a creator of commons? Do you make free art, spread free knowledge
 msgstr "Adakah anda pencipta kandungan awam? Adakah anda mencipta seni bebas, menyebarkan maklumat bebas, menulis perisian bebas? Atau benda lain yang boleh menerima dana melalui derma berulang?"
 
 msgid "Yes? Then Liberapay is for you! Create your account, fill your profile, and ask your audience to financially support your work."
-msgstr "Ya? Maka Liberapay adalah untuk anda! Cipta akaun anda, isi profil anda, dan anda boleh minta sedikit sumbangan daripada mereka yang mendapat faedah daripada kerja percuma anda."
+msgstr "Ya? Maka Liberapay adalah untuk anda! Cipta akaun anda, isi profil anda, dan anda boleh minta khalayak anda untuk menyokong kerja anda dari segi kewangan."
 
 msgid "Create your account"
 msgstr "Cipta akaun anda"
@@ -4626,7 +4884,7 @@ msgstr[1] "Anda mempunyai {n} orang penderma aktif yang memberikan anda {money_a
 
 #, python-brace-format
 msgid "You are currently refusing donations, you can change that in {0}your profile settings{1}."
-msgstr "Anda sedang menolak pendermaan, anda boleh menukar tetapan melalui {0}tetapan profil anda{1}."
+msgstr "Anda sedang menolak pendermaan ketika ini, anda boleh menukarnya melalui {0}tetapan profil anda{1}."
 
 #, python-brace-format
 msgid "Congratulations, you have reached your goal of receiving {0} per week!"
@@ -4648,7 +4906,7 @@ msgid "{0}Embed our widgets{1} on your blog/website."
 msgstr "{0}Benamkan widget kami{1} di blog/laman web anda."
 
 msgid "Contact the people who benefit from your work and ask them to support you."
-msgstr "Hubungi mereka yang akan mendapat faedah daripada kerja anda dan minta mereka menyokong anda."
+msgstr "Hubungi mereka yang mendapat manfaat daripada kerja anda dan minta mereka menyokong anda."
 
 msgid "How it works for donors"
 msgstr "Bagaimanakah cara untuk menderma"
@@ -4664,7 +4922,7 @@ msgstr "2. Tambah dana untuk derma anda"
 
 #, python-brace-format
 msgid "On Liberapay, donations are funded in advance. You have control over when and how much you pay. Sending more money at once usually results in a lower percentage of {0}transaction fees{1}."
-msgstr "Di Liberapay, derma dibayar secara terlebih dahulu. Anda boleh kawal bila untuk bayar dan berapa banyak wangnya. Menghantar wang yang banyak pada suatu masa selalunya menyebabkan peratusan {0}caj transaksi{1} yang lebih rendah."
+msgstr "Di Liberapay, derma dibayar secara pendahuluan. Anda boleh kawal bila untuk bayar dan berapa banyak wangnya. Menghantar wang yang banyak pada suatu masa selalunya menyebabkan peratusan {0}caj transaksi{1} yang lebih rendah."
 
 msgid "3. Keep your donation funded"
 msgstr "3. Kekalkan simpanan derma"
@@ -4686,10 +4944,10 @@ msgstr "2. Tetapkan pemproses pembayaran"
 
 #, python-brace-format
 msgid "We currently support processing payments through {payment_processors_list}."
-msgstr "Kami kini menyokong pemprosesan pembayaran melalui {payment_processors_list}."
+msgstr "Ketika ini kami menyokong pemprosesan pembayaran melalui {payment_processors_list}."
 
 msgid "3. Reach out to your audience"
-msgstr "3. Turun padang melihat penyokong anda"
+msgstr "3. Jangkaui khalayak anda"
 
 msgid "How it works internally"
 msgstr "Apakah yang berlaku di peringkat dalaman"
@@ -4710,7 +4968,7 @@ msgstr "Ciri-ciri"
 
 #, python-brace-format
 msgid "A team allows members of a project to receive money and share it, without having to set up a legal entity. {0}Learn more…{1}"
-msgstr "Kumpulan membolehkan ahli projek untuk menerima wang dan berkongsi wang tersebut tanpa perlu membuat entiti sah. {0}Ketahui lebih lanjut…{1}"
+msgstr "Kumpulan membolehkan ahli projek untuk menerima wang dan membahagikan wang tersebut tanpa perlu membuat entiti sah. {0}Ketahui lebih lanjut…{1}"
 
 msgid "Multiple languages"
 msgstr "Pelbagai bahasa"
@@ -4718,8 +4976,8 @@ msgstr "Pelbagai bahasa"
 #, python-brace-format
 msgid "Our service is currently available in {n} language."
 msgid_plural "Our service is currently available in {n} languages."
-msgstr[0] "Perkhidmatan kami kini boleh didapati dalam {n} bahasa."
-msgstr[1] "Perkhidmatan kami kini boleh didapati dalam {n} bahasa."
+msgstr[0] "Perkhidmatan kami boleh didapati dalam {n} bahasa ketika ini."
+msgstr[1] "Perkhidmatan kami boleh didapati dalam {n} bahasa ketika ini."
 
 #, python-brace-format
 msgid "It's also partially translated into {n} other language ({link_open}you can contribute{link_close})."
@@ -4768,8 +5026,8 @@ msgstr "Derma daripada bisnes dan organisasi tidak untung juga dialu-alukan di L
 #, python-brace-format
 msgid "There is currently {n} sponsor on the platform, this section is our way of thanking them."
 msgid_plural "There are currently {n} sponsors on the platform, this section is our way of thanking them."
-msgstr[0] "Pada waktu ini kami mempunyai {n} penaja di platform ini, ruangan ini ialah cara kami untuk berterima kasih kepada mereka."
-msgstr[1] "Pada waktu ini kami mempunyai {n} penaja di platform ini, ruangan ini ialah cara kami untuk berterima kasih kepada mereka."
+msgstr[0] "Ketika ini kami mempunyai {n} penaja di platform ini, ruangan ini ialah cara kami untuk berterima kasih kepada mereka."
+msgstr[1] "Ketika ini kami mempunyai {n} penaja di platform ini, ruangan ini ialah cara kami untuk berterima kasih kepada mereka."
 
 msgid "The list below is rotated pseudorandomly."
 msgstr "Senarai di bawah disusun semula secara pseudorambang."
@@ -4782,7 +5040,7 @@ msgid "Thanks"
 msgstr "Terima kasih"
 
 msgid "Liberapay benefits from sponsored accounts on the following open source services:"
-msgstr "Liberapay mendapat faedah daripada akaun tajaan perkhidmatan sumber terbuka berikut:"
+msgstr "Liberapay mendapat manfaat daripada akaun tajaan perkhidmatan sumber terbuka berikut:"
 
 msgid "Recent Activity"
 msgstr "Aktiviti Terbaru"
@@ -4989,6 +5247,10 @@ msgid "Transfer the account"
 msgstr "Pindah akaun"
 
 #, python-brace-format
+msgid "The {provider} account you are attempting to connect is linked to another Liberapay account marked as fraudulent."
+msgstr "Akaun {provider} yang anda cuba untuk kaitkan itu dikaitkan ke akaun Liberapay lain yang ditandakan sebagai fraud."
+
+#, python-brace-format
 msgid "Connecting a {platform} account"
 msgstr "Kaitkan akaun {platform}"
 
@@ -5007,10 +5269,10 @@ msgstr "Harap maaf, kami tidak jumpa apa-apa yang sepadan dengan pertanyaan anda
 msgid "Whose work do you appreciate?"
 msgstr "Kerja siapa yang anda hargai?"
 
-msgid "Found a matching username"
-msgid_plural "Found matching usernames"
-msgstr[0] "Jumpa satu nama pengguna yang sepadan"
-msgstr[1] "Jumpa beberapa nama pengguna yang sepadan"
+msgid "Found a matching user name"
+msgid_plural "Found matching user names"
+msgstr[0] "Satu nama pengguna yang sepadan telah dijumpai"
+msgstr[1] "Beberapa nama pengguna yang sepadan telah dijumpai"
 
 msgid "Found a matching community name"
 msgid_plural "Found matching community names"
@@ -5032,8 +5294,8 @@ msgstr[1] "Jumpa beberapa repositori yang sepadan"
 msgid "{username} has a repository named {repo_name} in their {platform} account"
 msgstr "{username} mempunyai repositori bernama {repo_name} di akaun {platform} mereka"
 
-msgid "Found a matching user statement"
-msgid_plural "Found matching user statements"
+msgid "Found a matching user description"
+msgid_plural "Found matching user descriptions"
 msgstr[0] "Jumpa satu kenyataan pengguna yang sepadan"
 msgstr[1] "Jumpa beberapa kenyataan pengguna yang sepadan"
 

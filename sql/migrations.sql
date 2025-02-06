@@ -3299,3 +3299,314 @@ CREATE TABLE cron_jobs
 , last_error_time     timestamptz
 , last_error          text
 );
+
+-- migration #164
+CREATE OR REPLACE FUNCTION compute_payment_providers(bigint) RETURNS bigint AS $$
+    SELECT coalesce((
+        SELECT sum(DISTINCT array_position(
+                                enum_range(NULL::payment_providers),
+                                a.provider::payment_providers
+                            ))
+          FROM payment_accounts a
+         WHERE ( a.participant = $1 OR
+                 a.participant IN (
+                     SELECT t.member
+                       FROM current_takes t
+                      WHERE t.team = $1
+                        AND t.amount <> 0
+                 )
+               )
+           AND a.is_current IS TRUE
+           AND a.verified IS TRUE
+           AND coalesce(a.charges_enabled, true)
+    ), 0);
+$$ LANGUAGE SQL STRICT;
+UPDATE participants
+   SET payment_providers = compute_payment_providers(id)
+ WHERE status <> 'stub'
+   AND payment_providers = 0
+   AND email IS NOT NULL
+   AND join_time >= '2022-12-06'
+   AND compute_payment_providers(id) <> 0;
+
+-- migration #165
+UPDATE payins SET error = '' WHERE error = 'None (code None)';
+UPDATE payin_events SET error = '' WHERE error = 'None (code None)';
+ALTER TYPE payin_transfer_status ADD VALUE IF NOT EXISTS 'suspended';
+
+-- migration #166
+CREATE OR REPLACE FUNCTION update_profile_visibility() RETURNS trigger AS $$
+    BEGIN
+        IF (OLD.marked_as IS NULL AND NEW.marked_as IS NULL) THEN
+            RETURN NEW;
+        END IF;
+        IF (NEW.marked_as = 'trusted') THEN
+            NEW.is_suspended = false;
+        ELSIF (NEW.marked_as IN ('fraud', 'spam')) THEN
+            NEW.is_suspended = true;
+        ELSE
+            NEW.is_suspended = null;
+        END IF;
+        IF (NEW.marked_as = 'unsettling') THEN
+            NEW.is_unsettling = NEW.is_unsettling | 2;
+        ELSE
+            NEW.is_unsettling = NEW.is_unsettling & 2147483645;
+        END IF;
+        IF (NEW.marked_as IN ('okay', 'trusted')) THEN
+            NEW.profile_noindex = NEW.profile_noindex & 2147483645;
+            NEW.hide_from_lists = NEW.hide_from_lists & 2147483645;
+            NEW.hide_from_search = NEW.hide_from_search & 2147483645;
+        ELSIF (NEW.marked_as IS NULL) THEN
+            NEW.profile_noindex = NEW.profile_noindex | 2;
+            NEW.hide_from_lists = NEW.hide_from_lists & 2147483645;
+            NEW.hide_from_search = NEW.hide_from_search & 2147483645;
+        ELSE
+            NEW.profile_noindex = NEW.profile_noindex | 2;
+            NEW.hide_from_lists = NEW.hide_from_lists | 2;
+            NEW.hide_from_search = NEW.hide_from_search | 2;
+        END IF;
+        RETURN NEW;
+    END;
+$$ LANGUAGE plpgsql;
+UPDATE participants
+   SET marked_as = marked_as
+ WHERE marked_as = 'unsettling';
+UPDATE participants AS p
+   SET is_suspended = null
+     , is_unsettling = is_unsettling & 2147483645
+     , profile_noindex = profile_noindex | 2
+     , hide_from_lists = hide_from_lists & 2147483645
+     , hide_from_search = hide_from_search & 2147483645
+ WHERE marked_as IS NULL AND EXISTS (
+           SELECT 1
+             FROM events e
+            WHERE e.participant = p.id
+              AND e.type = 'flags_changed'
+            LIMIT 1
+       );
+UPDATE payin_transfers SET error = '' WHERE error = 'None (code None)';
+UPDATE payin_transfer_events SET error = '' WHERE error = 'None (code None)';
+INSERT INTO app_conf VALUES
+    ('twitter_id', '"ikgMaoYPSKqCpQJkVtiRHvmqv"'::jsonb),
+    ('twitter_secret', '"pwInmJX3vSRuul2mqYs8iJsdkmcXSkBbYh7KB9wqK2pmkJQNm9"'::jsonb)
+    ON CONFLICT (key) DO UPDATE SET value = excluded.value;
+
+-- migration #167
+CREATE OR REPLACE FUNCTION update_payment_accounts() RETURNS trigger AS $$
+    BEGIN
+        UPDATE payment_accounts
+           SET verified = coalesce(NEW.verified, false)
+         WHERE participant = NEW.participant
+           AND lower(id) = lower(NEW.address);
+        RETURN NULL;
+    END;
+$$ LANGUAGE plpgsql;
+UPDATE payment_accounts AS a
+   SET verified = true
+ WHERE lower(id) <> id
+   AND NOT verified
+   AND EXISTS (
+           SELECT 1
+             FROM emails e
+            WHERE e.participant = a.participant
+              AND lower(e.address) = lower(a.id)
+              AND e.verified
+       );
+
+-- migration #168
+ALTER TABLE exchange_routes ADD COLUMN is_default_for currency;
+
+-- migration #169
+ALTER TABLE elsewhere ADD COLUMN last_fetch_attempt timestamptz;
+ALTER TABLE repositories ADD COLUMN last_fetch_attempt timestamptz;
+DELETE FROM rate_limiting WHERE key LIKE 'refetch_%';
+
+-- migration #170
+CREATE TYPE localized_string AS (string text, lang text);
+
+-- migration #171
+UPDATE app_conf SET value = '"https://api.openstreetmap.org/api/0.6"'::jsonb WHERE key = 'openstreetmap_api_url';
+UPDATE app_conf SET value = '"https://www.openstreetmap.org"'::jsonb WHERE key = 'openstreetmap_auth_url';
+
+-- migration #172
+UPDATE participants
+   SET avatar_url = 'https://pbs.twimg.com/' || regexp_replace(substr(avatar_url, 24), '%2F', '/', 'g')
+ WHERE avatar_url LIKE 'https://nitter.net/pic/%';
+
+-- migration #173
+DELETE FROM elsewhere WHERE platform in ('facebook', 'google');
+DELETE FROM app_conf WHERE key LIKE 'facebook_%';
+
+-- migration #174
+CREATE TEMPORARY TABLE _tippees AS (
+    SELECT e.participant AS id
+         , (CASE WHEN e.payload->>'patron_visibilities' = '2' THEN 2 ELSE 3 END) AS only_accepted_visibility
+         , e.ts AS start_time
+         , coalesce((
+               SELECT e2.ts
+                 FROM events e2
+                WHERE e2.participant = e.participant
+                  AND e2.type = 'recipient_settings'
+                  AND e2.ts > e.ts
+             ORDER BY e2.ts
+                LIMIT 1
+           ), current_timestamp) AS end_time
+      FROM events e
+     WHERE e.type = 'recipient_settings'
+       AND e.payload->>'patron_visibilities' IN ('2', '4')
+);
+UPDATE tips AS tip
+   SET visibility = tippee.only_accepted_visibility
+  FROM _tippees AS tippee
+ WHERE tip.tippee = tippee.id
+   AND tip.mtime > tippee.start_time
+   AND tip.mtime < tippee.end_time
+   AND tip.visibility <> tippee.only_accepted_visibility;
+UPDATE payin_transfers AS pt
+   SET visibility = tippee.only_accepted_visibility
+  FROM _tippees AS tippee
+ WHERE pt.recipient = tippee.id
+   AND pt.ctime > tippee.start_time
+   AND pt.ctime < tippee.end_time
+   AND pt.visibility <> tippee.only_accepted_visibility;
+DROP TABLE _tippees;
+
+-- migration #175
+INSERT INTO app_conf VALUES ('openstreetmap_access_token_url', '"https://master.apis.dev.openstreetmap.org/oauth2/token"') ON CONFLICT (key) DO NOTHING;
+UPDATE app_conf SET value = '"https://master.apis.dev.openstreetmap.org/api/0.6"' WHERE key = 'openstreetmap_api_url';
+UPDATE app_conf SET value = '"https://master.apis.dev.openstreetmap.org/oauth2/authorize"' WHERE key = 'openstreetmap_auth_url';
+UPDATE app_conf SET value = '"xAVaXxy0BwUef4SIo55v7E1ofuC53EN8H-X5232d8Vo"' WHERE key = 'openstreetmap_id';
+UPDATE app_conf SET value = '"JtqazsotvWZQ1G6ynYhDlHXouQji-qDwwU2WQW7j-kE"' WHERE key = 'openstreetmap_secret';
+
+-- migration #176
+ALTER TABLE recipient_settings
+    ALTER COLUMN patron_visibilities DROP NOT NULL,
+    ADD COLUMN patron_countries text CHECK (patron_countries <> '');
+
+-- migration #177
+CREATE INDEX public_name_trgm_idx ON participants
+    USING GIN (lower(public_name) gin_trgm_ops)
+    WHERE status = 'active'
+      AND public_name IS NOT null;
+
+-- migration #178
+UPDATE exchange_routes SET is_default_for = 'EUR', is_default = null WHERE network = 'stripe-sdd' AND is_default;
+
+-- migration #179
+ALTER TABLE user_secrets ADD COLUMN latest_use date;
+
+-- migration #180
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'AED';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'AFN';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'ALL';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'AMD';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'ANG';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'AOA';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'ARS';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'AWG';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'AZN';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'BAM';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'BBD';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'BDT';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'BIF';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'BMD';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'BND';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'BOB';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'BSD';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'BWP';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'BYN';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'BZD';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'CDF';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'CLP';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'COP';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'CRC';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'CVE';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'DJF';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'DOP';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'DZD';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'EGP';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'ETB';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'FJD';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'FKP';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'GEL';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'GIP';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'GMD';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'GNF';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'GTQ';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'GYD';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'HNL';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'HTG';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'JMD';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'KES';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'KGS';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'KHR';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'KMF';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'KYD';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'KZT';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'LAK';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'LBP';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'LKR';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'LRD';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'LSL';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'MAD';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'MDL';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'MGA';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'MKD';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'MMK';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'MNT';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'MOP';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'MUR';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'MVR';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'MWK';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'MZN';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'NAD';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'NGN';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'NIO';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'NPR';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'PAB';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'PEN';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'PGK';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'PKR';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'PYG';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'QAR';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'RSD';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'RWF';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'SAR';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'SBD';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'SCR';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'SHP';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'SLE';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'SOS';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'SRD';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'SZL';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'TJS';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'TOP';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'TTD';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'TWD';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'TZS';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'UAH';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'UGX';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'UYU';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'UZS';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'VND';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'VUV';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'WST';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'XAF';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'XCD';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'XOF';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'XPF';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'YER';
+ALTER TYPE currency ADD VALUE IF NOT EXISTS 'ZMW';
+INSERT INTO app_conf VALUES ('fixer_access_key', 'null'::jsonb) ON CONFLICT (key) DO NOTHING;
+
+-- migration #181
+ALTER TABLE exchange_routes
+    ADD COLUMN brand text,
+    ADD COLUMN last4 text,
+    ADD COLUMN fingerprint text,
+    ADD COLUMN owner_name text,
+    ADD COLUMN expiration_date date,
+    ADD COLUMN mandate_reference text;
+
+-- migration #182
+UPDATE participants SET public_name = null WHERE public_name = '';

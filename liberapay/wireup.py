@@ -1,4 +1,6 @@
+from dataclasses import dataclass, field
 from decimal import Decimal
+from functools import partial
 import json
 from operator import itemgetter
 import os
@@ -6,6 +8,7 @@ import re
 import socket
 from sys import intern
 import traceback
+import xml.etree.ElementTree as ET
 
 import babel
 from babel.messages.pofile import read_po
@@ -23,9 +26,13 @@ from state_chain import StateChain
 
 from liberapay import elsewhere
 import liberapay.billing.payday
+from liberapay.elsewhere._base import (
+    BadUserId, ElsewhereError, HTTPError, RateLimitError, UserNotFound,
+)
 from liberapay.exceptions import NeedDatabase
 from liberapay.i18n.base import (
-    ACCEPTED_LANGUAGES, COUNTRIES, LOCALES, LOCALES_DEFAULT_MAP, Locale, make_sorted_dict,
+    ACCEPTED_LANGUAGES, COUNTRIES, LOCALE_EN, LOCALES, LOCALES_DEFAULT_MAP, Locale,
+    make_sorted_dict, to_age,
 )
 from liberapay.i18n.currencies import Money, MoneyBasket, get_currency_exchange_rates
 from liberapay.i18n.plural_rules import get_function_from_rule
@@ -36,13 +43,15 @@ from liberapay.models.encrypted import Encrypted
 from liberapay.models.exchange_route import ExchangeRoute
 from liberapay.models.participant import Participant
 from liberapay.models.payin import Payin
+from liberapay.models.payin_transfer import PayinTransfer
 from liberapay.models.repository import Repository
 from liberapay.models.tip import Tip
 from liberapay.security.crypto import Cryptograph
+from liberapay.security.csp import CSP
 from liberapay.utils import find_files, markdown, resolve
 from liberapay.utils.emails import compile_email_spt
 from liberapay.utils.http_caching import asset_etag
-from liberapay.utils.types import Object
+from liberapay.utils.types import LocalizedString, Object
 from liberapay.version import get_version
 from liberapay.website import Website
 
@@ -60,34 +69,6 @@ def canonical(env):
         canonical_url = ''
     asset_url = canonical_url+'/assets/'
     return locals()
-
-
-class CSP(bytes):
-
-    # https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/default-src
-    based_on_default_src = set(b'''
-        child-src connect-src font-src frame-src img-src manifest-src
-        media-src object-src script-src style-src worker-src
-    '''.split())
-
-    def __new__(cls, x):
-        if isinstance(x, dict):
-            self = bytes.__new__(cls, b';'.join(b' '.join(t).rstrip() for t in x.items()) + b';')
-            self.directives = dict(x)
-        else:
-            self = bytes.__new__(cls, x)
-            self.directives = dict(
-                (d.split(b' ', 1) + [b''])[:2] for d in self.split(b';') if d
-            )
-        return self
-
-    def allow(self, directive, value):
-        d = dict(self.directives)
-        old_value = d.get(directive)
-        if old_value is None and directive in self.based_on_default_src:
-            old_value = d.get(b'default-src')
-        d[directive] = b'%s %s' % (old_value, value) if old_value else value
-        return CSP(d)
 
 
 def csp(canonical_host, canonical_scheme, env):
@@ -138,8 +119,8 @@ def database(env, tell_sentry):
     db.back_as_registry[Object] = db.back_as_registry['Object'] = back_as_Object
 
     models = (
-        _AccountElsewhere, AccountElsewhere, _Community, Community,
-        Encrypted, ExchangeRoute, Participant, Payin, Repository, Tip,
+        _AccountElsewhere, AccountElsewhere, _Community, Community, Encrypted,
+        ExchangeRoute, Participant, Payin, PayinTransfer, Repository, Tip,
     )
     for model in models:
         db.register_model(model)
@@ -194,94 +175,112 @@ def database(env, tell_sentry):
     except (psycopg2.ProgrammingError, NeedDatabase):
         pass
 
+    def cast_localized_string(v, cursor):
+        if v in (None, '(,)'):
+            return None
+        else:
+            text, lang = v[1:-1].rsplit(',', 1)
+            if text.startswith('"') and text.endswith('"'):
+                text = text[1:-1].replace('""', '"')
+            return LocalizedString(text, lang)
+    try:
+        oid = db.one("SELECT 'localized_string'::regtype::oid")
+        register_type(new_type((oid,), 'localized_string', cast_localized_string))
+    except (psycopg2.ProgrammingError, NeedDatabase):
+        pass
+
     if db and env.override_query_cache:
         db.cache.max_size = 0
 
     return {'db': db}
 
 
+@dataclass(slots=True)
 class AppConf:
+    app_name:  str
+    bitbucket_callback:  str
+    bitbucket_id:  str
+    bitbucket_secret:  str
+    bot_github_token:  str
+    bot_github_username:  str
+    check_avatar_urls:  bool
+    check_email_domains:  bool
+    check_email_servers:  bool
+    cron_intervals:  dict
+    fixer_access_key:  str | None
+    github_callback:  str
+    github_id:  str
+    github_secret:  str
+    gitlab_callback:  str
+    gitlab_id:  str
+    gitlab_secret:  str
+    google_callback:  str
+    google_id:  str
+    google_secret:  str
+    linuxfr_callback:  str
+    linuxfr_id:  str
+    linuxfr_secret:  str
+    log_emails:  bool
+    openstreetmap_access_token_url:  str
+    openstreetmap_api_url:  str
+    openstreetmap_auth_url:  str
+    openstreetmap_callback:  str
+    openstreetmap_id:  str
+    openstreetmap_secret:  str
+    password_rounds:  int
+    payday_label:  str
+    payday_repo:  str
+    payin_methods:  dict
+    paypal_domain:  str
+    paypal_id:  str
+    paypal_secret:  str
+    s3_endpoint:  str
+    s3_public_access_key:  str
+    s3_secret_key:  str
+    s3_region:  str
+    s3_payday_logs_bucket:  str
+    ses_feedback_queue_url:  str
+    ses_region:  str
+    sepa_creditor_identifier:  str
+    show_sandbox_warning:  bool
+    socket_timeout:  float
+    smtp_host:  str
+    smtp_port:  int
+    smtp_username:  str
+    smtp_password:  str
+    smtp_use_tls:  bool
+    stripe_callback_secret:  str
+    stripe_connect_callback_secret:  str
+    stripe_connect_id:  str
+    stripe_publishable_key:  str
+    stripe_secret_key:  str
+    twitch_id:  str
+    twitch_secret:  str
+    twitter_callback:  str
+    twitter_id:  str
+    twitter_secret:  str
 
-    fields = dict(
-        app_name=str,
-        bitbucket_callback=str,
-        bitbucket_id=str,
-        bitbucket_secret=str,
-        bot_github_token=str,
-        bot_github_username=str,
-        check_avatar_urls=bool,
-        check_email_domains=bool,
-        check_email_servers=bool,
-        cron_intervals=dict,
-        facebook_callback=str,
-        facebook_id=str,
-        facebook_secret=str,
-        github_callback=str,
-        github_id=str,
-        github_secret=str,
-        gitlab_callback=str,
-        gitlab_id=str,
-        gitlab_secret=str,
-        google_callback=str,
-        google_id=str,
-        google_secret=str,
-        linuxfr_callback=str,
-        linuxfr_id=str,
-        linuxfr_secret=str,
-        log_emails=bool,
-        openstreetmap_api_url=str,
-        openstreetmap_auth_url=str,
-        openstreetmap_callback=str,
-        openstreetmap_id=str,
-        openstreetmap_secret=str,
-        password_rounds=int,
-        payday_label=str,
-        payday_repo=str,
-        payin_methods=dict,
-        paypal_domain=str,
-        paypal_id=str,
-        paypal_secret=str,
-        s3_endpoint=str,
-        s3_public_access_key=str,
-        s3_secret_key=str,
-        s3_region=str,
-        s3_payday_logs_bucket=str,
-        ses_feedback_queue_url=str,
-        ses_region=str,
-        sepa_creditor_identifier=str,
-        show_sandbox_warning=bool,
-        socket_timeout=float,
-        smtp_host=str,
-        smtp_port=int,
-        smtp_username=str,
-        smtp_password=str,
-        smtp_use_tls=bool,
-        stripe_callback_secret=str,
-        stripe_connect_callback_secret=str,
-        stripe_connect_id=str,
-        stripe_publishable_key=str,
-        stripe_secret_key=str,
-        twitch_id=str,
-        twitch_secret=str,
-        twitter_callback=str,
-        twitter_id=str,
-        twitter_secret=str,
-    )
+    _missing:  list[str]  = field(init=False)
+    _mistyped:  list[tuple[str, str, type]]  = field(init=False)
+    _unexpected:  list[str]  = field(init=False)
 
     def __init__(self, d):
         d = d if isinstance(d, dict) else dict(d)
 
-        unexpected = set(d) - set(self.fields)
+        fields = {
+            k: v for k, v in self.__annotations__.items() if not k.startswith('_')
+        }
+        unexpected = list(set(d) - set(fields))
         if unexpected:
             print("Found %i unexpected variables in the app_conf table:  %s" %
                   (len(unexpected), ' '.join(unexpected)))
 
         missing, mistyped = [], []
-        for k, t in self.fields.items():
+        for k, t in fields.items():
             if k in d:
                 v = d[k]
                 if isinstance(v, t):
-                    self.__dict__[k] = v
+                    setattr(self, k, v)
                 else:
                     mistyped.append((k, v, t))
             else:
@@ -292,9 +291,17 @@ class AppConf:
             print('Invalid configuration variable, %s: %s is of type %s, not %s' %
                   (k, json.dumps(v), type(v), t))
 
-        self.missing = missing
-        self.mistyped = mistyped
-        self.unexpected = unexpected
+        self._missing = missing
+        self._mistyped = mistyped
+        self._unexpected = unexpected
+
+    def dict(self, prefix=''):
+        i = len(prefix)
+        return {
+            k[i:]: getattr(self, k)
+            for k in self.__annotations__
+            if k.startswith(prefix) and hasattr(self, k) and not k.startswith('_')
+        }
 
 
 def app_conf(db):
@@ -309,9 +316,7 @@ def app_conf(db):
 def mail(app_conf, env, project_root='.'):
     if not app_conf:
         return
-    smtp_conf = {
-        k[5:]: v for k, v in app_conf.__dict__.items() if k.startswith('smtp_')
-    }
+    smtp_conf = app_conf.dict('smtp_')
     if smtp_conf:
         smtp_conf.setdefault('timeout', app_conf.socket_timeout)
     if getattr(app_conf, 'ses_region', None):
@@ -419,7 +424,7 @@ def make_sentry_teller(env, version):
                     if sentry:
                         # Record the exception raised above instead of the
                         # original one, to avoid duplicate issues.
-                        return tell_sentry(e, state, allow_reraise=True)
+                        return tell_sentry(e, allow_reraise=True)
 
                 if 'read-only' in str(exception):
                     # DB is in read only mode
@@ -438,6 +443,44 @@ def make_sentry_teller(env, version):
                 r['exception'] = None
                 r['response'] = response
                 return r
+
+        if isinstance(exception, ElsewhereError):
+            state.setdefault('escape', lambda a: a)
+            _ = state.get('_') or partial(LOCALE_EN._, state)
+            response = state.get('response') or pando.Response()
+            r['exception'] = None
+            if isinstance(exception, BadUserId):
+                r['response'] = response.error(400, _(
+                    "'{0}' doesn't seem to be a valid user id on {platform}.",
+                    exception.uid, platform=exception.platform.display_name
+                ))
+                return r
+            elif isinstance(exception, HTTPError):
+                r['response'] = response.error(exception.status_code, _(
+                    "{0} returned an error, please try again later.",
+                    exception.domain or exception.platform.display_name
+                ))
+                return r
+            elif isinstance(exception, RateLimitError):
+                msg = _(
+                    "You've consumed your quota of requests, you can try again {in_N_minutes}.",
+                    in_N_minutes=to_age(exception.reset)
+                ) if exception.remaining == 0 and exception.reset else _(
+                    "You're making requests too fast, please try again later."
+                )
+                r['response'] = response.error(429, msg)
+                return r
+            elif isinstance(exception, UserNotFound):
+                r['response'] = response.error(404, _(
+                    "There doesn't seem to be a user named {0} on {1}.",
+                    exception.uid, exception.platform.display_name
+                ))
+                return r
+            else:
+                r['response'] = response.error(502, _(
+                    "{0} returned an error, please try again later.",
+                    exception.domain or exception.platform.display_name
+                ))
 
         if not sentry:
             # No Sentry, log to stderr instead
@@ -529,10 +572,7 @@ def accounts_elsewhere(app_conf, asset, canonical_url, db):
         return {'platforms': db}
     platforms = []
     for cls in elsewhere.CLASSES:
-        conf = {
-            k[len(cls.name)+1:]: v
-            for k, v in app_conf.__dict__.items() if k.startswith(cls.name+'_')
-        }
+        conf = app_conf.dict(cls.name+'_')
         conf.setdefault('api_timeout', app_conf.socket_timeout)
         conf.setdefault('app_name', app_conf.app_name)
         conf.setdefault('app_url', canonical_url)
@@ -565,6 +605,7 @@ def accounts_elsewhere(app_conf, asset, canonical_url, db):
               JOIN participants p ON p.id = e.participant
              WHERE p.status = 'active'
                AND p.hide_from_lists = 0
+               AND e.missing_since IS NULL
           GROUP BY e.platform
                ) a
       ORDER BY c DESC, platform ASC
@@ -577,15 +618,15 @@ def accounts_elsewhere(app_conf, asset, canonical_url, db):
     platforms = PlatformRegistry(platforms)
 
     for platform in platforms:
-        if platform.fontawesome_name:
-            continue
-        platform.icon = asset(
-            'platforms/%s.svg' % platform.name,
+        platform.icon_16 = asset(
+            'platforms/%s.16.webp' % platform.name,
             'platforms/%s.16.png' % platform.name,
-        )
-        platform.logo = asset(
             'platforms/%s.svg' % platform.name,
-            'platforms/%s.png' % platform.name,
+        )
+        platform.icon_32 = asset(
+            'platforms/%s.32.webp' % platform.name,
+            'platforms/%s.32.png' % platform.name,
+            'platforms/%s.svg' % platform.name,
         )
 
     return {'platforms': platforms}
@@ -728,10 +769,10 @@ def load_i18n(canonical_host, canonical_scheme, project_root, tell_sentry):
             del babel.localedata._cache[key]
 
     # Add year-less date format
-    year_re = re.compile(r'(^y+[^a-zA-Z]+|[^a-zA-Z]+y+$)')
+    year_re = re.compile(r'(^y+[^a-zA-Z]+|[^a-zA-Z]+y+$|y+[^a-zA-Z]+$)')
     for l in locales.values():
         short_format = l.date_formats['short'].pattern
-        assert short_format[0] == 'y' or short_format[-1] == 'y', (l.language, short_format)
+        assert year_re.search(short_format), (l.language, short_format)
         l.date_formats['short_yearless'] = year_re.sub('', short_format)
 
     # Add universal strings
@@ -767,7 +808,7 @@ def load_i18n(canonical_host, canonical_scheme, project_root, tell_sentry):
 
 
 def asset_url_generator(env, asset_url, tell_sentry, www_root):
-    def asset(*paths):
+    def asset(*paths, domain=True):
         for path in paths:
             fspath = www_root+'/assets/'+path
             etag = ''
@@ -784,8 +825,31 @@ def asset_url_generator(env, asset_url, tell_sentry, www_root):
                     continue
             except Exception as e:
                 tell_sentry(e)
-            return asset_url+path+(etag and '?etag='+etag)
+            if domain:
+                return asset_url+path+(etag and '?etag='+etag)
+            else:
+                return '/assets/'+path+(etag and '?etag='+etag)
     return {'asset': asset}
+
+
+def icon_names(www_root):
+    icons_file_path = f'{www_root}/assets/icons.svg'
+    svg = ET.parse(icons_file_path).getroot()
+    icon_identifiers = set()
+    for el in svg:
+        if el.tag != '{http://www.w3.org/2000/svg}symbol':
+            raise AssertionError(
+                f"{icons_file_path} contains unknown element <{el.tag.split('}')[1]}>"
+            )
+        icon_id = el.get('id')
+        if not icon_id:
+            raise AssertionError(f"{icons_file_path} contains a <symbol> without an id")
+        if icon_id in icon_identifiers:
+            raise AssertionError(
+                f'{icons_file_path} contains multiple symbols with id="{icon_id}"'
+            )
+        icon_identifiers.add(icon_id)
+    return {'icon_names': icon_identifiers}
 
 
 def load_scss_variables(project_root):
@@ -837,6 +901,7 @@ full_chain = StateChain(
     username_restrictions,
     load_i18n,
     asset_url_generator,
+    icon_names,
     accounts_elsewhere,
     load_scss_variables,
     s3,
@@ -849,7 +914,7 @@ def main():
     environ['RUN_CRON_JOBS'] = 'no'
     from liberapay.main import website
     app_conf, env = website.app_conf, website.env
-    if app_conf.missing or app_conf.mistyped or env.missing or env.malformed:
+    if app_conf._missing or app_conf._mistyped or env.missing or env.malformed:
         raise SystemExit('The configuration is incorrect.')
 
 

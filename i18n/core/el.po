@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.10.3\n"
+"Generated-By: Babel 2.16.0\n"
 
 #, python-brace-format
 msgid "The translation of this page from English is not yet complete. {link_start}You can contribute{link_end}."
@@ -236,9 +236,6 @@ msgstr "{date}: {money_amount} στον/ην {recipient}"
 #, python-brace-format
 msgid "{date}: {money_amount} split between {recipients}"
 msgstr "{date}: {money_amount} διαχωρισμένα μεταξύ των {recipients}"
-
-msgid "Add a payment instrument"
-msgstr "Προσθέστε ένα μέσο πληρωμής"
 
 #, python-brace-format
 msgid "Invoice from {0} on Liberapay"
@@ -816,17 +813,6 @@ msgstr "Μεγάλο"
 msgid "Maximum"
 msgstr "Μέγιστο"
 
-#, python-brace-format
-msgid "You've consumed your quota of requests, you can try again {in_N_minutes}."
-msgstr "Έχετε καταναλώσει το όριο αιτημάτων σας, μπορείτε να δοκιμάσετε ξανά {in_N_minutes}."
-
-msgid "You're making requests too fast, please try again later."
-msgstr "Κάνεις αιτήσεις πολύ γρήγορα, παρακαλώ δοκίμασε ξανά αργότερα."
-
-#, python-brace-format
-msgid "{0} returned an error, please try again later."
-msgstr "{0} εμφάνισε σφάλμα, παρακαλώ δοκίμασε ξανά αργότερα."
-
 msgid "example@mastodon.social"
 msgstr "example@mastodon.social"
 
@@ -859,6 +845,10 @@ msgstr "Το όνομα χρήστη '{0}' είναι πολύ μακρύ."
 #, python-brace-format
 msgid "The username '{0}' contains invalid characters."
 msgstr "Το όνομα χρήστη '{0}' περιέχει μη έγκυρους χαρακτήρες."
+
+#, python-brace-format
+msgid "The username '{0}' is purely numerical. This isn't allowed."
+msgstr "Το όνομα χρήστη '{0}' είναι καθαρά αριθμητικό. Αυτό δεν επιτρέπεται."
 
 #, python-brace-format
 msgid "The username '{0}' is restricted."
@@ -1007,6 +997,18 @@ msgid "{username} doesn't accept donations in {rejected_currency}."
 msgstr "{username} δεν δέχεται δωρεές σε {rejected_currency}."
 
 #, python-brace-format
+msgid "{username} no longer accepts secret donations."
+msgstr "{username} δεν δέχεται πλέον μυστικές δωρεές."
+
+#, python-brace-format
+msgid "{username} no longer accepts private donations."
+msgstr "{username} δεν δέχεται πλέον ιδιωτικές δωρεές."
+
+#, python-brace-format
+msgid "{username} no longer accepts public donations."
+msgstr "{username} δεν δέχεται πλέον δημόσιες δωρεές."
+
+#, python-brace-format
 msgid "The amount {money_amount} isn't in the expected currency ({expected_currency})."
 msgstr "Το ποσό {money_amount} δεν είναι στο αναμενόμενο νόμισμα ({expected_currency})."
 
@@ -1042,6 +1044,14 @@ msgstr "Η πληρωμή δεν είναι δυνατόν να επεξεργα
 #, python-brace-format
 msgid "Your donation to {recipient} cannot be processed right now because the account of the beneficiary isn't ready to receive money."
 msgstr "Η δωρεά σας στο/ην {recipient} δεν είναι επεξεργάσιμη τώρα, επειδή ο λογαριασμός του δικαιούχου δεν είναι έτοιμος να λάβει τα χρήματα."
+
+#, python-brace-format
+msgid "{username} does not accept donations from {country}."
+msgstr "{username} δεν δέχεται δωρεές από {country}."
+
+#, fuzzy
+msgid "The processing of your payment has failed because our software was unable to determine which country the money would come from. This isn't supposed to happen."
+msgstr "Η επεξεργασία της πληρωμής σας απέτυχε επειδή το λογισμικό μας δεν μπόρεσε να προσδιορίσει από ποια χώρα προέρχονται τα χρήματα. Αυτό δεν έπρεπε να συμβεί."
 
 msgid "You've already changed your main currency recently, please retry later (e.g. in a week) or contact support@liberapay.com."
 msgstr "Έχεις ήδη αλλάξει πρόσφατα το κυρίως νόμισμά σου, παρακαλώ δοκίμασε αργότερα (π.χ. σε μια εβδομάδα) ή επικοινώνησε με το support@liberapay.com."
@@ -1093,14 +1103,6 @@ msgstr "Η πύλη έληξε"
 #, python-brace-format
 msgid "The {platform} user you're looking for hasn't joined Liberapay, and it's not possible to create a stub profile for them."
 msgstr "Ο {platform} χρήστης που αναζητάτε δεν έχει ενταχθεί στο Liberapay και δεν είναι δυνατή η δημιουργία προφίλ απόκομμα για αυτόν."
-
-#, python-brace-format
-msgid "'{0}' doesn't seem to be a valid user id on {platform}."
-msgstr "Η {0} δε φαίνεται να είναι μια έγκυρη ταυτότητα χρήστη στο {platform}."
-
-#, python-brace-format
-msgid "There doesn't seem to be a user named {0} on {1}."
-msgstr "Δε φαίνεται να υπάρχει χρήστης με το όνομα {0} στο {1}."
 
 #, python-brace-format
 msgid "Liberapay donation to {username} (team {team_name})"
@@ -1167,11 +1169,33 @@ msgstr "Έλεγχος cookies…"
 msgid "You are not authorized to access this page."
 msgstr "Δεν είστε εξουσιοδοτημένος για πρόσβαση σε αυτή τη σελίδα."
 
+msgid "The changes have been saved."
+msgstr "Οι αλλαγές αποθηκεύτηκαν."
+
 msgid "Processing your request failed because our server was unable to communicate with a service located on another machine. This is a temporary issue, please try again later."
 msgstr "Η επεξεργασία της αίτησής σας απέτυχε επειδή ο διακομιστής μας δεν μπόρεσε να επικοινωνήσει με μια υπηρεσία που βρίσκεται σε άλλη μηχανή. Αυτό είναι ένα προσωρινό θέμα, παρακαλώ δοκιμάστε ξανά αργότερα."
 
+#, python-brace-format
+msgid "'{0}' doesn't seem to be a valid user id on {platform}."
+msgstr "Η {0} δε φαίνεται να είναι μια έγκυρη ταυτότητα χρήστη στο {platform}."
+
+#, python-brace-format
+msgid "{0} returned an error, please try again later."
+msgstr "{0} εμφάνισε σφάλμα, παρακαλώ δοκίμασε ξανά αργότερα."
+
+#, python-brace-format
+msgid "You've consumed your quota of requests, you can try again {in_N_minutes}."
+msgstr "Έχετε καταναλώσει το όριο αιτημάτων σας, μπορείτε να δοκιμάσετε ξανά {in_N_minutes}."
+
+msgid "You're making requests too fast, please try again later."
+msgstr "Κάνεις αιτήσεις πολύ γρήγορα, παρακαλώ δοκίμασε ξανά αργότερα."
+
+#, python-brace-format
+msgid "There doesn't seem to be a user named {0} on {1}."
+msgstr "Δε φαίνεται να υπάρχει χρήστης με το όνομα {0} στο {1}."
+
 msgid "This profile is marked as spam or fraud."
-msgstr ""
+msgstr "Αυτό το προφίλ επισημαίνεται ως ανεπιθύμητο ή απάτη."
 
 msgid "Cancel"
 msgstr "Άκυρο"
@@ -1382,6 +1406,9 @@ msgstr "Ταυτότητα"
 msgid "Account"
 msgstr "Λογαριασμός"
 
+msgid "Close Account"
+msgstr "Κλείσιμο λογαριασμού"
+
 msgid "Emails"
 msgstr "Διευθύνσεις ηλεκτρονικού ταχυδρομείου"
 
@@ -1399,6 +1426,9 @@ msgstr "Αποσύνδεση"
 
 msgid "Print"
 msgstr "Εκτύπωση"
+
+msgid "Liberapay logo"
+msgstr "Λογότυπο Liberapay"
 
 #, python-brace-format
 msgid "{0} has {n} patron."
@@ -1432,9 +1462,6 @@ msgstr "Δωρεά"
 msgid "Switch to a different account"
 msgstr "Μετάβαση σε διαφορετικό λογαριασμό"
 
-msgid "The changes have been saved."
-msgstr "Οι αλλαγές αποθηκεύτηκαν."
-
 msgid "We've sent you a single-use login link. Check your inbox, open the provided link in a new tab, then come back to this page and click on the button below to carry on with what you wanted to do."
 msgstr "Σας στείλαμε έναν σύνδεσμο σύνδεσης μίας χρήσης. Ελέγξτε τα εισερχόμενά σας, ανοίξτε τον παρεχόμενο σύνδεσμο σε μια νέα καρτέλα, και στη συνέχεια επιστρέψτε σε αυτή τη σελίδα και κάντε κλικ στο παρακάτω κουμπί για να συνεχίσετε με αυτό που θέλατε να κάνετε."
 
@@ -1467,8 +1494,8 @@ msgstr "Αποθήκευση"
 msgid "If you need to change the password of your Liberapay account, you can do so below. To be secure, the password of your account should be randomly generated and not used anywhere else. We strongly recommend the use of a password manager."
 msgstr "Εάν πρέπει να αλλάξετε τον κωδικό πρόσβασης του λογαριασμού σας Liberapay, μπορείτε να το κάνετε παρακάτω. Για να είστε ασφαλείς, ο κωδικός πρόσβασης του λογαριασμού σας θα πρέπει να δημιουργείται τυχαία και να μη χρησιμοποιείται πουθενά αλλού. Συνιστούμε ανεπιφύλακτα τη χρήση ενός διαχειριστή κωδικών πρόσβασης."
 
-msgid "Setting a password allows you to log in directly, instead of waiting for a single-use link sent via email. However, we recommend keeping your account passwordless if you don't use a password manager, because in order to be secure the password of your account should be randomly generated and not used anywhere else."
-msgstr "Ο καθορισμός κωδικού πρόσβασης σας επιτρέπει να συνδεθείτε απευθείας, αντί να περιμένετε για έναν σύνδεσμο μιας χρήσης που αποστέλλεται μέσω ηλεκτρονικού ταχυδρομείου. Ωστόσο, συνιστούμε να διατηρείτε τον λογαριασμό σας χωρίς κωδικό πρόσβασης, εάν δε χρησιμοποιείτε διαχειριστή κωδικών πρόσβασης, διότι για να είναι ασφαλής ο κωδικός πρόσβασης του λογαριασμού σας θα πρέπει να δημιουργείται τυχαία και να μη χρησιμοποιείται πουθενά αλλού."
+msgid "Setting a password allows you to log in directly, instead of waiting for a single-use link sent via email. However, we only recommend setting a password if you use a password manager, because in order to be secure the password should be randomly generated and not used anywhere else."
+msgstr "Ο ορισμός κωδικού πρόσβασης σας επιτρέπει να συνδεθείτε απευθείας, αντί να περιμένετε για έναν σύνδεσμο μιας χρήσης που αποστέλλεται μέσω ηλεκτρονικού ταχυδρομείου. Ωστόσο, συνιστούμε τον ορισμό κωδικού πρόσβασης μόνο εάν χρησιμοποιείτε έναν διαχειριστή κωδικών πρόσβασης, διότι για να είναι ασφαλής ο κωδικός πρόσβασης θα πρέπει να δημιουργείται τυχαία και να μην χρησιμοποιείται πουθενά αλλού."
 
 msgid "Current password"
 msgstr "Τρέχων κωδικός πρόσβασης"
@@ -1613,11 +1640,11 @@ msgstr "Λογότυπα"
 msgid "Overview"
 msgstr "Επισκόπηση"
 
-msgid "Organizations"
-msgstr "Οργανισμοί"
+msgid "Recipients"
+msgstr "Αποδέκτες"
 
-msgid "Individuals"
-msgstr "Άτομα"
+msgid "Hopefuls"
+msgstr "Ελπιδοφόροι"
 
 msgid "Unclaimed Donations"
 msgstr "Δωρεές που δεν έχουν ζητηθεί"
@@ -1633,6 +1660,9 @@ msgstr "Όνομα"
 
 msgid "Currencies"
 msgstr "Συναλλάγματα"
+
+msgid "Countries"
+msgstr "Χώρες"
 
 msgid "Goal"
 msgstr "Στόχος"
@@ -1671,17 +1701,20 @@ msgstr "Εμφάνιση Περισσότερων"
 msgid "{username} hasn't configured any payment method yet, so your donation cannot actually be processed right now. We will notify you when payment becomes possible."
 msgstr "Ο/Η {username} δεν έχει ορίσει κάποια μέθοδο πληρωμής ακόμη, οπότε η δωρεά σας δεν μπορεί να επεξεργαστεί τώρα. Θα σας ενημερώσουμε όταν η πληρωμή είναι διαθέσιμη."
 
-#, python-brace-format
-msgid "Donations to {username} can be paid using a credit or debit card ({list_of_card_brands}), or by direct debit of a Euro bank account (for donations in Euro only)."
-msgstr "Οι δωρεές στον/ην {username} μπορούν να πληρωθούν με πιστωτική ή χρεωστική κάρτα ({list_of_card_brands}) ή με άμεση χρέωση ενός τραπεζικού λογαριασμού ευρώ (μόνο για δωρεές σε ευρώ)."
+#, fuzzy, python-brace-format
+msgid "Donations to {username} can be paid using a credit or debit card ({list_of_card_brands}), or by direct debit of a euro bank account (for donations in euro only)."
+msgstr "Οι δωρεές στο {username} μπορούν να καταβληθούν με πιστωτική ή χρεωστική κάρτα ({list_of_card_brands}) ή με άμεση χρέωση τραπεζικού λογαριασμού σε ευρώ (μόνο για δωρεές σε ευρώ)."
 
 #, python-brace-format
 msgid "Donations to {username} are processed through PayPal."
 msgstr "Οι δωρεές σε {username} επεξεργάζονται μέσω PayPal."
 
-#, python-brace-format
-msgid "Donations to {username} can be paid using: a credit or debit card ({list_of_card_brands}), a Euro bank account (SEPA Direct Debit), or a PayPal account."
-msgstr "Οι δωρεές στο {username} μπορούν να πληρωθούν χρησιμοποιώντας: πιστωτική ή χρεωστική κάρτα ({list_of_card_brands}), τραπεζικό λογαριασμό ευρώ (απευθείας χρέωση SEPA) ή λογαριασμό PayPal."
+#, fuzzy, python-brace-format
+msgid "Donations to {username} can be paid using: a credit or debit card ({list_of_card_brands}), a euro bank account (SEPA Direct Debit), or a PayPal account."
+msgstr "Οι δωρεές στο {username} μπορούν να καταβληθούν με: πιστωτική ή χρεωστική κάρτα ({list_of_card_brands}), τραπεζικό λογαριασμό σε ευρώ (SEPA Direct Debit) ή λογαριασμό PayPal."
+
+msgid "Payment Card"
+msgstr "Κάρτα πληρωμής"
 
 msgid "Country"
 msgstr "Χώρα"
@@ -1729,6 +1762,9 @@ msgstr "Εμφάνιση μεριδίων εσόδων"
 msgid "(fork)"
 msgstr "(διακλάδωση)"
 
+msgid "Stars"
+msgstr "Αστέρια"
+
 msgid "Updated this week"
 msgstr "Ενημερώθηκε αυτή την εβδομάδα"
 
@@ -1765,15 +1801,6 @@ msgstr "Με τη δημιουργία ενός λογαριασμού Liberapay
 msgid "Your nominal take from the {0} team is limited to {1} this week. {2}Why?{3}"
 msgstr "Το ονομαστικό σου μερίδιο από την ομάδα {0} περιορίζεται σε {1} αυτήν την εβδομάδα. {2} Γιατί;{3}"
 
-msgid "Last Payday"
-msgstr "Τελευταία Ημέρα Πληρωμής"
-
-msgid "n/a"
-msgstr "μη διαθέσιμο"
-
-msgid "Next Payday"
-msgstr "Επόμενη ημέρα πληρωμής"
-
 msgid "Member"
 msgstr "Μέλος"
 
@@ -1782,6 +1809,20 @@ msgstr "Ονομαστικό μερίδιο"
 
 msgid "Actual Take"
 msgstr "Πραγματικό μερίδιο"
+
+#, fuzzy
+msgid "On Liberapay, donations are paid in advance. This column shows how much money each member has received in advance through this team. An advance increases every time a member receives a new payment from a donor through the team, and decreases every week."
+msgstr "Στο Liberapay, οι δωρεές καταβάλλονται εκ των προτέρων. Αυτή η στήλη δείχνει πόσα χρήματα έχει λάβει προκαταβολικά κάθε μέλος μέσω αυτής της ομάδας. Μια προκαταβολή αυξάνεται κάθε φορά που ένα μέλος λαμβάνει μια νέα πληρωμή από έναν δωρητή μέσω της ομάδας και μειώνεται κάθε εβδομάδα."
+
+msgid "Advance"
+msgstr "Προκαταβολή"
+
+#, python-brace-format
+msgid "Last week: {0}"
+msgstr "Την περασμένη εβδομάδα: {0}"
+
+msgid "no take"
+msgstr "Δεν υπάρχει λήψη"
 
 msgid "auto"
 msgstr "αυτόματο"
@@ -1795,6 +1836,10 @@ msgstr "Αχρησιμοποίητα εισοδήματα θα καταναλώ�
 msgid "Leftover"
 msgstr "Έχουν απομείνει"
 
+#, fuzzy, python-brace-format
+msgid "It looks like you are in {country}. {username} does not accept donations coming from that country."
+msgstr "Φαίνεται ότι βρίσκεστε στη διεύθυνση {country}. Το {username} δεν δέχεται δωρεές που προέρχονται από αυτή τη χώρα."
+
 #, python-brace-format
 msgid "Your current donation to {name} is in {currency}, but they now only accept donations in {accepted_currency}. You can convert your donation to that currency, or discontinue it."
 msgstr "Η τρέχουσα δωρεά σας στο {name} είναι σε {currency}, αλλά τώρα δέχονται δωρεές μόνο σε {accepted_currency}. Μπορείτε να μετατρέψετε τη δωρεά σας σε αυτό το νόμισμα ή να τη διακόψετε."
@@ -1802,12 +1847,6 @@ msgstr "Η τρέχουσα δωρεά σας στο {name} είναι σε {cur
 #, python-brace-format
 msgid "Your current donation to {name} is in {currency}, but they no longer accept that currency. The suggested new currency is the {accepted_currency}, but you can choose another one."
 msgstr "Η τρέχουσα δωρεά σας στο {name} είναι σε {currency}, αλλά δεν δέχονται πλέον αυτό το νόμισμα. Το προτεινόμενο νέο νόμισμα είναι το {accepted_currency}, αλλά μπορείτε να επιλέξετε ένα άλλο."
-
-msgid "Modify"
-msgstr "Τροποποιήσετε"
-
-msgid "Discontinue"
-msgstr "Διακόψτε το"
 
 #, python-brace-format
 msgid "You are currently donating {money_amount} per week to {recipient_name}. The form below enables you to modify or stop your donation."
@@ -1836,8 +1875,8 @@ msgid_plural "The {currency_name} isn't your preferred currency? {username} also
 msgstr[0] "Το {currency_name} δεν είναι το προτιμώμενο νόμισμά σας; Ο {username} δέχεται επίσης {n} άλλο:"
 msgstr[1] "Το {currency_name} δεν είναι το προτιμώμενο νόμισμά σας; Ο {username} δέχεται επίσης {n} άλλα:"
 
-msgid "not supported by PayPal"
-msgstr "δεν υποστηρίζετε από το PayPal"
+msgid "supported by PayPal"
+msgstr "υποστηρίζεται από το PayPal"
 
 msgid "Switch"
 msgstr "Αλλαγή"
@@ -1872,6 +1911,12 @@ msgstr "Χειροκίνητη ανανέωση"
 
 msgid "A reminder to renew your donation will be sent to you via email."
 msgstr "Μία υπενθύμιση για να ανανεώσετε την δωρεά σας θα σταλθεί σε εσάς μέσω ηλεκτρονικού ταχυδρομείου."
+
+msgid "Discontinue the donation"
+msgstr "Διακοπή της δωρεάς"
+
+msgid "Cancel the pledge"
+msgstr "Ακυρώστε την υπόσχεση"
 
 #, python-brace-format
 msgid "{username} has chosen not to see who their patrons are, so your donation will be secret."
@@ -1913,12 +1958,6 @@ msgstr "Όλοι θα μπορούν να δουν ότι υποστηρίζετ
 msgid "{username} hasn't yet specified whether they want to see who their patrons are, so your donation will be secret."
 msgstr "{username} δεν έχει ακόμη διευκρινίσει αν θέλει να δει ποιοι είναι οι χορηγοί τους, οπότε η δωρεά σας θα είναι μυστική."
 
-msgid "Discontinue the donation"
-msgstr "Διακοπή της δωρεάς"
-
-msgid "Cancel the pledge"
-msgstr "Ακυρώστε την υπόσχεση"
-
 msgid "People who contribute to the commons need you to support their work. Building free software, spreading free knowledge, these things take time and cost money, not only to do the initial work, but also to maintain it over time."
 msgstr "Οι άνθρωποι που συμβάλλουν στα κοινά χρειάζονται εσάς να τους στηρίζετε το έργο τους. Αναπτύσσοντας ελεύθερο λογισμικό, διαδίδοντας ελεύθερη γνώση, αυτά τα πράγματα παίρνουν χρόνο και κοστίζουν χρήματα, όχι μόνο για να κάνουν την αρχική εργασία, αλλά επίσης για να διατηρηθούν σε βάθος χρόνου."
 
@@ -1927,6 +1966,49 @@ msgstr "Το σύστημα επαναλαμβανόμενων δωρεών το
 
 msgid "You are in sandbox mode, do not input any real payment or personal data!"
 msgstr "Είστε σε λειτουργία sandbox, μην εισάγετε οποιαδήποτε πραγματική πληρωμή ή προσωπικά δεδομένα!"
+
+#, fuzzy
+msgid "The credentials have been generated."
+msgstr "Τα διαπιστευτήρια έχουν δημιουργηθεί."
+
+#, fuzzy
+msgid "The credentials have been revoked."
+msgstr "Τα διαπιστευτήρια έχουν ανακληθεί."
+
+msgid "Constant session"
+msgstr "Συνεχής συνεδρία"
+
+#, fuzzy
+msgid "You can automate downloading private information from your account by including the following HTTP header in your requests:"
+msgstr "Μπορείτε να αυτοματοποιήσετε τη λήψη προσωπικών πληροφοριών από το λογαριασμό σας, συμπεριλαμβάνοντας την ακόλουθη κεφαλίδα HTTP στις αιτήσεις σας:"
+
+#, fuzzy
+msgid "For example, you can download the list of your currently active patrons by executing the following command:"
+msgstr "Για παράδειγμα, μπορείτε να κατεβάσετε τη λίστα των ενεργών πελατών σας εκτελώντας την ακόλουθη εντολή:"
+
+#, fuzzy
+msgid "To minimize the risks to you, these credentials can only be used to fetch data, not to modify anything in your account, and they will automatically expire if unused for a year."
+msgstr "Για να ελαχιστοποιηθούν οι κίνδυνοι για εσάς, αυτά τα διαπιστευτήρια μπορούν να χρησιμοποιηθούν μόνο για την ανάκτηση δεδομένων, όχι για την τροποποίηση οποιουδήποτε στοιχείου στο λογαριασμό σας, και θα λήξουν αυτόματα αν δεν χρησιμοποιηθούν για ένα έτος."
+
+#, fuzzy
+msgid "Revoke credentials"
+msgstr "Ανάκληση διαπιστευτηρίων"
+
+#, fuzzy
+msgid "The credentials have expired."
+msgstr "Τα διαπιστευτήρια έχουν λήξει."
+
+#, fuzzy
+msgid "Regenerate credentials"
+msgstr "Αναγέννηση διαπιστευτηρίων"
+
+#, fuzzy
+msgid "To simplify automating downloads of private information from your account, you can generate long-lived read-only credentials."
+msgstr "Για να απλοποιήσετε την αυτοματοποιημένη λήψη προσωπικών πληροφοριών από το λογαριασμό σας, μπορείτε να δημιουργήσετε διαπιστευτήρια μόνο για ανάγνωση με μεγάλη διάρκεια ζωής."
+
+#, fuzzy
+msgid "Generate credentials"
+msgstr "Δημιουργία διαπιστευτηρίων"
 
 msgid "Dashboard"
 msgstr "Κεντρικός πίνακας"
@@ -1997,6 +2079,12 @@ msgstr "Μπορώ να κάνω μια εφάπαξ δωρεά;"
 msgid "One-time donations aren't properly supported yet, but you can discontinue your donation immediately after the first payment."
 msgstr "Οι εφάπαξ δωρεές δεν υποστηρίζονται ακόμη σωστά, αλλά μπορείτε να διακόψετε τη δωρεά σας αμέσως μετά την πρώτη πληρωμή."
 
+msgid "Will I get a receipt?"
+msgstr "Θα λάβω απόδειξη;"
+
+msgid "A receipt is automatically available for every payment."
+msgstr "Για κάθε πληρωμή διατίθεται αυτόματα μια απόδειξη."
+
 msgid "What is this website? I don't recognize it."
 msgstr "Τι είναι αυτός ο ιστότοπος; Δεν τον αναγνωρίζω."
 
@@ -2019,6 +2107,9 @@ msgstr "Αναθεωρημένη οδηγία για τις υπηρεσίες �
 #, python-brace-format
 msgid "Your new avatar URL is: {0}"
 msgstr "Η νέα διεύθυνση URL του Άβαταρ σας είναι: {0}"
+
+msgid "Your profile no longer has an avatar."
+msgstr "Το προφίλ σας δεν έχει πλέον avatar."
 
 #, python-brace-format
 msgid "You have selected {platform} as your avatar source but you haven't connected any {platform} account."
@@ -2049,6 +2140,16 @@ msgstr "Αποχώρηση"
 msgid "Explore communities"
 msgstr "Εξερεύνηση κοινοτήτων"
 
+msgid "You have to check at least one box."
+msgstr "Πρέπει να επιλέξετε τουλάχιστον ένα πλαίσιο."
+
+msgid "Which countries should your donors be allowed to send you money from?"
+msgstr "Από ποιες χώρες θα πρέπει να επιτρέπεται στους δωρητές σας να σας στέλνουν χρήματα;"
+
+#, fuzzy
+msgid "We recommend limiting the origins of donations only if you are required to by law."
+msgstr "Συνιστούμε να περιορίσετε την προέλευση των δωρεών μόνο εάν αυτό απαιτείται από το νόμο."
+
 msgid "The submitted settings are incoherent."
 msgstr "Οι ρυθμίσεις που υποβάλλονται είναι ασυνάρτητες."
 
@@ -2076,7 +2177,7 @@ msgstr "Η αποδοχή ξένων νομισμάτων μπορεί να αυ
 
 #, python-brace-format
 msgid "Stripe automatically converts funds into your main currency, but by default PayPal holds payments in foreign currencies until you tell it what to do. If you have a Business PayPal account, you can choose to automatically convert all incoming payments in foreign currencies to your main currency. This option is currently located in the “{link_open}Preferences for receiving payments{link_close}” page."
-msgstr "Το Stripe μετατρέπει αυτόματα τα χρήματα στο κύριο συνάλλαγμά σας, αλλά από προεπιλογή το PayPal κρατά τις πληρωμές σε ξένα συναλλάγματα έως ότου το πείτε τι να κάνετε. Εάν έχετε λογαριασμό Business PayPal, μπορείτε να επιλέξετε να μετατρέπετε αυτόματα όλες τις εισερχόμενες πληρωμές σε ξένα συναλλάγματα στο κύριο συνάλλαγμά σας. Αυτή η επιλογή βρίσκεται επί του παρόντος στη σελίδα \"{link_open} Προτιμήσεις για τη λήψη πληρωμών {link_close}\"."
+msgstr "Το Stripe μετατρέπει αυτόματα τα χρήματα στο κύριο συνάλλαγμά σας, αλλά από προεπιλογή το PayPal κρατά τις πληρωμές σε ξένα συναλλάγματα έως ότου το πείτε τι να κάνετε. Εάν έχετε λογαριασμό Business PayPal, μπορείτε να επιλέξετε να μετατρέπετε αυτόματα όλες τις εισερχόμενες πληρωμές σε ξένα συναλλάγματα στο κύριο συνάλλαγμά σας. Αυτή η επιλογή βρίσκεται επί του παρόντος στη σελίδα \"{link_open}Προτιμήσεις για τη λήψη πληρωμών{link_close}\"."
 
 msgid "Connecting the accounts you own on other platforms makes your Liberapay profile easier to find, and helps to demonstrate that you are who you claim to be."
 msgstr "Η σύνδεση λογαριασμών που σας ανήκουν σε άλλες πλατφόρμες κάνει το Liberapay προφίλ σας πιο εύκολο να βρεθεί, και βοηθά να επιδείξετε ότι είστε αυτοί που ισχυρίζεστε ότι είστε."
@@ -2089,9 +2190,6 @@ msgstr[1] "Προς το παρών έχετε {n} συνδεδεμένους λ
 
 msgid "Connect an account"
 msgstr "Συνδέστε ένα λογαριασμό"
-
-msgid "Our YouTube integration has been disabled by Google. We're working on re-implementing this feature in a different way."
-msgstr "Η ενσωμάτωσή μας στο YouTube έχει απενεργοποιηθεί από την Google. Εργαζόμαστε για την εκ νέου υλοποίηση αυτής της λειτουργίας με διαφορετικό τρόπο."
 
 msgid "I'm grateful for gifts, but don't have a specific funding goal."
 msgstr "Είμαι ευγνώμων για τις δωρεές, αλλά δεν έχω έναν συγκεκριμένο στόχο της χρηματοδότησης."
@@ -2169,8 +2267,31 @@ msgid "We can also import lists of repositories for your teams:"
 msgstr "Μπορούμε επίσης να εισάγουμε λίστες των αποθετηρίων για τις ομάδες σας:"
 
 #, python-brace-format
-msgid "The submitted summary is too long ({0} > {1})."
-msgstr "Η υποβληθείσα περίληψη είναι πάρα πολύ μεγάλη ({0} > {1})."
+msgid "<unused singular (hash=82d03d589b58d2a8c99d043ba5f91b84)>"
+msgid_plural "The summary can't be more than {n} characters long."
+msgstr[0] "<unwinningular (hash=82d03d589b58d2a8c99d043ba5f91b84)>"
+msgstr[1] "Η περίληψη δεν μπορεί να υπερβαίνει τους {n} χαρακτήρες."
+
+#, python-brace-format
+msgid "<unused singular (hash=e77fbb49c028c11bb9d859698c4a5363)>"
+msgid_plural "The full description must be at least {n} characters long."
+msgstr[0] "<unwinningular (hash=e77fbb49c02c11bb9d859698c4a5363)>"
+msgstr[1] "Η πλήρης περιγραφή πρέπει να είναι τουλάχιστον {n} χαρακτήρες."
+
+#, python-brace-format
+msgid "<unused singular (hash=df724b624e486f3c07109838b9a4b3f0)>"
+msgid_plural "The full description can't be more than {n} characters long."
+msgstr[0] "<unwinningular (hash=df724b624e486f3c07109838b9a4b3f0)>"
+msgstr[1] "Η πλήρης περιγραφή δεν μπορεί να υπερβαίνει τους {n} χαρακτήρες."
+
+msgid "The full description can't be identical to the summary."
+msgstr "Η πλήρης περιγραφή δεν μπορεί να είναι πανομοιότυπη με την περίληψη."
+
+msgid "The summary can't be only your name."
+msgstr "Η περίληψη δεν μπορεί να είναι μόνο το όνομά σας."
+
+msgid "The description can't be only your name."
+msgstr "Η περιγραφή δεν μπορεί να είναι μόνο το όνομά σας."
 
 msgid "This is a preview."
 msgstr "Αυτή είναι μια προεπισκόπηση."
@@ -2180,6 +2301,9 @@ msgstr "Απόσπασμα που θα χρησιμοποιηθεί στα μέ�
 
 msgid "Preview of the short description"
 msgstr "Προεπισκόπηση της σύντομης περιγραφής"
+
+msgid "Including your username in the short description is redundant. The short description is always displayed immediately below the username."
+msgstr "Η συμπερίληψη του ονόματος χρήστη σας στη σύντομη περιγραφή είναι περιττή. Η σύντομη περιγραφή εμφανίζεται πάντα αμέσως κάτω από το όνομα χρήστη."
 
 msgid "Publish"
 msgstr "Δημοσιεύσετε"
@@ -2376,6 +2500,9 @@ msgstr "Εφόσον έχετε επιλέξει να κάνετε μια δημ
 msgid "You have enabled automatic renewals for some or all of your donations, but you don't have any valid payment instrument that would allow us to initiate the automatic payments when the time comes."
 msgstr "Έχετε ενεργοποιήσει τις αυτόματες ανανεώσεις για ορισμένες ή όλες τις δωρεές σας, αλλά δεν έχετε κάποιο έγκυρο μέσο πληρωμής που θα μας επέτρεπε να ξεκινήσουμε τις αυτόματες πληρωμές όταν έρθει η ώρα."
 
+msgid "Add a payment instrument"
+msgstr "Προσθέστε ένα μέσο πληρωμής"
+
 msgid "Donations"
 msgstr "Δωρεές"
 
@@ -2392,6 +2519,9 @@ msgstr "{money_amount} {small}/μήνας{end_small}"
 #, python-brace-format
 msgid "{money_amount}{small}/year{end_small}"
 msgstr "{money_amount} {small}/έτος{end_small}"
+
+msgid "Modify"
+msgstr "Τροποποιήσετε"
 
 #, python-brace-format
 msgid "Started {timespan_ago}."
@@ -2422,6 +2552,10 @@ msgstr "Επόμενη οφειλόμενη πληρωμή {in_N_weeks_months_or
 
 msgid "Renew now"
 msgstr "Ανανέωση τώρα"
+
+#, fuzzy, python-brace-format
+msgid "The recipient no longer accepts payments in {currency}."
+msgstr "Ο παραλήπτης δεν δέχεται πλέον πληρωμές σε {currency}."
 
 msgid "Pending payment completion."
 msgstr "Εκκρεμεί ολοκλήρωση πληρωμής."
@@ -2498,19 +2632,20 @@ msgstr "Το PayPal είναι προς το παρόν η μόνη διαθέσ
 msgid "Please choose a payment method:"
 msgstr "Παρακαλώ επιλέξτε μία μέθοδο πληρωμής:"
 
-msgid "Card"
-msgstr "Κάρτα"
-
 msgid "Currently unavailable"
 msgstr "Προς το παρόν μη διαθέσιμο"
 
 msgid "Pay by card"
 msgstr "Πληρωμή μέσω κάρτας"
 
-msgid "Euro donations only"
-msgstr "Μόνο δωρεές σε ευρώ"
+#, fuzzy
+msgid "Only for donations to SEPA countries"
+msgstr "Μόνο για δωρεές σε χώρες SEPA"
 
-msgid "Euro bank accounts only"
+msgid "Only for donations in euros"
+msgstr "Μόνο για δωρεές σε ευρώ"
+
+msgid "Only euro bank accounts"
 msgstr "Μόνο τραπεζικοί λογαριασμοί σε ευρώ"
 
 msgid "Pay by direct debit"
@@ -2547,8 +2682,12 @@ msgid "Failure"
 msgstr "Αποτυχία"
 
 #, python-brace-format
-msgid "The payment processor {name} returned an error: “{error_message}”."
-msgstr "Ο επεξεργαστής πληρωμών {name} επέστρεψε ένα σφάλμα: \"{error_message}\"."
+msgid "PayPal status code: {0}"
+msgstr "Κωδικός κατάστασης PayPal: {0}"
+
+#, python-brace-format
+msgid "error message: {0}"
+msgstr "μήνυμα σφάλματος: {0}"
 
 msgid "The payment has been initiated."
 msgstr "Η πληρωμή έχει ξεκινήσει."
@@ -2582,6 +2721,10 @@ msgstr "Το PayPal αποκαλύπτει το όνομα και τη διεύ�
 msgid "Initiate the payment"
 msgstr "Ξεκινήστε την πληρωμή"
 
+#, python-brace-format
+msgid "The payment processor {name} returned an error: “{error_message}”."
+msgstr "Ο επεξεργαστής πληρωμών {name} επέστρεψε ένα σφάλμα: \"{error_message}\"."
+
 msgid "The payment instrument is invalid, please select or add another one."
 msgstr "Το μέσο πληρωμής είναι άκυρο, παρακαλούμε επιλέξτε ή προσθέστε ένα άλλο."
 
@@ -2598,6 +2741,10 @@ msgstr "Η πληρωμή σας έχει ξεκινήσει. Θα υποβλη�
 #, python-brace-format
 msgid "Your bank can reject this payment. We recommend sending a copy of {link_start}the mandate{link_end} to your bank if you're not sure that it properly handles {currency} direct debit instructions."
 msgstr "Η τράπεζά σας μπορεί να απορρίψει αυτή την πληρωμή. Συνιστούμε να στείλετε ένα αντίγραφο της {link_start}εντολής{link_end} στην τράπεζά σας εάν δεν είστε σίγουροι ότι χειρίζεται σωστά τις {currency} εντολές άμεσης χρέωσης."
+
+#, fuzzy
+msgid "The initialization of a required component has failed. If you use a browser extension that blocks requests, for example NoScript, please make sure it’s allowing requests to the “stripe.com” domain."
+msgstr "Η αρχικοποίηση ενός απαιτούμενου στοιχείου απέτυχε. Εάν χρησιμοποιείτε μια επέκταση του προγράμματος περιήγησης που μπλοκάρει τα αιτήματα, για παράδειγμα NoScript, βεβαιωθείτε ότι επιτρέπει τα αιτήματα προς τον τομέα \"stripe.com\"."
 
 #, python-brace-format
 msgid "We will charge your {brand} card (last four digits: {last4})."
@@ -2629,6 +2776,10 @@ msgstr "Τα δεδομένα αυτά θα αποστέλλονται απευ�
 msgid "Remember the card number for next time"
 msgstr "Θυμηθείτε τον αριθμό της κάρτας για την επόμενη φορά"
 
+#, python-brace-format
+msgid "Use this payment instrument by default for future payments in {currency}"
+msgstr "Χρησιμοποιήστε αυτό το μέσο πληρωμής από προεπιλογή για μελλοντικές πληρωμές σε {currency}"
+
 msgid "Use this payment instrument by default for future payments"
 msgstr "Χρησιμοποιήστε αυτό το μέσο πληρωμής από προεπιλογή για μελλοντικές πληρωμές"
 
@@ -2645,6 +2796,10 @@ msgstr "Θυμηθείτε τον αριθμό τραπεζικού λογαρι
 #, python-brace-format
 msgid "In order to reduce the risk of this payment being rejected, we recommend that you input your postal address below. It will be stored encrypted in our database and sent to the payment processor ({processor_name})."
 msgstr "Για να μειώσετε τον κίνδυνο απόρριψης της πληρωμής, σας συνιστούμε να εισαγάγετε την ταχυδρομική σας διεύθυνση παρακάτω. Θα αποθηκευτεί κρυπτογραφημένη στη βάση δεδομένων μας και θα αποσταλεί στον επεξεργαστή πληρωμών ({processor_name})."
+
+#, fuzzy
+msgid "Please fill in your postal address. It's required because the IBAN you've provided emanates from outside the European Union."
+msgstr "Συμπληρώστε την ταχυδρομική σας διεύθυνση. Απαιτείται επειδή ο IBAN που έχετε δηλώσει προέρχεται από χώρα εκτός Ευρωπαϊκής Ένωσης."
 
 #, python-brace-format
 msgid "'{0}' is not an acceptable amount (min={1}, max={2})"
@@ -2759,8 +2914,8 @@ msgstr "Αυτό το προφίλ είναι διαθέσιμο μόνο σε {
 msgid "Edit"
 msgstr "Επεξεργασία"
 
-msgid "Statement"
-msgstr "Δήλωση"
+msgid "Description"
+msgstr "Περιγραφή"
 
 #, python-brace-format
 msgid "{0} owns the following accounts on other platforms:"
@@ -2830,12 +2985,13 @@ msgstr "Δείτε το ιστορικό εισοδήματος"
 msgid "No data to show."
 msgstr "Δεν υπάρχουν δεδομένα για εμφάνιση."
 
-#, python-brace-format
-msgid "Income Per Week (in {currency})"
-msgstr "Εισόδημα Ανά Εβδομάδα (σε {currency})"
+#, fuzzy, python-brace-format
+msgid "Income per week (in {currency})"
+msgstr "Εισόδημα ανά εβδομάδα (σε {currency})"
 
-msgid "Number of Patrons Per Week"
-msgstr "Αριθμός προστατών ανά εβδομάδα"
+#, fuzzy
+msgid "Number of patrons per week"
+msgstr "Αριθμός επισκεπτών ανά εβδομάδα"
 
 msgid "Invoice documents are private."
 msgstr "Τα έγγραφα των τιμολογίων είναι ιδιωτικά."
@@ -2940,9 +3096,6 @@ msgstr "Τύπος"
 msgid "(Liberapay only supports one kind of invoice for now.)"
 msgstr "(Η Liberapay υποστηρίζει μόνο ένα είδος τιμολογίου προς το παρόν.)"
 
-msgid "Description"
-msgstr "Περιγραφή"
-
 msgid "A short description of the invoice"
 msgstr "Σύντομη περιγραφή τιμολογίου"
 
@@ -2993,6 +3146,9 @@ msgstr "επιστράφηκε μερικώς"
 msgid "refunded"
 msgstr "επιστράφηκε"
 
+msgid "suspended"
+msgstr "Σε αναστολή"
+
 #, python-brace-format
 msgid "The totals below don't include donations through the old wallet system. You can find those in {link_start}your Wallet page{link_end}."
 msgstr "Τα παρακάτω σύνολα δεν περιλαμβάνουν τις δωρεές μέσω του παλιού συστήματος πορτοφολιού. Μπορείτε να τα βρείτε στη σελίδα {link_start}του πορτοφολιού σας{link_end}."
@@ -3023,10 +3179,6 @@ msgstr "χρέωση"
 
 msgid "This payment is awaiting to be manually checked by Liberapay staff for signs of fraud."
 msgstr "Αυτή η πληρωμή αναμένεται να ελεγχθεί χειροκίνητα από το προσωπικό της Liberapay για ενδείξεις απάτης."
-
-#, python-brace-format
-msgid "error message: {0}"
-msgstr "μήνυμα σφάλματος: {0}"
 
 msgid "hidden"
 msgstr "κρυμμένο"
@@ -3082,9 +3234,8 @@ msgstr "μυστική δωρεά στον {recipient_name} για τον ρόλ
 msgid "This payment must be manually approved by the recipient through {provider}'s website."
 msgstr "Η πληρωμή αυτή πρέπει να εγκριθεί χειροκίνητα από τον παραλήπτη μέσω του δικτυακού τόπου του {provider}."
 
-#, python-brace-format
-msgid "PayPal status code: {0}"
-msgstr "Κωδικός κατάστασης PayPal: {0}"
+msgid "The payer's account is suspended due to a suspicion of fraud or other unauthorized action."
+msgstr "Ο λογαριασμός του πληρωτή αναστέλλεται λόγω υποψίας απάτης ή άλλης μη εξουσιοδοτημένης ενέργειας."
 
 msgid "There were no transactions during this period."
 msgstr "Δεν υπήρξαν συναλλαγές κατά τη διάρκεια αυτής της περιόδου."
@@ -3186,25 +3337,43 @@ msgstr "Δεν έχετε ενεργούς θαμώνες."
 msgid "{username} doesn't have any active patrons."
 msgstr "{username} δεν έχει ενεργούς θαμώνες."
 
-msgid "Liberapay now supports non-anonymous donations, do you want to know who your patrons are?"
-msgstr "Το Liberapay υποστηρίζει τώρα μη ανώνυμες δωρεές, θέλετε να ξέρετε ποιοι είναι οι θαμώνες σας;"
+msgid "Visibility levels"
+msgstr "Επίπεδα ορατότητας"
 
-msgid "Enable non-anonymous donations"
-msgstr "Ενεργοποίηση μη ανωνύμων δωρεών"
-
-#, python-brace-format
-msgid "You have opted-in to see who your patrons are. If you change your mind, then {link_start}click here to disable non-anonymous donations{link_end}."
-msgstr "Έχετε επιλέξει να δείτε ποιοι είναι οι θαμώνες σας. Εάν αλλάξετε γνώμη, τότε {link_start}κάντε κλικ εδώ για να απενεργοποιήσετε τις μη ανώνυμες δωρεές{link_end}."
+msgid "Liberapay supports three visibility levels for donations. Each level can be turned on or off, but at least one of them must be enabled."
+msgstr "Η Liberapay υποστηρίζει τρία επίπεδα ορατότητας για τις δωρεές. Κάθε επίπεδο μπορεί να ενεργοποιηθεί ή να απενεργοποιηθεί, αλλά τουλάχιστον ένα από αυτά πρέπει να είναι ενεργοποιημένο."
 
 #, python-brace-format
-msgid "You've chosen not to see who your patrons are. If you change your mind, then {link_start}click here to enable non-anonymous donations{link_end}."
-msgstr "Έχετε επιλέξει να μην βλέπετε ποιοι είναι οι θαμώνες σας. Εάν αλλάξετε γνώμη, τότε {link_start}κάντε κλικ εδώ για να ενεργοποιήσετε τις μη ανώνυμες δωρεές{link_end}."
+msgid "Secret donations aren't possible with PayPal. You should either disable secret donations or {link_start}add a Stripe account{link_end}."
+msgstr "Οι μυστικές δωρεές δεν είναι δυνατές με το PayPal. Θα πρέπει είτε να απενεργοποιήσετε τις μυστικές δωρεές είτε {link_start}να προσθέσετε έναν λογαριασμό Stripe{link_end}."
+
+msgid "Secret donations aren't possible when the payer uses PayPal."
+msgstr "Οι μυστικές δωρεές δεν είναι δυνατές όταν ο πληρωτής χρησιμοποιεί το PayPal."
+
+msgid "Allow secret donations"
+msgstr "Επιτρέψτε μυστικές δωρεές"
+
+msgid "Allow private donations"
+msgstr "Επιτρέψτε ιδιωτικές δωρεές"
+
+msgid "Allow public donations"
+msgstr "Επιτρέψτε τις δημόσιες δωρεές"
+
+msgid "This is what your prospective donors currently see:"
+msgstr "Αυτό βλέπουν σήμερα οι υποψήφιοι δωρητές σας:"
+
+msgid "This is what your prospective donors will see with the new settings:"
+msgstr "Αυτό θα δουν οι υποψήφιοι δωρητές σας με τις νέες ρυθμίσεις:"
 
 msgid "Data export"
 msgstr "Εξαγωγή δεδομένων"
 
-msgid "Download the list of currently active patrons"
-msgstr "Κατεβάστε τη λίστα των ενεργών υποστηρικτών"
+#, fuzzy
+msgid "Download the list of currently active patrons who chose to make their donations public"
+msgstr "Κατεβάστε τον κατάλογο των ενεργών υποστηρικτών που επέλεξαν να δημοσιοποιήσουν τις δωρεές τους"
+
+msgid "Download the list of all currently active patrons"
+msgstr "Κατεβάστε τη λίστα με όλους τους ενεργούς προστάτες"
 
 msgid "Download the record of all patrons in the last ten years"
 msgstr "Κατεβάστε το αρχείο όλων των υποστηρικτών των τελευταίων δέκα ετών"
@@ -3220,9 +3389,26 @@ msgstr "Δεν είστε μέλος καμίας ομάδας."
 msgid "{username} isn't a member of any team."
 msgstr "{username} δεν είναι μέλος κάποιας ομάδας."
 
+msgid "The payment account has been successfully disconnected."
+msgstr "Ο λογαριασμός πληρωμών έχει αποσυνδεθεί με επιτυχία."
+
+msgid "This payment account is no longer accessible. It is now disconnected."
+msgstr "Αυτός ο λογαριασμός πληρωμών δεν είναι πλέον προσβάσιμος. Τώρα αποσυνδέεται."
+
+msgid "The data has been successfully refreshed."
+msgstr "Τα δεδομένα ανανεώθηκαν με επιτυχία."
+
 #, python-brace-format
-msgid "You have to {link_open}fill your profile{link_close} before you can start to receive donations."
-msgstr "Πρέπει να {link_open}συμπληρώσετε το προφίλ σας{link_close} πριν αρχίσετε να λαμβάνετε δωρεές."
+msgid "You have to {link_open}confirm your email address{link_close} before you can start to receive donations."
+msgstr "Πρέπει να {link_open}επιβεβαιώσετε τη διεύθυνση ηλεκτρονικού ταχυδρομείου σας{link_close} πριν αρχίσετε να λαμβάνετε δωρεές."
+
+#, python-brace-format
+msgid "You have to {link_open}set your username{link_close} before you can start to receive donations."
+msgstr "Πρέπει να {link_open}ορίσετε το όνομα χρήστη σας{link_close} για να μπορέσετε να αρχίσετε να λαμβάνετε δωρεές."
+
+#, python-brace-format
+msgid "You have to {link_open}add a profile description{link_close} before you can start to receive donations."
+msgstr "Πρέπει να {link_open}προσθέσετε μια περιγραφή προφίλ{link_close} για να αρχίσετε να λαμβάνετε δωρεές."
 
 msgid "To receive donations you must connect at least one account from a supported payment processor. This page allows you to do so."
 msgstr "Για να λαμβάνετε δωρεές πρέπει να συνδέσετε τουλάχιστον έναν λογαριασμό από έναν υποστηριζόμενο επεξεργαστή πληρωμών. Αυτή η σελίδα σας επιτρέπει να το κάνετε."
@@ -3233,8 +3419,9 @@ msgstr "Οι δωρητές δεν χρειάζεται να συνδέσουν 
 msgid "We recommend connecting both Stripe and PayPal if they're both available in your country."
 msgstr "Συνιστούμε να συνδέσετε τόσο το Stripe όσο και το PayPal, εάν είναι και τα δύο διαθέσιμα στη χώρα σας."
 
-msgid "With Stripe your donors can pay by card or direct debit directly from the Liberapay website. (Direct debits are currently only supported from Euro bank accounts.)"
-msgstr "Με το Stripe οι δωρητές σας μπορούν να πληρώσουν με κάρτα ή άμεση χρέωση απευθείας από τον ιστότοπο Liberapay. (Οι άμεσες χρεώσεις υποστηρίζονται προς το παρόν μόνο από τραπεζικούς λογαριασμούς σε ευρώ.)"
+#, fuzzy
+msgid "With Stripe your donors can pay by card or direct debit directly from the Liberapay website. (Direct debits are currently only supported from euro bank accounts.)"
+msgstr "Με το Stripe οι δωρητές σας μπορούν να πληρώνουν με κάρτα ή άμεση χρέωση απευθείας από την ιστοσελίδα του Liberapay. (Οι άμεσες χρεώσεις υποστηρίζονται προς το παρόν μόνο από τραπεζικούς λογαριασμούς σε ευρώ)."
 
 #, python-brace-format
 msgid "Account ID: {0}"
@@ -3364,6 +3551,10 @@ msgstr "Φόροι"
 msgid "This payment is a donation, no goods or services are to be provided in exchange, no tax has been collected by Liberapay."
 msgstr "Αυτή η πληρωμή είναι δωρεά, δεν πρόκειται να παρασχεθούν αγαθά ή υπηρεσίες σε αντάλλαγμα, δεν έχει εισπραχθεί φόρος από τη Liberapay."
 
+#, fuzzy
+msgid "Income history"
+msgstr "Ιστορικό εισοδήματος"
+
 msgid "You can't receive new donations until you've configured payment processing."
 msgstr "Δεν μπορείτε να λαμβάνετε νέες δωρεές μέχρι να ρυθμίσετε την επεξεργασία πληρωμών."
 
@@ -3371,14 +3562,16 @@ msgstr "Δεν μπορείτε να λαμβάνετε νέες δωρεές μ
 msgid "Donations through teams make up {income_percent} of your income ({team_income} of {total_income}) and {patrons_percent} of your donors ({nteampatrons} of {npatrons})."
 msgstr "Οι δωρεές μέσω ομάδων αποτελούν το {income_percent} των εσόδων σας ({team_income} του {total_income}) και το {patrons_percent} των δωρητών σας ({nteampatrons} του {npatrons})."
 
-msgid "Details of Donations"
-msgstr "Λεπτομέρειες των Δωρεών"
+#, fuzzy
+msgid "Details of personal donations"
+msgstr "Λεπτομέρειες προσωπικών δωρεών"
 
 msgid "This section doesn't include data on donations through teams, it only shows the donations that you receive personally."
 msgstr "Αυτή η ενότητα δεν περιλαμβάνει δεδομένα για τις δωρεές μέσω ομάδων, δείχνει μόνο τις δωρεές που λαμβάνετε προσωπικά."
 
-msgid "Recent Changes"
-msgstr "Πρόσφατες Αλλαγές"
+#, fuzzy
+msgid "Recent changes to personal donations"
+msgstr "Πρόσφατες αλλαγές στις προσωπικές δωρεές"
 
 #, python-brace-format
 msgid "A new donation of {amount} per week has been created."
@@ -3399,6 +3592,10 @@ msgstr "Η δωρεά έχει μειωθεί από {old_amount} ανά εβδ�
 #, python-brace-format
 msgid "A donation of {amount} per week has been restarted."
 msgstr "Η δωρεά {amount} ανά εβδομάδα έχει ξεκινήσει εκ νέου."
+
+#, fuzzy
+msgid "Statistics on personal donations"
+msgstr "Στατιστικά στοιχεία για τις προσωπικές δωρεές"
 
 msgid "The table below lists the donations you receive, grouped by amount."
 msgstr "Ο παρακάτω πίνακας παραθέτει τις δωρεές που λαμβάνετε, ομαδοποιώντας το ποσό."
@@ -3466,8 +3663,19 @@ msgstr[1] "Έχετε {n} συνδεδεμένα μέσα πληρωμής."
 msgid "Bank Account"
 msgstr "Τραπεζικός Λογαριασμός"
 
+msgid "This instrument is used by default."
+msgstr "Αυτό το όργανο χρησιμοποιείται από προεπιλογή."
+
 msgid "default"
 msgstr "προεπιλογή"
+
+#, python-brace-format
+msgid "This instrument is used by default for payments in {currency}."
+msgstr "Αυτό το μέσο χρησιμοποιείται από προεπιλογή για πληρωμές σε {currency}."
+
+#, python-brace-format
+msgid "default for {currency}"
+msgstr "προκαθορισμός για {currency}"
 
 msgid "view mandate"
 msgstr "δείτε την εντολή"
@@ -3502,6 +3710,22 @@ msgstr "Αυτό το μέσο πληρωμής δεν έχει χρησιμοπ
 msgid "Set as default"
 msgstr "Ορισμός ως προεπιλογή"
 
+#, fuzzy, python-brace-format
+msgid "Stop using this instrument by default for payments in {currency}."
+msgstr "Σταματήστε να χρησιμοποιείτε το μέσο αυτό εξ ορισμού για πληρωμές στο {currency}."
+
+#, fuzzy, python-brace-format
+msgid "Unset as default for {currency}"
+msgstr "Μη ρυθμισμένη ως προεπιλογή για {currency}"
+
+#, python-brace-format
+msgid "Use this instrument by default for payments in {currency}."
+msgstr "Χρησιμοποιήστε αυτό το μέσο από προεπιλογή για πληρωμές στο {currency}."
+
+#, python-brace-format
+msgid "Set as default for {currency}"
+msgstr "Ρυθμίστε ως προεπιλογή για το {currency}"
+
 msgid "You don't have any valid payment instrument."
 msgstr "Δεν έχετε κανένα έγκυρο μέσο πληρωμής."
 
@@ -3511,11 +3735,15 @@ msgstr "Προσθήκη ένος μέσου πληρωμής:"
 msgid "Add a card"
 msgstr "Προσθήκη μίας κάρτας"
 
+msgid "Euro Bank Account"
+msgstr "Τραπεζικός λογαριασμός σε ευρώ"
+
+#, fuzzy
+msgid "Only for donations in euros to recipients in SEPA countries"
+msgstr "Μόνο για δωρεές σε ευρώ σε παραλήπτες σε χώρες SEPA"
+
 msgid "Add a bank account"
 msgstr "Προσθήκη ενός τραπεζικού λογαριασμού"
-
-msgid "Close Account"
-msgstr "Κλείσιμο λογαριασμού"
 
 msgid "Data retention"
 msgstr "Διατήρηση δεδομένων"
@@ -3793,14 +4021,14 @@ msgstr "Χρησιμοποιήστε αυτόν τον κώδικα για να 
 
 #, python-brace-format
 msgid "This widget is not available because it is not compatible with the {link_open}privacy settings{link_close} you have chosen."
-msgstr "Αυτό το γραφικό στοιχείο δεν είναι διαθέσιμο επειδή δεν είναι συμβατό με τις ρυθμίσεις απορρήτου {link_open}{link_close} που έχετε επιλέξει."
+msgstr "Αυτό το γραφικό στοιχείο δεν είναι διαθέσιμο επειδή δεν είναι συμβατό με τις {link_open}ρυθμίσεις απορρήτου{link_close} που έχετε επιλέξει."
 
 msgid "Or, if you'd like a widget that shows how much you're giving:"
 msgstr "Εναλλακτικά, εάν θέλετε ένα widget που δείχνει πόσα δίνετε:"
 
 #, python-brace-format
 msgid "Badges from {link_open}Shields.io{link_close}"
-msgstr "Σήματα από {link_open} Shields.io {link_close}"
+msgstr "Σήματα από {link_open}Shields.io{link_close}"
 
 msgid "Use these code snippets to add a badge to your website or README:"
 msgstr "Χρησιμοποιήστε αυτά τα αποσπάσματα κώδικα για να προσθέσετε ένα σήμα στον ιστότοπό σας ή στο README:"
@@ -3851,8 +4079,8 @@ msgid "Not safe for work"
 msgstr "Δεν είναι ασφαλές για εργασία"
 
 #, python-brace-format
-msgid "Yes. However, Liberapay isn't a shield: we can't protect anyone from being banned by {link_open}the underlying payment processors{link_close}."
-msgstr "Ωστόσο, η Liberapay δεν αποτελεί ασπίδα προστασίας: δεν μπορούμε να προστατεύσουμε κανέναν από την απαγόρευση μέσω του {link_open}των υποκείμενων επεξεργαστών πληρωμών{link_close}."
+msgid "The payment processors Liberapay supports have unfavourable policies towards sexual content. {paypal_link}PayPal requires pre-approval{link_close}, and {stripe_link}Stripe prohibits it entirely{link_close}. So, while it is possible to use Liberapay for some adult-only content, it is usually better to use a platform specialized in such content."
+msgstr "Οι επεξεργαστές πληρωμών που υποστηρίζει η Liberapay έχουν δυσμενείς πολιτικές απέναντι στο σεξουαλικό περιεχόμενο. {paypal_link}Το PayPal απαιτεί προέγκριση{link_close}, και το {stripe_link}Stripe το απαγορεύει εντελώς{link_close}. Έτσι, ενώ είναι δυνατόν να χρησιμοποιηθεί η Liberapay για κάποιο περιεχόμενο μόνο για ενήλικες, είναι συνήθως προτιμότερο να χρησιμοποιηθεί μια πλατφόρμα που ειδικεύεται σε τέτοιο περιεχόμενο."
 
 msgid "Can I modify or stop my donations?"
 msgstr "Μπορώ να τροποποιήσω ή να σταματήσω τις δωρεές μου;"
@@ -3907,9 +4135,9 @@ msgstr "Ποιες χώρες και νομίσματα υποστηρίζοντ
 msgid "See the “{page_name}” page."
 msgstr "Δείτε τη σελίδα \"{page_name}\"."
 
-#, python-brace-format
-msgid "The available payment methods depend on which payment processors are supported by the recipient. If a payment is processed by Stripe, then most credit and debit cards ({list_of_card_brands}) are accepted, as well as SEPA Direct Debits (for Euro donations only). If a payment is through PayPal, then it's possible to pay in various ways, however the donor needs to have or create a PayPal account."
-msgstr "Οι διαθέσιμες μέθοδοι πληρωμής εξαρτώνται από τους επεξεργαστές πληρωμών που υποστηρίζονται από τον παραλήπτη. Εάν η πληρωμή γίνεται από την Stripe, τότε γίνονται δεκτές οι περισσότερες πιστωτικές και χρεωστικές κάρτες ({list_of_card_brands}), καθώς και οι άμεσες χρεώσεις SEPA (μόνο για δωρεές σε ευρώ). Εάν μια πληρωμή γίνεται μέσω PayPal, τότε είναι δυνατή η πληρωμή με διάφορους τρόπους, ωστόσο ο δωρητής πρέπει να διαθέτει ή να δημιουργήσει λογαριασμό PayPal."
+#, fuzzy, python-brace-format
+msgid "The available payment methods depend on which payment processors are supported by the recipient. If a payment is processed by Stripe, then most credit and debit cards ({list_of_card_brands}) are accepted, as well as SEPA Direct Debits (only for donations in euros to recipients in SEPA countries). If a payment is through PayPal, then it's possible to pay in various ways, however the donor needs to have or create a PayPal account."
+msgstr "Οι διαθέσιμες μέθοδοι πληρωμής εξαρτώνται από τους επεξεργαστές πληρωμών που υποστηρίζονται από τον παραλήπτη. Εάν η επεξεργασία μιας πληρωμής γίνεται από την Stripe, τότε γίνονται δεκτές οι περισσότερες πιστωτικές και χρεωστικές κάρτες ({list_of_card_brands}), καθώς και οι άμεσες χρεώσεις SEPA (μόνο για δωρεές σε ευρώ σε παραλήπτες σε χώρες του SEPA). Εάν μια πληρωμή γίνεται μέσω PayPal, τότε είναι δυνατή η πληρωμή με διάφορους τρόπους, ωστόσο ο δωρητής πρέπει να διαθέτει ή να δημιουργήσει λογαριασμό PayPal."
 
 msgid "What are the payment processing fees?"
 msgstr "Ποια είναι τα τέλη επεξεργασίας πληρωμών;"
@@ -3917,6 +4145,14 @@ msgstr "Ποια είναι τα τέλη επεξεργασίας πληρωμ�
 #, python-brace-format
 msgid "The fees vary by payment processor, payment method, countries and currencies. In the last year, the average fee percentages have been {average_fee_stripe} for the payments processed by Stripe and {average_fee_paypal} for the payments processed by PayPal."
 msgstr "Τα τέλη διαφέρουν ανάλογα με τον επεξεργαστή πληρωμών, τη μέθοδο πληρωμής, τις χώρες και τα νομίσματα. Κατά το τελευταίο έτος, τα μέσα ποσοστά τελών ήταν {average_fee_stripe} για τις πληρωμές που διεκπεραιώνονται από την Stripe και {average_fee_paypal} για τις πληρωμές που διεκπεραιώνονται από την PayPal."
+
+#, fuzzy
+msgid "How and when do I receive the money sent by my patrons?"
+msgstr "Πώς και πότε λαμβάνω τα χρήματα που στέλνουν οι προστάτες μου;"
+
+#, fuzzy
+msgid "Money sent by a donor immediately goes to your Stripe or PayPal account. By default Stripe then automatically sends the funds to your bank account, whereas PayPal simply stores them until you spend or withdraw them."
+msgstr "Τα χρήματα που αποστέλλονται από έναν δωρητή μεταφέρονται αμέσως στο λογαριασμό σας Stripe ή PayPal. Από προεπιλογή, το Stripe στέλνει στη συνέχεια αυτόματα τα χρήματα στον τραπεζικό σας λογαριασμό, ενώ το PayPal απλώς τα αποθηκεύει μέχρι να τα ξοδέψετε ή να τα αποσύρετε."
 
 msgid "Why do I see partial refunds in the Stripe dashboard?"
 msgstr "Γιατί βλέπω μερικές επιστροφές χρημάτων στον πίνακα ελέγχου του Stripe;"
@@ -3953,25 +4189,20 @@ msgstr "Οι δωρεές μέσω Liberapay εκπίπτουν από το φό
 msgid "Probably not, but it depends on the tax rules of your country."
 msgstr "Μάλλον όχι, αλλά εξαρτάται από τους φορολογικούς κανόνες της χώρας σας."
 
-msgid "What are wallets?"
-msgstr "Τι είναι τα πορτοφόλια;"
+#, fuzzy
+msgid "Is a Liberapay account a wallet?"
+msgstr "Είναι ένας λογαριασμός Liberapay πορτοφόλι;"
 
-msgid "Liberapay used to hold the funds of donors in wallets, but we no longer do that. Instead the full amount of a donation is immediately transferred to the recipient."
-msgstr "Η Liberapay κρατούσε τα χρήματα των δωρητών σε πορτοφόλια, αλλά δεν το κάνουμε πλέον αυτό. Αντ' αυτού, το πλήρες ποσό μιας δωρεάς μεταφέρεται αμέσως στον παραλήπτη."
-
-msgid "What is “payday”?"
-msgstr "Τι είναι η \"ημέρα πληρωμής\";"
-
-#, python-brace-format
-msgid "Payday is a program ({0}this one{1}) that we run every Wednesday. It executes donations and notifies donors and recipients."
-msgstr "Το Payday είναι ένα πρόγραμμα ({0}αυτό{1}) που τρέχουμε κάθε Τετάρτη. Εκτελεί τις δωρεές και ενημερώνει τους δωρητές και τους παραλήπτες."
+#, fuzzy
+msgid "Not since mid-2018. Money sent by a donor immediately goes to the recipient. Previously, funds were held in the donor's account and disbursed little by little to the recipient every week. That system was definitively abandoned due to its very significant drawbacks."
+msgstr "Όχι από τα μέσα του 2018. Τα χρήματα που αποστέλλονται από έναν δωρητή πηγαίνουν αμέσως στον παραλήπτη. Προηγουμένως, τα χρήματα κρατούνταν στο λογαριασμό του δωρητή και εκταμιεύονταν σιγά-σιγά στον παραλήπτη κάθε εβδομάδα. Το σύστημα αυτό εγκαταλείφθηκε οριστικά λόγω των πολύ σημαντικών μειονεκτημάτων του."
 
 msgid "You can get updates from us on the following social networks:"
 msgstr "Μπορείτε να λαμβάνετε ενημερώσεις από εμάς στα ακόλουθα κοινωνικά δίκτυα:"
 
 #, python-brace-format
 msgid "You can also follow the {1}development of the Liberapay software{0}, the {2}adventures of the Liberapay legal entity{0}, and the {3}general discussions of the Liberapay team{0}."
-msgstr "Μπορείτε επίσης να παρακολουθείτε την ανάπτυξη του λογισμικού Liberapay {1}{0}, τις περιπέτειες του νομικού προσώπου Liberapay {2}{0} και τις γενικές συζητήσεις της ομάδας Liberapay {3}{0} ."
+msgstr "Μπορείτε επίσης να παρακολουθείτε {1}την ανάπτυξη του λογισμικού Liberapay{0}, τις {2}περιπέτειες του νομικού προσώπου Liberapay{0} και τις {3}γενικές συζητήσεις της ομάδας Liberapay{0}."
 
 msgid "Donations can come from anywhere in the world."
 msgstr "Οι δωρεές μπορούν να προέρχονται από οπουδήποτε στον κόσμο."
@@ -3982,17 +4213,51 @@ msgid_plural "Donors can choose between up to {n} currencies, depending on the p
 msgstr[0] "<unused singular (hash=4cf42af35c271573d64f577e06447211)>"
 msgstr[1] "Οι δωρητές μπορούν να επιλέξουν μεταξύ έως και {n} νομισμάτων, ανάλογα με τις προτιμήσεις του παραλήπτη και τις δυνατότητες του υποκείμενου επεξεργαστή πληρωμών."
 
-#, python-brace-format
-msgid "<unused singular (hash=15422027494f4dee6eed143ece78c0ce)>"
-msgid_plural "Liberapay is fully available to creators in {n} territories:"
-msgstr[0] "<unused singular (hash=15422027494f4dee6eed143ece78c0ce)>"
-msgstr[1] "Το Liberapay είναι πλήρως διαθέσιμο στους δημιουργούς στις περιοχές {n}:"
+#, fuzzy
+msgid "Donations can only be received in territories where at least one supported payment processor is available. Moreover, some features are only available in some of the territories supported by a payment processor."
+msgstr "Οι δωρεές μπορούν να ληφθούν μόνο σε περιοχές όπου είναι διαθέσιμος τουλάχιστον ένας υποστηριζόμενος επεξεργαστής πληρωμών. Επιπλέον, ορισμένες λειτουργίες είναι διαθέσιμες μόνο σε ορισμένα από τα εδάφη που υποστηρίζονται από έναν επεξεργαστή πληρωμών."
 
-#, python-brace-format
-msgid "<unused singular (hash=ce784fd8cdb312cf56226bbd42d07d18)>"
-msgid_plural "Additionally, Liberapay is partially available to creators in {paypal_link_open}the {n} countries supported by PayPal{link_close}."
-msgstr[0] "<unused singular (hash=ce784fd8cdb312cf56226bbd42d07d18)>"
-msgstr[1] "Επιπλέον, το Liberapay είναι εν μέρει διαθέσιμο στους δημιουργούς στο {paypal_link_open}τις χώρες {n} που υποστηρίζονται από το PayPal{link_close}."
+#, fuzzy, python-brace-format
+msgid "The currently supported payment processors are {Stripe} and {PayPal}. You can find a list of the differences between them {link_start}in the “{page_name}” page{link_end}."
+msgstr "Οι υποστηριζόμενοι επί του παρόντος επεξεργαστές πληρωμών είναι οι {Stripe} και {PayPal}. Μπορείτε να βρείτε μια λίστα με τις διαφορές μεταξύ τους {link_start}στη σελίδα \"{page_name}\"{link_end}."
+
+#, fuzzy
+msgid "Best supported territories"
+msgstr "Καλύτερα υποστηριζόμενα εδάφη"
+
+#, fuzzy, python-brace-format
+msgid "<unused singular (hash=79acddfc1b997a9b2e4aa18d930e097e)>"
+msgid_plural "Creators in these {n} territories benefit from all of Liberapay's features:"
+msgstr[0] "<unused singular (hash=79acddfc1b997a9b2e4aa18d930e097e)>"
+msgstr[1] "Οι δημιουργοί σε αυτά τα εδάφη {n} επωφελούνται από όλα τα χαρακτηριστικά του Liberapay:"
+
+#, fuzzy
+msgid "Well supported territories"
+msgstr "Καλά υποστηριζόμενα εδάφη"
+
+#, fuzzy, python-brace-format
+msgid "<unused singular (hash=d6ace91b81f74c1f52f602d3d7009ed8)>"
+msgid_plural "Liberapay is also available to creators in the {n} territories listed below. However, donations going to those territories cannot be grouped to lower the payment processing fees, and the euro direct debit payment method isn't available to the donors."
+msgstr[0] "<unused singular (hash=d6ace91b81f74c1f52f602d3d7009ed8)>"
+msgstr[1] "Το Liberapay είναι επίσης διαθέσιμο στους δημιουργούς στις περιοχές {n} που αναφέρονται παρακάτω. Ωστόσο, οι δωρεές που πηγαίνουν σε αυτά τα εδάφη δεν μπορούν να ομαδοποιηθούν για να μειωθούν τα τέλη επεξεργασίας πληρωμών και η μέθοδος πληρωμής με άμεση χρέωση σε ευρώ δεν είναι διαθέσιμη στους δωρητές."
+
+#, fuzzy
+msgid "Barely supported territories"
+msgstr "Ελάχιστα υποστηριζόμενα εδάφη"
+
+#, fuzzy, python-brace-format
+msgid "<unused singular (hash=53cbe5d36eacd9bcc6b8eed3023c884b)>"
+msgid_plural "Liberapay is partly available to creators in the {n} territories listed below, which are supported by PayPal but not by Stripe."
+msgstr[0] "<unused singular (hash=53cbe5d36eacd9bcc6b8eed3023c884b)>"
+msgstr[1] "Το Liberapay είναι εν μέρει διαθέσιμο στους δημιουργούς στις παρακάτω περιοχές {n}, οι οποίες υποστηρίζονται από το PayPal αλλά όχι από το Stripe."
+
+#, fuzzy
+msgid "Unsupported territories"
+msgstr "Μη υποστηριζόμενα εδάφη"
+
+#, fuzzy
+msgid "If you don't live or have a registered business in one of the territories listed above, then you currently can't use Liberapay to receive donations. Sorry."
+msgstr "Εάν δεν ζείτε ή δεν έχετε μια εγγεγραμμένη επιχείρηση σε ένα από τα εδάφη που αναφέρονται παραπάνω, τότε προς το παρόν δεν μπορείτε να χρησιμοποιήσετε το Liberapay για να λάβετε δωρεές. Λυπάμαι."
 
 msgid "What is Liberapay?"
 msgstr "Τι είναι το Liberapay;"
@@ -4050,8 +4315,9 @@ msgstr "Πολιτική απορρήτου"
 msgid "This page contains links to and information about the Liberapay logo. We hope you'll find it especially useful if you're writing an article about Liberapay or if you want to add custom links to your Liberapay profile in your website."
 msgstr "Αυτή η σελίδα εμπεριέχει συνδέσμους και πληροφορίες για το λογότυπο του Liberapay. Ελπίζουμε ότι θα το βρείτε (…) χρήσιμο αν γράφετε ένα άρθρο για το Liberapay ή αν θέλετε να προσθέσετε (…) συνδέσμους στο Liberapay προφίλ σας στην ιστοσελίδα σας."
 
-msgid "The Liberapay logo is composed of the two letters “lp”. It's usually colored either white-on-yellow, black-on-yellow, or just black."
-msgstr "Το λογότυπο του Liberapay αποτελείται από τα δύο γράμματα \"lp\". Είναι συνήθως χρωματισμένο είτε άσπρο-σε-κίτρινο, μαύρο-σε-άσπρο, ή απλώς μαύρο."
+#, fuzzy
+msgid "The Liberapay logo is composed of the two letters “lp”. It's usually colored black-on-yellow or just black. We used a white-on-yellow variant in the past, but it's now phased out as its contrast was deemed too low."
+msgstr "Το λογότυπο της Liberapay αποτελείται από τα δύο γράμματα \"lp\". Συνήθως έχει χρώμα μαύρο σε κίτρινο ή απλώς μαύρο. Στο παρελθόν χρησιμοποιούσαμε μια παραλλαγή λευκού σε κίτρινο χρώμα, αλλά τώρα έχει καταργηθεί σταδιακά, καθώς η αντίθεση της θεωρήθηκε πολύ χαμηλή."
 
 #, python-brace-format
 msgid "The Liberapay yellow is {yellow_color_code}, the black is {black_color_code}."
@@ -4065,19 +4331,8 @@ msgstr "Το λογότυπο της Liberapay είναι σχεδόν ελεύ�
 msgid "You can view and download our logos below or {link_start}on GitHub{link_end}."
 msgstr "Μπορείτε να δείτε ή να κατεβάσετε τα λογότυπα μας από κάτω ή {link_start}στο GitHub{link_end}."
 
-msgid "Download the white-on-yellow SVG"
-msgstr "Κατεβάστε το SVG λευκό σε κίτρινο"
-
-#, python-brace-format
-msgid "Download the white-on-yellow PNG ({x_y} pixels)"
-msgstr "Κατεβάστε το λευκό σε κίτρινο PNG ({x_y} pixels)"
-
-msgid "Download the black SVG"
-msgstr "Κατεβάστε το μαύρο SVG"
-
-#, python-brace-format
-msgid "Download the black PNG ({x_y} pixels)"
-msgstr "Κατεβάστε το μαύρο PNG ({x_y} pixels)"
+msgid "Liberapay logo, black-on-yellow"
+msgstr "Λογότυπο Liberapay, μαύρο-κίτρινο"
 
 msgid "Download the black-on-yellow SVG"
 msgstr "Κατεβάστε το SVG μαύρο σε κίτρινο"
@@ -4086,12 +4341,15 @@ msgstr "Κατεβάστε το SVG μαύρο σε κίτρινο"
 msgid "Download the black-on-yellow PNG ({x_y} pixels)"
 msgstr "Κατεβάστε το μαύρο σε κίτρινο PNG ({x_y} pixels)"
 
-msgid "Fonts"
-msgstr "Γραμματοσειρές"
+msgid "Liberapay logo, black"
+msgstr "Λογότυπο Liberapay, μαύρο"
+
+msgid "Download the black SVG"
+msgstr "Κατεβάστε το μαύρο SVG"
 
 #, python-brace-format
-msgid "The Liberapay logo is included in the {fa_link_start}Fork Awesome{link_end} font in two forms: {fa_liberapay_link} and {fa_liberapay_square_link}."
-msgstr "Το λογότυπο του Liberapay περιλαμβάνεται στην γραμματοσειρά {fa_link_start}Fork Awesome{link_end} σε δύο μορφές: {fa_liberapay_link} και {fa_liberapay_square_link}."
+msgid "Download the black PNG ({x_y} pixels)"
+msgstr "Κατεβάστε το μαύρο PNG ({x_y} pixels)"
 
 msgid "Here is a list of differences between them:"
 msgstr "Ακολουθεί ένας κατάλογος των διαφορών μεταξύ τους:"
@@ -4101,6 +4359,9 @@ msgstr "Τα τέλη επεξεργασίας πληρωμών είναι συ�
 
 msgid "Stripe allows renewing donations automatically, whereas PayPal currently requires donors to confirm every payment."
 msgstr "Το Stripe επιτρέπει την αυτόματη ανανέωση των δωρεών, ενώ το PayPal απαιτεί επί του παρόντος από τους δωρητές να επιβεβαιώνουν κάθε πληρωμή."
+
+msgid "Donations through Stripe can be secret, whereas PayPal always allows donors and recipients to see each other's names and email addresses."
+msgstr "Οι δωρεές μέσω Stripe μπορεί να είναι μυστικές, ενώ το PayPal επιτρέπει πάντα στους δωρητές και τους παραλήπτες να βλέπουν ο ένας τα ονόματα και τις διευθύνσεις ηλεκτρονικού ταχυδρομείου του άλλου."
 
 msgid "Stripe allows donating to multiple creators at once in some cases, whereas PayPal always requires separate payments."
 msgstr "Το Stripe επιτρέπει τη δωρεά σε πολλαπλούς δημιουργούς ταυτόχρονα σε ορισμένες περιπτώσεις, ενώ το PayPal απαιτεί πάντα ξεχωριστές πληρωμές."
@@ -4119,10 +4380,10 @@ msgid "PayPal only supports {n_paypal_currencies} of the {n_liberapay_currencies
 msgstr "Το PayPal υποστηρίζει μόνο το {n_paypal_currencies} από τα νομίσματα {n_liberapay_currencies} που υποστηρίζονται από τη Liberapay και τη Stripe."
 
 #, python-brace-format
-msgid "<unused singular (hash=901d1e29a8c2a0e16ff208c9a8fda012)>"
-msgid_plural "PayPal is available to creators in more than 200 countries, whereas Stripe only supports {n} countries in a suitable way."
-msgstr[0] "<unused singular (hash=901d1e29a8c2a0e16ff208c9a8fda012)>"
-msgstr[1] "Το PayPal είναι διαθέσιμο σε δημιουργούς σε περισσότερες από 200 χώρες, ενώ το Stripe υποστηρίζει μόνο τις χώρες {n} με κατάλληλο τρόπο."
+msgid "<unused singular (hash=47f7d13f5771b30f0bcf49ea3acd518b)>"
+msgid_plural "PayPal is available to creators in more than 100 countries, whereas Stripe only supports {n} countries in a suitable way."
+msgstr[0] "<unused singular (hash=47f7d13f5771b30f0bcf49ea3acd518b)>"
+msgstr[1] "Το PayPal είναι διαθέσιμο σε δημιουργούς σε περισσότερες από 100 χώρες, ενώ το Stripe υποστηρίζει μόνο τις χώρες {n} με κατάλληλο τρόπο."
 
 #, python-brace-format
 msgid "You can find more information on supported countries and currencies in {link_start}the “{page_name}” page{link_end}."
@@ -4323,9 +4584,9 @@ msgstr "Διαμοιρασμός των χρημάτων"
 msgid "Teams don't have a hierarchy, all their members are equal and set their own take."
 msgstr "Οι ομάδες δεν έχουν ιεραρχία, όλα τα μέλη τους είναι ίσα και καθορίζουν τις δικές τους αποφάσεις."
 
-#, python-brace-format
-msgid "You can change your takes from {0}your teams dashboard{1}. It contains tables that show the nominal takes of all members for the next and previous payday, as well as an estimate of the actual amounts of money they'll receive in the next payday."
-msgstr "Μπορείτε να αλλάξετε τις λήψεις σας από το {0}πίνακα ελέγχου των ομάδων σας{1}. Περιέχει πίνακες που δείχνουν τις ονομαστικές εισπράξεις όλων των μελών για την επόμενη και την προηγούμενη ημέρα πληρωμής, καθώς και μια εκτίμηση των πραγματικών χρηματικών ποσών που θα λάβουν την επόμενη ημέρα πληρωμής."
+#, fuzzy, python-brace-format
+msgid "You can change your takes from {0}your teams dashboard{1}. It contains tables that show the nominal takes of all members, as well as an estimate of the actual amounts of money that will be deducted at the end of the current weekly cycle."
+msgstr "Μπορείτε να αλλάξετε τις λήψεις σας από το {0}το ταμπλό των ομάδων σας{1}. Περιέχει πίνακες που δείχνουν τις ονομαστικές εισπράξεις όλων των μελών, καθώς και μια εκτίμηση των πραγματικών χρηματικών ποσών που θα αφαιρεθούν στο τέλος του τρέχοντος εβδομαδιαίου κύκλου."
 
 msgid "The nominal takes are the raw numbers that the members input themselves, the actual takes are computed by the system: first it sums up the nominal takes, then it computes the percentage that each take represents, and finally it applies those percentages to the available income. Nominal takes also act as maximums: the actual takes are never higher than the nominal ones, even if additional income is available."
 msgstr "Οι ονομαστικές εισπράξεις είναι οι ακατέργαστοι αριθμοί που εισάγουν τα ίδια τα μέλη, ενώ οι πραγματικές εισπράξεις υπολογίζονται από το σύστημα: πρώτα αθροίζει τις ονομαστικές εισπράξεις, στη συνέχεια υπολογίζει το ποσοστό που αντιπροσωπεύει κάθε είσπραξη και εφαρμόζει αυτά τα ποσοστά στο διαθέσιμο εισόδημα. Οι ονομαστικές εισπράξεις λειτουργούν επίσης ως ανώτατα όρια: οι πραγματικές εισπράξεις δεν είναι ποτέ υψηλότερες από τις ονομαστικές, ακόμη και αν υπάρχει διαθέσιμο πρόσθετο εισόδημα."
@@ -4342,15 +4603,17 @@ msgstr "Από προεπιλογή, όλα τα μέλη της ομάδας έ
 msgid "Regulation of take amounts"
 msgstr "Ρύθμιση ποσών ανάληψης"
 
-msgid "When “take throttling” is enabled for a team, its members can't raise their takes higher than a maximum computed on the basis of the nominal takes at the time of the previous payday. This mechanism is meant to encourage inviting new contributors to join the team, by ensuring that they won't take a disproportionate share of the income in their first weeks."
-msgstr "Όταν είναι ενεργοποιημένο το \"take throttling\" για μια ομάδα, τα μέλη της δεν μπορούν να αυξήσουν τις εισπράξεις τους πάνω από ένα μέγιστο όριο που υπολογίζεται με βάση τις ονομαστικές εισπράξεις κατά την προηγούμενη ημέρα πληρωμής. Αυτός ο μηχανισμός έχει ως στόχο να ενθαρρύνει την πρόσκληση νέων εθελοντών να συμμετάσχουν στην ομάδα, διασφαλίζοντας ότι δε θα πάρουν δυσανάλογο μερίδιο των εσόδων τις πρώτες εβδομάδες."
+#, fuzzy
+msgid "When “take throttling” is enabled for a team, its members can't raise their takes higher than a maximum computed on the basis of the nominal takes at the end of the previous weekly cycle. This mechanism is meant to encourage inviting new contributors to join the team, by ensuring that they won't take a disproportionate share of the income in their first weeks."
+msgstr "Όταν είναι ενεργοποιημένο το \"take throttling\" για μια ομάδα, τα μέλη της δεν μπορούν να αυξήσουν τις λήψεις τους πάνω από ένα μέγιστο όριο που υπολογίζεται με βάση τις ονομαστικές λήψεις στο τέλος του προηγούμενου εβδομαδιαίου κύκλου. Αυτός ο μηχανισμός έχει ως στόχο να ενθαρρύνει την πρόσκληση νέων συνεισφερόντων να συμμετάσχουν στην ομάδα, διασφαλίζοντας ότι δεν θα πάρουν δυσανάλογο μερίδιο των εσόδων τις πρώτες εβδομάδες."
 
-#, python-brace-format
-msgid "The limit works like this: you can always increase your take to {amount} if it was below that, you can double your take compared to the previous week, you can raise your take to claim the team's leftover income, and you can bring your take up to the level of the median take in the previous payday. Whichever of these possibilities results in the highest amount is your maximum take for the week."
-msgstr "Το όριο λειτουργεί ως εξής: μπορείτε πάντα να αυξήσετε το εισόδημά σας στο {amount} αν ήταν κάτω από αυτό, μπορείτε να διπλασιάσετε το εισόδημά σας σε σχέση με την προηγούμενη εβδομάδα, μπορείτε να αυξήσετε το εισόδημά σας για να διεκδικήσετε το υπόλοιπο εισόδημα της ομάδας και μπορείτε να φέρετε το εισόδημά σας στο επίπεδο του μέσου εισοδήματος της προηγούμενης μισθοδοσίας. Όποια από αυτές τις δυνατότητες οδηγεί στο υψηλότερο ποσό είναι η μέγιστη αμοιβή σας για την εβδομάδα."
+#, fuzzy, python-brace-format
+msgid "The limit works like this: you can always increase your take to {amount} if it was below that, you can double your take compared to the previous week, you can raise your take to claim the team's leftover income, and you can bring your take up to the level of the median take at the end of the previous weekly cycle. Whichever of these possibilities results in the highest amount is your maximum take for the week."
+msgstr "Το όριο λειτουργεί ως εξής: μπορείτε πάντα να αυξήσετε το εισόδημά σας στο {amount} αν ήταν κάτω από αυτό, μπορείτε να διπλασιάσετε το εισόδημά σας σε σχέση με την προηγούμενη εβδομάδα, μπορείτε να αυξήσετε το εισόδημά σας για να διεκδικήσετε το υπόλοιπο εισόδημα της ομάδας και μπορείτε να φέρετε το εισόδημά σας στο επίπεδο του μέσου όρου στο τέλος του προηγούμενου εβδομαδιαίου κύκλου. Όποια από αυτές τις δυνατότητες οδηγεί στο υψηλότερο ποσό είναι η μέγιστη είσπραξη για την εβδομάδα."
 
-msgid "Takes are not limited if the team has only one member, or if the previous week's takes were all zero (which is the case for any new team that has been created after the most recent payday)."
-msgstr "Οι εισπράξεις δεν περιορίζονται εάν η ομάδα έχει μόνο ένα μέλος ή εάν οι εισπράξεις της προηγούμενης εβδομάδας ήταν όλες μηδενικές (κάτι που ισχύει για κάθε νέα ομάδα που δημιουργήθηκε μετά την πιο πρόσφατη ημέρα πληρωμής)."
+#, fuzzy
+msgid "Takes are not limited if the team has only one member, or if the previous week's takes were all zero (which is the case for any new team that has been created during the current weekly cycle)."
+msgstr "Οι λήψεις δεν περιορίζονται εάν η ομάδα έχει μόνο ένα μέλος ή εάν οι λήψεις της προηγούμενης εβδομάδας ήταν όλες μηδενικές (κάτι που ισχύει για κάθε νέα ομάδα που δημιουργήθηκε κατά τη διάρκεια του τρέχοντος εβδομαδιαίου κύκλου)."
 
 msgid "Please contact support if you want to enable or disable the take limits for an existing team. Don't forget to include evidence that the change has been approved by the other team members."
 msgstr "Επικοινωνήστε με την υποστήριξη αν θέλετε να ενεργοποιήσετε ή να απενεργοποιήσετε τα όρια λήψης μιας υπάρχουσας ομάδας. Μην ξεχάσετε να συμπεριλάβετε αποδεικτικά στοιχεία ότι η αλλαγή έχει εγκριθεί από τα άλλα μέλη της."
@@ -4438,26 +4701,26 @@ msgstr[1] "Ιδού οι {n} χρήστες Liberapay που έχει συνδέ
 msgid "Explore other platforms:"
 msgstr "Εξερευνήστε άλλες πλατφόρμες:"
 
-msgid "Liberapay provides several ways of finding great people to donate to:"
-msgstr "Το Liberapay παρέχει διάφορους τρόπους εύρεσης σπουδαίων ανθρώπων για δωρεές:"
+msgid "This page lists Liberapay users who are hoping to receive their first donations."
+msgstr "Αυτή η σελίδα παραθέτει τους χρήστες του Liberapay που ελπίζουν να λάβουν τις πρώτες τους δωρεές."
 
-msgid "A team is a group of users working on a specific project."
-msgstr "Μια ομάδα είναι μια ομάδα χρηστών που εργάζονται σε ένα συγκεκριμένο έργο."
+msgid "Despite our efforts, some of the listed profiles may be spam or fraud."
+msgstr "Παρά τις προσπάθειές μας, ορισμένα από τα καταχωρημένα προφίλ μπορεί να είναι spam ή απάτη."
 
-msgid "Explore Teams"
-msgstr "Εξερευνήστε Ομάδες"
+msgid "Profiles only start appearing in the list 72 hours after they're created."
+msgstr "Τα προφίλ αρχίζουν να εμφανίζονται στη λίστα μόνο 72 ώρες μετά τη δημιουργία τους."
 
-msgid "Great nonprofits and companies trying to improve the world."
-msgstr "Σπουδαίοι μη κερδοσκοπικοί οργανισμοί και εταιρείες που προσπαθούν να βελτιώσουν τον κόσμο."
+msgid "People and projects who receive donations through Liberapay."
+msgstr "Άνθρωποι και έργα που λαμβάνουν δωρεές μέσω του Liberapay."
 
-msgid "Explore Organizations"
-msgstr "Εξερευνήστε Οργανισμούς"
+msgid "Explore Recipients"
+msgstr "Εξερευνήστε τους παραλήπτες"
 
-msgid "People like you who contribute to the commons (art, knowledge, software, …)."
-msgstr "Άνθρωποι σαν εσάς που συνεισφέρουν στα κοινά (τέχνη, γνώση, λογισμικό, ...)."
+msgid "Users who are hoping to receive their first donations through Liberapay."
+msgstr "Χρήστες που ελπίζουν να λάβουν τις πρώτες τους δωρεές μέσω της Liberapay."
 
-msgid "Explore Individuals"
-msgstr "Εξερευνήστε Άτομα"
+msgid "Explore Hopefuls"
+msgstr "Εξερευνήστε Hopefuls"
 
 msgid "Liberapay allows pledging to fund people who haven't joined the site yet."
 msgstr "Το Liberapay επιτρέπει τη δέσμευση για τη χρηματοδότηση ατόμων που δεν έχουν ενταχθεί ακόμη στον ιστότοπο."
@@ -4480,27 +4743,40 @@ msgstr "Περιηγηθείτε στους λογαριασμούς που έχ
 msgid "Explore Social Networks"
 msgstr "Εξερευνήστε Κοινωνικά Δίκτυα"
 
+msgid "Individuals"
+msgstr "Άτομα"
+
 #, python-brace-format
 msgid "The top {0} individuals on Liberapay are:"
 msgstr "Τα κορυφαία {0} άτομα στο Liberapay είναι:"
 
-#, python-brace-format
-msgid "List of individuals on Liberapay, page {number}:"
-msgstr "Κατάλογος ατόμων στο Liberapay, σελίδα {number}:"
+msgid "Sort by"
+msgstr "Ταξινόμηση κατά"
+
+msgid "income"
+msgstr "εισόδημα"
+
+msgid "creation date"
+msgstr "ημερομηνία δημιουργίας"
+
+msgid "sort order"
+msgstr "σειρά ταξινόμησης"
+
+msgid "in descending order"
+msgstr "με φθίνουσα σειρά"
+
+msgid "in ascending order"
+msgstr "με αύξουσα σειρά"
+
+msgid "Organizations"
+msgstr "Οργανισμοί"
 
 #, python-brace-format
 msgid "The top {0} organizations on Liberapay are:"
 msgstr "Οι κορυφαίοι {0} οργανισμοί στο Liberapay είναι:"
 
-#, python-brace-format
-msgid "List of organizations on Liberapay, page {number}:"
-msgstr "Κατάλογος οργανισμών στο Liberapay, σελίδα {number}:"
-
 msgid "Create an organization account"
 msgstr "Δημιουργήστε έναν λογαριασμό οργανισμού"
-
-msgid "Top pledges"
-msgstr "Κορυφαίες δεσμεύσεις"
 
 msgid "Please don't spam the people and projects listed below with messages inviting them to join Liberapay or asking them why they haven't."
 msgstr "Παρακαλούμε μην στέλνετε μηνύματα spam στα άτομα και τα έργα που αναφέρονται παρακάτω με μηνύματα που τους προσκαλούν να γίνουν μέλη του Liberapay ή τους ρωτούν γιατί δεν το έχουν κάνει."
@@ -4517,6 +4793,30 @@ msgstr "Έχετε κάποιον στο μυαλό;"
 msgid "We can help you find pledgees if you connect your accounts:"
 msgstr "Μπορούμε να σας βοηθήσουμε να βρείτε τους υποψήφιους υποσχεθέντες αν συνδέσετε τους λογαριασμούς σας:"
 
+#, fuzzy, python-brace-format
+msgid "The individual receiving the most money through Liberapay is:"
+msgid_plural "The {n} individuals receiving the most money through Liberapay are:"
+msgstr[0] "Το άτομο που λαμβάνει τα περισσότερα χρήματα μέσω της Liberapay είναι:"
+msgstr[1] "Τα άτομα {n} που λαμβάνουν τα περισσότερα χρήματα μέσω της Liberapay είναι:"
+
+#, fuzzy, python-brace-format
+msgid "The organization receiving the most money through Liberapay is:"
+msgid_plural "The {n} organizations receiving the most money through Liberapay are:"
+msgstr[0] "Ο οργανισμός που λαμβάνει τα περισσότερα χρήματα μέσω του Liberapay είναι:"
+msgstr[1] "Οι οργανώσεις {n} που λαμβάνουν τα περισσότερα χρήματα μέσω του Liberapay είναι:"
+
+#, fuzzy, python-brace-format
+msgid "The team receiving the most money through Liberapay is:"
+msgid_plural "The {n} teams receiving the most money through Liberapay are:"
+msgstr[0] "Η ομάδα {n} που λαμβάνει τα περισσότερα χρήματα μέσω της Liberapay είναι:"
+msgstr[1] "Οι ομάδες {n} που λαμβάνουν τα περισσότερα χρήματα μέσω της Liberapay είναι:"
+
+#, fuzzy, python-brace-format
+msgid "The Liberapay account receiving the most money is:"
+msgid_plural "The {n} Liberapay accounts receiving the most money are:"
+msgstr[0] "Ο λογαριασμός Liberapay που λαμβάνει τα περισσότερα χρήματα είναι:"
+msgstr[1] "Οι λογαριασμοί {n} Liberapay που λαμβάνουν τα περισσότερα χρήματα είναι:"
+
 #, python-brace-format
 msgid "The most popular repository currently linked to a Liberapay account is:"
 msgid_plural "The {n} most popular repositories currently linked to a Liberapay account are:"
@@ -4524,15 +4824,14 @@ msgstr[0] "Το {n} πιο δημοφιλές αποθετήριο που συν
 msgstr[1] "Τα {n} πιο δημοφιλή αποθετήρια που συνδέονται αυτήν τη στιγμή με έναν λογαριασμό Liberapay είναι:"
 
 #, python-brace-format
-msgid "List of repositories currently linked to a Liberapay account, page {number}:"
-msgstr "Κατάλογος των αποθετηρίων που συνδέονται επί του παρόντος με έναν λογαριασμό Liberapay, σελίδα {number}:"
-
-#, python-brace-format
 msgid "by {author_name}"
 msgstr "από {author_name}"
 
-msgid "Stars"
-msgstr "Αστέρια"
+msgid "stars count"
+msgstr "Μέτρηση αστεριών"
+
+msgid "connection date"
+msgstr "ημερομηνία σύνδεσης"
 
 msgid "Browse your favorite repositories"
 msgstr "Περιηγηθείτε στα αγαπημένα σας αποθετήρια"
@@ -4545,10 +4844,6 @@ msgid "The top team on Liberapay is:"
 msgid_plural "The top {n} teams on Liberapay are:"
 msgstr[0] "Η κορυφαία ομάδα στη Liberapay είναι:"
 msgstr[1] "Η κορυφαίες {n} ομάδες στη Liberapay είναι:"
-
-#, python-brace-format
-msgid "List of teams on Liberapay, page {number}:"
-msgstr "Κατάλογος ομάδων στο Liberapay, σελίδα {number}:"
 
 msgid "Create a team"
 msgstr "Δημιουργία μίας ομάδας"
@@ -4663,7 +4958,7 @@ msgstr "2. Χρηματοδότηστε τη δωρεά σας"
 
 #, python-brace-format
 msgid "On Liberapay, donations are funded in advance. You have control over when and how much you pay. Sending more money at once usually results in a lower percentage of {0}transaction fees{1}."
-msgstr "Στο Liberapay, οι δωρεές χρηματοδοτούνται εκ των προτέρων. Έχετε τον έλεγχο του πότε και πόσο πληρώνετε. Η ταυτόχρονη αποστολή περισσότερων χρημάτων έχει συνήθως ως αποτέλεσμα χαμηλότερο ποσοστό των τελών συναλλαγής {0}{1} ."
+msgstr "Στο Liberapay, οι δωρεές χρηματοδοτούνται εκ των προτέρων. Έχετε τον έλεγχο του πότε και πόσο πληρώνετε. Η ταυτόχρονη αποστολή περισσότερων χρημάτων έχει συνήθως ως αποτέλεσμα χαμηλότερο ποσοστό των {0}τελών συναλλαγής{1}."
 
 msgid "3. Keep your donation funded"
 msgstr "3. Κρατήστε τη δωρεά σας χρηματοδοτούμενη"
@@ -4988,6 +5283,10 @@ msgid "Transfer the account"
 msgstr "Μεταφορά του λογαριασμού"
 
 #, python-brace-format
+msgid "The {provider} account you are attempting to connect is linked to another Liberapay account marked as fraudulent."
+msgstr "Ο λογαριασμός {provider} που προσπαθείτε να συνδέσετε συνδέεται με άλλο λογαριασμό Liberapay που έχει επισημανθεί ως δόλιος."
+
+#, python-brace-format
 msgid "Connecting a {platform} account"
 msgstr "Σύνδεση ενός {platform} λογαριασμού"
 
@@ -5006,10 +5305,10 @@ msgstr "Λυπούμαστε, δεν βρήκαμε κάτι που να ται�
 msgid "Whose work do you appreciate?"
 msgstr "Ποιανού τη δουλειά εκτιμάτε;"
 
-msgid "Found a matching username"
-msgid_plural "Found matching usernames"
+msgid "Found a matching user name"
+msgid_plural "Found matching user names"
 msgstr[0] "Βρέθηκε ένα ταιριαστό όνομα χρήστη"
-msgstr[1] "Βρέθηκαν ταιριαστά ονόματα χρειστών"
+msgstr[1] "Βρέθηκαν ταιριαστά ονόματα χρηστών"
 
 msgid "Found a matching community name"
 msgid_plural "Found matching community names"
@@ -5031,9 +5330,9 @@ msgstr[1] "Βρέθηκαν αντίστοιχα αποθετήρια"
 msgid "{username} has a repository named {repo_name} in their {platform} account"
 msgstr "Ο {username} έχει ένα αποθετήριο με το όνομα {repo_name} στον λογαριασμό του {platform}"
 
-msgid "Found a matching user statement"
-msgid_plural "Found matching user statements"
-msgstr[0] "Βρέθηκε μια αντίστοιχη δήλωση χρήστη"
+msgid "Found a matching user description"
+msgid_plural "Found matching user descriptions"
+msgstr[0] "Βρέθηκε μία αντίστοιχη δήλωση χρήστη"
 msgstr[1] "Βρέθηκαν αντίστοιχες δηλώσεις χρήστη"
 
 msgid "Didn't find who you were looking for?"
